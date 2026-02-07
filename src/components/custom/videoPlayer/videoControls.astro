@@ -1,0 +1,160 @@
+---
+import HorizontalFiller from "../../fillers/horizontal.astro";
+---
+
+<!-- Controls -->
+<div
+  id="videoControls"
+  onmouseenter="enable_VideoControls()"
+  onmouseleave="disable_VideoControls()"
+  class="absolute bottom-0 flex flex-col items-start justify-start w-full h-fit p-2 gap-4 text-[min(7vw,1rem)] text-Light_Text_Primary dark:text-Light_Primary opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out z-2"
+>
+  <div
+    class="hidden max-sm:flex flex-row items-center justify-start gap-2 min-w-fit h-fit p-2 rounded-full bg-Light_Secondary/64 dark:bg-Dark_Secondary/64 backdrop-blur-3xl overflow-hidden"
+  >
+    <!-- Time stamp text secondary, showing time of video -->
+    <div
+      class="flex flex-row items-center justify-center min-w-fit h-full p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover hover:font-semibold transition-colors duration-300 ease-in-out"
+    >
+      <p id="timeStamp_Second">
+        <span id="current_TimeStamp_Second">00:00</span>
+        <span
+          id="duration_TimeStamp_Second"
+          class="text-[min(5vw,0.8rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary"
+        >
+          / 00:00</span
+        >
+      </p>
+    </div>
+  </div>
+
+  <!-- Time bar -->
+  <div
+    onmouseenter="sliderEnter('timeStamp_Slider')"
+    onmouseleave="sliderLeave('timeStamp_Slider')"
+    class="flex flex-row items-center justify-center w-full h-fit"
+  >
+    <input
+      id="timeStamp_Slider"
+      oninput="updateCurrentTime(this, this.value, 'videoPlayer')"
+      class="min-w-28 w-full h-[0.2rem] accent-Accent rounded-full transition-normal duration-300 ease-in-out cursor-pointer"
+      type="range"
+      min="0"
+      max="1"
+      value="0"
+      step="0.001"
+    />
+  </div>
+
+  <div class="flex flex-row items-start justify-start w-full h-fit gap-4">
+    <div
+      class="flex flex-row items-center justify-start gap-2 min-w-fit h-fit p-2 rounded-full bg-Light_Secondary/64 dark:bg-Dark_Secondary/64 backdrop-blur-3xl overflow-hidden"
+    >
+      <div
+        onmouseenter="sliderEnter('volumeSlider')"
+        onmouseleave="sliderLeave('volumeSlider')"
+        class="flex flex-row items-center justify-center gap-2 w-fit p-2 pr-4 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover transition-colors duration-300 ease-in-out"
+      >
+        <!-- Volume button to mute / unmute -->
+        <button
+          id="volumeButton"
+          class="flex flex-row items-center justify-center w-fit h-fit aspect-square cursor-pointer"
+          onclick="muteVideo('videoPlayer')"
+        >
+          <span
+            id="googleSymbol"
+            class="material-symbols-rounded !text-[min(7vw,1.2rem)]"
+            >volume_up</span
+          >
+        </button>
+        <!-- Volume slider -->
+        <input
+          id="volumeSlider"
+          class="w-18 h-[0.2rem] hover:h-[1rem] accent-Accent rounded-full transition-normal duration-300 ease-in-out cursor-pointer"
+          type="range"
+          min="0"
+          max="1"
+          value="1"
+          step="0.05"
+          oninput="updateVolumeSlider(this.value, 'videoPlayer', this.value)"
+        />
+      </div>
+    </div>
+
+    <div
+      class="flex flex-row items-center justify-start gap-2 min-w-fit h-fit p-2 rounded-full bg-Light_Secondary/64 dark:bg-Dark_Secondary/64 backdrop-blur-3xl overflow-hidden"
+    >
+      <!-- Pause button to pause video -->
+      <button
+        id="pauseButton_TimeBar"
+        class="flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover text-[min(7vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary transition-colors duration-300 ease-in-out cursor-pointer"
+        onclick="pauseVideo('videoPlayer')"
+      >
+        <span
+          id="googleSymbol"
+          class="material-symbols-rounded !text-[min(7vw,1.2rem)] icon-fill"
+          >pause</span
+        >
+      </button>
+
+      <!-- Time stamp text, showing time of video -->
+      <div
+        class="hidden sm:flex flex-row items-center justify-center min-w-fit h-full p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover hover:font-semibold transition-colors duration-300 ease-in-out"
+      >
+        <p id="timeStamp">
+          <span id="current_TimeStamp">00:00</span>
+          <span
+            id="duration_TimeStamp"
+            class="text-[min(5vw,0.8rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary"
+          >
+            / 00:00</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <HorizontalFiller />
+
+    <div
+      class="flex flex-row items-center justify-start gap-2 min-w-fit h-fit p-2 rounded-full bg-Light_Secondary/64 dark:bg-Dark_Secondary/64 backdrop-blur-3xl"
+    >
+      <button
+        id="videoCinemaLight_Button"
+        class="relative flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover text-[min(7vw,1rem)] text-Accent transition-colors duration-300 ease-in-out cursor-pointer"
+        onclick="toggleCinemaLights('videoPlayer')"
+      >
+        <span
+          id="googleSymbol"
+          class="material-symbols-rounded !text-[min(7vw,1.2rem)] icon-fill"
+        >
+          cinematic_blur
+        </span>
+      </button>
+
+      <button
+        id="videoLoop_Button"
+        class="relative flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover text-[min(7vw,1rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 transition-colors duration-300 ease-in-out cursor-pointer"
+        onclick="loopVideo('videoPlayer')"
+      >
+        <span
+          id="googleSymbol"
+          class="material-symbols-rounded !text-[min(7vw,1.2rem)]"
+        >
+          repeat
+        </span>
+      </button>
+
+      <button
+        id="fullscreen_Button"
+        class="flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover text-[min(7vw,1rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 transition-colors duration-300 ease-in-out cursor-pointer"
+        onclick="resizeVideo('videoPlayer_Container')"
+      >
+        <span
+          id="googleSymbol"
+          class="material-symbols-rounded !text-[min(7vw,1.2rem)]"
+          >expand_content</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

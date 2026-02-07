@@ -1,0 +1,117 @@
+---
+import Horizontal from "../../../seperators/horizontal.astro";
+
+import ADS from "./subscriptionCards_Pros/ads.astro";
+import NonPersonalizedADS from "./subscriptionCards_Pros/nonPersonalizedADS.astro";
+import FasterDownloads from "./subscriptionCards_Pros/fasterDownload.astro";
+import FasterUploads from "./subscriptionCards_Pros/fasterUpload.astro";
+import FastConnection from "./subscriptionCards_Pros/fastConnection.astro";
+import CloudStroage from "./subscriptionCards_Pros/cloudStorage.astro";
+import Customization from "./subscriptionCards_Pros/customization.astro";
+import Encryption from "./subscriptionCards_Pros/encryption.astro";
+import PrioritySupport from "./subscriptionCards_Pros/prioritySupport.astro";
+import EarlyAccess from "./subscriptionCards_Pros/earlyAccess.astro";
+---
+
+<div
+  class="flex flex-col items-start justify-start w-full h-fit rounded-xl gap-4 p-2 hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-transparent hover:border-Light_Border_Secondary dark:hover:border-Dark_Border_Secondary hover:shadow-2xl hover:shadow-Light_Secondary_Hover dark:hover:shadow-Dark_Secondary_Hover transition-all duration-300 ease-in-out overflow-hidden"
+>
+  <div
+    class="flex flex-row items-center justify-start w-full h-fit py-4 !text-[min(10vw,6rem)]"
+  >
+    <span
+      id="googleSymbol"
+      class="material-symbols-rounded !text-[min(6vw,12rem)]">diamond</span
+    >
+    <span
+      id="googleSymbol"
+      class="material-symbols-rounded !text-[min(6vw,2rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64"
+    >
+      all_inclusive
+    </span>
+  </div>
+  <p class="flex flex-col px-2 pb-2 gap-2">
+    <span class="font-semibold text-[min(10vw,1.8rem)] capitalize">
+      life time azure
+    </span>
+    <span class="text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64">
+      Bored of paying memberships This plan may be for you, Pay once and it will
+      be yours with "Azure Plan" benefits forever, never pay anything after a
+      one-time payment. The first three months are free, plus 10% off if you’ve
+      previously been an "Azure Member" at least for a month.
+    </span>
+  </p>
+
+  <div
+    class="flex flex-row w-full h-fit px-2 gap-2 text-[min(7vw,0.8rem)] text-nowrap font-semibold uppercase"
+  >
+    <p
+      class="w-fit h-fit px-4 p-2 rounded-full bg-Accent/55 border border-Accent"
+    >
+      3 months free
+    </p>
+  </div>
+
+  <Horizontal />
+
+  <div class="flex flex-col items-start justify-center w-full h-fit gap-4">
+    <ADS>
+      <span class="material-symbols-rounded text-green-300">check</span>
+    </ADS>
+
+    <NonPersonalizedADS>
+      <span class="material-symbols-rounded text-green-300">check</span>
+    </NonPersonalizedADS>
+
+    <FasterDownloads>
+      <span class="material-symbols-rounded text-green-300">check</span>
+    </FasterDownloads>
+
+    <FasterUploads>
+      <span class="material-symbols-rounded text-green-300">check</span>
+    </FasterUploads>
+
+    <FastConnection>
+      <span class="material-symbols-rounded text-green-300">check</span>
+    </FastConnection>
+
+    <CloudStroage>
+      <p class="w-fit font-normal text-nowrap">128 GB</p>
+    </CloudStroage>
+
+    <Customization>
+      <span class="material-symbols-rounded text-green-300">check</span>
+    </Customization>
+
+    <Encryption>
+      <span class="material-symbols-rounded text-green-300">check</span>
+    </Encryption>
+
+    <PrioritySupport>
+      <span class="material-symbols-rounded text-green-300">check</span>
+    </PrioritySupport>
+
+    <EarlyAccess>
+      <span class="material-symbols-rounded text-green-300">check</span>
+    </EarlyAccess>
+  </div>
+
+  <Horizontal />
+
+  <div class="flex flex-col w-full h-fit items-start justify-start">
+    <div
+      class="flex flex-row items-center justify-start w-full h-fit gap-4 px-2 mb-2"
+    >
+      <p class="text-green-300 font-semibold text-[min(7vw,1.2rem)]">$474.99</p>
+      <p class="text-red-400 font-semibold text-[min(7vw,0.8rem)] line-through">
+        $498.49
+      </p>
+    </div>
+
+    <button
+      class="flex flex-row items-center justify-center w-full h-fit rounded-xl p-4 gap-2 bg-green-300/65 hover:bg-green-300 border border-green-300 font-semibold text-Light_Text_Inverted dark:text-Dark_Text_Inverted transition-colors duration-300 ease-in-out capitalize"
+    >
+      <p>Purschase</p>
+    </button>
+  </div>
+</div>

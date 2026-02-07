@@ -1,0 +1,62 @@
+---
+const currentPath = Astro.url.pathname;
+
+const InactiveTab_Landing =
+  "flex md:hidden flex-row items-center justify-start w-fit h-fit aspect-square gap-2 rounded-xl p-4 hover:font-semibold text-[min(10vw,1rem)] !text-Light_Text_Secondary/64 dark:!text-Dark_Text_Secondary/64 hover:!text-Accent hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover transition-colors duration-300 ease-in-out overflow-hidden";
+const ActiveTab_Landing =
+  "flex md:hidden flex-row items-center justify-start w-fit h-fit aspect-square gap-2 rounded-xl p-4 font-semibold text-[min(10vw,1rem)] !text-Accent hover:!text-Accent bg-Light_Primary dark:bg-Dark_Primary hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-Light_Border_Secondary dark:border-Dark_Border_Secondary transition-colors duration-300 ease-in-out overflow-hidden";
+
+// aktif olup olmadığını kontrol eden yardımcı fonksiyon
+const isActive = (path: string) => currentPath === path;
+
+import NavigationLinkButton from "./custom/buttons/navigationHorizontal.astro";
+import NavigationSquareLinkButton from "./custom/buttons/navigationSquare.astro";
+---
+
+<div class="flex flex-row items-center justify-center gap-2">
+  <div
+    class="flex flex-row w-fit h-full gap-2 items-center justify-start capitalize"
+  >
+    <!-- Collapsing side bar -->
+    <button
+      onclick="changeSideBar()"
+      class="flex flex-row items-center justify-start w-fit h-fit aspect-square gap-2 rounded-xl p-4 hover:font-semibold text-[min(10vw,1rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 hover:text-Accent hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover transition-colors duration-300 ease-in-out overflow-hidden cursor-pointer"
+    >
+      <span id="googleSymbol" class="material-symbols-rounded"
+        >chevron_left</span
+      >
+    </button>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div
+    class="flex flex-row w-full h-full gap-2 items-center justify-start capitalize"
+  >
+    <a href="/" class={isActive("/") ? ActiveTab_Landing : InactiveTab_Landing}>
+      <img src="/logo.svg" alt="YOKAIVERSE LOGO" class="h-5 aspect-square" />
+    </a>
+    <NavigationLinkButton givenSVG="home" givenHref="/home" givenTitle="home" />
+    <NavigationLinkButton
+      givenSVG="explore"
+      givenHref="/discover"
+      givenTitle="discover"
+    />
+    <NavigationLinkButton
+      givenSVG="store"
+      givenHref="/store"
+      givenTitle="store"
+    />
+    <NavigationLinkButton
+      givenSVG="news"
+      givenHref="/whats-new"
+      givenTitle="what's new?"
+    />
+  </div>
+
+  <div
+    class="flex flex-row w-fit h-full gap-2 items-center justify-start capitalize"
+  >
+    <NavigationSquareLinkButton givenSVG="settings" givenHref="/settings" />
+    <NavigationSquareLinkButton givenSVG="person" givenHref="/account" />
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div
+  id="videoControls_Middle"
+  class="flex flex-row items-center justify-center gap-0 w-full h-full text-[min(7vw,1.4rem)] font-Mono font-bold text-center select-none"
+  onmouseenter="enable_VideoControls()"
+  onmouseleave="disable_VideoControls()"
+>
+  <!-- Left -->
+  <div
+    ondblclick="backwardVideo()"
+    class="flex flex-col items-center justify-center gap-8 w-[55%] h-full p-4 text-Light_Text_Inverted dark:text-Dark_Text_Inverted z-1"
+  >
+    <div
+      id="videoBackwardFeedback"
+      class="flex flex-row items-center justify-center aspect-square gap-2 font-semibold text-[min(7vw,2rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <span
+        id="googleSymbol"
+        class="material-symbols-rounded !text-[min(6vw,3rem)]"
+        >chevron_left</span
+      >
+      <p>-5</p>
+    </div>
+  </div>
+
+  <!-- Middle -->
+  <div
+    onclick="pauseVideo()"
+    class="flex flex-col items-center justify-center gap-8 w-full h-full p-4 text-Light_Text_Inverted dark:text-Dark_Text_Inverted z-1"
+  >
+    <div
+      id="videoLoopFeedback"
+      class="absolute top-[1rem] flex flex-row items-center justify-center gap-2 p-4 rounded-full bg-Light_Secondary_Hover dark:bg-Dark_Secondary_Hover font-semibold text-[min(7vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <span id="googleSymbol" class="material-symbols-rounded">repeat</span>
+      <p>Looping</p>
+    </div>
+    <div
+      id="videoPauseFeedback"
+      class="flex flex-row items-center justify-center aspect-square p-4 rounded-full bg-Light_Secondary_Hover dark:bg-Dark_Secondary_Hover font-semibold text-[min(7vw,2rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <span
+        id="googleSymbol"
+        class="material-symbols-rounded icon-fill !text-[min(6vw,2rem)]"
+        >pause</span
+      >
+    </div>
+  </div>
+
+  <!-- Right -->
+  <div
+    ondblclick="forwardVideo()"
+    class="flex flex-col items-center justify-center gap-8 w-[55%] h-full p-4 dark:text-Dark_Text_Inverted z-1"
+  >
+    <div
+      id="videoForwardFeedback"
+      class="flex flex-row items-center justify-center aspect-square gap-2 font-semibold text-[min(7vw,2rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <p>+15</p>
+      <span
+        id="googleSymbol"
+        class="material-symbols-rounded !text-[min(6vw,3rem)]"
+        >chevron_right</span
+      >
+    </div>
+  </div>
+</div>

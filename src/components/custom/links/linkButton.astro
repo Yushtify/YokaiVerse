@@ -1,0 +1,15 @@
+---
+interface Props {
+  givenID: string;
+  givenHREF: string;
+}
+const { givenID, givenHREF } = Astro.props;
+---
+
+<a
+  id={givenID}
+  href={givenHREF}
+  class="relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 hover:underline underline-offset-0 hover:underline-offset-4 hover:decoration-wavy hover:text-Accent transition-all duration-300 ease-in-out overflow-hidden capitalize"
+>
+  <slot />
+</a>

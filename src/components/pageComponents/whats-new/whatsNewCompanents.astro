@@ -1,0 +1,143 @@
+---
+import Layout from "../../pageContent_Wrappers/smaller.astro";
+import Hero from "./hero.astro";
+
+import GoTo from "./goTo/index.astro";
+
+import V001 from "./versions/v0-0-1.astro";
+import V002 from "./versions/v0-0-2.astro";
+import V003 from "./versions/v0-0-3.astro";
+import V004 from "./versions/v0-0-4.astro";
+---
+
+<Layout>
+  <GoTo />
+  <Hero />
+  <div
+    id="LogsContainer"
+    class="flex flex-col items-center jusitfy-start gap-8 w-full h-fit p-2 md:p-4 lg:p-8 xl:p-12"
+  >
+    <V004 />
+    <V003 />
+    <V002 />
+    <V001 />
+  </div>
+</Layout>
+
+<script>
+  function CountUpdates() {
+    const ContainerDIV = document.getElementById(
+      "LogsContainer"
+    ) as HTMLDivElement;
+    const UpdateContainerP = document.getElementById(
+      "UpdateCounter"
+    ) as HTMLParagraphElement;
+    if (!ContainerDIV || !UpdateContainerP) return;
+    const divCount = Array.from(ContainerDIV.children).filter(
+      (el) => el.tagName.toLowerCase() === "div"
+    ).length;
+
+    UpdateContainerP.innerHTML = "Updates " + divCount;
+  }
+
+  function CollapseOldVersionLogs() {
+    const lastUpdate = "v0.0.4";
+    let VersionNumbers = ["v0.0.1", "v0.0.2", "v0.0.3", "v0.0.4"];
+
+    for (let ArrayPos = 0; ArrayPos <= VersionNumbers.length - 1; ArrayPos++) {
+      if (VersionNumbers[ArrayPos] == lastUpdate) continue;
+      // get Div element
+      let DIV = document.getElementById(
+        VersionNumbers[ArrayPos]
+      ) as HTMLDivElement;
+      if (!DIV) continue;
+
+      // get button element
+      let button = DIV.querySelector("button") as HTMLButtonElement;
+      if (!button) continue;
+
+      CollapseVersionLog(VersionNumbers[ArrayPos], button, false);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    CollapseOldVersionLogs();
+    CountUpdates();
+  });
+
+  const animateHeight = (
+    element: HTMLElement,
+    start: number,
+    end: number,
+    duration: number
+  ) => {
+    return new Promise<void>((resolve) => {
+      const startTime = performance.now();
+
+      const step = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        element.style.height = start + (end - start) * progress + "px";
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          resolve();
+        }
+      };
+
+      requestAnimationFrame(step);
+    });
+  };
+
+  async function CollapseVersionLog(
+    Ver: string,
+    button: HTMLButtonElement,
+    isAnimated: boolean
+  ) {
+    if (!Ver || !button)
+      return console.error(
+        "Something went wrong while collapsing/expanding a version log"
+      );
+
+    let VersionLog_DIV = document.getElementById(Ver) as HTMLDivElement;
+    let VersionLog_ContainerDIV = VersionLog_DIV.querySelector(
+      "#VersionLog_Container"
+    ) as HTMLDivElement; // container div
+    let ButtonSVG = button.querySelector("#googleSymbol") as HTMLElement; // svg inside the button
+
+    if (!VersionLog_DIV || !VersionLog_ContainerDIV || !ButtonSVG)
+      return console.error(
+        "Couldn't find:",
+        VersionLog_DIV,
+        VersionLog_ContainerDIV,
+        ButtonSVG
+      );
+
+    if (ButtonSVG.innerHTML == "keyboard_arrow_up") {
+      // collapse
+      let Def_Height = VersionLog_ContainerDIV.offsetHeight;
+      if (isAnimated) {
+        // if it needs animation play it
+        await animateHeight(VersionLog_ContainerDIV, Def_Height, 0, 250); // 300ms
+        VersionLog_ContainerDIV.style.display = "none";
+      } else {
+        VersionLog_ContainerDIV.style.display = "none";
+      }
+      ButtonSVG.innerHTML = "keyboard_arrow_down";
+    } else {
+      // expand
+      VersionLog_ContainerDIV.style.display = "flex";
+      let TargetHeight = VersionLog_ContainerDIV.scrollHeight;
+      if (isAnimated) {
+        await animateHeight(VersionLog_ContainerDIV, 0, TargetHeight, 250); // 300ms
+        VersionLog_ContainerDIV.style.height = "auto";
+      } else {
+        VersionLog_ContainerDIV.style.height = "auto";
+      }
+      ButtonSVG.innerHTML = "keyboard_arrow_up";
+    }
+  }
+
+  (window as any).CollapseVersionLog = CollapseVersionLog;
+</script>

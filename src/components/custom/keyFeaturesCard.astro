@@ -1,0 +1,39 @@
+---
+const {
+  givenID,
+  topDesc,
+  lowerDesc,
+  givenTitle,
+  givenDesc,
+  givenImgSRC,
+  givenImgALT,
+} = Astro.props;
+---
+
+<div
+  id={givenID}
+  class="flex flex-col items-start justify-start w-full h-full rounded-xl gap-4 p-2 hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-transparent hover:border-Light_Border_Secondary dark:hover:border-Dark_Border_Secondary hover:shadow-2xl hover:shadow-Light_Secondary_Hover dark:hover:shadow-Dark_Secondary_Hover hover:scale-105 md:hover:scale-110 transition-all duration-300 ease-in-out"
+>
+  <!-- The Thumbnail -->
+  <div
+    class="relative flex flex-col items-center justify-between gap-2 p-8 w-full h-fit min-h-fit rounded-xl text-nowrap text-[min(6vw,1rem)] bg-Light_Secondary dark:bg-Dark_Secondary border border-Light_Border_Secondary dark:border-Dark_Border_Secondary capitalize overflow-hidden"
+  >
+    <p class="font-bold">{topDesc}</p>
+    <img
+      src={givenImgSRC}
+      alt={givenImgALT}
+      class="h-full min-h-18 max-h-24 drop-shadow-Accent/55 drop-shadow-2xl"
+    />
+    <p class="text-[min(6vw,1.2rem)]">{lowerDesc}</p>
+  </div>
+
+  <!-- The Desc and Header -->
+  <p class="flex flex-col px-2 pb-2 gap-2">
+    <span class="font-semibold text-[min(10vw,1.2rem)] capitalize"
+      >{givenTitle}
+    </span>
+    <span class="text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64"
+      >{givenDesc}
+    </span>
+  </p>
+</div>

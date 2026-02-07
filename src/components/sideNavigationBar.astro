@@ -1,0 +1,54 @@
+---
+import Horizontal from "./seperators/horizontal.astro";
+import LinkButton from "./custom/buttons/navigtionSide.astro";
+---
+
+<div
+  class="relative hidden md:flex flex-col items-center justify-start w-fit lg:w-58 h-screen pl-2 py-2 transition-normal duration-300 ease-in-out"
+>
+  <a
+    href="/"
+    class="flex flex-row items-center justify-start w-fit lg:w-full h-fit gap-2 rounded-xl p-4 hover:font-semibold text-[min(10vw,1rem)] text-Accent hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary border border-transparent hover:border-Light_Border_Primary hover:dark:border-Dark_Border_Primary transition-colors duration-300 ease-in-out overflow-hidden capitalize"
+  >
+    <img src="/logo.svg" alt="YOKAIVERSE LOGO" class="h-8 aspect-square" />
+    <div
+      class="relative hidden lg:flex flex-col items-start justify-start w-full h-fit text-[min(10vw,1rem)] font-serif font-bold"
+    >
+      <p translate="no">YokaiVerse</p>
+      <p class="text-[min(10vw,0.6em)] font-normal uppercase">in development</p>
+    </div>
+  </a>
+
+  <Horizontal />
+
+  <!-- Links -->
+  <div
+    class="flex flex-col w-full h-full gap-2 items-center justify-start capitalize"
+  >
+    <LinkButton
+      givenSVG="bookmark"
+      givenHref="account/save"
+      givenTitle="saves"
+    />
+    <LinkButton
+      givenSVG="favorite"
+      givenHref="account/saves/likes"
+      givenTitle="likes"
+    />
+  </div>
+
+  <div
+    class="flex flex-col w-full h-fit gap-2 items-center justify-start capitalize"
+  >
+    <LinkButton
+      givenSVG="history"
+      givenHref="account/history"
+      givenTitle="history"
+    />
+    <LinkButton
+      givenSVG="person_add"
+      givenHref="/register"
+      givenTitle="register"
+    />
+  </div>
+</div>

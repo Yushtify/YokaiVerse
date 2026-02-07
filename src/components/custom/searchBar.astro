@@ -1,0 +1,20 @@
+---
+const { givenID, givenClass, givenPlaceHolder } = Astro.props;
+---
+
+<div
+  class="relative flex flex-row items-center justify-start gap-4 p-4 rounded-xl w-fit min-w-124 h-fit text-[min(7vw,1rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 bg-Light_Secondary dark:bg-Dark_Secondary hover:bg-Light_Border_Primary hover:dark:bg-Dark_Border_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary transition-colors ease-in-out duration-300"
+>
+  <span id="googleSymbol" class="material-symbols-rounded">search</span>
+  <input
+    type="search"
+    id={givenID}
+    class={givenClass}
+    placeholder={givenPlaceHolder}
+  />
+  <button
+    class="flex flex-row items-center justify-center aspect-square p-1 cursor-pointer"
+  >
+    <span id="googleSymbol" class="material-symbols-rounded">send</span>
+  </button>
+</div>

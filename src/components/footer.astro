@@ -1,0 +1,55 @@
+---
+import LinkButton from "./custom/links/linkButton.astro";
+
+// Interface to define props for better AI context and type safety
+interface Props {
+  givenTitle?: string;
+}
+
+const { givenTitle } = Astro.props;
+
+const normalClass =
+  "flex flex-row items-start justify-center w-full h-fit gap-2 px-4 md:pl-24 lg:pl-58 text-Light_Text_Primary dark:text-Dark_Text_Primary";
+const fullPageClass =
+  "flex flex-row items-start justify-center w-full h-fit gap-2 px-4 text-Light_Text_Primary dark:text-Dark_Text_Primary";
+
+// Checking if the page is a 404 by comparing the title
+// with the exact fallback string defined in the Layout.
+
+const isNotFound = givenTitle === "YokaiVerse | 404: Not Found";
+const activeClass = isNotFound ? fullPageClass : normalClass;
+---
+
+<div class={activeClass}>
+  <div
+    class="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-4 xl:flex xl:flex-row items-start sm:items-center justify-start w-full h-fit gap-2 overflow-hidden capitalize"
+  >
+    <LinkButton givenID="aboutF_Link" givenHREF="/register">
+      Register
+    </LinkButton>
+    <LinkButton givenID="aboutF_Link" givenHREF="/register">
+      support us
+    </LinkButton>
+    <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
+      About Us
+    </LinkButton>
+    <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
+      documentation
+    </LinkButton>
+    <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
+      tems of usage
+    </LinkButton>
+    <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
+      privacy and policy
+    </LinkButton>
+    <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">blog</LinkButton>
+  </div>
+  <div
+    class="flex flex-row items-center justify-center w-fit h-full gap-2 font-mono text-[min(6vw,0.8rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 capitalize sm:ml-2"
+  >
+    <p class="text-nowrap">YokaiVerse</p>
+    <span class="material-symbols-rounded !text-[min(6vw,0.8rem)]"
+      >copyright</span
+    >
+  </div>
+</div>

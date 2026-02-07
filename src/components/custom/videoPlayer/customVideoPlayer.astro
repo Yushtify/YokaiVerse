@@ -1,0 +1,26 @@
+---
+import TopInformation from "./topInformation.astro";
+import Video_MiddleControls from "./video_MiddleControls.astro";
+import Video_Controls from "./videoControls.astro";
+---
+
+<div
+  onfocus=""
+  id="videoPlayer_Container"
+  class="relative flex flex-col items-start justify-start rounded-xl w-full h-full aspect-video"
+>
+  <canvas
+    id="glow-canvas"
+    class="absolute inset-0 w-full h-full blur-[80px] opacity-50 scale-105 pointer-events-none transition-opacity duration-500"
+  ></canvas>
+  <video
+    src="/src/assets/videos/badApple/video.webm"
+    poster="/src/assets/videos/badApple/cover.webp"
+    id="videoPlayer"
+    class="flex absolute top-0 left-0 rounded-xl w-full h-full object-cover"
+  >
+  </video>
+  <TopInformation />
+  <Video_MiddleControls />
+  <Video_Controls />
+</div>

@@ -1,0 +1,18 @@
+---
+import Layout from "../../pageContent_Wrappers/smaller.astro";
+
+import QuickLinks from "./quickLinks.astro";
+import HeroTemplate from "../../custom/heroTemplate.astro";
+import LookAndFeel from "././tabs/lookAndFeel/index.astro";
+---
+
+<Layout>
+  <HeroTemplate
+    givenGoogleSymbol="settings"
+    givenTitle="Settings"
+    givenDesc="Customize your experience."
+  >
+    <QuickLinks />
+  </HeroTemplate>
+  <LookAndFeel />
+</Layout>

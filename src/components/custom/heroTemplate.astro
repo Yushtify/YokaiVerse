@@ -1,0 +1,31 @@
+---
+import Horizontal from "../seperators/horizontal.astro";
+
+// FilterRounded.astro
+interface Props {
+  givenGoogleSymbol: string;
+  givenTitle: string;
+  givenDesc: string;
+}
+
+const { givenTitle, givenDesc } = Astro.props;
+---
+
+<div
+  class="relative flex flex-col items-start justify-center w-full h-fit text-Light_Text_Primary dark:text-Dark_Text_Primary text-[min(4vw,1rem)]"
+>
+  <div
+    class="relative flex flex-row items-center justify-start w-full h-fit gap-4 text-left text-[min(3vw,0.7rem)] font-semibold capitalize"
+  >
+    <p class="text-[min(6vw,2.5rem)]">{givenTitle}</p>
+  </div>
+  <p
+    class="text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 mt-2 max-w-256"
+  >
+    {givenDesc}
+  </p>
+
+  <slot />
+
+  <Horizontal />
+</div>

@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/layout_404.astro";
+
+const { pathname } = Astro.url;
+const serverState = await fetch("/")
+  .then((response) => response.json())
+  .then((data) => (data.active ? "Server is active" : "Server is not active"))
+  .catch(() => "Unable to determine server status");
+---
+
+<Layout>
+  <p class="flex font-bold text-[min(12vw,8rem)] text-Accent">404</p>
+  <p
+    class="flex flex-row items-center justify-center gap-2 bg-transparent text-[min(2vw,1rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64"
+  >
+    the page
+    <span
+      class="flex p-4 rounded-xl border border-Light_Border_Secondary dark:border-Dark_Border_Secondary bg-Light_Tertiary dark:bg-Dark_Tertiary font-mono text-Light_Text_Primary dark:text-Dark_Text_Primary"
+    >
+      {pathname}
+    </span>
+    doesn't exist or there is a typo. {serverState}
+  </p>
+
+  <button
+    onclick="goBack()"
+    class="flex flex-row items-center justify-start w-fit h-fit gap-2 rounded-xl p-4 text-[min(10vw,1.2rem)] !text-Light_Text_Secondary/64 dark:!text-Dark_Text_Secondary/64 hover:!text-Accent hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-transparent hover:border-Light_Border_Primary hover:dark:border-Dark_Border_Primary transition-colors duration-300 ease-in-out overflow-hidden capitalize cursor-pointer"
+  >
+    <span id="googleSymbol" class="material-symbols-rounded">chevron_left</span>
+    <p>back</p>
+  </button>
+</Layout>
+
+<script>
+  function goBack() {
+    try {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "/";
+      }
+    } catch {
+      window.location.href = "/";
+    }
+  }
+  (window as any).goBack = goBack;
+</script>

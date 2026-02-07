@@ -1,0 +1,71 @@
+---
+import Horizontal from "../../seperators/horizontal.astro"; // horizontal seperator
+
+import RadioButton from "../../custom/buttons/customRadioButton.astro";
+
+import SearchBar from "../../custom/searchBar.astro";
+---
+
+<div
+  class="relative flex flex-col items-start justify-center gap-4 w-full h-fit text-left text-[min(4vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary"
+>
+  <div class="flex flex-col items-start justify-start gap-2">
+    <p class="text-[min(6vw,2.5rem)] font-semibold capitalize">
+      Evening, Yushtify!
+    </p>
+    <p
+      class="text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 mb-4"
+    >
+      Your feed have been refreshed when you're gone! Watch now.
+    </p>
+  </div>
+  <div
+    class="relative flex flex-col items-start justify-center gap-4 w-full h-fit text-left text-[min(4vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary"
+  >
+    <div class="flex flex-row w-full h-fit items-center justify-start gap-4">
+      <!-- Searchbar and quick tags -->
+
+      <div
+        class="relative flex flex-row items-center justify-start gap-2 rounded-xl p-2 w-fit h-fit border border-Light_Border_Primary dark:border-Dark_Border_Primary"
+      >
+        <RadioButton givenID="topAnimeFilter" groupName="mediaTypeFilter">
+          <span id="googleSymbol" class="material-symbols-rounded"
+            >comic_bubble</span
+          >
+          Top Anime
+        </RadioButton>
+        <RadioButton givenID="topMangailter" groupName="mediaTypeFilter">
+          <span id="googleSymbol" class="material-symbols-rounded">manga</span>
+          Top Manga
+        </RadioButton>
+        <RadioButton givenID="topWebtoonFilter" groupName="mediaTypeFilter">
+          <span id="googleSymbol" class="material-symbols-rounded">web</span>
+          Top Webtoon
+        </RadioButton>
+      </div>
+      <div
+        class="relative flex flex-row items-center justify-start gap-2 rounded-xl p-2 w-fit h-fit border border-Light_Border_Primary dark:border-Dark_Border_Primary"
+      >
+        <RadioButton givenID="sfwFilter" groupName="nsfwToggle">
+          <span id="googleSymbol" class="material-symbols-rounded">shield</span>
+          SFW
+        </RadioButton>
+        <RadioButton givenID="nsfwFilter" groupName="nsfwToggle">
+          <span id="googleSymbol" class="material-symbols-rounded"
+            >18_up_rating</span
+          >
+          NSFW
+        </RadioButton>
+      </div>
+
+      <!-- Search bar -->
+      <SearchBar
+        givenID="discoverSearch"
+        givenClass="w-full h-fit outline-0"
+        givenPlaceHolder="Type or Press CTRL + K to search"
+      />
+    </div>
+  </div>
+</div>
+
+<Horizontal />

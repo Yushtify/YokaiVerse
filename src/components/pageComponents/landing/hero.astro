@@ -1,0 +1,56 @@
+---
+import Slogan from "./slogan.astro";
+import TransparentScrollDown from "../../scrollDownIndicators/transparent.astro";
+---
+
+<div
+  class="relative flex flex-col items-center justify-center w-full h-fit min-h-screen max-h-fit gap-12 z-0"
+>
+  <div
+    class="absolute inset-0 pointer-events-none overflow-hidden mask-[radial-gradient(circle,white_40%,transparent_100%)] z-[-1]"
+  >
+    <!-- Dot pattern -->
+    <div
+      class="absolute inset-0 bg-Light_Primary dark:bg-Dark_Primary bg-[radial-gradient(currentColor_0.1rem,transparent_0.1rem)] bg-size-[1.2rem_1.2rem] text-Accent opacity-20"
+    >
+    </div>
+  </div>
+
+  <p
+    class="relative flex flex-col items-center jusitfy-center w-fit h-fit gap-4 font-Serif text-[min(7vw,3rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary capitalize"
+  >
+    <span data-i18n="Landing.title">bored from ads?</span>
+    <span
+      data-i18n="Landing.title2"
+      class="font-semibold text-[min(7vw,6rem)] text-Accent">YokaiVerse</span
+    >
+    <span data-i18n="Landing.title3">is for you</span>
+  </p>
+  <div
+    class="flex flex-col lg:flex-row items-center justify-center w-full h-fit gap-4 capitalize"
+  >
+    <a
+      data-i18n="Landing.join_now"
+      href="/register"
+      class="flex flex-row items-center justify-between lg:jusitfy-center w-full lg:w-fit h-fit gap-2 p-6 rounded-xl border border-Accent font-semibold text-[1rem] text-Accent hover:text-Light_Text_Inverted dark:hover:text-Dark_Text_Inverted hover:bg-Accent transition-colors duration-300 ease-in-out"
+    >
+      Join Now
+      <span id="googleSymbol" class="material-symbols-rounded"
+        >arrow_right_alt</span
+      >
+    </a>
+    <a
+      id="landingHeroSupport_Button"
+      onmouseenter="fillSvg('', this.id)"
+      onmouseleave="fillSvg('', 'landingHeroSupport_Button')"
+      data-i18n="Landing.support_us"
+      href="/marketplace"
+      class="flex flex-row items-center justify-between lg:jusitfy-center w-full lg:w-fit h-fit gap-2 p-6 rounded-xl font-semibold text-[1rem] text-Pinkish_Red hover:text-Light_Text_Inverted dark:hover:text-Dark_Text_Inverted hover:bg-Pinkish_Red transition-colors duration-300 ease-in-out"
+    >
+      support us
+      <span id="googleSymbol" class="material-symbols-rounded">favorite</span>
+    </a>
+  </div>
+  <TransparentScrollDown />
+  <Slogan />
+</div>

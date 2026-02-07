@@ -1,0 +1,92 @@
+---
+import V0_0_1 from "./v0.0.1.astro";
+import V0_0_2 from "./v0.0.2.astro";
+import V0_0_3 from "./v0.0.3.astro";
+import V0_0_4 from "./v0.0.4.astro";
+---
+
+<div
+  id="goTo_DIV"
+  onclick="fadeDIV('goTo_DIV', true, 150)"
+  class="hidden fixed top-0 left-0 flex-col items-center justify-center w-screen h-screen backdrop-blur-lg z-10"
+>
+  <div
+    class="flex flex-col items-center justify-center gap-2 p-2 min-w-[80%] md:min-w-[45%] lg:min-w-[35%] xl:min-w-[25%] w-fit h-fit rounded-xl bg-Light_Primary dark:bg-Dark_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary text-[min(7vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary shadow-2xl shadow-Light_Primary dark:shadow-Dark_Primary"
+  >
+    <!-- Header -->
+    <div
+      class="flex flex-row items-center justify-between p-2 pl-4 w-full h-fit font-bold text-[min(7vw,1.4rem)]"
+    >
+      <p>Go To</p>
+      <button
+        onclick="fadeDIV('goTo_DIV', true, 150)"
+        class="flex flex-row items-center justify-center aspect-square rounded-xl gap-2 p-2 w-fit h-fit cursor-pointer"
+      >
+        <span class="material-symbols-rounded icon-fill">cancel</span>
+      </button>
+    </div>
+
+    <!-- The links -->
+    <V0_0_4 />
+    <V0_0_3 />
+    <V0_0_2 />
+    <V0_0_1 />
+  </div>
+</div>
+
+<script>
+  async function fadeDIV(
+    ID: string,
+    IsAnimated: boolean,
+    AnimationLength: 150
+  ) {
+    const e = document.getElementById(ID) as HTMLDivElement;
+    if (!e) return;
+
+    if (IsAnimated) {
+      // just turn opacity to 0 and let css handle the animation but wait `AnimationLength` ms before hiding the element
+      if (e.classList.contains("flex")) {
+        // fade out
+        e.style.transition =
+          e.style.transition || `opacity ${AnimationLength}ms`;
+        e.style.opacity = "0";
+
+        setTimeout(() => {
+          if (e.classList.contains("flex")) {
+            e.classList.replace("flex", "hidden");
+          }
+          // clear inline opacity so future shows use CSS/default
+          e.style.opacity = "";
+        }, AnimationLength);
+      } else {
+        // fade in
+        if (e.classList.contains("hidden")) {
+          e.classList.replace("hidden", "flex");
+        } else {
+          e.classList.add("flex");
+        }
+
+        // start invisible, force reflow, then animate to fully visible
+        e.style.transition =
+          e.style.transition || `opacity ${AnimationLength}ms`;
+        e.style.opacity = "0";
+        void e.offsetWidth; // force reflow
+        e.style.opacity = "1";
+
+        setTimeout(() => {
+          e.style.opacity = "";
+        }, AnimationLength);
+      }
+    } else {
+      // not animated just do it.
+      if (e.classList.contains("flex")) {
+        // element is visible make it hidden
+        e.classList.replace("flex", "hidden");
+      } else {
+        // element is not visible make it
+        e.classList.replace("hidden", "flex");
+      }
+    }
+  }
+  (window as any).fadeDIV = fadeDIV;
+</script>

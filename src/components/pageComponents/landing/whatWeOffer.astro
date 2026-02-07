@@ -1,0 +1,63 @@
+---
+import KeyFeaturesCard from "../../custom/keyFeaturesCard.astro";
+---
+
+<div
+  class="flex flex-col items-start justify-center w-full h-fit text-[min(5vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary"
+>
+  <p class="font-bold text-[min(10vw,4rem)] capitalize text-nowrap">
+    What do we offer?
+  </p>
+
+  <p
+    class="flex w-full lg:max-w-[70%] xl:max-w-[65%] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64"
+  >
+    A collection of features designed to make your YokaiVerse experience faster,
+    smoother, and more enjoyable.
+  </p>
+
+  <!-- Grid -->
+  <div
+    class="flex flex-col lg:grid lg:grid-cols-2 xl:grid-cols-4 items-center justify-center w-full h-fit mt-8 gap-4"
+  >
+    <KeyFeaturesCard
+      givenID="performanceCard"
+      topDesc="Fast & Efficient"
+      lowerDesc="UX & Systems"
+      givenTitle="Fast Performance & Smooth UI"
+      givenDesc="Built with modern tools and efficient code, YokaiVerse delivers a fast, responsive, and smooth experience across all devices."
+      givenImgSRC="/icons/fast_Icon.svg"
+      givenImgALT="PERFORMANCE ICON"
+    />
+
+    <KeyFeaturesCard
+      givenID="languageCard"
+      topDesc="Fast & Reliable"
+      lowerDesc="Translations"
+      givenTitle="Translations & Community Support"
+      givenDesc="Our translation teams and community contributors work together to bring episodes to more languages and create a better experience for everyone."
+      givenImgSRC="/icons/translations_Icon.svg"
+      givenImgALT="TRANSLATIONS ICON"
+    />
+
+    <KeyFeaturesCard
+      givenID="privacyCard"
+      topDesc="Privacy & Security"
+      lowerDesc="With Encryption"
+      givenTitle="Privacy-First Experience"
+      givenDesc="Watch anime, read manga, and enjoy webtoons without worrying about your data. We only collect what you explicitly allow — nothing more."
+      givenImgSRC="/icons/security_Icon.svg"
+      givenImgALT="PRIVACY ICON"
+    />
+
+    <KeyFeaturesCard
+      givenID="fasterCard"
+      topDesc="High-Speed Transfers"
+      lowerDesc="Uploading & Downloading"
+      givenTitle="Fast Uploads & Downloads"
+      givenDesc="Enjoy high-speed uploads and downloads without bandwidth limits, so your content is always ready when you are."
+      givenImgSRC="/icons/fileDownload_Icon.svg"
+      givenImgALT="FILE ICON"
+    />
+  </div>
+</div>

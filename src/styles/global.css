@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --font-Sans: "Poppins", sans-serif;
+  --font-Serif: "Lora", serif;
+  --font-Mono: "Jetbrains Mono", monospace;
+
+  --color-Dark_Background: #05000f;
+  --color-Dark_Primary: #090019;
+  --color-Dark_Secondary: #0d0221;
+  --color-Dark_Tertiary: #10002a;
+  --color-Dark_Quaternary: #1a043f;
+
+  --color-Dark_Primary_Hover: #120032;
+  --color-Dark_Secondary_Hover: #170338;
+  --color-Dark_Tertiary_Hover: #180140;
+  --color-Dark_Quaternary_Hover: #26085c;
+
+  --color-Dark_Text_Primary: #e5dbfa;
+  --color-Dark_Text_Secondary: #d1c0ee;
+  --color-Dark_Text_Tertiary: #c4abf0;
+  --color-Dark_Text_Inverted: #05000f;
+
+  --color-Dark_Border_Primary: #250e4b;
+  --color-Dark_Border_Secondary: #2f125e;
+  --color-Dark_Border_Tertiary: #3c1671;
+
+  --color-Accent: #782dfa;
+  --color-Success: #00ff90;
+  --color-Warm_Orange: #ff9d00;
+  --color-Pinkish_Red: #ff005e;
+
+  --color-Light_Background: #f5f0ff;
+  --color-Light_Primary: #ffffff;
+  --color-Light_Secondary: #f5efff;
+  --color-Light_Tertiary: #ede3fe;
+  --color-Light_Quaternary: #e3d3ff;
+
+  --color-Light_Primary_Hover: #dac6fb;
+  --color-Light_Secondary_Hover: #cdb7f2;
+  --color-Light_Tertiary_Hover: #c6afee;
+  --color-Light_Quaternary_Hover: #bca6e4;
+
+  --color-Light_Text_Primary: #05000f;
+  --color-Light_Text_Secondary: #120036;
+  --color-Light_Text_Tertiary: #1a014d;
+  --color-Light_Text_Inverted: #e5dbfa;
+
+  --color-Light_Border_Primary: #caacfb;
+  --color-Light_Border_Secondary: #be9cf5;
+  --color-Light_Border_Tertiary: #af8ce8;
+}
+@layer base {
+  .material-symbols-rounded {
+    font-family: "Material Symbols Rounded";
+    display: inline-block;
+    line-height: 1;
+    color: currentColor;
+
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+
+    width: 1em;
+    height: 1em;
+  }
+}
+
+@layer utilities {
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(120, 45, 250, 0.55);
+    border-radius: 9999px;
+  }
+
+  /* İkon Doldurma Yardımcısı */
+  .icon-fill,
+  .hover\:icon-fill:hover {
+    font-variation-settings: "FILL" 1 !important;
+  }
+}

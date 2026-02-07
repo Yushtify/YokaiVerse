@@ -1,0 +1,77 @@
+---
+const {
+  givenDivRelID,
+  givenUpdateVer,
+  givenUpdateLogLink,
+  givenUpdateLink,
+  givenUpdateCommit,
+  givenUpdateDate,
+} = Astro.props;
+---
+
+<div
+  id={givenDivRelID}
+  class="flex flex-col items-start justify-center gap-4 w-full h-fit text-[min(6vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary hover:scale-102 transition-all duration-300 ease-in-out"
+>
+  <div
+    class="flex flex-row items-center justify-start gap-2 w-full h-fit p-2 lg:p-4 xl:p-8 rounded-xl bg-Light_Secondary dark:bg-Dark_Secondary border border-Light_Border_Primary dark:border-Dark_Border_Primary text-[min(3vw,0.7rem)]"
+  >
+    <p class="font-semibold text-[min(7vw,1.6rem)] uppercase">
+      {givenUpdateVer}
+    </p>
+    <div class="flex flex-row items-center justify-end gap-4 w-full h-fit">
+      <a
+        href={givenUpdateLogLink}
+        class="hidden sm:flex flex-row items-center justify-center gap-1 w-fit h-fit p-2 sm:p-1 md:p-2 font-mono text-Light_Text_Inverted dark:text-Dark_Text_Inverted bg-Accent/55 border border-Accent rounded-full"
+      >
+        <span
+          id="googleSymbol"
+          class="material-symbols-rounded !text-[min(6vw,1rem)]"
+          >deployed_code_history</span
+        >
+        <p class="hidden sm:flex w-fit h-full">
+          {givenUpdateVer}
+        </p>
+      </a>
+      <a
+        href={givenUpdateLink}
+        class="flex flex-row items-center justify-center gap-1 w-fit h-fit p-2 sm:p-1 md:p-2 font-mono text-Light_Text_Inverted dark:text-Dark_Text_Inverted bg-Accent/55 border border-Accent rounded-full"
+      >
+        <span
+          id="googleSymbol"
+          class="material-symbols-rounded !text-[min(6vw,1rem)]">commit</span
+        >
+        <p class="hidden sm:flex w-fit h-full">
+          {givenUpdateCommit}
+        </p>
+      </a>
+      <p
+        class="flex flex-row items-center justify-center gap-2 w-fit h-fit p-1 md:p-2 font-mono text-Light_Text_Inverted dark:text-Dark_Text_Inverted bg-Accent/55 border border-Accent rounded-full"
+      >
+        <span
+          id="googleSymbol"
+          class="material-symbols-rounded !text-[min(6vw,1rem)]"
+          >calendar_clock
+        </span>
+        {givenUpdateDate}
+      </p>
+    </div>
+
+    <button
+      class="flex items-center justify-center h-full aspect-square ml-2 rounded-xl bg-Light_Primary dark:bg-Dark_Primary hover:bg-Light_Border_Primary hover:dark:bg-Dark_Border_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 hover:text-Accent transition-colors duration-300 ease-in-out cursor-pointer"
+      onclick={`CollapseVersionLog('${givenDivRelID}', this, true)`}
+    >
+      <span id="googleSymbol" class="material-symbols-rounded"
+        >keyboard_arrow_down</span
+      >
+    </button>
+  </div>
+
+  <!-- Update Logs -->
+  <div
+    id="VersionLog_Container"
+    class="relative flex flex-col items-start justify-start gap-2 w-full h-fit p-2 lg:p-4 xl:p-8 rounded-xl bg-Light_Secondary dark:bg-Dark_Secondary border border-Light_Border_Primary dark:border-Dark_Border_Primary text-[min(7vw,0.8rem)] font-Mono capitalize overflow-hidden"
+  >
+    <slot />
+  </div>
+</div>
