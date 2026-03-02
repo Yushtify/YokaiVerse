@@ -18,6 +18,9 @@ const isActive = (path: string) => currentPath === path;
 >
   <!-- Left Elements -->
   <div class="flex flex-row items-center justify-center gap-4 min-w-fit h-fit">
+    <a href="/" class={isActive("/") ? ActiveTab_Landing : InactiveTab_Landing}>
+      <img src="/logo.svg" alt="YOKAIVERSE LOGO" class="h-5 aspect-square" />
+    </a>
     <NavigationLinkButton
       givenSVG="home"
       givenHref="/home"
