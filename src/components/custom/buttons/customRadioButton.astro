@@ -1,49 +1,66 @@
 ---
-// FilterRounded.astro
 interface Props {
+  givenState: boolean;
   givenID: string;
   groupName: string;
 }
 
-const { givenID, groupName } = Astro.props;
+const { givenState, givenID, groupName } = Astro.props;
+
+const activeClass =
+  "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary bg-Light_Border_Primary dark:bg-Dark_Border_Primary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
+const deActiveClass =
+  "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
+
+const initialClass = givenState ? activeClass : deActiveClass;
 ---
 
 <button
   id={givenID}
   data-group={groupName}
-  class="relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize"
-  onclick="switchTheFilter(this)"
+  class={initialClass}
+  onclick="switchTheFilter(this, this.id)"
 >
   <slot />
 </button>
 
 <script>
-  function switchTheFilter(b: HTMLButtonElement) {
+  function switchTheFilter(b: HTMLButtonElement, bID?: string) {
     if (!b) return;
 
     const group = b.getAttribute("data-group");
 
     const activeClass =
       "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary bg-Light_Border_Primary dark:bg-Dark_Border_Primary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
-    const deactiveClass =
-      "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
+    const deActiveClass =
+      "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
 
     // radio input logic
     if (group) {
       // deactivate the other buttons in same group name
       const groupButtons = document.querySelectorAll(
-        `button[data-group="${group}"]`
+        `button[data-group="${group}"]`,
       );
       groupButtons.forEach((btn) => {
-        if (btn !== b) btn.className = deactiveClass;
+        if (btn !== b) btn.className = deActiveClass;
+        let googleFont = btn.querySelector("#googleSymbol") as HTMLSpanElement;
+
+        if (googleFont.classList.contains("icon-fill"))
+          googleFont.classList.remove("icon-fill");
       });
     }
 
     // toggle the button had been clicked
+    let googleFont = b.querySelector("#googleSymbol") as HTMLSpanElement;
     if (b.className === activeClass) {
-      b.className = deactiveClass;
+      b.className = deActiveClass;
+
+      if (googleFont.classList.contains("icon-fill"))
+        googleFont.classList.remove("icon-fill");
     } else {
       b.className = activeClass;
+      if (!googleFont.classList.contains("icon-fill"))
+        googleFont.classList.add("icon-fill");
     }
   }
   (window as any).switchTheFilter = switchTheFilter;

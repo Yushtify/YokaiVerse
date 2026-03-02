@@ -1,64 +1,65 @@
 ---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
 // ensure it's a plain string you can inject into attributes/onclick
 
 interface Props {
   givenVideoID: string;
   VideoRootSRC: string;
   givenVideoTitle: string;
-  givenVideoUploader: string;
+  givenVideoDesc: string;
 }
 
-const { givenVideoID, VideoRootSRC, givenVideoTitle, givenVideoUploader } =
+const { givenVideoID, VideoRootSRC, givenVideoTitle, givenVideoDesc } =
   Astro.props;
 const CoverIMG = VideoRootSRC + "/cover.webp";
-const Uploader = VideoRootSRC + "/uploader.webp";
 ---
 
-<button
-  class="flex flex-row lg:flex-col items-start justify-start snap-start w-full h-fit rounded-xl gap-2 xl:gap-4 p-2 hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-transparent hover:border-Light_Border_Secondary dark:hover:border-Dark_Border_Secondary hover:shadow-2xl hover:shadow-Light_Secondary_Hover dark:hover:shadow-Dark_Secondary_Hover hover:scale-102 transition-all duration-300 ease-in-out cursor-pointer"
-  onclick={`findVideo('${givenVideoID}')`}
->
-  <div
-    class="relative flex flex-col rounded-xl aspect-video w-auto lg:w-full h-[min(16vw,36rem)] lg:h-auto"
+<template id="videoCard_Template">
+  <button
+    id="videoCard"
+    class="flex flex-row lg:flex-col items-start justify-start snap-start w-full h-fit rounded-xl gap-2 xl:gap-4 p-2 hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-transparent hover:border-Light_Border_Secondary dark:hover:border-Dark_Border_Secondary hover:shadow-2xl hover:shadow-Light_Secondary_Hover dark:hover:shadow-Dark_Secondary_Hover hover:scale-102 transition-all duration-300 ease-in-out cursor-pointer"
+    onclick={`findAnime('${givenVideoID}')`}
   >
-    <img
-      src={CoverIMG}
-      alt="COVER"
-      class="rounded-xl aspect-video w-full h-full"
-    />
-    <p
-      data-videoRootSRC={VideoRootSRC}
-      id="videoDuration"
-      class="absolute bottom-2 right-2 hidden sm:flex flex-row items-center justify-center gap-1 rounded-full p-1 px-2 lg:p-2 bg-Light_Background/50 dark:bg-Dark_Background/50 font-mono text-[min(6vw,0.8rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary backdrop-blur-3xl"
+    <div
+      class="relative flex flex-col rounded-xl aspect-video w-auto lg:w-full h-[min(16vw,36rem)] lg:h-auto"
     >
-      <span id="googleSymbol" class="material-symbols-rounded">schedule</span>
-      Video Duration
-    </p>
-  </div>
-  <div class="flex flex-col items-start justify-start px-2 pb-2 text-left">
-    <div class="flex flex-row items-start justify-start gap-2">
       <img
-        src={Uploader}
-        alt="UPLOADER"
-        class="max-sm:hidden w-10 lg:w-12 aspect-square rounded-xl"
+        id="videoCover"
+        src={CoverIMG}
+        alt="COVER"
+        class="rounded-xl aspect-video w-full h-full"
       />
-      <div class="flex flex-col w-full h-full">
-        <p class="font-medium text-[min(10vw,1.15rem)] capitalize line-clamp-1">
+      <p
+        data-videoRootSRC={VideoRootSRC}
+        id="videoDuration"
+        class="absolute bottom-2 right-2 hidden sm:flex flex-row items-center justify-center gap-1 rounded-full p-1 px-2 lg:p-2 bg-Light_Background/50 dark:bg-Dark_Background/50 font-mono text-[min(6vw,0.8rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary backdrop-blur-3xl"
+      >
+        <GoogleMaterialSymbol
+          SVG_Name="schedule"
+          SvgSize="!text-[min(7vw,1.5rem)]"
+          isFilled={true}
+        />
+        Duration
+      </p>
+    </div>
+    <div class="flex flex-col items-start justify-start px-2 pb-2 text-left">
+      <div
+        class="flex flex-col items-start justify-start gap-2 text-Light_Text_Primary dark:text-Dark_Text_Primary"
+      >
+        <p
+          id="videoTitle"
+          class="font-semibold text-[min(7vw,1.15rem)] capitalize line-clamp-1"
+        >
           {givenVideoTitle}
         </p>
         <p
-          class="text-[min(6vw,0.9rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 line-clamp-1"
+          id="videoDesc"
+          class="text-[min(7vw,0.8rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary capitalize line-clamp-3"
         >
-          Uploaded by @{givenVideoUploader}
+          {givenVideoDesc}
         </p>
-        <div
-          class="flex flex-row items-center justify-start gap-1 w-full h-fit mt-2 font-mono text-[min(5vw,0.75rem)] text-Light_Text_Tertiary/45 dark:text-Dark_Text_Tertiary/45"
-        >
-          <p>views</p>
-          <p>•</p>
-          <p>upload</p>
-        </div>
       </div>
     </div>
-  </div>
-</button>
+  </button>
+</template>

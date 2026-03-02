@@ -1,55 +1,77 @@
 ---
+import GoogleMaterialSymbol from "./custom/googleMaterial_Symbol.astro";
 import LinkButton from "./custom/links/linkButton.astro";
-
-// Interface to define props for better AI context and type safety
-interface Props {
-  givenTitle?: string;
-}
-
-const { givenTitle } = Astro.props;
-
-const normalClass =
-  "flex flex-row items-start justify-center w-full h-fit gap-2 px-4 md:pl-24 lg:pl-58 text-Light_Text_Primary dark:text-Dark_Text_Primary";
-const fullPageClass =
-  "flex flex-row items-start justify-center w-full h-fit gap-2 px-4 text-Light_Text_Primary dark:text-Dark_Text_Primary";
-
-// Checking if the page is a 404 by comparing the title
-// with the exact fallback string defined in the Layout.
-
-const isNotFound = givenTitle === "YokaiVerse | 404: Not Found";
-const activeClass = isNotFound ? fullPageClass : normalClass;
 ---
 
-<div class={activeClass}>
-  <div
-    class="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-4 xl:flex xl:flex-row items-start sm:items-center justify-start w-full h-fit gap-2 overflow-hidden capitalize"
-  >
-    <LinkButton givenID="aboutF_Link" givenHREF="/register">
-      Register
-    </LinkButton>
-    <LinkButton givenID="aboutF_Link" givenHREF="/register">
-      support us
-    </LinkButton>
-    <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
-      About Us
-    </LinkButton>
-    <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
-      documentation
-    </LinkButton>
-    <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
-      tems of usage
-    </LinkButton>
-    <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
-      privacy and policy
-    </LinkButton>
-    <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">blog</LinkButton>
-  </div>
-  <div
-    class="flex flex-row items-center justify-center w-fit h-full gap-2 font-mono text-[min(6vw,0.8rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 capitalize sm:ml-2"
-  >
-    <p class="text-nowrap">YokaiVerse</p>
-    <span class="material-symbols-rounded !text-[min(6vw,0.8rem)]"
-      >copyright</span
+<div
+  class="flex flex-row items-start justify-between w-full h-fit gap-2 p-12 px-8 md:px-48 lg:px-58 xl:px-64 text-Light_Text_Primary dark:text-Dark_Text_Primary overflow-hidden"
+>
+  <div class="flex flex-col items-start jusitfy-start gap-4 w-fit h-fit">
+    <div
+      class="flex flex-col items-start jusitfy-start w-fit h-fit gap-1 text-Accent"
     >
+      <p class="font-bold text-[min(7vw,1.6rem)]">YokaiVerse</p>
+      <p class="text-[min(7vw,1rem)] opacity-65">
+        Your privacy is our gual to keep it safe and secure.
+      </p>
+    </div>
+    <div
+      class="flex flex-col items-start sm:items-start justify-start w-fit h-fit gap-4 overflow-hidden capitalize"
+    >
+      <button
+        id="languageSwitch"
+        onclick="window.switchLanguage()"
+        class="flex flex-row items-center justify-start w-fit h-fit max-xl:aspect-square gap-2 rounded-xl p-4 hover:font-semibold text-[min(7vw,1rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary hover:text-Accent hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover transition-colors duration-300 ease-in-out overflow-hidden cursor-pointer"
+      >
+        <span class="material-symbols-rounded">translate</span>
+        <p id="languageSwitch_Text" class="font-semibold uppercase">en</p>
+      </button>
+    </div>
+  </div>
+  <div class="flex flex-col items-start jusitfy-start w-fit h-fit gap-4">
+    <p class="font-semibold text-[min(7vw,1.2rem)]">Links</p>
+    <div
+      class="flex flex-col items-start sm:items-start justify-start w-fit h-fit gap-4 overflow-hidden capitalize"
+    >
+      <LinkButton givenID="aboutF_Link" givenHREF="/register">
+        support us
+      </LinkButton>
+      <LinkButton givenID="aboutF_Link" givenHREF="/store"> store </LinkButton>
+      <LinkButton givenID="aboutF_Link" givenHREF="/register">
+        register
+      </LinkButton>
+      <LinkButton givenID="aboutF_Link" givenHREF="/login"> login </LinkButton>
+      <LinkButton givenID="aboutF_Link" givenHREF="/whats-new">
+        whats new
+      </LinkButton>
+    </div>
+  </div>
+  <div class="flex flex-col items-start jusitfy-start w-fit h-fit gap-4">
+    <p class="font-semibold text-[min(7vw,1.2rem)]">Community</p>
+    <div
+      class="flex flex-col items-start sm:items-start justify-start w-fit h-fit gap-4 overflow-hidden capitalize"
+    >
+      <LinkButton givenID="aboutF_Link" givenHREF="/forum"> forums </LinkButton>
+    </div>
+  </div>
+  <div class="flex flex-col items-start jusitfy-start w-fit h-fit gap-4">
+    <p class="font-semibold text-[min(7vw,1.2rem)]">Company</p>
+    <div
+      class="flex flex-col items-start sm:items-start justify-start w-fit h-fit gap-4 overflow-hidden capitalize"
+    >
+      <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
+        About Us
+      </LinkButton>
+      <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">blog</LinkButton>
+      <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
+        documentation
+      </LinkButton>
+      <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
+        terms of usage
+      </LinkButton>
+      <LinkButton givenID="aboutF_Link" givenHREF="/doc/about">
+        privacy and policy
+      </LinkButton>
+    </div>
   </div>
 </div>

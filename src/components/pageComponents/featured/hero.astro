@@ -1,0 +1,100 @@
+---
+import RadioButton from "../../custom/buttons/customRadioButton.astro";
+import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
+import HeroTemplate from "../../custom/heroTemplate.astro";
+
+import SearchBar from "../../custom/searchBar.astro";
+---
+
+<HeroTemplate
+  givenTitle="featured"
+  givenDesc="Browse and featured anime titles. Find something new to watch, or revisit your favorites."
+  givenGoogleSymbol="star"
+>
+  <div
+    class="relative flex flex-col items-start justify-center gap-4 w-full h-fit text-left text-[min(4vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary"
+  >
+    <div
+      class="relative flex flex-col items-start justify-center gap-4 w-full h-fit text-left text-[min(4vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary"
+    >
+      <div
+        class="flex flex-row flex-wrap w-full h-fit items-center justify-start gap-4"
+      >
+        <!-- Searchbar and quick tags -->
+
+        <div
+          class="relative flex flex-row items-center justify-start gap-2 rounded-xl p-2 w-fit h-fit border border-Light_Border_Primary dark:border-Dark_Border_Primary"
+        >
+          <RadioButton
+            givenID="topAnimeFilter"
+            groupName="mediaTypeFilter"
+            givenState={true}
+          >
+            <GoogleMaterialSymbol
+              SVG_Name="comic_bubble"
+              SvgSize="!text-[min(7vw,1.5rem)]"
+              isFilled={true}
+            />
+            Top Anime
+          </RadioButton>
+          <RadioButton
+            givenID="topMangailter"
+            groupName="mediaTypeFilter"
+            givenState={false}
+          >
+            <GoogleMaterialSymbol
+              SVG_Name="manga"
+              SvgSize="!text-[min(7vw,1.5rem)]"
+            />
+            Top Manga
+          </RadioButton>
+          <RadioButton
+            givenID="topWebtoonFilter"
+            groupName="mediaTypeFilter"
+            givenState={false}
+          >
+            <GoogleMaterialSymbol
+              SVG_Name="web"
+              SvgSize="!text-[min(7vw,1.5rem)]"
+            />
+            Top Webtoon
+          </RadioButton>
+        </div>
+        <div
+          class="relative flex flex-row items-center justify-start gap-2 rounded-xl p-2 w-fit h-fit border border-Light_Border_Primary dark:border-Dark_Border_Primary"
+        >
+          <RadioButton
+            givenID="sfwFilter"
+            groupName="nsfwToggle"
+            givenState={true}
+          >
+            <GoogleMaterialSymbol
+              SVG_Name="shield"
+              SvgSize="!text-[min(7vw,1.5rem)]"
+              isFilled={true}
+            />
+            SFW
+          </RadioButton>
+          <RadioButton
+            givenID="nsfwFilter"
+            groupName="nsfwToggle"
+            givenState={false}
+          >
+            <GoogleMaterialSymbol
+              SVG_Name="18_up_rating"
+              SvgSize="!text-[min(7vw,1.5rem)]"
+            />
+            NSFW
+          </RadioButton>
+        </div>
+
+        <!-- Search bar -->
+        <SearchBar
+          givenID="featuredSearch"
+          givenClass="w-full h-fit outline-0"
+          givenPlaceHolder="Type or Press CTRL + K to search"
+        />
+      </div>
+    </div>
+  </div>
+</HeroTemplate>

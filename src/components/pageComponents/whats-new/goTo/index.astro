@@ -3,6 +3,7 @@ import V0_0_1 from "./v0.0.1.astro";
 import V0_0_2 from "./v0.0.2.astro";
 import V0_0_3 from "./v0.0.3.astro";
 import V0_0_4 from "./v0.0.4.astro";
+import V0_1_0 from "./v0.1.0.astro";
 ---
 
 <div
@@ -27,6 +28,7 @@ import V0_0_4 from "./v0.0.4.astro";
     </div>
 
     <!-- The links -->
+    <V0_1_0 />
     <V0_0_4 />
     <V0_0_3 />
     <V0_0_2 />
@@ -38,7 +40,7 @@ import V0_0_4 from "./v0.0.4.astro";
   async function fadeDIV(
     ID: string,
     IsAnimated: boolean,
-    AnimationLength: 150
+    AnimationLength: 150,
   ) {
     const e = document.getElementById(ID) as HTMLDivElement;
     if (!e) return;

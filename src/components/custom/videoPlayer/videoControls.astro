@@ -1,5 +1,7 @@
 ---
 import HorizontalFiller from "../../fillers/horizontal.astro";
+import CustomSlider from "../customSlider.astro";
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
 ---
 
 <!-- Controls -->
@@ -32,17 +34,16 @@ import HorizontalFiller from "../../fillers/horizontal.astro";
   <div
     onmouseenter="sliderEnter('timeStamp_Slider')"
     onmouseleave="sliderLeave('timeStamp_Slider')"
-    class="flex flex-row items-center justify-center w-full h-fit"
+    class="flex flex-row items-center justify-center w-full h-fit px-2"
   >
-    <input
-      id="timeStamp_Slider"
-      oninput="updateCurrentTime(this, this.value, 'videoPlayer')"
-      class="min-w-28 w-full h-[0.2rem] accent-Accent rounded-full transition-normal duration-300 ease-in-out cursor-pointer"
-      type="range"
-      min="0"
-      max="1"
-      value="0"
-      step="0.001"
+    <CustomSlider
+      givenID="timeStamp_Slider"
+      givenOnInput="updateCurrentTime(this)"
+      givenWidth="w-full"
+      givenMin="0"
+      givenMax="1"
+      givenValue="0"
+      givenStep="0.001"
     />
   </div>
 
@@ -61,22 +62,21 @@ import HorizontalFiller from "../../fillers/horizontal.astro";
           class="flex flex-row items-center justify-center w-fit h-fit aspect-square cursor-pointer"
           onclick="muteVideo('videoPlayer')"
         >
-          <span
-            id="googleSymbol"
-            class="material-symbols-rounded !text-[min(7vw,1.2rem)]"
-            >volume_up</span
-          >
+          <GoogleMaterialSymbol
+            SVG_Name="volume_up"
+            SvgSize="!text-[min(7vw,1.2rem)]"
+            isFilled={true}
+          />
         </button>
         <!-- Volume slider -->
-        <input
-          id="volumeSlider"
-          class="w-18 h-[0.2rem] hover:h-[1rem] accent-Accent rounded-full transition-normal duration-300 ease-in-out cursor-pointer"
-          type="range"
-          min="0"
-          max="1"
-          value="1"
-          step="0.05"
-          oninput="updateVolumeSlider(this.value, 'videoPlayer', this.value)"
+        <CustomSlider
+          givenID="volumeSlider"
+          givenOnInput="updateVolumeSlider(this.value, 'videoPlayer', this.value)"
+          givenWidth="w-18"
+          givenMin="0"
+          givenMax="1"
+          givenValue="1"
+          givenStep="0.05"
         />
       </div>
     </div>
@@ -90,11 +90,11 @@ import HorizontalFiller from "../../fillers/horizontal.astro";
         class="flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover text-[min(7vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary transition-colors duration-300 ease-in-out cursor-pointer"
         onclick="pauseVideo('videoPlayer')"
       >
-        <span
-          id="googleSymbol"
-          class="material-symbols-rounded !text-[min(7vw,1.2rem)] icon-fill"
-          >pause</span
-        >
+        <GoogleMaterialSymbol
+          SVG_Name="pause"
+          SvgSize="!text-[min(7vw,1.2rem)]"
+          isFilled={true}
+        />
       </button>
 
       <!-- Time stamp text, showing time of video -->
@@ -123,37 +123,35 @@ import HorizontalFiller from "../../fillers/horizontal.astro";
         class="relative flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover text-[min(7vw,1rem)] text-Accent transition-colors duration-300 ease-in-out cursor-pointer"
         onclick="toggleCinemaLights('videoPlayer')"
       >
-        <span
-          id="googleSymbol"
-          class="material-symbols-rounded !text-[min(7vw,1.2rem)] icon-fill"
-        >
-          cinematic_blur
-        </span>
+        <GoogleMaterialSymbol
+          SVG_Name="cinematic_blur"
+          SvgSize="!text-[min(7vw,1.2rem)]"
+          isFilled={true}
+        />
       </button>
 
       <button
         id="videoLoop_Button"
-        class="relative flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover text-[min(7vw,1rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 transition-colors duration-300 ease-in-out cursor-pointer"
+        class="relative flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover text-[min(7vw,1rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-colors duration-300 ease-in-out cursor-pointer"
         onclick="loopVideo('videoPlayer')"
       >
-        <span
-          id="googleSymbol"
-          class="material-symbols-rounded !text-[min(7vw,1.2rem)]"
-        >
-          repeat
-        </span>
+        <GoogleMaterialSymbol
+          SVG_Name="repeat"
+          SvgSize="!text-[min(7vw,1.2rem)]"
+          isFilled={true}
+        />
       </button>
 
       <button
         id="fullscreen_Button"
-        class="flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover text-[min(7vw,1rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 transition-colors duration-300 ease-in-out cursor-pointer"
+        class="flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover text-[min(7vw,1rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-colors duration-300 ease-in-out cursor-pointer"
         onclick="resizeVideo('videoPlayer_Container')"
       >
-        <span
-          id="googleSymbol"
-          class="material-symbols-rounded !text-[min(7vw,1.2rem)]"
-          >expand_content</span
-        >
+        <GoogleMaterialSymbol
+          SVG_Name="expand_content"
+          SvgSize="!text-[min(7vw,1.2rem)]"
+          isFilled={true}
+        />
       </button>
     </div>
   </div>

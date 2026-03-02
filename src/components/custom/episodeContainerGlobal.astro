@@ -1,0 +1,49 @@
+---
+import VideoButton from "./buttons/videoButton.astro";
+import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
+
+interface Props {
+  givenSVG?: string;
+  givenTitle: string;
+  givenDesc?: string;
+  givenWidth?: string;
+}
+const { givenSVG, givenTitle, givenDesc, givenWidth } = Astro.props;
+const isDescValid = givenDesc ? "flex" : "hidden";
+---
+
+<div
+  class={`flex flex-col items-start justify-center gap-4 h-fit ${givenWidth}`}
+>
+  <div class="flex flex-col items-start justify-center w-full h-fit gap-2">
+    <div
+      class="flex flex-row items-center justify-start w-full h-fit gap-2 text-Light_Text_Primary dark:text-Dark_Text_Primary"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name={givenSVG}
+        isFilled={true}
+        SvgSize="!text-[min(7vw,2rem)]"
+      />
+      <p class="font-bold text-[min(7vw,2rem)] capitalize text-nowrap">
+        {givenTitle}
+      </p>
+    </div>
+    <p
+      class={`w-full lg:max-w-[80%] xl:max-w-[65%] text-Light_Text_Secondary dark:text-Dark_Text_Secondary ${isDescValid}`}
+    >
+      {givenDesc}
+    </p>
+  </div>
+
+  <div
+    id="episodeContainer"
+    class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-5 items-start justify-start w-full h-fit gap-4"
+  >
+    <VideoButton
+      givenVideoID="murderDrones"
+      VideoRootSRC="/src/assets/animes/murderDrones/ep_1"
+      givenVideoTitle="Murder Drones - Episode 1: Plot"
+      givenVideoDesc="Desc of the specific Episode will appear at this section only three maximum lines"
+    />
+  </div>
+</div>

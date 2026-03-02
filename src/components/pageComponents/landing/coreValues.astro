@@ -1,11 +1,15 @@
+---
+import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
+---
+
 <div
   class="flex flex-col items-center jusitfy-center w-full h-fit gap-4 text-[min(5vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary"
 >
-  <p class="font-bold text-[min(10vw,4rem)] capitalize text-nowrap">
+  <p class="font-bold text-[min(7vw,4rem)] capitalize text-nowrap">
     our core values
   </p>
   <p
-    class="flex w-full lg:max-w-[70%] xl:max-w-[65%] text-center text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64"
+    class="flex w-full lg:max-w-[70%] xl:max-w-[65%] text-center text-Light_Text_Secondary dark:text-Dark_Text_Secondary"
   >
     These aren't just technical features — they're our guiding beliefs. In a
     world full of noise, ads, and data-hungry platforms, YokaiVerse stands for
@@ -21,19 +25,31 @@
       target="_blank"
       href="https://github.com/Yushtify/YokaiVerse"
     >
-      <span id="googleSymbol" class="material-symbols-rounded">person</span>
+      <GoogleMaterialSymbol
+        SVG_Name="person"
+        SvgSize="!text-[min(7vw,1.2rem)]"
+        isFilled={true}
+      />
       <span>Open Source</span>
     </a>
     <div
       class="flex flex-row items-center jusitfy-center w-full lg:w-fit h-fit p-4 gap-2"
     >
-      <span id="googleSymbol" class="material-symbols-rounded">check</span>
+      <GoogleMaterialSymbol
+        SVG_Name="check"
+        SvgSize="!text-[min(7vw,1.2rem)]"
+        isFilled={true}
+      />
       <span>private and always up-to-date</span>
     </div>
     <div
       class="flex flex-row items-center jusitfy-center w-full lg:w-fit h-fit p-4 gap-2"
     >
-      <span id="googleSymbol" class="material-symbols-rounded">groups</span>
+      <GoogleMaterialSymbol
+        SVG_Name="groups"
+        SvgSize="!text-[min(7vw,1.2rem)]"
+        isFilled={true}
+      />
       <span>Community Supported</span>
     </div>
   </div>

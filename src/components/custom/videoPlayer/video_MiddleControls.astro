@@ -1,3 +1,7 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+---
+
 <div
   id="videoControls_Middle"
   class="flex flex-row items-center justify-center gap-0 w-full h-full text-[min(7vw,1.4rem)] font-Mono font-bold text-center select-none"
@@ -13,11 +17,11 @@
       id="videoBackwardFeedback"
       class="flex flex-row items-center justify-center aspect-square gap-2 font-semibold text-[min(7vw,2rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary opacity-0 transition-opacity ease-in-out duration-300"
     >
-      <span
-        id="googleSymbol"
-        class="material-symbols-rounded !text-[min(6vw,3rem)]"
-        >chevron_left</span
-      >
+      <GoogleMaterialSymbol
+        SVG_Name="chevron_left"
+        SvgSize="!text-[min(7vw,3rem)]"
+        isFilled={true}
+      />
       <p>-5</p>
     </div>
   </div>
@@ -31,18 +35,22 @@
       id="videoLoopFeedback"
       class="absolute top-[1rem] flex flex-row items-center justify-center gap-2 p-4 rounded-full bg-Light_Secondary_Hover dark:bg-Dark_Secondary_Hover font-semibold text-[min(7vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary opacity-0 transition-opacity ease-in-out duration-300"
     >
-      <span id="googleSymbol" class="material-symbols-rounded">repeat</span>
+      <GoogleMaterialSymbol
+        SVG_Name="repeat"
+        SvgSize="!text-[min(7vw,1rem)]"
+        isFilled={true}
+      />
       <p>Looping</p>
     </div>
     <div
       id="videoPauseFeedback"
       class="flex flex-row items-center justify-center aspect-square p-4 rounded-full bg-Light_Secondary_Hover dark:bg-Dark_Secondary_Hover font-semibold text-[min(7vw,2rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary opacity-0 transition-opacity ease-in-out duration-300"
     >
-      <span
-        id="googleSymbol"
-        class="material-symbols-rounded icon-fill !text-[min(6vw,2rem)]"
-        >pause</span
-      >
+      <GoogleMaterialSymbol
+        SVG_Name="pause"
+        SvgSize="!text-[min(7vw,2rem)]"
+        isFilled={true}
+      />
     </div>
   </div>
 
@@ -56,11 +64,11 @@
       class="flex flex-row items-center justify-center aspect-square gap-2 font-semibold text-[min(7vw,2rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary opacity-0 transition-opacity ease-in-out duration-300"
     >
       <p>+15</p>
-      <span
-        id="googleSymbol"
-        class="material-symbols-rounded !text-[min(6vw,3rem)]"
-        >chevron_right</span
-      >
+      <GoogleMaterialSymbol
+        SVG_Name="chevron_right"
+        SvgSize="!text-[min(7vw,3rem)]"
+        isFilled={true}
+      />
     </div>
   </div>
 </div>

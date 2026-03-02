@@ -1,0 +1,46 @@
+{
+  "Navbar": {
+    "home": "home",
+    "featured": "featured",
+    "discover": "discover",
+    "search_placeholder": "Start searching"
+  },
+  "Landing": {
+    "title": "Bored from ads?",
+    "title2": "YokaiVerse",
+    "title3": "is for you",
+    "join_now": "Don't have an account?",
+    "search_placeholder": "Enter your email to log in"
+  },
+  "slogan": {
+    "default": [
+      "Explore Anime, Manga, Webtoon. Without annoying ads or sponsorships.",
+      "Fastest way to start exploring, all without ads.",
+      "Safety concerns? No problem even we don't know what you watch.",
+      "Dive into YokaiVerse explore everything without limits, without being tracked or being sold.",
+      "YokaiVerse, Who cares about users not AI or ADS",
+      "YokaiVerse, where safety, privacy and user's is the priority",
+      "Tired of Google, Microsoft, and companies like them choking you for profit? Come here — we care about you, not your wallet."
+    ],
+    "eastereggs": {
+      "common": [
+        "Flint and Steeeeeeeeeeeeel!",
+        "ඞ",
+        "I-Is that Google!!!!?",
+        "Heh got your browsing history :)"
+      ],
+      "rare": [
+        "Am I seeing right? Is that Windows 11 without tracking...? oh it was a dream.",
+        "REMINDER! Drink some water"
+      ],
+      "mythic": ["I dunno, I ran out of ideas lol."],
+      "mysterious": ["A Japanese legend once said: 'nigg-' Ehm.. 'Niggeria'"],
+      "gambleCore": [
+        "777",
+        "LET'S GO GAMBLING",
+        "AH DANG IT!",
+        "I CAN'T STOP WINNING!"
+      ]
+    }
+  }
+}

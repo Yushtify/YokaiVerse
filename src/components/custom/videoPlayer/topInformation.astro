@@ -1,3 +1,7 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+---
+
 <!-- Controls -->
 <div
   id="video_TopInformation"
@@ -9,21 +13,38 @@
     class="flex flex-row items-center justify-start gap-2 min-w-fit h-fit p-2 rounded-full bg-Light_Secondary/64 dark:bg-Dark_Secondary/64 backdrop-blur-3xl overflow-hidden"
   >
     <button
-      class="flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover hover:font-semibold text-[min(7vw,1rem)] text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 transition-colors duration-300 ease-in-out cursor-pointer"
-      onclick="skipVideo('videoPlayer')"
+      class="flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover hover:font-semibold text-[min(7vw,1rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-colors duration-300 ease-in-out cursor-pointer"
+      onclick="PreviousEpisode()"
     >
-      <span id="googleSymbol" class="material-symbols-rounded"
-        >chevron_left</span
-      >
+      <GoogleMaterialSymbol
+        SVG_Name="chevron_left"
+        SvgSize="!text-[min(7vw,1rem)]"
+        isFilled={true}
+      />
+    </button>
+    <button
+      class="flex flex-row items-center justify-center aspect-square p-2 rounded-full hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover hover:font-semibold text-[min(7vw,1rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-colors duration-300 ease-in-out cursor-pointer"
+      onclick="NextEpisode()"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name="chevron_right"
+        SvgSize="!text-[min(7vw,1rem)]"
+        isFilled={true}
+      />
     </button>
   </div>
   <div
-    class="flex flex-row items-center justify-center gap-2 w-fit h-fit p-4 rounded-full bg-Light_Secondary/64 dark:bg-Dark_Secondary/64 text-nowrap backdrop-blur-3xl overflow-hidden"
+    class="flex flex-row items-center justify-center gap-2 w-fit h-fit p-1 rounded-full bg-Light_Secondary/64 dark:bg-Dark_Secondary/64 text-nowrap backdrop-blur-3xl overflow-hidden"
   >
-    <p id="videoTitle" class="w-full text-left">The Title</p>
+    <p
+      id="videoTitle"
+      class="w-full rounded-full p-2 hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover font-normal hover:font-semibold text-left transition-colors duration-250 ease-in-out capitalize"
+    >
+      The Title
+    </p>
     <p
       id="videoUploader"
-      class="min-w-fit w-fit text-[min(7vw,0.8rem)] text-left"
+      class="min-w-fit w-fit h-full rounded-full p-2 hover:bg-Light_Secondary_Hover hover:dark:bg-Dark_Secondary_Hover font-normal hover:font-semibold font-mono text-Light_Text_Secondary dark:text-Dark_Text_Secondary text-[min(7vw,0.8rem)] text-left transition-colors duration-250 ease-in-out"
     >
       The Uploader
     </p>

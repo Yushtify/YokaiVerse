@@ -1,5 +1,6 @@
 ---
 import Horizontal from "../seperators/horizontal.astro";
+import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
 
 // FilterRounded.astro
 interface Props {
@@ -8,22 +9,34 @@ interface Props {
   givenDesc: string;
 }
 
-const { givenTitle, givenDesc } = Astro.props;
+const { givenGoogleSymbol, givenTitle, givenDesc } = Astro.props;
 ---
 
 <div
-  class="relative flex flex-col items-start justify-center w-full h-fit text-Light_Text_Primary dark:text-Dark_Text_Primary text-[min(4vw,1rem)]"
+  class="relative flex flex-col items-start justify-center gap-2 lg:gap-4 w-full h-fit text-Light_Text_Primary dark:text-Dark_Text_Primary text-[min(4vw,1rem)]"
 >
-  <div
-    class="relative flex flex-row items-center justify-start w-full h-fit gap-4 text-left text-[min(3vw,0.7rem)] font-semibold capitalize"
-  >
-    <p class="text-[min(6vw,2.5rem)]">{givenTitle}</p>
+  <div class="flex flex-col h-fit w-fit gap-2">
+    <div
+      class="relative flex flex-row items-center justify-start w-full h-fit gap-4 text-left text-[min(3vw,0.7rem)] font-semibold capitalize"
+    >
+      <div
+        class="flex flex-row p-4 rounded-full bg-Light_Tertiary dark:bg-Dark_Tertiary border border-Light_Border_Secondary/50 dark:border-Dark_Border_Secondary/50"
+      >
+        <GoogleMaterialSymbol
+          SVG_Name={givenGoogleSymbol}
+          SVG_Style="text-Light_Text_Secondary dark:text-Dark_Text_Secondary"
+          SvgSize="!text-[min(7vw,2rem)]"
+          isFilled={true}
+        />
+      </div>
+      <p class="text-[min(6vw,2.5rem)]">{givenTitle}</p>
+    </div>
+    <p
+      class="text-Light_Text_Secondary dark:text-Dark_Text_Secondary mt-2 max-w-256"
+    >
+      {givenDesc}
+    </p>
   </div>
-  <p
-    class="text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 mt-2 max-w-256"
-  >
-    {givenDesc}
-  </p>
 
   <slot />
 

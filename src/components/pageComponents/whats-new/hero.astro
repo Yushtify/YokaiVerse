@@ -1,77 +1,44 @@
 ---
-import Horizontal from "../../seperators/horizontal.astro";
+import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
+import HeroTemplate from "../../custom/heroTemplate.astro";
 import Vertical from "../../seperators/vertical.astro";
 
-const Latestver = "v0.0.3"; // latest build version
-const LatesVerLink = "#" + Latestver;
+const Latestver = "v0.1.0"; // latest build version
 const CodeCommit = "294bd4d"; // latest commit
-const CommitDate = "Nov 22, 2025"; // To specify the date to user so they don't need to go to Github for to check i
+const CommitDate = "Mar 02, 2026"; // To specify the date to user so they don't need to go to Github for to check i
 // code link down below for lates commit
 const CodeLink =
   "https://github.com/Yushtify/YokaiVerse/commit/294bd4d0af0c341a5ffb8b5105f5abd61ca5ea1b";
 ---
 
-<div
-  class="relative flex flex-col items-start justify-center w-full h-fit text-Light_Text_Primary dark:text-Dark_Text_Primary text-[min(4vw,1rem)]"
+<HeroTemplate
+  givenGoogleSymbol="news"
+  givenTitle="Release Logs"
+  givenDesc="The recent drops of Yokaiverse is in 'Development' so anything that have been changed/added may broke the product or user experience, be patient as we try to do our best to make this platform better and safer for you. Thank you for your support and patience on us."
 >
   <div
-    class="relative flex flex-row items-center justify-start w-full h-fit gap-4 text-left text-[min(3vw,0.7rem)] font-semibold capitalize"
-  >
-    <p class="text-[min(6vw,2.5rem)]">Release Logs</p>
-    <a
-      href={LatesVerLink}
-      class="flex items-center justify-center gap-1 w-fit h-fit p-1 md:p-2 font-mono text-Light_Text_Inverted dark:text-Dark_Text_Inverted bg-Accent/55 border border-Accent rounded-full"
-    >
-      <span
-        id="googleSymbol"
-        class="material-symbols-rounded !text-[min(6vw,1.2rem)]">person</span
-      >
-      {Latestver}
-    </a>
-    <a
-      href={CodeLink}
-      class="flex items-center justify-center gap-1 w-fit h-fit p-1 md:p-2 font-mono text-Light_Text_Inverted dark:text-Dark_Text_Inverted bg-Accent/55 border border-Accent rounded-full"
-    >
-      <span
-        id="googleSymbol"
-        class="material-symbols-rounded !text-[min(6vw,1.2rem)]">commit</span
-      >
-      {CodeCommit}
-    </a>
-  </div>
-  <p
-    class="text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 mt-2 max-w-256"
-  >
-    The recent drops of Yokaiverse is in "Development" so anything that have
-    been changed/added may broke the product or user experience, be patient as
-    we try to do our best to make this platform better and safer for you. Thank
-    you for your support and patience on us.
-    <span
-      class="material-symbols-rounded icon-fill text-Pinkish_Red !text-[min(6vw,1rem)]"
-      >favorite</span
-    >
-  </p>
-
-  <div
-    class="flex flex-col xl:flex-row items-center justify-start w-full h-fit gap-4 mt-4 py-4 text-[min(10vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary"
+    class="flex flex-col xl:flex-row items-center justify-start w-full h-fit gap-4 mt-4 py-4 text-[min(7vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary"
   >
     <a
-      href="#v0.0.1"
-      class="flex flex-row-reverse xl:flex-row items-center justify-between xl:justify-center min-w-48 w-full xl:w-fit h-fit p-4 rounded-xl gap-2 bg-Light_Secondary dark:bg-Dark_Secondary hover:bg-Light_Border_Primary hover:dark:bg-Dark_Border_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary hover:border-transparent outline-0 hover:outline-1 hover:outline-offset-2 outline-Light_Border_Primary dark:outline-Dark_Border_Primary font-medium text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 hover:text-Accent capitalize transition-colors duration-300 ease-in-out"
+      href="#version_0_0_1"
+      class="flex flex-row-reverse xl:flex-row items-center justify-between xl:justify-center min-w-48 w-full xl:w-fit h-fit p-4 rounded-xl gap-2 bg-Light_Secondary dark:bg-Dark_Secondary hover:bg-Light_Border_Primary hover:dark:bg-Dark_Border_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary hover:border-transparent outline-0 hover:outline-1 hover:outline-offset-2 outline-Light_Border_Primary dark:outline-Dark_Border_Primary font-medium text-Light_Text_Secondary dark:text-Dark_Text_Secondary hover:text-Accent capitalize transition-colors duration-300 ease-in-out"
     >
-      <span id="googleSymbol" class="material-symbols-rounded"
-        >find_in_page</span
-      >
+      <GoogleMaterialSymbol
+        SVG_Name="find_in_page"
+        SvgSize="!text-[min(7vw,1.5rem)]"
+      />
       <p>first release</p>
     </a>
 
     <!-- To find a release -->
     <button
       onclick="fadeDIV('goTo_DIV', true, 150)"
-      class="flex flex-row-reverse xl:flex-row items-center justify-between xl:justify-center min-w-48 w-full xl:w-fit h-fit p-4 rounded-xl gap-2 bg-Light_Secondary dark:bg-Dark_Secondary hover:bg-Light_Border_Primary hover:dark:bg-Dark_Border_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary hover:border-transparent outline-0 hover:outline-1 hover:outline-offset-2 outline-Light_Border_Primary dark:outline-Dark_Border_Primary font-medium text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 hover:text-Accent capitalize transition-colors duration-300 ease-in-out cursor-pointer"
+      class="flex flex-row-reverse xl:flex-row items-center justify-between xl:justify-center min-w-48 w-full xl:w-fit h-fit p-4 rounded-xl gap-2 bg-Light_Secondary dark:bg-Dark_Secondary hover:bg-Light_Border_Primary hover:dark:bg-Dark_Border_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary hover:border-transparent outline-0 hover:outline-1 hover:outline-offset-2 outline-Light_Border_Primary dark:outline-Dark_Border_Primary font-medium text-Light_Text_Secondary dark:text-Dark_Text_Secondary hover:text-Accent capitalize transition-colors duration-300 ease-in-out cursor-pointer"
     >
-      <span id="googleSymbol" class="material-symbols-rounded">location_on</span
-      >
+      <GoogleMaterialSymbol
+        SVG_Name="location_on"
+        SvgSize="!text-[min(7vw,1.5rem)]"
+      />
       <p>go to</p>
     </button>
 
@@ -81,27 +48,35 @@ const CodeLink =
 
     <!-- Stats -->
     <div
-      class="flex flex-row items-center justify-start w-full xl:w-fit min-w-28 h-fit p-2 rounded-xl gap-2 font-medium text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 capitalize"
+      class="flex flex-row items-center justify-start w-full xl:w-fit h-fit p-2 rounded-xl gap-2 font-medium text-Light_Text_Secondary dark:text-Dark_Text_Secondary capitalize"
     >
-      <span id="googleSymbol" class="material-symbols-rounded"
-        >deployed_code_history</span
-      >
+      <GoogleMaterialSymbol
+        SVG_Name="deployed_code_history"
+        SvgSize="!text-[min(7vw,1.5rem)]"
+        isFilled={true}
+      />
       <p id="UpdateCounter">update counter</p>
     </div>
 
     <div
-      class="flex flex-row items-center justify-start w-full xl:w-fit min-w-28 h-fit p-2 rounded-xl gap-2 font-medium text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 capitalize"
+      class="flex flex-row items-center justify-start w-full xl:w-fit min-w-28 h-fit p-2 rounded-xl gap-2 font-medium text-Light_Text_Secondary dark:text-Dark_Text_Secondary capitalize"
     >
-      <span id="googleSymbol" class="material-symbols-rounded"
-        >calendar_clock</span
-      >
+      <GoogleMaterialSymbol
+        SVG_Name="calendar_clock"
+        SvgSize="!text-[min(7vw,1.5rem)]"
+        isFilled={true}
+      />
       <p>{CommitDate}</p>
     </div>
 
     <div
-      class="flex flex-row items-center justify-start w-full xl:w-fit min-w-28 h-fit p-2 rounded-xl gap-2 font-medium text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 capitalize"
+      class="flex flex-row items-center justify-start w-full xl:w-fit min-w-28 h-fit p-2 rounded-xl gap-2 font-medium text-Light_Text_Secondary dark:text-Dark_Text_Secondary capitalize"
     >
-      <span id="googleSymbol" class="material-symbols-rounded">commit</span>
+      <GoogleMaterialSymbol
+        SVG_Name="commit"
+        SvgSize="!text-[min(7vw,1.5rem)]"
+        isFilled={true}
+      />
       <a
         href={CodeLink}
         class="hover:!text-Accent hover:underline hover:underline-offset-4 hover:decoration-wavy transition-colors duration-300 ease-in-out"
@@ -110,6 +85,4 @@ const CodeLink =
       </a>
     </div>
   </div>
-
-  <Horizontal />
-</div>
+</HeroTemplate>

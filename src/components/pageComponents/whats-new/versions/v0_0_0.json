@@ -1,0 +1,6 @@
+{
+  "version": "v0.0.0",
+  "date": "December 1th 2025",
+  "description": "Demo of the Yokaiverse.",
+  "logs": [{ "type": "Added", "desc": "project" }]
+}

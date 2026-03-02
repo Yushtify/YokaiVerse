@@ -1,179 +1,28 @@
 ---
-import SideNavigationBar from "../components/sideNavigationBar.astro";
 import NavigationBar from "../components/navigationBar.astro";
 
 import Body from "./body.astro";
 ---
 
 <Body>
-  <div class="flex flex-row items-start jusitfy-center">
-    <!-- SideBar -->
-    <SideNavigationBar />
-
+  <div
+    class="relative flex flex-col-reverse md:flex-col gap-2 w-full h-screen p-2 overflow-hidden"
+  >
+    <!-- Navigation Bar -->
+    <NavigationBar />
+    <!-- Main Contents -->
     <div
-      class="relative flex flex-col w-full h-screen gap-2 p-2 overflow-hidden"
+      class="relative flex w-full h-full items-center justify-center overflow-hidden"
     >
-      <!-- Navigation Bar -->
-      <NavigationBar />
-      <!-- Main Contents -->
       <div
-        class="relative flex w-full h-full items-center justify-center overflow-hidden"
+        class="relative flex flex-col items-center jusitfy-start w-full h-full rounded-xl bg-Light_Primary dark:bg-Dark_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary overflow-hidden"
       >
         <div
-          class="relative flex flex-col items-center jusitfy-start w-full h-full rounded-xl bg-Light_Primary dark:bg-Dark_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary overflow-hidden"
+          class="relative flex flex-col items-center jusitfy-start w-full h-full gap-48 pb-4 md:pb-8 px-4 md:px-8 overflow-y-scroll"
         >
-          <div
-            id="mainContent"
-            class="relative flex flex-col items-center jusitfy-start w-full h-full gap-48 pb-4 md:pb-8 px-4 md:px-8 overflow-y-scroll"
-          >
-            <slot />
-          </div>
+          <slot />
         </div>
       </div>
     </div>
   </div>
-
-  <script>
-    function hideContents() {
-      let MainContent = document.getElementById(
-        "mainContent"
-      ) as HTMLDivElement;
-      let EventVideo = document.getElementById(
-        "videoPlayer"
-      ) as HTMLVideoElement;
-      let EventVideo_Container = document.getElementById(
-        "evenVideo_Container"
-      ) as HTMLVideoElement;
-      if (!MainContent || !EventVideo || !EventVideo_Container)
-        return console.error("hideContents Function couldn't find div's");
-
-      MainContent.classList.remove("flex");
-      MainContent.classList.add("hidden");
-
-      EventVideo_Container.classList.remove("flex");
-      EventVideo_Container.classList.add("hidden");
-      EventVideo.src = "";
-      EventVideo.volume = 0;
-      console.log("succesfully hide all");
-    }
-
-    function enableMainContent() {
-      let MainContent = document.getElementById(
-        "mainContent"
-      ) as HTMLDivElement;
-      if (!MainContent)
-        return console.error("enableMainContent Function couldn't find div's");
-
-      MainContent.classList.remove("hidden");
-      MainContent.classList.add("flex");
-      console.log("Successfullly enabled MainContent");
-    }
-
-    function enableCustomVideoPlayer(
-      source: string,
-      time: number,
-      volume: number
-    ) {
-      if (!source) console.warn("404: Not Found The File ", source);
-      else {
-        let EventVideo = document.getElementById(
-          "videoPlayer"
-        ) as HTMLVideoElement;
-        let EventVideo_Container = document.getElementById(
-          "evenVideo_Container"
-        ) as HTMLVideoElement;
-        let TimeStamp_Slider = document.getElementById(
-          "timeStamp_Slider"
-        ) as HTMLInputElement;
-        if (!EventVideo || !EventVideo_Container)
-          return console.error(
-            "enableCustomVideoPlayer Function couldn't find div's"
-          );
-
-        hideContents();
-
-        EventVideo_Container.classList.remove("hidden");
-        EventVideo_Container.classList.add("flex");
-        console.log("Successfullly enabled Video");
-        EventVideo.src = source;
-        EventVideo.currentTime = time;
-        EventVideo.volume = volume;
-        EventVideo.play();
-
-        EventVideo.addEventListener("ended", function () {
-          hideContents();
-          enableMainContent();
-        });
-
-        EventVideo.addEventListener("timeupdate", function () {
-          let timeStampText = document.getElementById(
-            "timeStamp"
-          ) as HTMLParagraphElement;
-          let EventVideo = document.getElementById(
-            "videoPlayer"
-          ) as HTMLVideoElement;
-          if (!timeStampText || !EventVideo) return;
-
-          function calculateCurrentTime(seconds: number) {
-            const current_minutes: number = Math.floor(seconds / 60);
-            const current_seconds: number = Math.floor(seconds % 60);
-
-            // "MM:SS" formatında döndürelim
-            const formattedTime = `${current_minutes}:${current_seconds
-              .toString()
-              .padStart(2, "0")}`;
-
-            return formattedTime;
-          }
-
-          let currentTime = calculateCurrentTime(EventVideo.currentTime);
-          let duration = calculateCurrentTime(EventVideo.duration);
-
-          let currentTimeStamp_Text = document.getElementById(
-            "current_TimeStamp"
-          ) as HTMLParagraphElement;
-          let durationTimeStamp_Text = document.getElementById(
-            "duration_TimeStamp"
-          ) as HTMLParagraphElement;
-          currentTimeStamp_Text.innerHTML = currentTime.toString();
-          durationTimeStamp_Text.innerHTML = " / " + duration.toString();
-          TimeStamp_Slider.max = EventVideo.duration.toString();
-          TimeStamp_Slider.value = EventVideo.currentTime.toString();
-        });
-      }
-    }
-    (window as any).enableCustomVideoPlayer = enableCustomVideoPlayer;
-
-    // Konami kodu dizisi
-    const konamiCode = [
-      "ArrowUp",
-      "ArrowUp",
-      "ArrowDown",
-      "ArrowDown",
-      "ArrowLeft",
-      "ArrowRight",
-      "ArrowLeft",
-      "ArrowRight",
-      "b",
-      "a",
-    ];
-
-    let currentPosition = 0;
-
-    // Klavye dinleyicisi
-    window.addEventListener("keydown", (e) => {
-      if (e.key === konamiCode[currentPosition]) {
-        currentPosition++;
-
-        // Tüm kod doğru girilirse
-        if (currentPosition === konamiCode.length) {
-          enableCustomVideoPlayer("/src/assets/videos/IzmirMarch.webm", 0, 1);
-          currentPosition = 0; // sıfırla
-        }
-      } else {
-        // Yanlış tuşa basılırsa sıfırla
-        currentPosition = 0;
-      }
-    });
-  </script>
 </Body>

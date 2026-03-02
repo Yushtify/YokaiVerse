@@ -1,4 +1,5 @@
 ---
+import GoogleMaterialSymbol from "../../../../custom/googleMaterial_Symbol.astro";
 import ThemeSwitcher from "./themeSwitcher.astro";
 
 const TabTitle = "Appereance";
@@ -15,21 +16,23 @@ const DivRelID = "appereance";
     <p
       class="flex flex-row items-center justify-start w-full gap-2 lg:gap-4 font-semibold text-[min(7vw,1.6rem)] capitalize"
     >
-      <span
-        id="googleSymbol"
-        class="material-symbols-rounded !text-[min(7vw,2rem)] icon-fill"
-        >palette</span
-      >
+      <GoogleMaterialSymbol
+        SVG_Name="palette"
+        SvgSize="!text-[min(7vw,1.5rem)]"
+        isFilled={true}
+      />
       {TabTitle}
     </p>
 
     <button
-      class="flex items-center justify-center h-full aspect-square ml-2 rounded-xl bg-Light_Primary dark:bg-Dark_Primary hover:bg-Light_Border_Primary hover:dark:bg-Dark_Border_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64 hover:text-Accent transition-colors duration-300 ease-in-out cursor-pointer"
+      class="flex items-center justify-center h-full aspect-square ml-2 rounded-xl bg-Light_Primary dark:bg-Dark_Primary hover:bg-Light_Border_Primary hover:dark:bg-Dark_Border_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary text-Light_Text_Secondary dark:text-Dark_Text_Secondary hover:text-Accent transition-colors duration-300 ease-in-out cursor-pointer"
       onclick={`CollapseVersionLog('${DivRelID}', this, true)`}
     >
-      <span id="googleSymbol" class="material-symbols-rounded"
-        >keyboard_arrow_up</span
-      >
+      <GoogleMaterialSymbol
+        SVG_Name="keyboard_arrow_up"
+        SvgSize="!text-[min(7vw,1.5rem)]"
+        isFilled={true}
+      />
     </button>
   </div>
 

@@ -5,7 +5,7 @@
   --font-Serif: "Lora", serif;
   --font-Mono: "Jetbrains Mono", monospace;
 
-  --color-Dark_Background: #05000f;
+  --color-Dark_Background: #000000;
   --color-Dark_Primary: #090019;
   --color-Dark_Secondary: #0d0221;
   --color-Dark_Tertiary: #10002a;
@@ -16,30 +16,33 @@
   --color-Dark_Tertiary_Hover: #180140;
   --color-Dark_Quaternary_Hover: #26085c;
 
-  --color-Dark_Text_Primary: #e5dbfa;
-  --color-Dark_Text_Secondary: #d1c0ee;
-  --color-Dark_Text_Tertiary: #c4abf0;
+  --color-Dark_Text_Primary: #f5f0ff;
+  --color-Dark_Text_Secondary: #a195b5;
+  --color-Dark_Text_Tertiary: #766c89;
   --color-Dark_Text_Inverted: #05000f;
 
-  --color-Dark_Border_Primary: #250e4b;
-  --color-Dark_Border_Secondary: #2f125e;
-  --color-Dark_Border_Tertiary: #3c1671;
+  --color-Dark_Border_Primary: #230c47;
+  --color-Dark_Border_Secondary: #270c53;
+  --color-Dark_Border_Tertiary: #280a59;
+  --color-Dark_Border_Inverted: #caacfb;
 
   --color-Accent: #782dfa;
+  --color-Accent-Analogous: #6338ff;
+  --color-Accent-Complementary: #ffd83c;
   --color-Success: #00ff90;
   --color-Warm_Orange: #ff9d00;
   --color-Pinkish_Red: #ff005e;
 
   --color-Light_Background: #f5f0ff;
   --color-Light_Primary: #ffffff;
-  --color-Light_Secondary: #f5efff;
-  --color-Light_Tertiary: #ede3fe;
-  --color-Light_Quaternary: #e3d3ff;
+  --color-Light_Secondary: #f7f3ff;
+  --color-Light_Tertiary: #efe6ff;
+  --color-Light_Quaternary: #e9ddff;
 
-  --color-Light_Primary_Hover: #dac6fb;
-  --color-Light_Secondary_Hover: #cdb7f2;
-  --color-Light_Tertiary_Hover: #c6afee;
-  --color-Light_Quaternary_Hover: #bca6e4;
+  --color-Light_Primary_Hover: #e1cfff;
+  --color-Light_Secondary_Hover: #dac8f9;
+  --color-Light_Tertiary_Hover: #d0bcf3;
+  --color-Light_Quaternary_Hover: #c4afe9;
 
   --color-Light_Text_Primary: #05000f;
   --color-Light_Text_Secondary: #120036;
@@ -49,15 +52,24 @@
   --color-Light_Border_Primary: #caacfb;
   --color-Light_Border_Secondary: #be9cf5;
   --color-Light_Border_Tertiary: #af8ce8;
+  --color-Light_Border_Inverted: #230c47;
 }
 @layer base {
+  :root {
+    --accent: #782dfa;
+  }
+
   .material-symbols-rounded {
     font-family: "Material Symbols Rounded";
     display: inline-block;
     line-height: 1;
     color: currentColor;
 
-    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 400,
+      "GRAD" 0,
+      "opsz" 24;
 
     width: 1em;
     height: 1em;
@@ -83,4 +95,17 @@
   .hover\:icon-fill:hover {
     font-variation-settings: "FILL" 1 !important;
   }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#SpinningCircle {
+  display: inline-block; /* Required for transform to work */
 }

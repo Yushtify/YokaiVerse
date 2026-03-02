@@ -1,0 +1,55 @@
+---
+import AnimeCard from "../../custom/buttons/animeCard.astro";
+import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
+
+interface Props {
+  givenSVG?: string;
+  givenTitle: string;
+  givenDesc?: string;
+}
+const { givenSVG, givenTitle, givenDesc } = Astro.props;
+const isDescValid = givenDesc ? "flex" : "hidden";
+---
+
+<template id="animeLister">
+  <div
+    id="Lister"
+    class="flex flex-col items-start justify-center w-full h-fit text-[min(5vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary"
+  >
+    <div class="flex flex-row items-center justify-start gap-2 w-full h-fit">
+      <GoogleMaterialSymbol
+        SVG_ID="listerSVG"
+        SVG_Name={givenSVG}
+        isFilled={true}
+        SvgSize="!text-[min(6vw,2rem)]"
+      />
+      <p
+        id="listerTitle"
+        class="font-bold text-[min(6vw,2rem)] capitalize text-nowrap"
+      >
+        {givenTitle}
+      </p>
+    </div>
+    <p
+      id="listerDesc"
+      class={`w-full lg:max-w-[80%] xl:max-w-[65%] text-Light_Text_Secondary dark:text-Dark_Text_Secondary ${isDescValid}`}
+    >
+      {givenDesc}
+    </p>
+
+    <!-- Grid -->
+    <div
+      id="animeCardLister"
+      class="flex flex-col lg:grid lg:grid-cols-3 xl:grid-cols-6 items-start justify-start gap-4 w-full h-fit mt-8"
+    >
+      <AnimeCard
+        givenVideoID="Template"
+        VideoRootSRC="/src/assets/animes/murderDrones"
+        givenVideoTitle="Template"
+        givenVideoUploader="Template"
+        givenNSFW={false}
+      />
+      <slot />
+    </div>
+  </div>
+</template>

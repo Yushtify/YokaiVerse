@@ -1,0 +1,17 @@
+---
+import Layout from "../../pageContent_Wrappers/default.astro";
+import Lister from "../public/lister.astro";
+
+import Hero from "./hero.astro";
+---
+
+<Layout>
+  <Hero />
+
+  <div
+    id="featuredListComp"
+    class="flex flex-col items-start justify-start gap-4 w-full h-full"
+  >
+  </div>
+  <Lister givenSVG="favorite" givenTitle="Template" givenDesc="Template" />
+</Layout>

@@ -1,4 +1,6 @@
 ---
+import GoogleMaterialSymbol from "../../../custom/googleMaterial_Symbol.astro";
+
 const Version = "v0.0.1";
 const HREF = "#" + Version;
 const Desc = "First release of YokaiVerse.";
@@ -16,11 +18,14 @@ const Desc = "First release of YokaiVerse.";
       href={HREF}
       class="flex flex-row items-center justify-center aspect-square rounded-xl gap-2 p-2 w-fit h-fit hover:text-Accent"
     >
-      <span id="googleSymbol" class="material-symbols-rounded">search</span>
+      <GoogleMaterialSymbol
+        SVG_Name="search"
+        SvgSize="!text-[min(7vw,1.5rem)]"
+      />
     </a>
   </div>
   <p
-    class="ml-2 w-full text-left text-Light_Text_Secondary/64 dark:text-Dark_Text_Secondary/64"
+    class="ml-2 w-full text-left text-Light_Text_Secondary dark:text-Dark_Text_Secondary"
   >
     {Desc}
   </p>

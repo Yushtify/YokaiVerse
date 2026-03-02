@@ -1,0 +1,35 @@
+---
+import ContentWrapper from "./wrapper.astro";
+import CustomVideoPlayer from "../../custom/videoPlayer/customVideoPlayer.astro";
+
+// Things Releated to Video And that's seperated into same root with this file.
+import DescriptionSlot from "./descriptionSection.astro";
+import VideoInfoSlot from "./videoInfoSection.astro";
+import FansubSlot from "./fansubSection.astro";
+import EpisodeContainer from "../../custom/episodeContainerGlobal.astro";
+---
+
+<ContentWrapper>
+  <!-- Video Player title and so on -->
+  <div class="flex flex-col items-start justify-start w-full max-w-[70%] gap-4">
+    <CustomVideoPlayer />
+    <div
+      class="flex flex-col items-start justify-start px-4 gap-4 w-full h-fit text-[min(6vw,0.9rem)] text-left text-Light_Text_Secondary dark:text-Dark_Text_Secondary"
+    >
+      <!-- Description -->
+      <VideoInfoSlot />
+      <DescriptionSlot />
+      <FansubSlot />
+
+      <!-- The Fansub Selection -->
+    </div>
+  </div>
+
+  <!-- The rec videos / next ep -->
+
+  <EpisodeContainer
+    givenSVG="video_template"
+    givenTitle="All Episodes"
+    givenWidth="w-[70%]"
+  />
+</ContentWrapper>

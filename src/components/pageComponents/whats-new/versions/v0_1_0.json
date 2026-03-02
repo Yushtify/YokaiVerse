@@ -1,0 +1,123 @@
+{
+  "version": "v0.1.0",
+  "date": "Mar 02, 2026",
+  "description": "Major update introducing playlist functionality, NSFW filtration, dedicated info pages, and significant UI/UX overhauls across the platform.",
+  "logs": [
+    {
+      "type": "Added",
+      "desc": "Playlist functionality for the Video Player. Users can now navigate between episodes using the next/previous arrows in the top-left corner."
+    },
+    {
+      "type": "Added",
+      "desc": "NSFW filtration system for Anime, Movie, Webtoon, and Manga albums."
+    },
+    {
+      "type": "Added",
+      "desc": "Total duration display for albums (cumulative length of all episodes). Currently requires a few seconds for initial calculation."
+    },
+    {
+      "type": "Added",
+      "desc": "Dedicated Info Pages. Clicking a cover art now opens a detailed information view instead of starting playback immediately. Playback can be initiated via the 'Play' button from Episode 1."
+    },
+    {
+      "type": "Added",
+      "desc": "TypeScript-based Language Handler. Turkish support is live, with more languages planned for future updates."
+    },
+    {
+      "type": "Added",
+      "desc": "Forum link integration into the navigation bar."
+    },
+    {
+      "type": "Added",
+      "desc": "Dynamic content loading for the Featured page. NSFW content is now automatically filtered based on 18+ age restrictions or explicit tags."
+    },
+    {
+      "type": "Added",
+      "desc": "New TypeScript core modules: playerControls, videoPlayer, svgScripts, languageHandler, animeListerScript, sloganHandler, infoHandler, and playListHandler."
+    },
+    {
+      "type": "Added",
+      "desc": "animeIDs.json to the /public directory for centralized ID management."
+    },
+    {
+      "type": "Added",
+      "desc": "A new standardized structure and design for version history and logging."
+    },
+    {
+      "type": "Added",
+      "desc": "Dynamic fetching for version logs to ensure real-time updates."
+    },
+    {
+      "type": "Added",
+      "desc": "Store, What's New, and Forums links added to the footer."
+    },
+    {
+      "type": "Added",
+      "desc": "Global Search Bar integrated into the primary navigation bar."
+    },
+    {
+      "type": "Fixed",
+      "desc": "Resolved animation stuttering issues on the loading screen."
+    },
+    {
+      "type": "Changed",
+      "desc": "Modernized video player sliders for a sleeker look and feel."
+    },
+    {
+      "type": "Changed",
+      "desc": "Redesigned Hero sections for Featured, Settings, and Landing pages."
+    },
+    {
+      "type": "Changed",
+      "desc": "UI/UX overhaul of the Store page."
+    },
+    {
+      "type": "Changed",
+      "desc": "Updated Navbar behavior; it now transitions to a bottom-docked layout on smaller screens for better mobile accessibility."
+    },
+    {
+      "type": "Changed",
+      "desc": "Relocated the Language Switcher from the navigation bar to the footer."
+    },
+    {
+      "type": "Changed",
+      "desc": "Updated Side Navbar state; it is now collapsed by default to maximize content area."
+    },
+    {
+      "type": "Changed",
+      "desc": "Refined Dark Mode background color to true black (#000000)."
+    },
+    {
+      "type": "Changed",
+      "desc": "Restructured /src/assets/animes/ directory for better asset management."
+    },
+    {
+      "type": "Changed",
+      "desc": "Refactored more UI elements into modular Astro components."
+    },
+    {
+      "type": "Changed",
+      "desc": "Comprehensive UI/UX update for the Footer."
+    },
+    {
+      "type": "Changed",
+      "desc": "Renamed 'Discover' to 'Featured' (algorithmically curated content). The new 'Discover' page now serves as a high-performance filtering engine for advanced content searching."
+    },
+    {
+      "type": "Removed",
+      "desc": "Deprecated content wrappers to streamline the DOM structure."
+    },
+    {
+      "type": "Removed",
+      "desc": "Store, What's New, and Forums links from the main navigation bar."
+    },
+    {
+      "type": "Removed",
+      "desc": "videoIds.json from the /public directory."
+    },
+    {
+      "type": "Experimental",
+      "desc": "Context-aware Sidebar: Implemented a dynamic sidebar that changes based on the active page. (Note: Currently in demo/unstable state)."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "version": "v0.0.1",
+  "date": "December 1th 2025",
+  "description": "First release of the YokaiVerse, does has little amount of features.",
+  "logs": [
+    { "type": "Added", "desc": "404 page" },
+    { "type": "Added", "desc": "landing page" },
+    { "type": "Added", "desc": "home page" },
+    {
+      "type": "Misc",
+      "desc": "Landing's slogan with easter eggs, for more information visit the commit log and update log on github."
+    },
+    { "type": "Misc", "desc": "konami code secret" }
+  ]
+}

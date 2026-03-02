@@ -1,0 +1,250 @@
+---
+import Horizontal from "../../seperators/horizontal.astro";
+
+import SubscriptionCard from "./subscriptionCard.astro";
+import SubscriptionFeatureChip from "./subscriptionFeatureChip.astro";
+---
+
+<div
+  class="relative flex flex-col items-start justify-center gap-4 w-full h-fit text-left text-[min(4vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary"
+>
+  <!-- Grid -->
+  <div
+    class="flex flex-row flex-wrap items-start justify-center w-full h-fit gap-4 rounded-xl"
+  >
+    <!-- Free -->
+    <SubscriptionCard
+      givenGoogleSymbol="eco"
+      givenTitle="free"
+      givenPrice="0"
+      givenBillingCycle="free"
+    >
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="ads"
+        givenDesc="Only on main pages, will not disturb the video + Not personalized."
+        givenGoogleSymbol="ad"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="rate limiting"
+        givenInformation="10 Gib / Week"
+        givenGoogleSymbol="data_usage"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="cloud storage"
+        givenInformation="1 Gib"
+        givenGoogleSymbol="cloud"
+      />
+
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="Security & Privacy"
+        givenDesc="On any plan we have enchanced end-to-end encryption."
+        givenGoogleSymbol="private_connectivity"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="forum"
+        givenInformation="10 posts / daily"
+        givenGoogleSymbol="forum"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="episodes"
+        givenDesc="Max episodes per day"
+        givenInformation="5 episodes / daily"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="close"
+        givenStateColor="text-red-400"
+        givenTitle="video uploading"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="close"
+        givenStateColor="text-red-400"
+        givenTitle="priority support"
+        givenGoogleSymbol="support_agent"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="download & upload"
+        givenInformation="10 mib / sec"
+        givenGoogleSymbol="bolt"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="horizontal_rule"
+        givenTitle="translations"
+        givenDesc="English and the 'Main' language of the content."
+        givenGoogleSymbol="translate"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="close"
+        givenStateColor="text-red-400"
+        givenTitle="customization"
+        givenDesc="This feature allows you to make custom themes, and custom profiles"
+        givenGoogleSymbol="data_object"
+      />
+    </SubscriptionCard>
+
+    <!-- Azure -->
+    <SubscriptionCard
+      givenGoogleSymbol="diamond"
+      givenTitle="azure"
+      givenDiscount="11.99"
+      givenPrice="6.99"
+      givenBillingCycle="monthly"
+      isHighlighted={true}
+    >
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenTitle="ads"
+        givenInformation="disabled"
+        givenGoogleSymbol="ad"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="rate limiting"
+        givenInformation="limitless"
+        givenGoogleSymbol="data_usage"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="cloud storage"
+        givenInformation="25 Gib"
+        givenGoogleSymbol="cloud"
+      />
+
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="Security & Privacy"
+        givenDesc="On any plan we have enchanced end-to-end encryption."
+        givenGoogleSymbol="private_connectivity"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="forum"
+        givenInformation="50 posts / daily"
+        givenGoogleSymbol="forum"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="episodes"
+        givenDesc="Max episodes per day"
+        givenInformation="limitless / daily"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="video uploading"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="priority support"
+        givenGoogleSymbol="support_agent"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="download & upload"
+        givenInformation="Limitless"
+        givenGoogleSymbol="bolt"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="horizontal_rule"
+        givenTitle="translations"
+        givenDesc="English, Turkish, Russian, German, Spanish, Chinese, Japanese, Korean."
+        givenGoogleSymbol="translate"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="customization"
+        givenDesc="This feature allows you to make custom themes, and custom profiles"
+        givenGoogleSymbol="data_object"
+      />
+    </SubscriptionCard>
+
+    <!-- Support -->
+    <SubscriptionCard
+      givenGoogleSymbol="favorite"
+      givenTitle="support"
+      givenPrice="14.99"
+      givenBillingCycle="monthly"
+    >
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenTitle="ads"
+        givenInformation="disabled"
+        givenGoogleSymbol="ad"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="rate limiting"
+        givenInformation="limitless"
+        givenGoogleSymbol="data_usage"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="cloud storage"
+        givenInformation="50 Gib"
+        givenGoogleSymbol="cloud"
+      />
+
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="Security & Privacy"
+        givenDesc="On any plan we have enchanced end-to-end encryption."
+        givenGoogleSymbol="private_connectivity"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="forum"
+        givenInformation="50 posts / daily"
+        givenGoogleSymbol="forum"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="episodes"
+        givenDesc="Max episodes per day"
+        givenInformation="limitless / daily"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="video uploading"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="priority support"
+        givenGoogleSymbol="support_agent"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="download & upload"
+        givenInformation="Limitless"
+        givenGoogleSymbol="bolt"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="horizontal_rule"
+        givenTitle="translations"
+        givenDesc="English, Turkish, Russian, German, Spanish, Chinese, Japanese, Korean."
+        givenGoogleSymbol="translate"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="customization"
+        givenDesc="This feature allows you to make custom themes, and custom profiles"
+        givenGoogleSymbol="data_object"
+      />
+    </SubscriptionCard>
+  </div>
+</div>

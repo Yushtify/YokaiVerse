@@ -1,0 +1,57 @@
+---
+import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
+
+interface Props {
+  givenGoogleSymbol: string;
+  givenTitle: string;
+  givenDesc?: string;
+  givenStateSymbol?: string;
+  givenStateColor?: string;
+  givenInformation?: string;
+}
+
+const {
+  givenStateSymbol,
+  givenStateColor,
+  givenInformation,
+  givenTitle,
+  givenDesc,
+  givenGoogleSymbol,
+} = Astro.props;
+
+let isInformation = givenInformation ? "flex" : "hidden";
+let isDescActive = givenDesc ? "inline" : "hidden";
+---
+
+<div
+  class="flex flex-col items-center justify-start w-full h-fit rounded-xl p-4 gap-4 bg-Light_Secondary dark:bg-Dark_Secondary hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover text-Light_Text_Secondary dark:text-Dark_Text_Secondary hover:text-Light_Text_Primary hover:dark:text-Dark_Text_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary hover:border-Light_Border_Secondary dark:hover:border-Dark_Border_Secondary text-pri shadow-2xl shadow-transparent hover:shadow-Light_Secondary_Hover/48 dark:hover:shadow-Dark_Secondary_Hover/48 transition-colors duration-250 ease-in-out"
+>
+  <div
+    class="flex flex-row items-start justify-start gap-2 w-full h-fit font-semibold"
+  >
+    <GoogleMaterialSymbol
+      SVG_Name={givenGoogleSymbol}
+      SvgSize="!text-[min(7vw,1.5rem)]"
+      isFilled={true}
+    />
+
+    <p class="w-full capitalize">{givenTitle}</p>
+    <GoogleMaterialSymbol
+      SVG_Name={givenStateSymbol}
+      SVG_Style={givenStateColor}
+      SvgSize="!text-[min(7vw,1.5rem)]"
+      isFilled={true}
+    />
+
+    <div
+      class={`flex-row items-center justify-center px-2 p-1 rounded-full w-fit h-fit bg-Light_Primary dark:bg-Dark_Primary border border-Light_Border_Primary dark:border-Dark_Border_Primary text-nowrap text-[min(7vw,0.8rem)] text-Light_Text_Tertiary dark:text-Dark_Text_Tertiary capitalize ${isInformation}`}
+    >
+      <p>{givenInformation}</p>
+    </div>
+  </div>
+  <p
+    class={`text-Light_Text_Secondary/32 dark:text-Dark_Text_Secondary/32 w-full ${isDescActive}`}
+  >
+    {givenDesc}
+  </p>
+</div>

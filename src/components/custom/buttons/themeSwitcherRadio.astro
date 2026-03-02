@@ -1,4 +1,6 @@
 ---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
 // FilterRounded.astro
 interface Props {
   givenID: string;
@@ -41,11 +43,10 @@ const initialIconFill = givenState ? "icon-fill" : "";
     id="googleSymbol_BG"
     class={`flex flex-row items-center justify-center p-3 rounded-full transition-colors duration-300 ${initialBgClass}`}
   >
-    <span
-      id="googleSymbol"
-      class={`material-symbols-rounded !text-[min(6vw,2rem)] ${initialIconFill}`}
-      >{givenGoogleSymbol}
-    </span>
+    <GoogleMaterialSymbol
+      SVG_Name={givenGoogleSymbol}
+      SvgSize="!text-[min(7vw,2rem)]"
+    />
   </div>
   <div class="flex flex-col items-start justify-center gap-1">
     <p>{givenTitle}</p>
