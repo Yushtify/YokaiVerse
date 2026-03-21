@@ -1,18 +1,43 @@
 ---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
 interface Props {
+  givenTitle: string;
   givenState: boolean;
   givenID: string;
   groupName: string;
+
+  givenSVG?: string;
+  givenSVGSize?: string;
+  givenSVGStyle?: string;
+  givenSVGFill?: boolean;
 }
 
-const { givenState, givenID, groupName } = Astro.props;
+const {
+  givenTitle,
+  givenState,
+  givenID,
+  groupName,
+  givenSVG,
+  givenSVGSize,
+  givenSVGStyle,
+  givenSVGFill,
+} = Astro.props;
 
 const activeClass =
-  "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary bg-Light_Border_Primary dark:bg-Dark_Border_Primary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
+  "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-3xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary bg-Light_Border_Primary dark:bg-Dark_Border_Primary hover:bg-Light_Border_Secondary hover:dark:bg-Dark_Border_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
 const deActiveClass =
-  "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
+  "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-3xl p-3 hover:bg-Light_Border_Secondary hover:dark:bg-Dark_Border_Secondary text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
 
 const initialClass = givenState ? activeClass : deActiveClass;
+
+const isSVG = givenSVG ? "inline" : "hidden";
+const SVGSize = givenSVGSize ? givenSVGSize : "text-[min(7vw,1rem)]!";
+
+const isFilled = givenSVGFill ? "icon-fill" : "";
+const validStyle = isFilled + " " + isSVG;
+
+const TextID = givenID + "_Text";
 ---
 
 <button
@@ -21,7 +46,14 @@ const initialClass = givenState ? activeClass : deActiveClass;
   class={initialClass}
   onclick="switchTheFilter(this, this.id)"
 >
-  <slot />
+  <GoogleMaterialSymbol
+    SVG_Name={givenSVG}
+    SvgSize={SVGSize}
+    SVG_Style={validStyle}
+  />
+  <p id="title">
+    {givenTitle}
+  </p>
 </button>
 
 <script>
@@ -31,9 +63,9 @@ const initialClass = givenState ? activeClass : deActiveClass;
     const group = b.getAttribute("data-group");
 
     const activeClass =
-      "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary bg-Light_Border_Primary dark:bg-Dark_Border_Primary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
+      "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-3xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary bg-Light_Border_Primary dark:bg-Dark_Border_Primary hover:bg-Light_Border_Secondary hover:dark:bg-Dark_Border_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
     const deActiveClass =
-      "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
+      "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-3xl p-3 hover:bg-Light_Border_Secondary hover:dark:bg-Dark_Border_Secondary text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
 
     // radio input logic
     if (group) {

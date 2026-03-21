@@ -16,7 +16,7 @@ const serverState = await fetch("/")
   >
     the page
     <span
-      class="flex p-4 rounded-xl border border-Light_Border_Secondary dark:border-Dark_Border_Secondary bg-Light_Tertiary dark:bg-Dark_Tertiary font-mono text-Light_Text_Primary dark:text-Dark_Text_Primary"
+      class="flex p-4 rounded-3xl border border-Light_Border_Secondary dark:border-Dark_Border_Secondary bg-Light_Tertiary dark:bg-Dark_Tertiary font-mono text-Light_Text_Primary dark:text-Dark_Text_Primary"
     >
       {pathname}
     </span>
@@ -25,7 +25,7 @@ const serverState = await fetch("/")
 
   <button
     onclick="goBack()"
-    class="flex flex-row items-center justify-start w-fit h-fit gap-2 rounded-xl p-4 text-[min(7vw,1.2rem)] !text-Light_Text_Secondary/64 dark:!text-Dark_Text_Secondary/64 hover:!text-Accent hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-transparent hover:border-Light_Border_Primary hover:dark:border-Dark_Border_Primary transition-colors duration-300 ease-in-out overflow-hidden capitalize cursor-pointer"
+    class="flex flex-row items-center justify-start w-fit h-fit gap-2 rounded-3xl p-4 text-[min(7vw,1.2rem)] !text-Light_Text_Secondary/64 dark:!text-Dark_Text_Secondary/64 hover:!text-Accent hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-transparent hover:border-Light_Border_Primary hover:dark:border-Dark_Border_Primary transition-colors duration-300 ease-in-out overflow-hidden capitalize cursor-pointer"
   >
     <GoogleMaterialSymbol
       SVG_Name="chevron_left"

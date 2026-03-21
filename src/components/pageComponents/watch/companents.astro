@@ -7,6 +7,7 @@ import DescriptionSlot from "./descriptionSection.astro";
 import VideoInfoSlot from "./videoInfoSection.astro";
 import FansubSlot from "./fansubSection.astro";
 import EpisodeContainer from "../../custom/episodeContainerGlobal.astro";
+import ExpandableInfoChip from "../../custom/expandableInfoChip.astro";
 ---
 
 <ContentWrapper>
@@ -18,7 +19,12 @@ import EpisodeContainer from "../../custom/episodeContainerGlobal.astro";
     >
       <!-- Description -->
       <VideoInfoSlot />
-      <DescriptionSlot />
+      <ExpandableInfoChip
+        givenID="pageVideoDesc_Continer"
+        givenTextID="pageVideoDesc"
+        givenTitle="description"
+        givenDesc=""
+      />
       <FansubSlot />
 
       <!-- The Fansub Selection -->

@@ -6,9 +6,9 @@ import SearchBar from "./custom/searchBar.astro";
 const currentPath = Astro.url.pathname;
 
 const InactiveTab_Landing =
-  "flex flex-row items-center justify-center w-fit h-full aspect-square gap-2 rounded-xl p-4 hover:font-semibold text-[min(7vw,1rem)] !text-Light_Text_Secondary/64 dark:!text-Dark_Text_Secondary/64 hover:!text-Accent hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-transparent transition-colors duration-300 ease-in-out overflow-hidden";
+  "flex flex-row items-center justify-center w-fit h-full aspect-square gap-2 rounded-3xl p-4 hover:font-semibold text-[min(7vw,1rem)] !text-Light_Text_Secondary/64 dark:!text-Dark_Text_Secondary/64 hover:!text-Accent hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border-2 border-transparent transition-colors duration-300 ease-in-out overflow-hidden";
 const ActiveTab_Landing =
-  "flex flex-row items-center justify-center w-fit h-full aspect-square gap-2 rounded-xl p-4 font-semibold text-[min(vw,1rem)] !text-Accent hover:!text-Accent bg-Light_Primary dark:bg-Dark_Primary hover:bg-Light_Primary_Hover dark:hover:bg-Dark_Primary_Hover border border-Accent transition-colors duration-300 ease-in-out overflow-hidden";
+  "flex flex-row items-center justify-center w-fit h-full aspect-square gap-2 rounded-3xl p-4 font-semibold text-[min(vw,1rem)] !text-Accent hover:!text-Accent bg-Light_Primary dark:bg-Dark_Primary hover:bg-Light_Primary_Hover dark:hover:bg-Dark_Primary_Hover border-2 border-Accent transition-colors duration-300 ease-in-out overflow-hidden";
 
 const isActive = (path: string) => currentPath === path;
 ---
@@ -52,11 +52,6 @@ const isActive = (path: string) => currentPath === path;
   </div>
   <div class="flex flex-row items-center justify-center gap-4 min-w-fit h-fit">
     <!-- Right Elements -->
-    <NavigationLinkButton
-      givenSVG="settings"
-      givenHref="/settings"
-      givenTitle="Settings"
-      givenData="Navbar.settings"
-    />
+    <NavigationLinkButton givenSVG="settings" givenHref="/settings" />
   </div>
 </div>

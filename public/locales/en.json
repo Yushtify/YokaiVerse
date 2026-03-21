@@ -5,6 +5,32 @@
     "discover": "discover",
     "search_placeholder": "Start searching"
   },
+  "Footer": {
+    "brand": "YokaiVerse",
+    "slogan": "Your privacy is our goal to keep it safe and secure.",
+    "Sections": {
+      "Links": {
+        "title": "Links",
+        "support": "support us",
+        "store": "store",
+        "register": "register",
+        "login": "login",
+        "whats_new": "whats new"
+      },
+      "Community": {
+        "title": "Community",
+        "forums": "forums"
+      },
+      "Company": {
+        "title": "Company",
+        "about": "about us",
+        "blog": "blog",
+        "docs": "documentation",
+        "terms": "terms of usage",
+        "privacy": "privacy and policy"
+      }
+    }
+  },
   "Landing": {
     "title": "Bored from ads?",
     "title2": "YokaiVerse",

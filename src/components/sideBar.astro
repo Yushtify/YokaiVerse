@@ -13,7 +13,7 @@ const { givenTitle, givenDesc } = Astro.props;
 
 <div
   id="sideBar"
-  class="relative flex flex-col items-start justify-start gap-4 max-md:p-0 md:p-4 rounded-xl max-md:w-fit md:w-full max-w-82 h-fit bg-Light_Secondary dark:bg-Dark_Secondary border border-Light_Border_Primary dark:border-Dark_Border_Primary text-[min(7vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary transition-normal duration-250 ease-in-out overflow-hidden z-1"
+  class="relative flex flex-col items-start justify-start gap-4 max-md:p-0 md:p-4 rounded-3xl max-md:w-fit md:w-full max-w-82 h-fit bg-Light_Secondary dark:bg-Dark_Secondary border border-Light_Border_Primary dark:border-Dark_Border_Primary text-[min(7vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary transition-normal duration-250 ease-in-out overflow-hidden z-1"
 >
   <div class="flex flex-row items-start justify-center gap-0 w-full h-fit">
     <div
@@ -36,7 +36,7 @@ const { givenTitle, givenDesc } = Astro.props;
     <button
       id="sideBarEnabler_Button"
       onclick="EnableSideBar()"
-      class="flex flex-row items-center justify-center w-fit h-fit aspect-square gap-2 rounded-xl p-4 hover:font-semibold text-[min(7vw,1rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary hover:text-Accent hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-Light_Border_Primary dark:border-Dark_Border_Primary transition-colors duration-300 ease-in-out overflow-hidden cursor-w-resize"
+      class="flex flex-row items-center justify-center w-fit h-fit aspect-square gap-2 rounded-3xl p-4 hover:font-semibold text-[min(7vw,1rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary hover:text-Accent hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-Light_Border_Primary dark:border-Dark_Border_Primary transition-colors duration-300 ease-in-out overflow-hidden cursor-w-resize"
     >
       <GoogleMaterialSymbol
         SVG_Name="side_navigation"
@@ -59,17 +59,12 @@ const { givenTitle, givenDesc } = Astro.props;
     ) as HTMLDivElement;
 
     // Check if the sidebar is currently expanded
-    const isExpanded =
-      SideBar.classList.contains("md:w-full") ||
-      SideBar.classList.contains("max-md:w-full");
+    const isExpanded = SideBar.classList.contains("md:w-full");
 
     if (isExpanded) {
       // Contract SideBar: Switch to fit-content and remove padding
       SideBar.classList.replace("md:w-full", "md:w-fit");
-      SideBar.classList.replace("max-md:w-full", "max-md:w-fit");
-      SideBar.classList.replace("absolute", "relative");
       SideBar.classList.replace("md:p-4", "md:p-0");
-      SideBar.classList.replace("max-md:p-4", "max-md:p-0");
 
       // Hide titles and change cursor direction to 'east' (expand)
       SideBarTitle.classList.replace("md:flex", "md:hidden");
@@ -77,10 +72,7 @@ const { givenTitle, givenDesc } = Astro.props;
     } else {
       // Expand SideBar: Switch to full width and add padding
       SideBar.classList.replace("md:w-fit", "md:w-full");
-      SideBar.classList.replace("max-md:w-fit", "max-md:w-full");
-      SideBar.classList.replace("relative", "absolute");
       SideBar.classList.replace("md:p-0", "md:p-4");
-      SideBar.classList.replace("max-md:p-0", "max-md:p-4");
 
       // Show titles and change cursor direction to 'west' (collapse)
       SideBarTitle.classList.replace("md:hidden", "md:flex");

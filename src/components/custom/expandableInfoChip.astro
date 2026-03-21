@@ -13,7 +13,7 @@ const isTitle = givenTitle ? "inline" : "hidden";
 <div
   id={givenID}
   onclick={`expandDescription('${givenTextID}')`}
-  class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl w-full h-fit bg-Light_Secondary dark:bg-Dark_Secondary text-[min(7vw,1rem)] border border-transparent hover:border-Light_Border_Primary dark:hover:border-Dark_Border_Primary text-Light_Text_Secondary dark:text-Dark_Text_Secondary hover:text-Light_Text_Primary dark:hover:text-Dark_Text_Primary shadow-xl shadow-transparent hover:shadow-Light_Border_Primary/32 dark:hover:shadow-Dark_Border_Primary/32 cursor-pointer transition-all duration-250 ease-in-out"
+  class="flex flex-col items-center justify-center gap-2 p-4 rounded-3xl w-full h-fit bg-Light_Secondary dark:bg-Dark_Secondary text-[min(7vw,1rem)] border border-transparent hover:border-Light_Border_Primary dark:hover:border-Dark_Border_Primary text-Light_Text_Secondary dark:text-Dark_Text_Secondary hover:text-Light_Text_Primary dark:hover:text-Dark_Text_Primary shadow-xl shadow-transparent hover:shadow-Light_Border_Primary/32 dark:hover:shadow-Dark_Border_Primary/32 cursor-pointer transition-all duration-250 ease-in-out"
 >
   <p
     class={`font-semibold text-[min(7vw,0.8rem)] w-full h-fit line-clamp-2 uppercase ${isTitle}`}

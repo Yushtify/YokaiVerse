@@ -1,5 +1,6 @@
 ---
 import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+import Button from "./Button.astro";
 
 interface Props {
   givenVideoID: string;
@@ -22,76 +23,68 @@ const activeNSFW = givenNSFW ? "flex" : "hidden";
 
 <template id="animeCardTemplate">
   <div
-    class="group relative flex flex-col items-start justify-start snap-start w-full h-fit rounded-xl gap-2 xl:gap-4 p-2 hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-transparent hover:border-Light_Border_Secondary dark:hover:border-Dark_Border_Secondary hover:shadow-2xl hover:shadow-Light_Secondary_Hover dark:hover:shadow-Dark_Secondary_Hover hover:scale-102 transition-colors-transform duration-300 ease-in-out"
+    class="group relative flex flex-col items-start justify-start snap-start w-full h-fit rounded-3xl gap-4 xl:gap-4"
   >
     <!-- Cover -->
     <button
       id="coverButton"
-      class="relative flex flex-col rounded-xl aspect-2/3 w-full h-auto cursor-pointer"
+      class="relative flex flex-col rounded-3xl aspect-2/3 w-full h-auto cursor-pointer overflow-hidden group-hover:-translate-y-2 gorup-hover:scale-102 shadow-2xl shadow-transparent group-hover:shadow-Light_Border_Primary/56 group-hover:dark:shadow-Dark_Border_Primary/56 transition-transform duration-250 ease-in-out"
       onclick={`findAnimeInfo('${givenVideoID}')`}
     >
       <img
         id="animeCover"
         src={CoverIMG}
         alt="COVER"
-        class="rounded-xl aspect-9/16 w-full h-full"
+        class="rounded-3xl aspect-9/16 w-full h-full border-2 border-Light_Border_Primary dark:border-Dark_Border_Primary"
       />
-      <p
-        data-videoRootSRC={VideoRootSRC}
-        id="animeRating"
-        class="absolute top-2 left-2 hidden sm:flex flex-row items-center justify-center gap-2 rounded-full p-1 px-2 lg:p-2 bg-Light_Background/50 dark:bg-Dark_Background/50 font-mono text-[min(6vw,0.8rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary backdrop-blur-3xl"
+
+      <div
+        class="absolute bottom-0 left-0 flex flex-col items-start justify-end p-4 gap-2 w-full h-[45%] group-hover:h-[70%] bg-gradient-to-t from-Light_Border_Primary dark:from-Dark_Border_Primary to-transparent transition-normal duration-250 ease-in-out"
       >
-        <GoogleMaterialSymbol SVG_Name="stars" isFilled={true} />
-        <span id="animeRating_Text">Loading...</span>
-      </p>
+        <p
+          id="animeUploadedBy"
+          class="text-[min(6vw,0.8rem)] line-clamp-1 group-hover:opacity-100 opacity-0 transition-opacity duration-250 ease-in-out"
+        >
+          By @<span id="animeUploadedBy_Text">{givenVideoUploader}</span>
+        </p>
+        <p
+          id="animeTitle"
+          class="w-full h-fit text-left font-bold text-[min(7vw,1.2rem)] capitalize line-clamp-1 group-hover:line-clamp-4"
+        >
+          {givenVideoTitle}
+        </p>
+      </div>
 
       <!-- NSFW Filter -->
       <div
         id="animeCardNsfwFilter"
-        class={`${activeNSFW} absolute flex-col items-center justify-center gap-2 p-8 aspect-2/3 w-full h-full rounded-xl text-[min(7vw,0.9rem)] bg-Light_Secondary/72 dark:bg-Dark_Secondary/72 border border-Light_Border_Secondary dark:border-Dark_Border_Secondary backdrop-blur-3xl`}
+        class={`${activeNSFW} absolute flex-col items-center justify-center gap-2 p-8 aspect-2/3 w-full h-full rounded-3xl text-[min(7vw,0.9rem)] bg-Light_Secondary dark:bg-Dark_Secondary border-2 border-Light_Border_Primary dark:border-Dark_Border_Primary`}
       >
-        <GoogleMaterialSymbol
-          SVG_Name="18_up_rating"
-          SvgSize="!text-[min(7vw,2rem)]"
-          isFilled={true}
-        />
-        <p class="text-[min(7vw,1.4rem)]">NSFW</p>
+        <div
+          class="flex flex-row items-center justify-center gap-2 rounded-3xl w-fit h-fit p-4 bg-Light_Tertiary dark:bg-Dark_Tertiary border-2 border-Accent font-bold text-Accent"
+        >
+          <GoogleMaterialSymbol
+            SVG_Name="18_up_rating"
+            SvgSize="!text-[min(7vw,2rem)] text-Accent"
+            isFilled={true}
+          />
+          <p class="text-[min(7vw,1.4rem)]">NSFW</p>
+        </div>
         <p class="text-Light_Text_Secondary dark:text-Dark_Text_Secondary">
           This content is marked as NSFW.
         </p>
       </div>
     </button>
-    <div
-      class="flex flex-row items-start justify-start gap-2 px-2 pb-2 w-full h-fit text-left"
-    >
-      <button
-        id="playButton"
-        class="flex flex-row rounded-xl gap-2 p-2 w-fit h-fit aspect-square max-w-20 bg-Light_Tertiary dark:bg-Dark_Tertiary group-hover:bg-Accent border border-transparent group-hover:border-Light_Border_Primary group-hover:dark:border-Dark_Border_Primary transition-colors duration-250 ease-in-out cursor-pointer"
-        onclick={`findAnime('${givenVideoID}')`}
-      >
-        <GoogleMaterialSymbol
-          SVG_Name="play_arrow"
-          SvgSize="text-[min(7vw,1.5rem)]"
-          isFilled={true}
-        />
-      </button>
-
-      <div class="flex flex-col items-start justify-start gap-2 w-full h-fit">
-        <p
-          id="animeTitle"
-          class="font-semibold text-[min(7vw,1.15rem)] capitalize line-clamp-2"
-        >
-          {givenVideoTitle}
-        </p>
-        <p
-          id="animeUploadedBy"
-          class="text-[min(6vw,0.9rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary line-clamp-1"
-        >
-          Uploaded by @<span id="animeUploadedBy_Text"
-            >{givenVideoUploader}</span
-          >
-        </p>
-      </div>
+    <div class="flex flex-col items-start justify-start w-full h-fit text-left">
+      <Button
+        givenButtonID="playButton"
+        givenButtonTransparency={false}
+        givenButtonFill={true}
+        givenButtonAction={`findAnime('${givenVideoID}')`}
+        givenButtonSVG="play_arrow"
+        givenButtonSVGSize="!text-[min(7vw,1.5rem)]"
+        givenButtonSVGFill={true}
+      />
     </div>
   </div>
 </template>

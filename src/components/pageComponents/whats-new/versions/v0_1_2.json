@@ -1,0 +1,68 @@
+{
+  "version": "v0.2.0",
+  "commit": "34805e",
+  "date": "March 21, 2026",
+  "description": "A complete architectural overhaul introducing a high-performance modular system. By leveraging a TypeScript-driven core, near-instantaneous metadata fetching and seamless navigation across multi-season libraries are achieved, regardless of scale.",
+  "logs": [
+    {
+      "type": "Added",
+      "desc": "Implemented a High-Performance Season Switcher for both Info and Watch pages, supporting complex multi-season structures."
+    },
+    {
+      "type": "Added",
+      "desc": "New 'listAnime.ts' core engine: Handles all anime listings, season redirects, and dynamic video button generation with TypeScript-driven efficiency."
+    },
+    {
+      "type": "Added",
+      "desc": "Fail-Safe Metadata such as 'Unknown Uploader' and 'Unknown Studio' fallbacks to prevent UI breakage when metadata is missing."
+    },
+    {
+      "type": "Added",
+      "desc": "Navigation Arrows: Introduced 'Previous' and 'Next' buttons to content listers for streamlined browsing."
+    },
+    {
+      "type": "Added",
+      "desc": "Enhanced Timestamps: Extended precision to include hours and seconds on information pages."
+    },
+    {
+      "type": "Added",
+      "desc": "Integrated Turkish localization support for the footer component."
+    },
+    {
+      "type": "Added",
+      "desc": "Applied [BETA] tags to Discover and Featured pages to indicate ongoing performance optimizations."
+    },
+    {
+      "type": "Fixed",
+      "desc": "Resolved incorrect routing issues within the footer's company links."
+    },
+    {
+      "type": "Changed",
+      "desc": "Refactored 'gridVideoButton': Episode numbers are now persistent; durations are hidden on small screens; descriptions are hover-triggered for a cleaner UI."
+    },
+    {
+      "type": "Changed",
+      "desc": "Redesigned video player control buttons and Anime Card architecture for a more premium, modern aesthetic."
+    },
+    {
+      "type": "Changed",
+      "desc": "Script Optimization: 'infoHandler.ts' and 'playlistHandler.ts' now leverage the new modular logic for significantly faster execution."
+    },
+    {
+      "type": "Changed",
+      "desc": "Full Footer Redesign: Updated layout to be 100% responsive across all device tiers."
+    },
+    {
+      "type": "Removed",
+      "desc": "Disabled automatic collapsing on the Update Log page to improve readability and scannability."
+    },
+    {
+      "type": "Removed",
+      "desc": "Cleaned up the navbar by removing redundant text from the settings link for a minimalist look."
+    },
+    {
+      "type": "Known_Bug",
+      "desc": "The 'Go To' navigation functionality on the 'What's New' page is currently unresponsive."
+    }
+  ]
+}

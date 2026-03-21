@@ -1,5 +1,6 @@
 {
   "version": "v0.0.4",
+  "commit": "24beb28",
   "date": "Dec 28, 2025",
   "description": "Settings page, NSFW filters, and mobile support optimization.",
   "logs": [

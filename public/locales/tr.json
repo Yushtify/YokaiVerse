@@ -5,6 +5,32 @@
     "discover": "keşfet",
     "search_placeholder": "Aramaya başla"
   },
+  "Footer": {
+    "brand": "YokaiVerse",
+    "slogan": "Gizliliğinizi güven altında tutmak bizim hedefimizdir.",
+    "Sections": {
+      "Links": {
+        "title": "Bağlantılar",
+        "support": "bize destek ol",
+        "store": "mağaza",
+        "register": "kayıt ol",
+        "login": "giriş yap",
+        "whats_new": "neler yeni"
+      },
+      "Community": {
+        "title": "Topluluk",
+        "forums": "forumlar"
+      },
+      "Company": {
+        "title": "Kurumsal",
+        "about": "hakkımızda",
+        "blog": "blog",
+        "docs": "dokümantasyon",
+        "terms": "kullanım koşulları",
+        "privacy": "gizlilik politikası"
+      }
+    }
+  },
   "Landing": {
     "title": "Reklamlardan sıkıldınız mı?",
     "title2": "YokaiVerse",

@@ -6,7 +6,7 @@ import VersionDetailTemplate from "./versionDetailTemplate.astro";
 <template id="versionTemplate">
   <div
     id="version_0_0_1"
-    class="group flex flex-col items-center justify-center gap-4 p-4 md:p-8 rounded-xl w-full h-fit bg-Light_Secondary dark:bg-Dark_Secondary hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-Light_Border_Primary dark:border-Dark_Border_Primary text-[min(7vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary transition-colors duration-250 ease-in-out"
+    class="group flex flex-col items-center justify-center gap-4 p-4 md:p-8 rounded-3xl w-full h-fit bg-Light_Secondary dark:bg-Dark_Secondary hover:bg-Light_Secondary_Hover dark:hover:bg-Dark_Secondary_Hover border border-Light_Border_Primary dark:border-Dark_Border_Primary text-[min(7vw,1rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary transition-colors duration-250 ease-in-out"
   >
     <div
       class="flex flex-col md:flex-row items-start justify-center gap-4 w-full"
@@ -35,17 +35,19 @@ import VersionDetailTemplate from "./versionDetailTemplate.astro";
         </p>
       </div>
 
-      <button
-        class="flex flec-row items-center justify-center gap-2 p-4 rounded-xl w-fit h-fit bg-Light_Primary dark:bg-Dark_Primary group-hover:bg-Accent border border-Light_Border_Primary dark:border-Dark_Border_Primary group-hover:border-Light_Border_Inverted group-hover:dark:border-Dark_Border_Inverted group-hover:font-semibold shadow-2xl shadow-transparent group-hover:shadow-Accent/32 transition-colors duration-250 ease-in-out capitalize cursor-pointer"
+      <a
+        id="versionDetails_Link"
+        href=""
+        class="flex flec-row items-center justify-center gap-2 p-4 rounded-3xl w-fit h-fit bg-Light_Primary dark:bg-Dark_Primary group-hover:bg-Accent border border-Light_Border_Primary dark:border-Dark_Border_Primary group-hover:border-Light_Border_Inverted group-hover:dark:border-Dark_Border_Inverted group-hover:font-semibold shadow-2xl shadow-transparent group-hover:shadow-Accent/32 transition-colors duration-250 ease-in-out capitalize cursor-pointer"
       >
         <p class="text-[min(7vw,0.8rem)] text-nowrap">version details</p>
         <GoogleMaterialSymbol SVG_Name="chevron_right" />
-      </button>
+      </a>
     </div>
 
     <div
       id="logList"
-      class="flex flex-col items-start justify-center gap-4 p-6 rounded-xl w-full h-full bg-Light_Primary dark:bg-Dark_Primary font-Mono"
+      class="flex flex-col items-start justify-center gap-4 p-6 rounded-3xl w-full h-full bg-Light_Primary dark:bg-Dark_Primary font-Mono"
     >
       <VersionDetailTemplate />
     </div>

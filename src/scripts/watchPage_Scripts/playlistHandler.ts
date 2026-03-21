@@ -1,6 +1,11 @@
 /**
- * TYPE DECLARATIONS
+ * Watch Page - Modular Season & Episode Renderer
+ * listAnime.ts modülü entegre edilerek optimize edildi.
  */
+
+import { listAnime, setActiveCard } from "../listAnime.ts";
+
+// --- TYPE DECLARATIONS ---
 interface LoadingManagerInterface {
   show: (message?: string) => void;
   hide: () => void;
@@ -9,33 +14,24 @@ interface LoadingManagerInterface {
 
 declare const LoadingManager: LoadingManagerInterface;
 declare function addListeners(): void;
+declare const videoPlayer: HTMLVideoElement;
 
 // --- CONFIGURATION & GLOBAL STATE ---
-const MAX_CONCURRENT_VIDEOS = 10;
 let videoRootSRC: string;
-const slash = "/";
-let currentEpisode: string = slash + "ep_1";
+let currentSeason_Num: number = 1;
 let currentEpisode_Num: number = 1;
 
 /**
- * EXTERNAL NAVIGATION HANDLER
- * Call this to redirect to the watch page for a specific series and episode.
- * Example: findAnime('my-series+ep_5')
- */
-function findAnime(videoID: string) {
-  window.location.href = `/watch?v=${videoID}`;
-}
-(window as any).findAnime = findAnime;
-
-/**
  * MAIN INITIALIZATION
- * Runs ONLY on page load.
  */
 document.addEventListener("DOMContentLoaded", async () => {
   if (window.location.pathname !== "/watch") return;
 
+  console.log("[Init]: Watch page detected.");
   LoadingManager.show("Loading Series...");
-  addListeners();
+
+  // External listeners (play/pause/volume etc.)
+  if (typeof addListeners === "function") addListeners();
 
   const params = new URLSearchParams(window.location.search);
   const rawV = params.get("v");
@@ -45,17 +41,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  const decodedV = decodeURIComponent(rawV);
-  const parts = decodedV.includes("+")
-    ? decodedV.split("+")
-    : decodedV.split(" ");
+  // Parse ID and detect Season/Episode (e.g., "oshiNoKo+s1_ep1")
+  const decodedV = decodeURIComponent(rawV).replace(/\s+/g, "+");
+  const parts = decodedV.split("+");
   const videoID = parts[0];
 
-  // Detect starting episode from URL
-  if (parts[1] && parts[1].startsWith("ep_")) {
-    currentEpisode = slash + parts[1];
-    const num = parseInt(parts[1].replace("ep_", ""));
-    if (!isNaN(num)) currentEpisode_Num = num;
+  if (parts[1]) {
+    const sMatch = parts[1].match(/s(\d+)/);
+    const eMatch = parts[1].match(/ep(\d+)/);
+    if (sMatch) currentSeason_Num = parseInt(sMatch[1]);
+    if (eMatch) currentEpisode_Num = parseInt(eMatch[1]);
   }
 
   try {
@@ -66,294 +61,161 @@ document.addEventListener("DOMContentLoaded", async () => {
     videoRootSRC = idMap[videoID];
 
     if (videoRootSRC) {
-      // 1. Setup the initial video player data
+      // 1. Initial Player Setup
       await GetTheVideos(videoRootSRC);
 
-      // 2. Build the sidebar playlist ONCE
-      LoadingManager.show("fetching video player and playlist");
-      await ListEpisodesProgressive(videoRootSRC);
+      // 2. Build Sidebar Playlist using the Module
+      // Modül tüm döngü ve DOM klonlama işini devralıyor
+      await listAnime({
+        root: videoRootSRC,
+        activeSeason: currentSeason_Num,
+        activeEpisode: currentEpisode_Num,
+        onEpisodeClick: (s, e) => SwitchEpisode(s, e),
+      });
 
-      // 3. Final Reveal
       LoadingManager.hide();
 
       if (videoPlayer) {
         videoPlayer.play().catch(() => console.warn("Autoplay blocked."));
       }
     } else {
-      throw new Error(`Series "${videoID}" not found.`);
+      throw new Error("Series not found.");
     }
   } catch (error: any) {
     LoadingManager.setError(error.message);
+    console.error("[Critical Error]:", error);
   }
 });
 
 /**
  * LIGHTWEIGHT EPISODE SWITCHER
- * This is the magic function. It updates the video without touching the sidebar list.
  */
-async function SwitchEpisode(epNum: number) {
-  if (epNum === currentEpisode_Num) return; // Already on this episode
+async function SwitchEpisode(sNum: number, epNum: number) {
+  if (sNum === currentSeason_Num && epNum === currentEpisode_Num) return;
 
-  LoadingManager.show(`Switching to Episode ${epNum}...`);
+  console.log(`[Switch]: Moving to S${sNum} E${epNum}`);
+  LoadingManager.show("Switching Episode...");
 
-  // 1. Update State
+  currentSeason_Num = sNum;
   currentEpisode_Num = epNum;
-  currentEpisode = slash + "ep_" + epNum;
 
-  // 2. Update Browser URL (without reloading page)
+  // Update URL without reloading
   const params = new URLSearchParams(window.location.search);
   const baseID = params.get("v")?.split(/[+ ]/)[0];
-  window.history.pushState(
-    null,
-    "",
-    `${window.location.pathname}?v=${baseID}+ep_${epNum}`,
-  );
+  const newURL = `${window.location.pathname}?v=${baseID}+s${sNum}_ep${epNum}`;
+  window.history.pushState(null, "", newURL);
 
-  // 3. Update Player and Metadata
+  // Update Player Content
   await GetTheVideos(videoRootSRC);
 
-  // 4. Update Sidebar UI "Active" State
-  document.querySelectorAll("[id^='episodeCard_']").forEach((card) => {
-    card.classList.remove("border-2", "!border-Accent", "bg-Accent/10");
-  });
-  const activeCard = document.getElementById(`episodeCard_${epNum}`);
-  if (activeCard) {
-    activeCard.classList.add("border-2", "!border-Accent", "bg-Accent/10");
-  }
+  // Update Sidebar UI Highlights via Module Helper
+  setActiveCard(sNum, epNum);
 
   LoadingManager.hide();
-  videoPlayer.play().catch(() => {});
+  if (videoPlayer) videoPlayer.play().catch(() => {});
 }
 (window as any).SwitchEpisode = SwitchEpisode;
 
 /**
- * PROGRESSIVE SIDEBAR RENDERER
- * Runs once per series load.
+ * PLAYER SETUP
  */
-async function ListEpisodesProgressive(root: string): Promise<void> {
-  const container = document.getElementById("episodeContainer");
-  const template = document.getElementById(
-    "videoCard_Template",
-  ) as HTMLTemplateElement;
-  const totalDurText = document.getElementById("contentDuration_Text");
-  const episodeCountElement = document.getElementById("contentEpisodes_Text");
+async function GetTheVideos(root: string) {
+  // Slash safety check
+  const cleanRoot = root.replace(/\/+$/, "");
+  const epPath = `${cleanRoot}/season_${currentSeason_Num}/ep_${currentEpisode_Num}`;
 
-  if (!container || !template) return;
-  container.innerHTML = "";
+  try {
+    const data = await fetchJson(`${epPath}/information.json`);
+    if (!data) throw new Error("Episode data missing.");
 
-  let epIndex = 1;
-  let searching = true;
-  let totalSeconds = 0;
-  const episodeList: { index: number; data: any }[] = [];
+    const vType = data.videoType.startsWith(".")
+      ? data.videoType
+      : `.${data.videoType}`;
+    const videoSrc = `${epPath}/video${vType}`;
 
-  // PHASE 1: Scan for all episodes
-  while (searching) {
-    try {
-      const epRes = await fetch(`${root}/ep_${epIndex}/information.json`);
-      if (!epRes.ok) {
-        searching = false;
-        break;
-      }
-      const data = await epRes.json();
-      episodeList.push({ index: epIndex, data });
-      epIndex++;
-    } catch (e) {
-      searching = false;
-    }
-  }
-
-  if (episodeCountElement)
-    episodeCountElement.innerText = `${episodeList.length} episodes`;
-
-  // PHASE 2: Process Metadata
-  for (let i = 0; i < episodeList.length; i += MAX_CONCURRENT_VIDEOS) {
-    const batch = episodeList.slice(i, i + MAX_CONCURRENT_VIDEOS);
-    const fragment = document.createDocumentFragment();
-
-    const resolvedBatch = await Promise.all(
-      batch.map(async (item) => {
-        const videoURL = `${root}/ep_${item.index}/video${item.data.videoType}`;
-        const duration = await getVideoDurationWithTimeout(videoURL, 10000);
-        return { ...item, duration };
-      }),
+    LoadVideoData(
+      data.title || "Untitled Episode",
+      data.episodeName || `S${currentSeason_Num} E${currentEpisode_Num}`,
+      data.desc || "Error while fetching.",
+      data.author || "Unknown Studio",
+      data.uploader || "Unknown Uploader",
+      `${epPath}/uploader.webp`,
     );
 
-    resolvedBatch.forEach((ep) => {
-      totalSeconds += ep.duration;
-      const clone = template.content.cloneNode(true) as HTMLElement;
-      const cardBtn = clone.querySelector("#videoCard") as HTMLButtonElement;
-
-      if (cardBtn) {
-        cardBtn.id = `episodeCard_${ep.index}`;
-
-        // Fill in static data (Covers, titles, durations)
-        const cover = cardBtn.querySelector("#videoCover") as HTMLImageElement;
-        const title = cardBtn.querySelector("#videoTitle") as HTMLElement;
-        const desc = cardBtn.querySelector("#videoDesc") as HTMLElement;
-        const dur = cardBtn.querySelector("#videoDuration") as HTMLElement;
-
-        if (cover) cover.src = `${root}/ep_${ep.index}/cover.webp`;
-        if (title)
-          title.innerText = ep.data.episodeName || `Episode ${ep.index}`;
-        if (desc) desc.innerText = ep.data.desc || "";
-        if (dur) {
-          dur.innerHTML = `<span class="material-symbols-rounded">schedule</span> ${ep.duration > 0 ? formatSecondsToTimestamp(ep.duration) : "--:--"}`;
-        }
-
-        // Use SwitchEpisode to avoid page reload during session
-        cardBtn.setAttribute("onclick", `SwitchEpisode(${ep.index})`);
-
-        if (ep.index === currentEpisode_Num) {
-          cardBtn.classList.add("border-2", "!border-Accent", "bg-Accent/10");
-        }
-        fragment.appendChild(clone);
-      }
-    });
-
-    container.appendChild(fragment);
-    if (totalDurText)
-      totalDurText.innerText = formatSecondsToReadable(totalSeconds);
+    if (videoPlayer) {
+      videoPlayer.src = videoSrc;
+      videoPlayer.poster = `${epPath}/cover.webp`;
+      videoPlayer.onended = () => (window as any).NextEpisode();
+    }
+  } catch (e) {
+    console.error("[Player Error]:", e);
+    LoadingManager.setError("Failed to load episode.");
   }
 }
 
 /**
- * PLAYER SETUP & NAVIGATION
+ * NEXT EPISODE LOGIC
  */
-async function GetTheVideos(videoRootSource: string) {
-  if (!videoRootSource) return;
-  videoRootSRC = videoRootSource;
-  const videoInformationJSON =
-    videoRootSource + currentEpisode + "/information.json";
-  const posterSource = videoRootSource + currentEpisode + "/cover.webp";
-  const uploaderIMG = videoRootSource + currentEpisode + "/uploader.webp";
-  const videoSourceBase = videoRootSource + currentEpisode + "/video";
-
-  await WriteVideoInformation(
-    videoSourceBase,
-    posterSource,
-    uploaderIMG,
-    videoInformationJSON,
-  );
-}
-
-async function WriteVideoInformation(
-  videoSource: string,
-  posterSource: string,
-  uploaderIMG: string,
-  videoInformationJSON: string,
-) {
-  if (!videoPlayer) return;
-  try {
-    const response = await fetch(videoInformationJSON);
-    if (!response.ok) throw new Error("Episode details not found.");
-    const data = await response.json();
-    const finalVideoSrc = videoSource + data.videoType;
-
-    LoadVideoData(
-      data.title || "Untitled",
-      data.episodeName || `Episode ${currentEpisode_Num}`,
-      data.desc || "",
-      data.author || "Unknown",
-      data.meta?.views || "0",
-      data.meta?.uploadDate || "TBA",
-      uploaderIMG,
-    );
-
-    videoPlayer.src = finalVideoSrc;
-    videoPlayer.poster = posterSource;
-    videoPlayer.volume = 1;
-
-    videoPlayer.onerror = () =>
-      LoadingManager.setError("Video source missing.");
-    videoPlayer.onended = () => NextEpisode();
-  } catch (error: any) {
-    LoadingManager.setError(error.message);
-  }
-}
-
-async function PreviousEpisode() {
-  if (currentEpisode_Num <= 1) return;
-  await SwitchEpisode(currentEpisode_Num - 1);
-}
-(window as any).PreviousEpisode = PreviousEpisode;
-
 async function NextEpisode() {
-  await SwitchEpisode(currentEpisode_Num + 1);
+  // Check next episode in current season
+  const nextEpCheck = await fetch(
+    `${videoRootSRC}/season_${currentSeason_Num}/ep_${currentEpisode_Num + 1}/information.json`,
+  );
+
+  if (nextEpCheck.ok) {
+    await SwitchEpisode(currentSeason_Num, currentEpisode_Num + 1);
+  } else {
+    // Check first episode of next season
+    const nextSeasonCheck = await fetch(
+      `${videoRootSRC}/season_${currentSeason_Num + 1}/ep_1/information.json`,
+    );
+    if (nextSeasonCheck.ok) {
+      await SwitchEpisode(currentSeason_Num + 1, 1);
+    }
+  }
 }
 (window as any).NextEpisode = NextEpisode;
 
 /**
- * UI DATA WRITER
+ * HELPERS
  */
+async function fetchJson(url: string) {
+  try {
+    const r = await fetch(url);
+    return r.ok ? await r.json() : null;
+  } catch {
+    return null;
+  }
+}
+
 function LoadVideoData(
-  TitleData: string,
-  EpisodeData: string,
-  DescData: string,
-  UploaderData: string,
-  ViewData: string,
-  UploadDateData: string,
-  uploaderIMG: string,
+  Title: string,
+  EpisodeName: string,
+  Desc: string,
+  UploaderStudio: string,
+  Uploader: string,
+  Img: string,
 ) {
-  const elements = {
-    vTitle: document.getElementById("videoTitle"),
-    pTitle: document.getElementById("pageVideoTitle"),
-    pDesc: document.getElementById("pageVideoDesc"),
-    vUploader: document.getElementById("videoUploader"),
-    pUploader: document.getElementById("pageVideoUploader"),
+  const els = {
+    vTitle: document.getElementById("videoTitle") as HTMLParagraphElement,
+    pTitle: document.getElementById("pageVideoTitle") as HTMLParagraphElement,
+    pDesc: document.getElementById("pageVideoDesc") as HTMLParagraphElement,
+    pStudioUploader: document.getElementById(
+      "pageVideoStudio",
+    ) as HTMLParagraphElement,
+    pUploader: document.getElementById(
+      "pageVideoUploader",
+    ) as HTMLParagraphElement,
     pImg: document.getElementById("pageVideoUploaderIMG") as HTMLImageElement,
-    pViews: document.getElementById("pageVideoViews"),
-    pDate: document.getElementById("pageVideoUpload"),
+    pViews: document.getElementById("pageVideoViews") as HTMLParagraphElement,
+    pDate: document.getElementById("pageVideoUpload") as HTMLParagraphElement,
   };
-  if (elements.vTitle)
-    elements.vTitle.innerHTML = `${TitleData} - ${EpisodeData}`;
-  if (elements.pTitle)
-    elements.pTitle.innerHTML = `${TitleData} - ${EpisodeData}`;
-  if (elements.pDesc) elements.pDesc.innerHTML = DescData;
-  if (elements.vUploader) elements.vUploader.innerHTML = UploaderData;
-  if (elements.pUploader) elements.pUploader.innerHTML = UploaderData;
-  if (elements.pImg) elements.pImg.src = uploaderIMG;
-  if (elements.pViews) elements.pViews.innerHTML = `${ViewData} Views`;
-  if (elements.pDate) elements.pDate.innerHTML = UploadDateData;
-}
-
-/**
- * FORMATTERS
- */
-function formatSecondsToTimestamp(s: number): string {
-  const m = Math.floor(s / 60);
-  const sec = Math.floor(s % 60);
-  return `${m}:${sec < 10 ? "0" : ""}${sec}`;
-}
-
-function formatSecondsToReadable(s: number): string {
-  const h = Math.floor(s / 3600);
-  const m = Math.floor((s % 3600) / 60);
-  return h > 0 ? `${h}h ${m}m` : `${m}m`;
-}
-
-function getVideoDurationWithTimeout(
-  url: string,
-  timeout: number,
-): Promise<number> {
-  return new Promise((resolve) => {
-    const video = document.createElement("video");
-    video.preload = "metadata";
-    video.muted = true;
-    const timer = setTimeout(() => {
-      video.src = "";
-      resolve(0);
-      video.remove();
-    }, timeout);
-    video.onloadedmetadata = () => {
-      clearTimeout(timer);
-      resolve(video.duration);
-      video.remove();
-    };
-    video.onerror = () => {
-      clearTimeout(timer);
-      resolve(0);
-      video.remove();
-    };
-    video.src = url;
-  });
+  const fullTitle = `${Title} - ${EpisodeName}`;
+  if (els.vTitle) els.vTitle.innerText = fullTitle;
+  if (els.pTitle) els.pTitle.innerText = fullTitle;
+  if (els.pDesc) els.pDesc.innerText = Desc;
+  if (els.pStudioUploader)
+    els.pStudioUploader.innerText = "By " + UploaderStudio;
+  if (els.pUploader) els.pUploader.innerText = "Uploaded by @" + Uploader;
+  if (els.pImg) els.pImg.src = Img;
 }

@@ -7,7 +7,7 @@ const { givenID } = Astro.props;
 
 <button
   id={givenID}
-  class="relative flex flex-row items-center justify-start w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize"
+  class="relative flex flex-row items-center justify-start w-fit h-fit gap-2 rounded-3xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize"
   onclick="switchTheFilter(this)"
 >
   <slot />
@@ -18,9 +18,9 @@ const { givenID } = Astro.props;
     if (!b) return console.warn("Buttons doesn't exist.");
 
     const activeButtonClass =
-      "relative flex flex-row items-center justify-start w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary bg-Light_Border_Primary dark:bg-Dark_Border_Primary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
+      "relative flex flex-row items-center justify-start w-fit h-fit gap-2 rounded-3xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Primary dark:text-Dark_Text_Primary bg-Light_Border_Primary dark:bg-Dark_Border_Primary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
     const deactiveButtonClass =
-      "relative flex flex-row items-center justify-start w-fit h-fit gap-2 rounded-xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
+      "relative flex flex-row items-center justify-start w-fit h-fit gap-2 rounded-3xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-Light_Text_Secondary dark:text-Dark_Text_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
 
     if (b.className === activeButtonClass) b.className = deactiveButtonClass;
     else b.className = activeButtonClass;

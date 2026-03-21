@@ -1,5 +1,6 @@
 {
   "version": "v0.1.0",
+  "commit": "b98afe4",
   "date": "Mar 02, 2026",
   "description": "Major update introducing playlist functionality, NSFW filtration, dedicated info pages, and significant UI/UX overhauls across the platform.",
   "logs": [
