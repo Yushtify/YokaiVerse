@@ -1,6 +1,6 @@
 {
   "version": "v0.2.0",
-  "commit": "34805e",
+  "commit": "6abc145",
   "date": "March 21, 2026",
   "description": "A complete architectural overhaul introducing a high-performance modular system. By leveraging a TypeScript-driven core, near-instantaneous metadata fetching and seamless navigation across multi-season libraries are achieved, regardless of scale.",
   "logs": [
