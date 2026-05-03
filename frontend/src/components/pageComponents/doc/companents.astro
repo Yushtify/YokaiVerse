@@ -1,0 +1,103 @@
+---
+import AnumericList from "../../custom/markdownElements/AnumericList.astro";
+import HeaderText from "../../custom/markdownElements/headerText.astro";
+import NumericList from "../../custom/markdownElements/NumericList.astro";
+import Layout from "../../pageContent_Wrappers/default.astro";
+
+import CardLink from "../../custom/links/cardLink.astro";
+
+import Hero from "./hero.astro";
+import Lister from "../public/nonTemplateLister.astro";
+---
+
+<Layout>
+  <Hero />
+
+  <Lister
+    givenSVG="policy"
+    givenTitle="Policies"
+    titleData="doc.lists.policies.header"
+    givenDesc="This List includes various site policies."
+    descData="doc.lists.policies.desc"
+  >
+    <CardLink
+      givenID="terms_Link"
+      givenHREF="/doc/terms"
+      givenGoogleSymbol="policy"
+      givenTitle="Terms Of Usage"
+      titleData="doc.lists.policies.content.terms.header"
+      givenDesc="Learn how we protect your rights and what it means to stay completely anonymous with us. <3"
+      descData="doc.lists.policies.content.terms.desc"
+    />
+    <CardLink
+      givenID="privacy_Link"
+      givenHREF="/doc/privacy"
+      givenGoogleSymbol="encrypted"
+      givenTitle="Privacy Policy"
+      titleData="doc.lists.policies.content.privacy.header"
+      givenDesc="Discover how we safeguard your data and get a transparent look at what's happening behind the scenes."
+      descData="doc.lists.policies.content.privacy.desc"
+    />
+    <CardLink
+      givenID="cookiePolicy_Link"
+      givenHREF="/doc/cookie-policy"
+      givenGoogleSymbol="cookie"
+      givenTitle="cookie policy"
+      titleData="doc.lists.policies.content.cookiePolicy.header"
+      givenDesc="Clear list of the functional cookies required to run this platform without compromising your anonymity or tracking your behavior."
+      descData="doc.lists.policies.content.cookiePolicy.desc"
+    />
+    <CardLink
+      givenID="copyright_Link"
+      givenHREF="/doc/copyright"
+      givenGoogleSymbol="copyright"
+      givenTitle="copyright policy"
+      titleData="doc.lists.policies.content.copyrightPolicy.header"
+      givenDesc="A guide on how we respect creators' rights and our legal framework for managing manga and anime metadata."
+      descData="doc.lists.policies.content.copyrightPolicy.desc"
+    />
+    <CardLink
+      givenID="copyright_Link"
+      givenHREF="/doc/license"
+      givenGoogleSymbol="license"
+      givenTitle="Open Source License"
+      titleData="doc.lists.policies.content.openSourceLicense.header"
+      givenDesc="Open Source & AGPLv3 Compliant: Transparent metadata management and legal integrity for our community."
+      descData="doc.lists.policies.content.openSourceLicense.desc"
+    />
+  </Lister>
+
+  <Lister
+    givenSVG="news"
+    givenTitle="News"
+    titleData="doc.lists.news.header"
+    givenDesc="Curious about what’s cooking? Track our evolution, latest updates, and every little tweak we've made to YokaiVerse."
+    descData="doc.lists.news.desc"
+  >
+    <CardLink
+      givenID="blog_Link"
+      givenHREF="/blog"
+      givenGoogleSymbol="post"
+      givenTitle="blog"
+      titleData=""
+      givenDesc="See da blog."
+      descData=""
+    />
+    <CardLink
+      givenID="changeLog_Link"
+      givenHREF="/changelog"
+      givenGoogleSymbol="news"
+      givenTitle="What's New?"
+      titleData=""
+      givenDesc="See what has changed in recent public releases."
+    />
+    <CardLink
+      givenID="roadmap_Link"
+      givenHREF="/roadmap"
+      givenGoogleSymbol="done_all"
+      givenTitle="future plans"
+      titleData=""
+      givenDesc="Check out our roadmap and see the exciting features we have planned for YokaiVerse."
+    />
+  </Lister>
+</Layout>

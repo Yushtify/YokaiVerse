@@ -1,0 +1,152 @@
+---
+import HorizontalFiller from "../../fillers/horizontal.astro";
+import Button from "../buttons/Button.astro";
+import CustomSlider from "../customSlider.astro";
+---
+
+<!-- Controls -->
+<div
+  id="videoControls"
+  onmouseenter="enable_VideoControls()"
+  class="absolute bottom-0 flex flex-col items-start justify-start w-full h-fit p-2 gap-4 text-[min(7vw,1rem)] text-LT_Primary dark:text-L_Primary opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out cursor-default z-2"
+>
+  <div
+    class="hidden max-sm:flex flex-row items-center justify-start gap-2 min-w-fit h-fit p-2 rounded-full bg-L_Secondary/64 dark:bg-D_Secondary/64 backdrop-blur-3xl overflow-hidden"
+  >
+    <!-- Time stamp text secondary, showing time of video -->
+    <div
+      class="flex flex-row items-center justify-center min-w-fit h-full p-2 rounded-full hover:bg-L_Secondary_Hover hover:dark:bg-D_Secondary_Hover hover:font-semibold transition-colors duration-300 ease-in-out"
+    >
+      <p id="timeStamp_Second">
+        <span id="current_TimeStamp_Second">00:00</span>
+        <span
+          id="duration_TimeStamp_Second"
+          class="text-[min(5vw,0.8rem)] text-LT_Secondary dark:text-DT_Secondary"
+        >
+          / 00:00</span
+        >
+      </p>
+    </div>
+  </div>
+
+  <!-- Time bar -->
+  <div
+    onmouseenter="sliderEnter('timeStamp_Slider')"
+    onmouseleave="sliderLeave('timeStamp_Slider')"
+    class="flex flex-row items-center justify-center w-full h-fit px-2"
+  >
+    <CustomSlider
+      givenID="timeStamp_Slider"
+      givenOnInput="updateCurrentTime(value)"
+      givenWidth="w-full"
+      givenMin="0"
+      givenMax="1"
+      givenValue="0"
+      givenStep="0.001"
+    />
+  </div>
+
+  <div class="flex flex-row items-start justify-start w-full h-fit gap-4">
+    <div
+      class="flex flex-row items-center justify-start gap-2 min-w-fit h-fit p-2 pr-4 rounded-full bg-L_Secondary/64 dark:bg-D_Secondary/64 backdrop-blur-3xl overflow-hidden"
+    >
+      <!-- Volume button to mute / unmute -->
+
+      <Button
+        givenButtonID="volumeButton"
+        givenButtonTransparency={true}
+        givenButtonAction="muteVideo('videoPlayer')"
+        givenButtonSVG="volume_up"
+        givenButtonSVGSize="!text-[min(7vw,1.1rem)]"
+        givenButtonSVGFill={true}
+      />
+      <!-- Volume slider -->
+      <CustomSlider
+        givenID="volumeSlider"
+        givenOnInput="updateVolumeSlider(this.value, 'videoPlayer', this.value)"
+        givenWidth="w-18"
+        givenMin="0"
+        givenMax="1"
+        givenValue="1"
+        givenStep="0.05"
+      />
+    </div>
+
+    <div
+      class="flex flex-row items-center justify-start gap-2 min-w-fit h-fit p-2 rounded-full bg-L_Secondary/64 dark:bg-D_Secondary/64 backdrop-blur-3xl overflow-hidden"
+    >
+      <!-- Pause button to pause video -->
+      <Button
+        givenButtonID="pauseButton_TimeBar"
+        givenButtonTransparency={true}
+        givenButtonAction="pauseVideo('videoPlayer')"
+        givenButtonSVG="pause"
+        givenButtonSVGSize="!text-[min(7vw,1.1rem)]"
+        givenButtonSVGFill={true}
+        tooltipDescTrans="tooltip.videoPlayer.videoControls.playPause_Button"
+      />
+
+      <!-- Time stamp text, showing time of video -->
+      <div
+        class="hidden sm:flex flex-row items-center justify-center min-w-fit h-full p-1 px-4 rounded-full hover:bg-Accent hover:font-semibold transition-colors duration-300 ease-in-out"
+      >
+        <p id="timeStamp">
+          <span id="current_TimeStamp">00:00</span>
+          <span
+            id="duration_TimeStamp"
+            class="text-[min(5vw,0.8rem)] text-LT_Secondary dark:text-DT_Secondary"
+          >
+            / 00:00</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <HorizontalFiller />
+
+    <div
+      class="flex flex-row items-center justify-start gap-2 min-w-fit h-fit p-2 rounded-full bg-L_Secondary/64 dark:bg-D_Secondary/64 backdrop-blur-3xl"
+    >
+      <Button
+        givenButtonID="videoDownload_Button"
+        givenButtonTransparency={true}
+        givenButtonAction="downloadVideo('videoPlayer')"
+        givenButtonSVG="download"
+        givenButtonSVGSize="!text-[min(7vw,1.1rem)]"
+        givenButtonSVGFill={true}
+        tooltipDescTrans="tooltip.videoPlayer.videoControls.download_Button"
+      />
+
+      <Button
+        givenButtonID="videoCinemaLight_Button"
+        givenButtonTransparency={true}
+        givenButtonAction="toggleCinemaLights('videoPlayer')"
+        givenButtonSVG="cinematic_blur"
+        givenButtonSVGSize="!text-[min(7vw,1.1rem)]"
+        givenButtonSVGFill={true}
+        tooltipTitleTrans="tooltip.videoPlayer.videoControls.cinemaLights_Button.header"
+        tooltipDescTrans="tooltip.videoPlayer.videoControls.cinemaLights_Button.desc"
+      />
+
+      <Button
+        givenButtonID="videoLoop_Button"
+        givenButtonTransparency={true}
+        givenButtonAction="loopVideo('videoPlayer')"
+        givenButtonSVG="repeat"
+        givenButtonSVGSize="!text-[min(7vw,1.1rem)]"
+        givenButtonSVGFill={true}
+        tooltipDescTrans="tooltip.videoPlayer.videoControls.loop_Button"
+      />
+
+      <Button
+        givenButtonID="fullscreen_Button"
+        givenButtonTransparency={true}
+        givenButtonAction="resizeVideo('videoPlayer_Container')"
+        givenButtonSVG="expand_content"
+        givenButtonSVGSize="!text-[min(7vw,1.1rem)]"
+        givenButtonSVGFill={true}
+        tooltipDescTrans="tooltip.videoPlayer.videoControls.fullScreen_Button"
+      />
+    </div>
+  </div>
+</div>

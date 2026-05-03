@@ -1,0 +1,41 @@
+---
+import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
+
+interface Props {
+  givenID: string;
+  givenSVG: string;
+  givenTitle: string;
+  titleData: string;
+  givenDesc: string;
+  descData: string;
+}
+
+const { givenID, givenSVG, givenTitle, titleData, givenDesc, descData } =
+  Astro.props;
+---
+
+<div
+  class="group flex flex-col items-center justify-start p-4 rounded-3xl w-full min-h-fit h-full gap-4 bg-L_Secondary dark:bg-D_Secondary hover:bg-L_Secondary_Hover dark:hover:bg-D_Secondary_Hover border-2 border-transparent hover:border-LB_Primary dark:hover:border-DB_Primary scale-102 shadow-2xl shadow-transparent hover:shadow-LB_Primary/64 dark:hover:shadow-DB_Primary/64 hover:-translate-y-2 z-0 hover:z-1 transition-colors-transform duration-250 ease-in-out"
+>
+  <div class="flex flex-row items-center justify-start gap-4 w-full h-fit">
+    <div
+      class="flex flex-row items-center justify-center rounded-full p-3 bg-LB_Primary dark:bg-DB_Primary group-hover:bg-Accent transition-colors duration-250 ease-in-out"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name={givenSVG}
+        SvgSize="text-[min(6vw,1.5rem)]"
+        SVG_Style="group-hover:text-LT_Inverted! dark:group-hover:text-DT_Inverted! transition-colors duration-250 ease-in-out"
+        isFilled={true}
+      />
+    </div>
+    <p
+      data-i18n={titleData}
+      class="flex w-full h-fit text-wrap font-semibold text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary uppercase"
+    >
+      {givenTitle}
+    </p>
+  </div>
+  <p data-i18n={descData} class="text-LT_Secondary dark:text-DT_Secondary">
+    {givenDesc}
+  </p>
+</div>

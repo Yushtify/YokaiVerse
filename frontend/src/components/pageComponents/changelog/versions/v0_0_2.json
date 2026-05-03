@@ -1,0 +1,24 @@
+{
+  "version": "v0.0.2",
+  "commit": "",
+  "date": "Nov 11, 2025",
+  "description": "Expanded the core page structure and introduced layout improvements to support a more complete browsing experience.",
+  "logs": [
+    { "type": "Added", "desc": "The watch page." },
+    { "type": "Added", "desc": "The marketplace page." },
+    { "type": "Added", "desc": "The update log page." },
+    {
+      "type": "Added",
+      "desc": "Automatic collapsing for update entries, excluding the latest release."
+    },
+    {
+      "type": "Changed",
+      "desc": "The home page layout and content structure."
+    },
+    { "type": "Changed", "desc": "The folder layout for '/video'." },
+    {
+      "type": "Changed",
+      "desc": "Several layouts to better support server-side rendering through Astro."
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+---
+import Button from "../buttons/Button.astro";
+import Input from "./input.astro";
+---
+
+<div
+  id="searchBar_Container"
+  class="fixed top-0 left-0 hidden flex-col items-center justify-center p-8 gap-4 w-full h-full bg-transparent backdrop-blur-md text-[min(7vw,1rem)] text-center text-LT_Primary dark:text-DT_Primary opacity-0 z-9998"
+>
+  <Button
+    givenButtonID="closeSearch_Button"
+    givenButtonAction="startSearching()"
+    givenButtonSVG="close"
+    givenButtonSVGSize="text-[min(6vw,2rem)]"
+    givenButtonCustomClass=""
+  />
+  <Input />
+</div>
+
+<script>
+  function SearchBarManager() {
+    return {
+      getElement(): HTMLElement | null {
+        return document.getElementById("searchBar_Container");
+      },
+
+      show(): void {
+        const container = this.getElement();
+        if (!container) return;
+
+        // Switch display from hidden to flex, then fade in.
+        container.classList.replace("hidden", "flex");
+
+        requestAnimationFrame(() => {
+          container.style.transition = "opacity 0.3s ease";
+          container.style.opacity = "1";
+        });
+      },
+
+      hide(): void {
+        const container = this.getElement();
+        if (!container) return;
+
+        container.style.transition = "opacity 0.3s ease";
+        container.style.opacity = "0";
+
+        // Wait for the fade-out to finish before removing from layout.
+        const handleEnd = (event: TransitionEvent) => {
+          if (event.propertyName === "opacity") {
+            container.classList.replace("flex", "hidden");
+            container.removeEventListener("transitionend", handleEnd);
+          }
+        };
+
+        container.addEventListener("transitionend", handleEnd);
+      },
+
+      // Toggles the search bar — shows if hidden, hides if visible.
+      toggle(): void {
+        const container = this.getElement();
+        if (!container) return;
+
+        if (container.classList.contains("hidden")) {
+          this.show();
+        } else {
+          this.hide();
+        }
+      },
+    };
+  }
+
+  // Attach the manager to window so it's accessible from anywhere.
+  (window as any).SearchBarManager = SearchBarManager();
+
+  // Close the search bar when the user presses Escape.
+  document.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      (window as any).SearchBarManager?.hide();
+    }
+  });
+
+  // startSearching is the existing onclick trigger on the container itself.
+  // It delegates to the manager's toggle so the logic stays in one place.
+  function startSearching() {
+    (window as any).SearchBarManager.toggle();
+  }
+
+  (window as any).startSearching = startSearching;
+</script>

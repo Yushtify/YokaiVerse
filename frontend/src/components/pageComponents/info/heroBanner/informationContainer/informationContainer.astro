@@ -1,0 +1,13 @@
+---
+import CategoryList from "../categoryList.astro";
+import BottomBar from "./bottomBar.astro";
+---
+
+<!-- Information Container + Gradient -->
+<div
+  class="absolute top-0 left-0 flex flex-col items-center justify-end gap-1 p-4 w-full h-full bg-gradient-to-t from-L_Primary to-transparent dark:from-D_Primary dark:to-transparent z-2"
+>
+  <!-- Bottom Bar -->
+  <BottomBar />
+  <CategoryList />
+</div>

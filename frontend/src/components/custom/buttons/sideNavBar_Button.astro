@@ -1,0 +1,27 @@
+---
+const currentPath = Astro.url.pathname;
+
+const InactiveTab =
+  "flex flex-col lg:flex-row items-center justify-center lg:justify-start w-full h-fit gap-2 rounded-3xl p-4 hover:font-semibold text-[min(7vw,1rem)] !text-LT_Secondary/64 dark:!text-DT_Secondary/64 hover:!text-Accent hover:bg-L_Secondary_Hover dark:hover:bg-D_Secondary_Hover transition-colors duration-300 ease-in-out overflow-hidden";
+const ActiveTab =
+  "flex flex-col lg:flex-row items-center justify-center lg:justify-start w-full h-fit gap-2 rounded-3xl p-4 font-semibold text-[min(7vw,1rem)] !text-Accent hover:!text-Accent bg-L_Primary dark:bg-D_Primary hover:bg-L_Secondary_Hover dark:hover:bg-D_Secondary_Hover border-2 border-LB_Secondary dark:border-DB_Secondary transition-colors duration-300 ease-in-out overflow-hidden";
+
+const InactiveSVG = "material-symbols-rounded";
+const ActiveSVG = "material-symbols-rounded icon-fill";
+
+const isActive = (path: string) => currentPath === path;
+
+interface Props {
+  givenSVG: string;
+  givenHref: string;
+  givenTitle: string;
+}
+const { givenSVG, givenHref, givenTitle } = Astro.props;
+---
+
+<a href={givenHref} class={isActive(givenHref) ? ActiveTab : InactiveTab}>
+  <span translate="no" class={isActive(givenHref) ? ActiveSVG : InactiveSVG}
+    >{givenSVG}</span
+  >
+  <p class="w-full h-fit text-center lg:text-left">{givenTitle}</p>
+</a>

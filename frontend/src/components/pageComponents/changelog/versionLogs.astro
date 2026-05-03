@@ -1,0 +1,263 @@
+---
+import VersionTemplate from "./versionTemplate.astro";
+---
+
+<div
+  id="versionLogContainer"
+  class="flex flex-col items-center jusitfy-start gap-8 w-full h-fit p-2 md:p-4 lg:p-8 xl:p-12 xl:px-48"
+>
+  <VersionTemplate />
+</div>
+
+<script>
+  // --- TYPE DECLARATIONS ---
+  interface LoadingManagerInterface {
+    show: (message?: string) => void;
+    hide: () => void;
+    setError: (errorMessage: string) => void;
+  }
+
+  declare const LoadingManager: LoadingManagerInterface;
+
+  // Dynamic version crawler with LoadingManager integration
+  async function loadAllVersions() {
+    const container = document.getElementById("versionLogContainer");
+    const counterDisplay = document.getElementById("UpdateCounter");
+    const latestUpdateDisplay = document.getElementById("latestUpdate_Text");
+    if (!container) return;
+
+    LoadingManager.show("Fetching Version Logs...");
+
+    let major = 0;
+    let minor = 0;
+    let patch = 0;
+    let active = true;
+    let anyVersionFound = false;
+    let versionCount = 0; // Initialize counter
+    let latestVersionDate = "Unknown"; // Track latest version date
+
+    const logTypeConfig: Record<
+      string,
+      { bg: string; text: string; border: string; label: string }
+    > = {
+      Added: {
+        bg: "bg-green-500/20",
+        text: "text-green-400",
+        border: "border-green-500/30",
+        label: "Added",
+      },
+      Changed: {
+        bg: "bg-amber-500/20",
+        text: "text-amber-400",
+        border: "border-amber-500/30",
+        label: "Changed",
+      },
+      Fixed: {
+        bg: "bg-sky-500/20",
+        text: "text-sky-400",
+        border: "border-sky-500/30",
+        label: "Fixed",
+      },
+      Removed: {
+        bg: "bg-red-500/20",
+        text: "text-red-400",
+        border: "border-red-500/30",
+        label: "Removed",
+      },
+      Experimental: {
+        bg: "bg-Accent/10",
+        text: "text-Accent",
+        border: "border-Accent/20",
+        label: "Experimental",
+      },
+      Misc: {
+        bg: "bg-gray-500/20",
+        text: "text-gray-400",
+        border: "border-gray-500/30",
+        label: "Misc",
+      },
+      Known_Bug: {
+        bg: "bg-rose-700/20",
+        text: "text-rose-500",
+        border: "border-rose-700/30",
+        label: "Known Bug",
+      },
+      Deprecated: {
+        bg: "bg-orange-500/20",
+        text: "text-orange-400",
+        border: "border-orange-500/30",
+        label: "Deprecated",
+      },
+      Security: {
+        bg: "bg-teal-500/20",
+        text: "text-teal-400",
+        border: "border-teal-500/30",
+        label: "Security",
+      },
+      Performance: {
+        bg: "bg-cyan-500/20",
+        text: "text-cyan-400",
+        border: "border-cyan-500/30",
+        label: "Performance",
+      },
+      Breaking: {
+        bg: "bg-fuchsia-600/20",
+        text: "text-fuchsia-500",
+        border: "border-fuchsia-600/30",
+        label: "Breaking",
+      },
+      Reverted: {
+        bg: "bg-slate-500/20",
+        text: "text-slate-400",
+        border: "border-slate-500/30",
+        label: "Reverted",
+      },
+    };
+
+    try {
+      while (active) {
+        const fileName = `v${major}_${minor}_${patch}`;
+        const filePath = `/src/components/pageComponents/changelog/versions/${fileName}.json`;
+
+        const response = await fetch(filePath);
+
+        if (response.ok) {
+          const data = await response.json();
+          renderVersionCard(data, container, logTypeConfig);
+
+          // Track the latest (first found) version's date
+          latestVersionDate = data.date;
+
+          anyVersionFound = true;
+          versionCount++; // Increment total found versions
+          patch++;
+        } else {
+          if (patch > 0) {
+            minor++;
+            patch = 0;
+          } else if (minor > 0) {
+            major++;
+            minor = 0;
+            patch = 0;
+          } else {
+            if (major === 0 && minor === 0 && patch === 0) {
+              minor = 1;
+            } else {
+              active = false;
+            }
+          }
+        }
+
+        if (major > 10) active = false;
+      }
+
+      // Post-crawl UI Updates
+      if (!anyVersionFound) {
+        LoadingManager.setError("No version logs were found, try again later.");
+      } else {
+        // Update the counter HTML with the total count
+        if (counterDisplay) {
+          counterDisplay.innerHTML = versionCount.toString() + " updates";
+        }
+
+        // Update the latest update date
+        if (latestUpdateDisplay) {
+          latestUpdateDisplay.textContent = latestVersionDate;
+        }
+
+        LoadingManager.hide();
+      }
+    } catch (error: any) {
+      console.error("Crawl Error:", error);
+      LoadingManager.setError(
+        error.message || "Failed to load version history, try again later.",
+      );
+    }
+  }
+
+  /**
+   * Helper: Renders version cards from template
+   * Added dynamic ID assignment to the cloned card root.
+   */
+  function renderVersionCard(
+    data: any,
+    container: HTMLElement,
+    typeConfig: any,
+  ) {
+    const mainTemplate = document.getElementById(
+      "versionTemplate",
+    ) as HTMLTemplateElement;
+    if (!mainTemplate) return;
+
+    // Clone returns a DocumentFragment
+    const cardClone = mainTemplate.content.cloneNode(true) as DocumentFragment;
+
+    // Target the root element of the clone to set the dynamic ID
+    const cardRoot = cardClone.firstElementChild as HTMLElement;
+    if (cardRoot) {
+      // Format the version string to ensure it is a valid HTML ID (e.g., "version-v1_0_0")
+      const safeId = data.version.replace(/[^a-zA-Z0-9-_]/g, "_");
+      cardRoot.id = `version-${safeId}`;
+    }
+
+    // Query selectors work safely on the DocumentFragment
+    cardClone.querySelector("#versionTitle")!.textContent = data.version;
+    cardClone.querySelector("#versionDate")!.textContent = data.date;
+    cardClone.querySelector("#versionDescription")!.textContent =
+      data.description;
+    const detailsLink = cardClone.querySelector(
+      "#versionDetails_Link",
+    ) as HTMLAnchorElement;
+
+    if (data.commit && data.commit.trim() !== "") {
+      // If commit exists, link to GitHub
+      detailsLink.href =
+        "https://github.com/Yushtify/YokaiVerse/commit/" + data.commit;
+    } else {
+      // If commit is missing, redirect to custom 404
+      detailsLink.href = "/no-commit-found-for-this-version";
+    }
+
+    const detailTemplate = cardClone.querySelector(
+      "#versionDetail_Template",
+    ) as HTMLTemplateElement;
+    const logList = cardClone.querySelector("#logList")!;
+
+    if (detailTemplate && logList) {
+      logList.innerHTML = "";
+
+      data.logs.forEach((log: any) => {
+        const detailClone = detailTemplate.content.cloneNode(
+          true,
+        ) as DocumentFragment;
+
+        const chip = detailClone.querySelector(
+          "#versionDetail_TypeChip",
+        ) as HTMLElement;
+        const descElement = detailClone.querySelector(
+          "#versionDetail_Desc",
+        ) as HTMLElement;
+
+        if (chip) {
+          const config = typeConfig[log.type] || {
+            bg: "bg-gray-500/20",
+            text: "text-gray-400",
+            border: "border-gray-500/30",
+            label: log.type,
+          };
+          chip.className += ` ${config.bg} ${config.text} ${config.border}`;
+          chip.textContent = config.label;
+        }
+
+        if (descElement) {
+          descElement.textContent = log.desc;
+        }
+
+        logList.appendChild(detailClone);
+      });
+    }
+
+    container.prepend(cardClone);
+  }
+  document.addEventListener("DOMContentLoaded", loadAllVersions);
+</script>

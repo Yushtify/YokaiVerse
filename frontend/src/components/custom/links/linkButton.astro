@@ -1,0 +1,17 @@
+---
+interface Props {
+  givenID: string;
+  givenHREF: string;
+  dataTranslation?: string;
+}
+const { givenID, givenHREF, dataTranslation } = Astro.props;
+---
+
+<a
+  id={givenID}
+  data-i18n={dataTranslation}
+  href={givenHREF}
+  class="relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 text-nowrap text-left text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary hover:underline underline-offset-0 hover:underline-offset-4 hover:decoration-wavy hover:text-Accent transition-all duration-300 ease-in-out capitalize"
+>
+  <slot />
+</a>

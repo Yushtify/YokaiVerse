@@ -1,0 +1,62 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
+interface Props {
+  givenID: string;
+  givenHREF: string;
+  givenTitle: string;
+  titleData: string;
+  givenDesc?: string;
+  descData?: string;
+  givenGoogleSymbol: string;
+}
+const {
+  givenID,
+  givenHREF,
+  givenTitle,
+  titleData,
+  givenDesc,
+  descData,
+  givenGoogleSymbol,
+} = Astro.props;
+const isDescActive = givenDesc ? "inline" : "hidden";
+---
+
+<a
+  id={givenID}
+  href={givenHREF}
+  class="group flex flex-col items-center justify-start gap-4 min-w-fit w-full min-h-fit h-full p-4 rounded-3xl bg-L_Secondary dark:bg-D_Secondary hover:bg-L_Secondary_Hover hover:dark:bg-D_Secondary_Hover border-2 border-transparent hover:border-LB_Primary dark:hover:border-DB_Primary text-[min(6vw,0.8rem)] text-LT_Secondary dark:text-DT_Secondary shadow-2xl shadow-transparent hover:shadow-LB_Primary/45 dark:hover:shadow-DB_Primary/45 hover:-translate-y-2 hover:scale-102 transition-colors-transform duration-200 ease-in-out"
+>
+  <div
+    class="flex flex-row items-center justify-start gap-2 w-full h-fit font-semibold"
+  >
+    <div
+      class="flex flex-row items-center justify-center rounded-3xl p-2 w-fit h-auto aspect-square bg-LB_Primary dark:bg-DB_Primary group-hover:bg-LB_Secondary group-hover:dark:bg-DB_Secondary"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name={givenGoogleSymbol}
+        SvgSize="text-[min(6vw,1.5rem)]! "
+        SVG_Style="group-hover:opacity-0! transition-opacity duration-200 ease-in-out"
+        isFilled={true}
+      />
+      <GoogleMaterialSymbol
+        SVG_Name="arrow_right"
+        SvgSize="text-[min(6vw,1.5rem)]!"
+        SVG_Style="absolute top-[50% 50%] left-[50% 50%] opacity-0! group-hover:text-Accent group-hover:opacity-100! transition-opacity duration-200 ease-in-out"
+        isFilled={true}
+      />
+    </div>
+    <p
+      data-i18n={titleData}
+      class="w-full font-semibold text-[min(6vw,1.2rem)] group-hover:text-Accent capitalize"
+    >
+      {givenTitle}
+    </p>
+  </div>
+  <p
+    data-i18n={descData}
+    class={`w-full text-LT_Secondary dark:text-DT_Secondary group-hover:text-LT_Primary group-hover:dark:text-DT_Primary ${isDescActive}`}
+  >
+    {givenDesc}
+  </p>
+</a>

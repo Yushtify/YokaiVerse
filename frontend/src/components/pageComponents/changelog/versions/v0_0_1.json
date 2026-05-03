@@ -1,0 +1,16 @@
+{
+  "version": "v0.0.1",
+  "commit": "",
+  "date": "December 1th 2025",
+  "description": "First public release of YokaiVerse, introducing the earliest core pages and a small set of foundational features.",
+  "logs": [
+    { "type": "Added", "desc": "The 404 error page." },
+    { "type": "Added", "desc": "The landing page." },
+    { "type": "Added", "desc": "The home page." },
+    {
+      "type": "Misc",
+      "desc": "Landing page slogan easter eggs. For more details, see the commit history and update log on GitHub."
+    },
+    { "type": "Misc", "desc": "A hidden Konami Code secret." }
+  ]
+}

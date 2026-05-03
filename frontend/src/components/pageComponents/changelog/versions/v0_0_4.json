@@ -1,0 +1,65 @@
+{
+  "version": "v0.0.4",
+  "commit": "24beb28",
+  "date": "Dec 28, 2025",
+  "description": "Introduced the Settings page, early NSFW filtering, video player metadata, and improved mobile support across the experience.",
+  "logs": [
+    {
+      "type": "Added",
+      "desc": "New icons for the landing page's What We Offer section."
+    },
+    { "type": "Added", "desc": "The Settings page." },
+    {
+      "type": "Added",
+      "desc": "Title and uploader metadata for the video player."
+    },
+    {
+      "type": "Added",
+      "desc": "A hard-coded NSFW thumbnail filter for selected videos."
+    },
+    { "type": "Added", "desc": "Fullscreen mode for the video player." },
+    {
+      "type": "Added",
+      "desc": "Visual feedback for controls in the custom video player."
+    },
+    { "type": "Added", "desc": "Timestamp previews for videos." },
+    {
+      "type": "Added",
+      "desc": "Improved mobile support across the interface."
+    },
+    {
+      "type": "Changed",
+      "desc": "Font Awesome 7.0 Free icons to Google Material Icons."
+    },
+    { "type": "Changed", "desc": "Several landing page slogans." },
+    {
+      "type": "Changed",
+      "desc": "Several video player element IDs for better consistency."
+    },
+    {
+      "type": "Changed",
+      "desc": "Repeated UI patterns into reusable components."
+    },
+    {
+      "type": "Changed",
+      "desc": "The landing page and its components for a more user-friendly experience."
+    },
+    {
+      "type": "Changed",
+      "desc": "The video folder structure so video roots are passed through a JSON file in '/public'."
+    },
+    {
+      "type": "Changed",
+      "desc": "The home page experience into the Featured section."
+    },
+    {
+      "type": "Removed",
+      "desc": "Videos from the landing page's What We Offer section."
+    },
+    { "type": "Removed", "desc": "The standalone homepage." },
+    {
+      "type": "Known_Bug",
+      "desc": "Automatic collapsing on the Update Log / What's New page is currently broken."
+    }
+  ]
+}

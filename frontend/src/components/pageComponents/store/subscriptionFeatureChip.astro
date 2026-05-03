@@ -1,0 +1,67 @@
+---
+import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
+
+interface Props {
+  givenGoogleSymbol: string;
+  givenTitle: string;
+  titleData?: string;
+  givenDesc?: string;
+  descData?: string;
+  givenStateSymbol?: string;
+  givenStateColor?: string;
+  givenInformation?: string;
+  informationData?: string;
+}
+
+const {
+  givenStateSymbol,
+  givenStateColor,
+  givenInformation,
+  informationData,
+  givenTitle,
+  titleData,
+  givenDesc,
+  descData,
+  givenGoogleSymbol,
+} = Astro.props;
+
+const isInformation = givenInformation ? "flex" : "hidden";
+const isDescActive = givenDesc ? "inline" : "hidden";
+---
+
+<div
+  class="group flex flex-col items-center justify-start w-full h-fit rounded-3xl p-4 gap-4 bg-L_Secondary dark:bg-D_Secondary hover:bg-L_Secondary_Hover dark:hover:bg-D_Secondary_Hover text-LT_Secondary dark:text-DT_Secondary hover:text-LT_Primary hover:dark:text-DT_Primary border border-LB_Primary dark:border-DB_Primary hover:border-LB_Secondary dark:hover:border-DB_Secondary text-pri shadow-2xl shadow-transparent hover:shadow-L_Secondary_Hover/48 dark:hover:shadow-D_Secondary_Hover/48 transition-colors duration-250 ease-in-out"
+>
+  <div
+    class="flex flex-row items-center justify-start gap-2 w-full h-fit font-semibold"
+  >
+    <div
+      class="flex flex-row items-center justify-center rounded-3xl p-2 w-fit h-auto aspect-square bg-LB_Primary dark:bg-DB_Primary group-hover:bg*LB_Secondary dark:group-hover:bg-DB_Secondary"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name={givenGoogleSymbol}
+        SvgSize="!text-[min(7vw,1.5rem)]"
+        isFilled={true}
+      />
+    </div>
+    <p data-i18n={titleData} class="w-full capitalize">{givenTitle}</p>
+    <GoogleMaterialSymbol
+      SVG_Name={givenStateSymbol}
+      SVG_Style={givenStateColor}
+      SvgSize="!text-[min(7vw,1.5rem)]"
+      isFilled={true}
+    />
+
+    <div
+      class={`flex-row items-center justify-center px-2 p-1 rounded-full w-fit h-fit bg-L_Primary dark:bg-D_Primary border border-LB_Primary dark:border-DB_Primary text-nowrap text-[min(7vw,0.8rem)] text-LT_Tertiary dark:text-DT_Tertiary group-hover:text-LT_Secondary dark:group-hover:text-DT_Secondary capitalize ${isInformation}`}
+    >
+      <p data-i18n={informationData}>{givenInformation}</p>
+    </div>
+  </div>
+  <p
+    data-i18n={descData}
+    class={`text-LT_Tertiary dark:text-DT_Tertiary group-hover:text-LT_Secondary dark:group-hover:text-DT_Secondary w-full ${isDescActive}`}
+  >
+    {givenDesc}
+  </p>
+</div>

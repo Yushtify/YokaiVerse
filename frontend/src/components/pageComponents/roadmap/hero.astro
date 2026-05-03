@@ -1,0 +1,35 @@
+---
+import HeroTemplate from "../../custom/heroTemplate.astro";
+import InformationBlobs from "../../custom/public/informationBlobs.astro";
+---
+
+<HeroTemplate
+  givenGoogleSymbol="route"
+  givenTitle="Roadmap"
+  titleData=""
+  givenDesc="A look at what we're building next. This roadmap outlines the features, improvements, and milestones we're working toward as YokaiVerse continues to grow. Priorities may shift as development evolves, but this reflects our current direction."
+  descData=""
+>
+  <div
+    class="flex flex-wrap flex-row items-center justify-start w-full h-fit gap-4 mt-4 py-4 text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+  >
+    <InformationBlobs
+      givenID="roadmapMilestoneCount_Container"
+      givenTextID="roadmapMilestoneCount"
+      givenTitle="Milestones"
+      titleData=""
+      givenSVG="flag"
+      givenInformation="Loading..."
+      informationData=""
+    />
+    <InformationBlobs
+      givenID=""
+      givenTextID=""
+      givenTitle="Status"
+      titleData=""
+      givenSVG="construction"
+      givenInformation="In Development"
+      informationData=""
+    />
+  </div>
+</HeroTemplate>

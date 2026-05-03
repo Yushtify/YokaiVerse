@@ -1,0 +1,109 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
+// FilterRounded.astro
+interface Props {
+  givenID: string;
+  groupName: string;
+  givenGoogleSymbol: string;
+  givenTitle: string;
+  givenDesc: string;
+  givenState: boolean;
+}
+
+const {
+  givenID,
+  groupName,
+  givenGoogleSymbol,
+  givenTitle,
+  givenDesc,
+  givenState,
+} = Astro.props;
+
+const activeClass =
+  "relative flex flex-col items-start justify-center w-full lg:min-w-fit lg:w-fit h-fit gap-6 rounded-3xl p-6 bg-L_Tertiary_Hover dark:bg-D_Tertiary_Hover hover:bg-LB_Primary hover:dark:bg-DB_Primary border-2 border-Accent hover:border-transparent outline-2 outline-transparent outline-offset-0 hover:outline-Accent hover:outline-offset-4 text-nowrap font-bold text-left text-[min(6vw,1.2rem)] text-LT_Primary dark:text-DT_Primary shadow-2xl shadow-Accent/15 scale-102 lg:scale-106 transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
+const deactiveClass =
+  "relative flex flex-col items-start justify-center w-full lg:min-w-fit lg:w-fit h-fit gap-6 rounded-3xl p-6 bg-L_Tertiary dark:bg-D_Tertiary hover:bg-LB_Primary hover:dark:bg-DB_Primary border-LB_Primary dark:border-DB_Primary outline-2 outline-transparent outline-offset-0 hover:outline-LB_Primary hover:dark:outline-DB_Primary hover:outline-offset-4 text-nowrap font-normal text-left text-[min(6vw,1.2rem)] text-LT_Primary dark:text-DT_Primary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
+
+// Başlangıç değerlerini state'e göre belirle
+const initialClass = givenState ? activeClass : deactiveClass;
+const initialBgClass = givenState
+  ? "bg-Accent"
+  : "bg-L_Quaternary dark:bg-D_Quaternary";
+const initialIconFill = givenState ? "icon-fill" : "";
+---
+
+<button
+  id={givenID}
+  data-group={groupName}
+  class={initialClass}
+  onclick="themeSwitchRadio(this)"
+>
+  <div
+    id="googleSymbol_BG"
+    class={`flex flex-row items-center justify-center p-3 rounded-full transition-colors duration-300 ${initialBgClass}`}
+  >
+    <GoogleMaterialSymbol
+      SVG_Name={givenGoogleSymbol}
+      SvgSize="!text-[min(7vw,2rem)]"
+    />
+  </div>
+  <div class="flex flex-col items-start justify-center gap-1">
+    <p>{givenTitle}</p>
+    <p
+      class="font-normal text-[min(6vw,0.8rem)] text-L_Secondary/64 dark:text-DT_Secondary/64 capitalize"
+    >
+      {givenDesc}
+    </p>
+  </div>
+</button>
+
+<script>
+  function themeSwitchRadio(b: HTMLButtonElement) {
+    if (!b) return;
+
+    const group = b.getAttribute("data-group");
+
+    // querySelector'ları class üzerinden yapıyoruz (. ile)
+    const svg = b.querySelector("#googleSymbol");
+    const svg_BG = b.querySelector("#googleSymbol_BG");
+
+    const activeClass =
+      "relative flex flex-col items-start justify-center w-full lg:min-w-fit lg:w-fit h-fit gap-6 rounded-3xl p-6 bg-L_Tertiary_Hover dark:bg-D_Tertiary_Hover hover:bg-LB_Primary hover:dark:bg-DB_Primary border-2 border-Accent hover:border-transparent outline-2 outline-transparent outline-offset-0 hover:outline-Accent hover:outline-offset-4 text-nowrap font-bold text-left text-[min(6vw,1.2rem)] text-LT_Primary dark:text-DT_Primary shadow-2xl shadow-Accent/15 scale-102 lg:scale-106 transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
+    const deactiveClass =
+      "relative flex flex-col items-start justify-center w-full lg:min-w-fit lg:w-fit h-fit gap-6 rounded-3xl p-6 bg-L_Tertiary dark:bg-D_Tertiary hover:bg-LB_Primary hover:dark:bg-DB_Primary border-LB_Primary dark:border-DB_Primary outline-2 outline-transparent outline-offset-0 hover:outline-LB_Primary hover:dark:outline-DB_Primary hover:outline-offset-4 text-nowrap font-normal text-left text-[min(6vw,1.2rem)] text-LT_Primary dark:text-DT_Primary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
+
+    // Yardımcı fonksiyon: BG renklerini temiz yönetmek için
+    const updateStyles = (btnEl: HTMLElement, isActive: boolean) => {
+      const s = btnEl.querySelector("#googleSymbol");
+      const bg = btnEl.querySelector("#googleSymbol_BG");
+
+      if (isActive) {
+        btnEl.className = activeClass;
+        s?.classList.add("icon-fill");
+        bg?.classList.remove("bg-L_Quaternary", "dark:bg-D_Quaternary");
+        bg?.classList.add("bg-Accent");
+      } else {
+        btnEl.className = deactiveClass;
+        s?.classList.remove("icon-fill");
+        bg?.classList.add("bg-L_Quaternary", "dark:bg-D_Quaternary");
+        bg?.classList.remove("bg-Accent");
+      }
+    };
+
+    if (group) {
+      const groupButtons = document.querySelectorAll(
+        `button[data-group="${group}"]`,
+      );
+      groupButtons.forEach((btn) => {
+        if (btn !== b) updateStyles(btn as HTMLElement, false);
+      });
+    }
+
+    // Toggle mantığı: Şu an uppercase ise deaktif et, değilse aktif et
+    const isCurrentlyActive = b.classList.contains("uppercase");
+    updateStyles(b, !isCurrentlyActive);
+  }
+
+  (window as any).themeSwitchRadio = themeSwitchRadio;
+</script>

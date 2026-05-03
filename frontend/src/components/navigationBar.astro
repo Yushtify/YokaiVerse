@@ -1,0 +1,59 @@
+---
+import NavigationLinkButton from "./custom/buttons/navigationHorizontal.astro";
+import NavigationHorizontalButton from "./custom/buttons/navigationHorizontalButton.astro";
+---
+
+<div
+  class="flex flex-row items-center justify-center sm:justify-between gap-4 w-full h-fit"
+>
+  <!-- Left Elements -->
+  <div class="flex flex-row items-center justify-center gap-4 min-w-fit h-fit">
+    <a
+      href="/"
+      class="flex flex-row items-center justify-center w-fit max-h-full h-full aspect-square gap-2 overflow-hidden"
+    >
+      <img
+        src="/logo.svg"
+        alt="YOKAIVERSE LOGO"
+        class="h-12 aspect-square dark:hidden"
+      />
+      <img
+        src="/logo_d.svg"
+        alt="YOKAIVERSE LOGO"
+        class="h-12 aspect-square hidden dark:inline"
+      />
+    </a>
+    <NavigationLinkButton
+      givenSVG="home"
+      givenHref="/home"
+      givenTitle="home"
+      givenData="Navbar.home"
+    />
+    <NavigationLinkButton
+      givenSVG="star"
+      givenHref="/featured"
+      givenTitle="featured"
+      givenData="Navbar.featured"
+    />
+    <NavigationLinkButton
+      givenSVG="explore"
+      givenHref="/discover"
+      givenTitle="discover"
+      givenData="Navbar.discover"
+    />
+  </div>
+  <!-- Middle Elements -->
+  <div
+    class="hidden md:flex flex-row items-center justify-start gap-4 w-full h-fit"
+  >
+    <NavigationHorizontalButton
+      givenAction="startSearching()"
+      givenSVG="search"
+      givenSVGSize="text-[min(6vw,1rem)]"
+    />
+  </div>
+  <div class="flex flex-row items-center justify-center gap-4 min-w-fit h-fit">
+    <!-- Right Elements -->
+    <NavigationLinkButton givenSVG="settings" givenHref="/settings" />
+  </div>
+</div>

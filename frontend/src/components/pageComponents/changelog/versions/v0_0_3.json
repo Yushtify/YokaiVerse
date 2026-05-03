@@ -1,0 +1,35 @@
+{
+  "version": "v0.0.3",
+  "commit": "",
+  "date": "Nov 22, 2025",
+  "description": "Introduced major custom video player improvements, expanded the video collection, and refined several UI details.",
+  "logs": [
+    { "type": "Added", "desc": "Three new videos to the collection." },
+    {
+      "type": "Added",
+      "desc": "A close option for the custom video player."
+    },
+    {
+      "type": "Added",
+      "desc": "Video seeking controls for the custom player, including 15-second forward and 5-second backward actions."
+    },
+    { "type": "Added", "desc": "Debug mode for the custom video player." },
+    {
+      "type": "Changed",
+      "desc": "The video player controls with refined buttons, a skip-video action, and a secondary pause button beside the timestamp."
+    },
+    {
+      "type": "Changed",
+      "desc": "The version number size on the What's New release log page."
+    },
+    { "type": "Changed", "desc": "The white theme color palette." },
+    {
+      "type": "Removed",
+      "desc": "The middle control buttons from the custom video player."
+    },
+    {
+      "type": "Removed",
+      "desc": "The skip-video option from the timestamp bar in the custom video player."
+    }
+  ]
+}

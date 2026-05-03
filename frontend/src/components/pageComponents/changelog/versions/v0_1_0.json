@@ -1,0 +1,124 @@
+{
+  "version": "v0.1.0",
+  "commit": "b98afe4",
+  "date": "Mar 02, 2026",
+  "description": "A major update introducing playlist support, NSFW filtering, dedicated information pages, and broad UI/UX improvements across the platform.",
+  "logs": [
+    {
+      "type": "Added",
+      "desc": "Playlist functionality for the video player, allowing users to move between episodes using previous and next arrows in the top-left corner."
+    },
+    {
+      "type": "Added",
+      "desc": "An NSFW filtering system for Anime, Movie, Webtoon, and Manga albums."
+    },
+    {
+      "type": "Added",
+      "desc": "Total duration display for albums, showing the combined length of all episodes. Initial calculation may take a few seconds."
+    },
+    {
+      "type": "Added",
+      "desc": "Dedicated information pages. Clicking cover art now opens a detailed info view instead of starting playback immediately, with playback available through the Episode 1 Play button."
+    },
+    {
+      "type": "Added",
+      "desc": "A TypeScript-based language handler with Turkish support, laying the groundwork for additional languages in future updates."
+    },
+    {
+      "type": "Added",
+      "desc": "A forum link in the navigation bar."
+    },
+    {
+      "type": "Added",
+      "desc": "Dynamic content loading for the Featured page, with NSFW content automatically filtered based on 18+ age restrictions or explicit tags."
+    },
+    {
+      "type": "Added",
+      "desc": "New TypeScript core modules: playerControls, videoPlayer, svgScripts, languageHandler, animeListerScript, sloganHandler, infoHandler, and playListHandler."
+    },
+    {
+      "type": "Added",
+      "desc": "'animeIDs.json' in the '/public' directory for centralized anime ID management."
+    },
+    {
+      "type": "Added",
+      "desc": "A standardized structure and design for version history and changelog entries."
+    },
+    {
+      "type": "Added",
+      "desc": "Dynamic fetching for version logs to keep changelog content easier to update."
+    },
+    {
+      "type": "Added",
+      "desc": "Store, What's New, and Forums links in the footer."
+    },
+    {
+      "type": "Added",
+      "desc": "A global search bar in the primary navigation bar."
+    },
+    {
+      "type": "Changed",
+      "desc": "The video player sliders for a sleeker look and smoother feel."
+    },
+    {
+      "type": "Changed",
+      "desc": "The Hero sections for the Featured, Settings, and Landing pages."
+    },
+    {
+      "type": "Changed",
+      "desc": "The Store page UI/UX for a cleaner and more polished experience."
+    },
+    {
+      "type": "Changed",
+      "desc": "Navbar behavior so it transitions to a bottom-docked layout on smaller screens for improved mobile accessibility."
+    },
+    {
+      "type": "Changed",
+      "desc": "The language switcher location from the navigation bar to the footer."
+    },
+    {
+      "type": "Changed",
+      "desc": "The side navbar default state so it starts collapsed, maximizing the available content area."
+    },
+    {
+      "type": "Changed",
+      "desc": "The dark mode background color to true black (#000000)."
+    },
+    {
+      "type": "Changed",
+      "desc": "The '/src/assets/animes/' directory for better asset organization."
+    },
+    {
+      "type": "Changed",
+      "desc": "Additional UI elements into reusable Astro components."
+    },
+    {
+      "type": "Changed",
+      "desc": "The footer with a more complete UI/UX update."
+    },
+    {
+      "type": "Changed",
+      "desc": "'Discover' to 'Featured' for algorithmically curated content. The new Discover page now serves as a high-performance filtering engine for advanced content search."
+    },
+    {
+      "type": "Fixed",
+      "desc": "Animation stuttering on the loading screen."
+    },
+    {
+      "type": "Removed",
+      "desc": "Deprecated content wrappers to streamline the DOM structure."
+    },
+    {
+      "type": "Removed",
+      "desc": "Store, What's New, and Forums links from the main navigation bar."
+    },
+    {
+      "type": "Removed",
+      "desc": "'videoIds.json' from the '/public' directory."
+    },
+    {
+      "type": "Experimental",
+      "desc": "A context-aware sidebar that changes based on the active page. This feature is currently in a demo and unstable state."
+    }
+  ]
+}

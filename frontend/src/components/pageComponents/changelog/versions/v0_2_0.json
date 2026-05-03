@@ -1,0 +1,68 @@
+{
+  "version": "v0.2.0",
+  "commit": "6abc145",
+  "date": "March 21, 2026",
+  "description": "A full architectural overhaul introducing a faster, more modular TypeScript-driven system. This release improves metadata loading, strengthens multi-season navigation, and makes the platform more scalable as content libraries grow.",
+  "logs": [
+    {
+      "type": "Performance",
+      "desc": "'infoHandler.ts' and 'playlistHandler.ts' migrated to the new modular architecture for significantly faster execution."
+    },
+    {
+      "type": "Added",
+      "desc": "A high-performance season switcher for both Info and Watch pages, supporting complex multi-season content structures."
+    },
+    {
+      "type": "Added",
+      "desc": "The new 'listAnime.ts' core engine for anime listings, season redirects, and dynamic video button generation with TypeScript-driven efficiency."
+    },
+    {
+      "type": "Added",
+      "desc": "Fail-safe metadata fallbacks, such as 'Unknown Uploader' and 'Unknown Studio', to prevent UI breakage when metadata is missing."
+    },
+    {
+      "type": "Added",
+      "desc": "Previous and Next navigation buttons for content listers, making browsing more streamlined."
+    },
+    {
+      "type": "Added",
+      "desc": "Turkish localization support for the footer component."
+    },
+    {
+      "type": "Added",
+      "desc": "[BETA] tags on the Discover and Featured pages to indicate ongoing performance optimization work."
+    },
+    {
+      "type": "Changed",
+      "desc": "Timestamp precision on information pages to include hours and seconds for more accurate duration display."
+    },
+    {
+      "type": "Changed",
+      "desc": "'gridVideoButton' so episode numbers remain visible, durations are hidden on smaller screens, and descriptions appear on hover for a cleaner UI."
+    },
+    {
+      "type": "Changed",
+      "desc": "Video player control buttons and the Anime Card architecture for a more polished, modern look."
+    },
+    {
+      "type": "Changed",
+      "desc": "The footer layout to be fully responsive across all device sizes."
+    },
+    {
+      "type": "Fixed",
+      "desc": "Incorrect routing in the footer's company links."
+    },
+    {
+      "type": "Removed",
+      "desc": "Automatic collapsing on the Update Log page to improve readability and scannability."
+    },
+    {
+      "type": "Removed",
+      "desc": "Redundant text from the navbar settings link for a cleaner, more minimal appearance."
+    },
+    {
+      "type": "Known_Bug",
+      "desc": "The 'Go To' navigation feature on the What's New page is currently unresponsive."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+---
+import CustomRadioButton from "./buttons/customRadioButton.astro";
+import VideoButton from "./buttons/gridEpisodeButton.astro";
+import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
+
+interface Props {
+  givenSVG?: string;
+  givenTitle: string;
+  titleData?: string;
+  givenDesc?: string;
+  givenWidth?: string;
+}
+const { givenSVG, givenTitle, titleData, givenDesc, givenWidth } = Astro.props;
+const isDescValid = givenDesc ? "flex" : "hidden";
+---
+
+<div
+  id="season_main_wrapper"
+  class={`flex flex-col items-start justify-center gap-4 h-fit ${givenWidth}`}
+>
+  <div class="flex flex-row items-center justify-start w-full h-fit gap-4">
+    <div
+      class="flex flex-col w-full h-fit items-start justify-center text-LT_Primary dark:text-DT_Primary"
+    >
+      <div class="flex flex-row items-center justify-start gap-2 w-full h-fit">
+        <GoogleMaterialSymbol
+          SVG_ID="listerSVG"
+          SVG_Name={givenSVG}
+          isFilled={true}
+          SvgSize="!text-[min(6vw,2rem)]"
+        />
+        <p
+          id="listerTitle"
+          data-i18n={titleData}
+          class="font-bold text-[min(6vw,2rem)] capitalize text-nowrap"
+        >
+          {givenTitle}
+        </p>
+      </div>
+      <p
+        id="listerDesc"
+        class={`w-full lg:max-w-[80%] xl:max-w-[65%] text-LT_Secondary dark:text-DT_Secondary ${isDescValid}`}
+      >
+        {givenDesc}
+      </p>
+    </div>
+
+    <div
+      id="seasonSwitch"
+      class="flex flex-row items-center justify-center gap-4 p-2 rounded-3xl w-fit h-fit border border-LB_Primary dark:border-DB_Primary"
+    >
+      <template id="SeasonRadioTemplate">
+        <CustomRadioButton
+          givenTitle="Season 1"
+          givenID="season_1"
+          groupName="seasonSwitchers"
+          givenState={true}
+          givenSVG="calendar_today"
+          givenSVGFill={true}
+        />
+      </template>
+    </div>
+  </div>
+
+  <template id="Season_Container_Template">
+    <div
+      id="Season1_Container"
+      class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start justify-start w-full h-fit gap-4"
+    >
+    </div>
+  </template>
+  <VideoButton
+    givenVideoID="murderDrones"
+    VideoRootSRC="/src/assets/animes/murderDrones/ep_1"
+    givenVideoTitle="Murder Drones - Episode 1: Plot"
+    givenVideoDesc="Desc of the specific Episode will appear at this section only three maximum lines"
+  />
+</div>

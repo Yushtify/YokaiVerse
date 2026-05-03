@@ -1,0 +1,55 @@
+---
+interface Props {
+  givenID: string;
+  givenTextID: string;
+  givenTitle?: string;
+  titleData?: string;
+  givenDesc: string;
+}
+
+const { givenID, givenTextID, givenTitle, titleData, givenDesc } = Astro.props;
+const isTitle = givenTitle ? "inline" : "hidden";
+---
+
+<div
+  id={givenID}
+  onclick={`expandDescription('${givenTextID}')`}
+  class="flex flex-col items-center justify-center gap-2 p-4 rounded-3xl w-full h-fit bg-L_Secondary dark:bg-D_Secondary text-[min(7vw,1rem)] border border-transparent hover:border-LB_Primary dark:hover:border-DB_Primary text-LT_Secondary dark:text-DT_Secondary hover:text-LT_Primary dark:hover:text-DT_Primary shadow-xl shadow-transparent hover:shadow-LB_Primary/32 dark:hover:shadow-DB_Primary/32 cursor-pointer transition-all duration-250 ease-in-out"
+>
+  <p
+    data-i18n={titleData}
+    class={`font-semibold text-[min(7vw,0.8rem)] w-full h-fit line-clamp-2 uppercase ${isTitle}`}
+  >
+    {givenTitle}
+  </p>
+  <p id={givenTextID} class="w-full h-fit line-clamp-2">
+    {givenDesc}
+  </p>
+</div>
+
+<script>
+  function expandDescription(ParagraphID?: string) {
+    let DescriptionP: HTMLParagraphElement; // Description Paragraph Element
+    if (ParagraphID) {
+      DescriptionP = document.getElementById(
+        ParagraphID,
+      ) as HTMLParagraphElement;
+    } else {
+      DescriptionP = document.getElementById(
+        "DescriptionP",
+      ) as HTMLParagraphElement;
+    }
+
+    // Checking if the Paragraph is valid.
+    if (!DescriptionP)
+      // The paragraph not valid.
+      return console.error("The Description Paragraph not found in the page!");
+    else {
+      // The Paragraph is valid
+      if (DescriptionP.classList.contains("line-clamp-2"))
+        DescriptionP.classList.replace("line-clamp-2", "line-clamp-none"); // Expand
+      else DescriptionP.classList.replace("line-clamp-none", "line-clamp-2"); // Collapse
+    }
+  }
+  (window as any).expandDescription = expandDescription;
+</script>

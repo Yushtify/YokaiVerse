@@ -1,0 +1,125 @@
+---
+import GoogleMaterialSymbol from "../../../custom/googleMaterial_Symbol.astro";
+
+interface Props {
+  givenDivID: string;
+  givenSVG?: string;
+  givenTitle: string;
+  titleData: string;
+  givenDesc?: string;
+  descData?: string;
+}
+
+const {
+  givenDivID,
+  givenSVG,
+
+  givenTitle,
+  titleData,
+  givenDesc,
+  descData,
+} = Astro.props;
+
+const isDesc = givenDesc ? "flex" : "hidden";
+const contentID = givenDivID + "_Content";
+---
+
+<div
+  id={givenDivID}
+  class="flex flex-col items-start justify-start w-full h-fit gap-4 text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+>
+  <div class="flex flex-row items-center justify-center gap-4 w-full h-fit">
+    <!-- Title and Desc -->
+    <button
+      data-collapse={givenDivID}
+      class="group relative flex flex-row items-center justify-center rounded-3xl p-6 w-fit h-auto aspect-square bg-L_Secondary dark:bg-D_Secondary border-2 border-LB_Primary dark:border-DB_Primary hover:bg-LB_Primary hover:dark:bg-DB_Primary transition-colors duration-250 ease-in-out cursor-n-resize"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name={givenSVG}
+        SvgSize="text-[min(6vw,2rem)]!"
+        SVG_Style="group-hover:opacity-0! transition-opacity duration-200 ease-in-out"
+        isFilled={true}
+      />
+      <GoogleMaterialSymbol
+        SVG_ID="googleSymbol_arrow"
+        SVG_Name="keyboard_arrow_up"
+        SvgSize="text-[min(6vw,2rem)]!"
+        SVG_Style="absolute top-[50% 50%] left-[50% 50%] opacity-0! group-hover:text-Accent group-hover:opacity-100! transition-opacity duration-200 ease-in-out"
+        isFilled={true}
+      />
+    </button>
+    <div class="flex flex-col items-start justify-center gap-1 w-full h-fit">
+      <p
+        data-i18n={titleData}
+        class="font-semibold text-[min(6vw,2rem)] capitalize"
+      >
+        {givenTitle}
+      </p>
+      <p
+        data-i18n={descData}
+        class={`text-LT_Secondary dark:text-DT_Secondary ${isDesc}`}
+      >
+        {givenDesc}
+      </p>
+    </div>
+  </div>
+
+  <div
+    id={contentID}
+    class="flex flex-col items-start justify-start w-full h-fit"
+  >
+    <slot />
+  </div>
+</div>
+
+<script>
+  function collapseSettingTab(button: HTMLButtonElement) {
+    const parentID = button.getAttribute("data-collapse");
+    if (!parentID)
+      return console.error(
+        "[CollapseSettingTab]: data-collapse attribute missing.",
+      );
+
+    const ContentDIV = document.getElementById(
+      parentID + "_Content",
+    ) as HTMLDivElement;
+    const SVG = button.querySelector("#googleSymbol_arrow") as HTMLSpanElement;
+
+    // Check if Content Div and SVG is valid
+    if (!ContentDIV || !SVG)
+      return console.error(
+        "[CollapseSettingTab]: Required elements not found.",
+      );
+
+    // Tweak values.
+    if (ContentDIV.classList.contains("flex")) {
+      ContentDIV.classList.replace("flex", "hidden");
+      button.classList.replace("cursor-n-resize", "cursor-s-resize");
+      SVG.innerHTML = "keyboard_arrow_down";
+    } else {
+      ContentDIV.classList.replace("hidden", "flex");
+      button.classList.replace("cursor-s-resize", "cursor-n-resize");
+      SVG.innerHTML = "keyboard_arrow_up";
+    }
+  }
+
+  function bindCollapseButtons() {
+    // Bind the onclick to everything that has data-collapse and their div in it.
+    const buttons = document.querySelectorAll<HTMLButtonElement>(
+      "button[data-collapse]",
+    );
+
+    buttons.forEach((btn) => {
+      // Guard against double-binding.
+      if (btn.dataset.collapseBound) return;
+      btn.dataset.collapseBound = "true";
+      btn.addEventListener("click", () => collapseSettingTab(btn));
+    });
+  }
+
+  // Re-bind for dynamically injected content.
+  // Loading is intentionally skipped here — re-binding after DOM mutations
+  // is nearly instant and does not need a visual overlay.
+  const observer = new MutationObserver(() => bindCollapseButtons());
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>

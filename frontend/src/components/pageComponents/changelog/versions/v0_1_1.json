@@ -1,0 +1,12 @@
+{
+  "version": "v0.1.1",
+  "commit": "34805e",
+  "date": "Mar 02, 2026",
+  "description": "A quick follow-up release for v0.1.0, focused on resolving a missing branding issue in the navigation bar.",
+  "logs": [
+    {
+      "type": "Fixed",
+      "desc": "An issue where the navigation bar was missing the brand element."
+    }
+  ]
+}

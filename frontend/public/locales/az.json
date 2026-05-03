@@ -1,0 +1,442 @@
+{
+  "scrollDown": "Aşağı Sürüşdür",
+
+  "tooltip": {
+    "footer": {
+      "languageSwitcher": "Vebsaytın dilini Azərbaycan dilindən istədiyiniz dilə dəyişin."
+    },
+    "videoPlayer": {
+      "topInfo": {
+        "nextEp_Button": {
+          "header": "Növbəti bölüm",
+          "desc": "Mövcuddursa, səhifəni yeniləmədən dərhal növbəti bölümə keçir."
+        },
+        "prevEp_Button": {
+          "header": "Əvvəlki bölüm",
+          "desc": "Mövcuddursa, səhifəni yeniləmədən dərhal əvvəlki bölümə keçir."
+        }
+      },
+      "videoControls": {
+        "playPause_Button": "Videonu oynat / durdur.",
+        "download_Button": "Bölümü endir.",
+        "cinemaLights_Button": {
+          "header": "Kino Işıqlandırması",
+          "desc": "Pleyerin arkasında video ilə sinxronlaşdırılan, kinematoqrafik divar əksinə bənzər vizual mühit parıltısı yaradır."
+        },
+        "loop_Button": "Dövriyyəni aç / bağla.",
+        "fullScreen_Button": "Tam ekrana gir / çıx."
+      }
+    }
+  },
+
+  "Navbar": {
+    "home": "ana səhifə",
+    "featured": "seçilənlər",
+    "discover": "kəşf et",
+    "search_placeholder": "Hər hansı bir şey axtar..."
+  },
+  "footer": {
+    "brand": "YokaiVerse",
+    "slogan": "Məxfiliyiniz bizim hədəfimizdir; onu təhlükəsiz və qorunmuş saxlayırıq.",
+    "languageSwitcher": "Dili Dəyiş - AZ",
+    "sections": {
+      "links": {
+        "title": "Keçidlər",
+        "support": "bizə dəstək ol",
+        "store": "mağaza",
+        "register": "qeydiyyat",
+        "login": "daxil ol",
+        "whats_new": "yeniliklər"
+      },
+      "community": {
+        "title": "İcmalar",
+        "forums": "forumlar"
+      },
+      "company": {
+        "title": "Şirkət",
+        "about": "haqqımızda",
+        "blog": "bloq",
+        "docs": "sənədlər",
+        "terms": "istifadə şərtləri",
+        "privacy": "məxfilik və siyasət"
+      }
+    }
+  },
+  "Landing": {
+    "title": "Reklamlardan bezmisiniz?",
+    "title2": "YokaiVerse",
+    "title3": "sizin üçündür",
+    "join_now": "Hesabınız yoxdur?",
+    "search_placeholder": "Daxil olmaq üçün e-poçtunuzu yazın",
+    "whatWeOffer": {
+      "title": "Nə Təklif Edirik?",
+      "desc": "YokaiVerse təcrübənizi daha sürətli, daha hamar və daha zövqlü etmək üçün hazırlanmış funksiyalar.",
+      "cards": {
+        "performance": {
+          "title": "Sürətli Performans & Hamar İnterfeys",
+          "desc": "Müasir alətlər və səmərəli kodla yaradılmış YokaiVerse, bütün cihazlarda sürətli, cavab verən və hamar bir təcrübə təqdim edir."
+        },
+        "language": {
+          "title": "Tərcümələr & İcma Dəstəyi",
+          "desc": "Tərcümə komandalarımız və icma iştirakçılarımız daha çox dildə məzmun təqdim etmək və hamı üçün daha yaxşı təcrübə yaratmaq üçün birlikdə çalışır."
+        },
+        "privacy": {
+          "title": "Əvvəl Məxfilik",
+          "desc": "Məlumatlarınız barədə narahat olmadan anime izləyin, manqa oxuyun və vebtun kəşf edin. Yalnızca açıq icazə verdiklərinizi toplayırıq — bundan artıq deyil."
+        },
+        "downloads": {
+          "title": "Sürətli Yükləmə & Endirmə",
+          "desc": "Bant genişliyi məhdudiyyəti olmadan yüksək sürətli yükləmə və endirmənin zövqünü çıxarın; məzmununuz həmişə hazırdır."
+        }
+      }
+    },
+    "coreValues": {
+      "title": "Əsas Dəyərlərimiz",
+      "desc": "Bunlar sadəcə texniki xüsusiyyətlər deyil — bizim rəhbər inanclarımızdır. Küy, reklam və məlumat aclığı ilə dolu bir dünyada YokaiVerse aydınlıq, azadlıq və pərəstişkar tərəfindən idarə olunan inkişaf üçün durur. İstər oxumaq, izləmək, paylaşmaq, istərsə yaratmaq üçün burada olsanız — mənfəətin deyil, ehtiras üzərində qurulan bir icmanın hissəsisiniz.",
+      "openSource": "Açıq Mənbə",
+      "private": "Şəxsi və Həmişə Aktual",
+      "community": "İcma Dəstəkli"
+    }
+  },
+  "slogan": {
+    "default": [
+      "Anime, Manqa və Vebtunları kəşf edin. Bezdirici reklamlar və sponsorluqlar olmadan.",
+      "Kəşf etməyə başlamağın ən sürətli yolu, tamamilə reklamsız.",
+      "Təhlükəsizlik narahatlığı? Problem deyil, hətta biz belə nə izlədiyinizi bilmirik.",
+      "YokaiVerse-ə daxil olun, hər şeyi limitsiz kəşf edin; izlənilmədən və məlumatlarınız satılmadan.",
+      "YokaiVerse: Süni intellekt və ya REKLAMLAR deyil, istifadəçilər haqqında düşünən məkan.",
+      "YokaiVerse: Təhlükəsizlik, məxfilik və istifadəçinin prioritet olduğu yer.",
+      "Google, Microsoft və onlar kimi şirkətlərin mənfəət üçün sizi boğmasından yorulmusunuz? Buraya gəlin — biz cüzdanınızla deyil, sizinlə maraqlanırıq."
+    ],
+    "eastereggs": {
+      "common": [
+        "Flint and Steeeeeeeeeeeeel!",
+        "ඞ",
+        "B-bu Google-dur!!!!?",
+        "Heh, axtarış keçmişini ələ keçirdim :)"
+      ],
+      "rare": [
+        "Düzmü görürəm? Bu, izləmə funksiyası olmayan Windows 11-dir...? Oh, yuxu imiş.",
+        "XATIRLATMA! Bir az su iç"
+      ],
+      "mythic": ["Bilmirəm, ideyalarım bitdi lol."],
+      "mysterious": ["Bir yapon əfsanəsi deyirdi ki: 'nigg-' Ehm.. 'Niggeria'"],
+      "gambleCore": [
+        "777",
+        "GƏLİN QUMAR OYNAYAQ",
+        "AH, LƏNƏT OLSUN!",
+        "UDMAĞI DAYANDIRA BİLMİRƏM!"
+      ]
+    }
+  },
+  "settings": {
+    "hero": {
+      "header": "tənzimləmələr",
+      "desc": "Təcrübənizi istədiyiniz kimi fərdiləşdirin.",
+      "quickLinks": {
+        "general": {
+          "title": "ümumi",
+          "desc": "Saytın əsas davranışını və üstünlüklərini idarə edin."
+        },
+        "appearance": {
+          "title": "görünüş",
+          "desc": "Mövzuları, rəngləri və interfeysi fərdiləşdirin."
+        },
+        "experimental": {
+          "title": "təcrübi",
+          "desc": "Beta xüsusiyyətləri və gələcək yenilikləri sınaqdan keçirin."
+        },
+        "privacy": {
+          "title": "məxfilik",
+          "desc": "Məlumatlarınızın görünməsini və anonimlik protokollarını idarə edin."
+        },
+        "player": {
+          "title": "video pleyer",
+          "desc": "Sürət, keyfiyyət və bufer ayarlarını tənzimləyin."
+        },
+        "account": {
+          "title": "hesab",
+          "desc": "Daimi @istifadəçi adınızı və təhlükəsizlik qeydlərinizi idarə edin."
+        }
+      }
+    }
+  },
+  "featured": {
+    "hero": {
+      "header": "Seçilənlər [BETA]",
+      "desc": "Seçilmiş anime başlıqlarına göz gəzin. İzləmək üçün yeni bir şey tapın və ya sevimli başlıqlarınıza yenidən baxın.",
+      "searchPlaceholder": "Axtarmaq üçün yazın və ya CTRL + K basın",
+      "filters": {
+        "topAnime": "Ən Yaxşı Anime",
+        "topManga": "Ən Yaxşı Manqa",
+        "topWebtoon": "Ən Yaxşı Vebtun",
+        "sfw": "Təhlükəsiz",
+        "nsfw": "NSFW"
+      }
+    }
+  },
+  "404": {
+    "message": "Axtardığınızı tapmaqda çətinlik çəkirik.",
+    "helpText": "URL-də yazım xətası olmadığından əmin olun. Əgər bu problemin bizdən qaynaqlandığını düşünürsünüzsə, dəstək komandamızla əlaqə saxlayın.",
+    "nerdsLabel": "Texniki istifadəçilər üçün məlumat:",
+    "path": "Yol:",
+    "device": "Cihaz:",
+    "browser": "Brauzer:",
+    "browserVersion": "Brauzer Versiyası:",
+    "os": "Əməliyyat Sistemi:",
+    "backFeatured": { "title": "Seçilənlərə Qayıt" },
+    "backHome": { "title": "Ana Səhifəyə Qayıt" }
+  },
+  "info": {
+    "banner": {
+      "bottomBar": {
+        "contentDuration": { "title": "Müddət" },
+        "contentRating": { "title": "Məzmun Reytinqi" },
+        "contentRelease": { "title": "Buraxılış Tarixi" }
+      }
+    },
+    "overview": {
+      "authorStudio": { "title": "Müəllif Studiyası", "description": "" },
+      "releaseDate": { "title": "Buraxılış Tarixi", "description": "" },
+      "contentEpisodes": { "title": "Bölümlər", "description": "" },
+      "contentRating": { "title": "Məzmun Reytinqi", "description": "" },
+      "contentDuration": { "title": "Müddət", "description": "" }
+    },
+    "description": "Təsvir",
+    "allEpisodes": "Bütün Bölümlər"
+  },
+  "watch": {
+    "fansubSection": {
+      "title": "Dil Seçin:",
+      "none": "Yoxdur"
+    }
+  },
+  "store": {
+    "hero": {
+      "header": "Mağaza",
+      "desc": "Daha yaxşı funksiyalar və daha sürətli yeniləmələr əldə edin. İstənilən vaxt ləğv edə bilərsiniz, 20 günlük pul iadəsi zəmanəti ilə. Yeni üzvlərimizə ilk ay bizdən hədiyyədir — bəyənməsəniz belə, pulsuz planınızı sonsuz istifadə edə bilərsiniz!"
+    },
+    "billing": {
+      "free": "pulsuz",
+      "monthly": "aylıq"
+    },
+    "plans": {
+      "free": { "title": "Pulsuz" },
+      "azure": { "title": "Azure" },
+      "support": { "title": "Dəstək" }
+    },
+    "features": {
+      "ads": {
+        "title": "Reklamlar",
+        "descFree": "Yalnız əsas səhifələrdə göstərilir, videonu kəsmir və fərdiləşdirilmir."
+      },
+      "rateLimiting": { "title": "Bant Genişliyi Məhdudiyyəti" },
+      "cloudStorage": { "title": "Bulud Yaddaşı" },
+      "security": {
+        "title": "Təhlükəsizlik & Məxfilik",
+        "desc": "Hər planda inkişaf etdirilmiş ucdan uca şifrələmə mövcuddur."
+      },
+      "forum": { "title": "Forum" },
+      "episodes": {
+        "title": "Bölümlər",
+        "desc": "Gündəlik maksimum bölüm sayı"
+      },
+      "videoUploading": { "title": "Video Yükləmə" },
+      "prioritySupport": { "title": "Prioritet Dəstək" },
+      "downloadUpload": { "title": "Endirmə & Yükləmə" },
+      "translations": {
+        "title": "Tərcümələr",
+        "descFree": "İngilis dili və məzmunun əsas dili.",
+        "descPaid": "İngilis, Türk, Rus, Alman, İspan, Çin, Yapon və Koreya dilləri."
+      },
+      "customization": {
+        "title": "Fərdiləşdirmə",
+        "desc": "Xüsusi mövzular və xüsusi profillər yaradın."
+      }
+    },
+    "values": {
+      "disabled": "Deaktiv",
+      "limitless": "Limitsiz"
+    }
+  },
+  "changelog": {
+    "hero": {
+      "header": "Dəyişiklik Qeydləri",
+      "desc": "Yokaiverse-in son buraxılışları 'İnkişaf' (Development) mərhələsindədir, ona görə də dəyişdirilən və ya əlavə edilən hər hansı bir şey məhsulu və ya istifadəçi təcrübəsini poza bilər. Bu platformanı sizin üçün daha yaxşı və təhlükəsiz etməyə çalışarkən səbirli olmağınızı xahiş edirik. Bizə göstərdiyiniz dəstək və səbir üçün təşəkkür edirik."
+    },
+    "navigation": {
+      "firstRelease": "İlk Buraxılış",
+      "goTo": "Keçid et",
+      "updates": "Yeniləmələr",
+      "latestUpdate": "Son Yeniləmə",
+      "latestCommit": "Son Commit"
+    }
+  },
+  "doc": {
+    "hero": {
+      "header": "Sənədlər",
+      "desc": "Bu səhifədə istədiyiniz hər bir sənədi tapa bilərsiniz."
+    },
+    "lists": {
+      "policies": {
+        "header": "Siyasətlər",
+        "desc": "Bu siyahıya müxtəlif sayt siyasətləri daxildir.",
+        "content": {
+          "terms": {
+            "header": "İstifadə Şərtləri",
+            "desc": "Hüquqlarınızı necə qoruduğumuzu və bizimlə tamamilə anonim qalmağın nə demək olduğunu öyrənin. <3"
+          },
+          "privacy": {
+            "header": "Məxfilik və Siyasət",
+            "desc": "Məlumatlarınızı necə qoruduğumuzu kəşf edin və pərdəarxasında baş verənlərə şəffaf bir nəzər salın."
+          },
+          "cookiePolicy": {
+            "header": "Kuki (Cookie) Siyasəti",
+            "desc": "Anonimliyinizi pozmadan və ya davranışınızı izləmədən bu platformanı işlətmək üçün tələb olunan funksional kukilərin aydın siyahısı."
+          },
+          "copyrightPolicy": {
+            "header": "Müəllif Hüquqları Siyasəti",
+            "desc": "Yaradıcıların hüquqlarına necə hörmət etdiyimiz və manqa/anime metadata idarəetməsi üçün hüquqi çərçivəmiz haqqında bələdçi."
+          },
+          "openSourceLicense": {
+            "header": "Açıq Mənbə Lisenziyası",
+            "desc": "Açıq Mənbə və AGPLv3 uyğunluğu: İcmamız üçün şəffaf metadata idarəetməsi və hüquqi dürüstlük."
+          }
+        }
+      },
+      "news": {
+        "header": "Xəbərlər",
+        "desc": "Nələrin hazırlandığı ilə maraqlanırsınız? İnkişafımızı, son yeniləmələri və YokaiVerse-də etdiyimiz hər bir kiçik düzəlişi izləyin.",
+        "content": {}
+      }
+    },
+    "terms": {
+      "hero": {
+        "header": "İstifadə Şərtləri",
+        "desc": "Biz bu İstifadə Şərtlərini istənilən vaxt öz mülahizəmizlə dəyişdirmək və ya yeniləmək hüququnu saklı tuturuq. Əhəmiyyətli bir dəyişiklik baş verdikdə, saytdaxili elanlar və ya hesabınızla əlaqəli e-poçt vasitəsilə sizi məlumatlandıracağıq. Nəzərə alın ki, yenilənmiş şərtlər sayta növbəti girişinizdə manuel olaraq nəzərdən keçirilməyənə və açıq razılığınız verilməyənə qədər qəbul edilmiş sayılmayacaq. Əgər yenilənmiş şərtləri rədd etməyi seçsəniz, sizdən son təsdiq istəniləcək, bundan sonra hesabınız və bütün əlaqəli məlumatlar sistemlərimizdən kalıcı olaraq silinəcəkdir.",
+        "LatestUpdateChip": {
+          "header": "Son yeniləmə"
+        }
+      },
+      "paragraph": "YokaiVerse-ə daxil olmaqla, bu şərtlərlə bağlı olduğunuzu qəbul edirsiniz. Hesab yaratmazdan əvvəl lütfən onları diqqətlə oxuyun.",
+      "AccessAndRegistration": {
+        "header": "Giriş və Qeydiyyat",
+        "paragraph_1": "Biz bu İstifadə Şərtlərini istənilən vaxt öz mülahizəmizlə dəyişdirmək və ya yeniləmək hüququnu saklı tuturuq. Əhəmiyyətli bir dəyişiklik baş verdikdə, saytdaxili elanlar və ya hesabınızla əlaqəli e-poçt vasitəsilə sizi məlumatlandıracağıq. Yenilənmiş şərtlər sayta növbəti girişinizdə manuel olaraq təsdiqlənməyənə qədər qüvvəyə minmiş sayılmır. İmtina edildikdə hesabınız silinəcəkdir."
+      },
+      "ThirdPartyAIIntegrationAndTranslations": {
+        "header": "Üçüncü Tərəf Sİ İnteqrasiyası və Tərcümələr",
+        "paragraph_1": "YokaiVerse insan tərəfindən yoxlanılmış tərcümələr və avtomatlaşdırılmış Sİ emalından ibarət hibrid tərcümə sistemindən istifadə edir. İstifadəçilər real vaxtda tərcümə funksiyalarını aktivləşdirmək üçün öz Üçüncü Tərəf Sİ API açarlarını inteqrasiya edə bilərlər.",
+        "paragraph_2": "Əməliyyat məntiqi ciddi hiyerarşiyaya tabedir: insan tərəfindən yoxlanılmış tərcümələr prioritetdir; əgər yoxdursa, sistem istifadəçinin qoşulmuş Sİ API-sindən istifadə edir; etibarlı API təmin edilməyibsə, məzmun orijinal dildə qalır. YokaiVerse bir platforma təminatçısıdır və Sİ tərəfindən yaradılan məzmunun dəqiqliyinə zəmanət vermir. Üçüncü Tərəf API-ləri ilə bağlı bütün xərclər və istifadə limitləri istifadəçinin məsuliyyətidir."
+      },
+      "Advertisements": {
+        "header": "Reklamlar",
+        "paragraph_1": "Biz fərdiləşdirilməmiş, kontekstual reklamlardan istifadə edirik. Reklamlar istifadəçi profilləri və ya davranış izləməsi əsasında deyil, məzmun janrı və ya ümumi sayt fəaliyyəti əsasında göstərilir."
+      },
+      "ServiceModification": {
+        "header": "Xidmət Dəyişikliyi",
+        "paragraph_1": "Biz istənilən vaxt istifadəçiyə əvvəlcədən xəbərdarlıq etmədən xüsusi Üçüncü Tərəf Sİ təminatçıları üçün dəstəyi əlavə etmək və ya silmək hüququnu saklı tuturuq."
+      },
+      "AmendmentsAndModifications": {
+        "header": "Düzəlişlər və Dəyişikliklər",
+        "paragraph_1": "YokaiVerse bu Şərtləri istənilən vaxt dəyişdirmək hüququna malikdir. Əhəmiyyətli dəyişikliklər barədə istifadəçilərə 7-30 gün əvvəlcədən məlumat veriləcək. Xidmətdən istifadəyə davam etməklə siz bu şərtlərə hüquqi razılıq verirsiniz."
+      },
+      "UserIdentity": {
+        "header": "İstifadəçi Kimliyi və @İstifadəçiadı Siyasəti",
+        "paragraph_1": "Qeydiyyat zamanı hər bir istifadəçiyə unikal @istifadəçiadı təyin edilir. İstifadəçilər \"Görünən Ad\" təyin edə bilsələr də, @istifadəçiadı daimi unikal identifikatordur. Məxfiliyi qorumaq və kimlik oğurluğunun qarşısını almaq üçün hesab silindikdən sonra onun @istifadəçiadı kalıcı olaraq təqaüdə çıxarılır və bir daha istifadəyə verilmir.",
+        "paragraph_2": "Yeganə istisna orijinal sahibin rəsmi bərpa müraciətidir ki, bu da hesabın yaradılma tarixi, keçmiş ad qeydləri və son izlənilən məzmunun təsdiqini tələb edir."
+      },
+      "AgeRestrictions": {
+        "header": "Yaş Məhdudiyyətləri və Təsdiq",
+        "paragraph_1": "Qeydiyyatdan keçməklə ən azı 16 yaşınızın olduğunu təsdiq edirsiniz. YokaiVerse 16+ platformadır. Yanlış məlumat verilməsi halında YokaiVerse məsuliyyət daşımır.",
+        "paragraph_2": "18 yaşından kiçik istifadəçilər Forumlarda və ya Şərh bölmələrində iştirak edə bilməzlər. Yetkinlər üçün nəzərdə tutulmuş məzmuna giriş yalnız 18+ istifadəçilər üçündür."
+      },
+      "ProhibitedConductAndEnforcement": {
+        "header": "Qadağan Olunmuş Davranışlar və Tətbiqi",
+        "paragraph_1": "İstifadəçinin yaş məhdudiyyətlərini pozduğu, təhqirlə məşğul olduğu və ya təhlükəsizlik sistemini yan keçməyə çalışdığı aşkar edilərsə, onun IP ünvanı daimi olaraq qara siyahıya salınacaqdır. Qara siyahıya salınmış IP ünvanından yaradılan hər hansı yeni hesab avtomatik olaraq ləğv ediləcəkdir. İstifadəçilər öz hərəkətlərinə görə şəxsən məsuliyyət daşıyırlar; qanunsuz fəaliyyət baş verdikdə, YokaiVerse bütün mövcud loqları (jurnalları) və davranış məlumatlarını gecikmədən təqdim edərək yerli hüquq-mühafizə orqanları ilə tam əməkdaşlıq edəcəkdir."
+      },
+      "DataIntegrityAndUserResponsibility_ALT": {
+        "header": "Məlumat Bütövlüyü və İstifadəçi Məsuliyyəti",
+        "paragraph_1": "YokaiVerse, brauzer skriptlərinin girişinin qarşısını almaq məqsədilə kritik açarlar üçün HttpOnly texnologiyasından istifadə edir. Lakin, mövzular və tənzimləmələr kimi 2-ci Səviyyə (Tier 2) tərcihləri Local Storage-da saxlanılır və konsol vasitəsilə əlçatandır. İstifadəçilərə brauzer konsolunda üçüncü tərəf kodlarını icra etməmələri (Self-XSS) barədə ciddi xəbərdarlıq edilir. YokaiVerse, istifadəçi tərəfindən başladılan skript icrası nəticəsində yaranan məlumat oğurluğu və ya hesab pozuntularına görə məsuliyyət daşımır."
+      },
+      "MandatoryParentalControl": {
+        "header": "Məcburi Valideyn Nəzarəti",
+        "paragraph_1": "16 və 18 yaş arası istifadəçilər üçün hesab mütləq şəkildə təsdiqlənmiş Valideyn/Qəyyum hesabı ilə əlaqələndirilməlidir. Valideynlər ekran vaxtının idarə edilməsi, etiketlər və ya janrlar üzrə məzmun filtrlənməsi və baxış tarixçəsinin tam görünməsi daxil olmaqla hərtərəfli nəzarət imkanına malikdirlər.",
+        "paragraph_2": "Valideyn hesabı inzibati səlahiyyətə malikdir, yəni yetkinlik yaşına çatmayan istifadəçi icazəsiz olaraq doğum ilini və ya həssas tənzimləmələri dəyişə bilməz. Valideynlər həmçinin yetkinlik yaşına çatmayan istifadəçinin hesabını istənilən vaxt uzaqdan silə bilərlər. 18 yaş tamam olduqda bu məhdudiyyətlər avtomatik olaraq deaktiv edilir."
+      },
+      "ParentalConnectionMechanism_ALT": {
+        "header": "Valideyn Bağlantı Mexanizmi",
+        "paragraph_1": "Hesablar arasındakı əlaqə təhlükəsiz, yerli əsaslı autentifikasiya vasitəsilə qurulur. Bu, ya valideynin kiçikyaşlı istifadəçinin cihazındakı kodu skan etdiyi QR Sinxronizasiyası, ya da 10 simvollu mexaniki alfanumerik kod vasitəsilə həyata keçirilir. Bu, icazənin birbaşa qarşılıqlı əlaqə yolu ilə verilməsini təmin edir və sıfır məlumatlı (zero-knowledge) təhlükəsizlik protokollarına sadiqliyimizi qoruyur."
+      },
+      "GoverningLawAndDisputeResolution": {
+        "header": "Tətbiq Olunan Hüquq və Mübahisələrin Sərhədi",
+        "paragraph_1": "YokaiVerse-in istifadəsindən yaranan hər hansı mübahisə Türkiyə Respublikasının qanunları ilə tənzimlənir və bu qanunlara uyğun olaraq şərh edilir. İstifadəçilər hər hansı hüquqi məsələnin həlli üçün Türkiyədə yerləşən məhkəmələrin müstəsna yurisdiksiyasına tabe olmağa razılaşırlar."
+      },
+      "ConflictOfLaws": {
+        "header": "Qanunlar Ziddiyyəti və Qlobal Uyğunluq",
+        "paragraph_1": "YokaiVerse Türkiyədə işlənib hazırlanır və host olunur; məlumatların işlənməsi ciddi şəkildə 6698 saylı KVKK qanunu ilə tənzimlənir. Biz qlobal məxfilik prinsiplərinə hörmətlə yanaşsaq da, YokaiVerse Türkiyə qanunvericiliyinin imperativ müddəalarına zidd olan xarici qaydalara əməl etməyəcəkdir. Hüquqi münaqişə baş verdikdə, Türkiyə Respublikasının qanunları üstünlük təşkil edəcəkdir."
+      }
+    },
+    "privacy": {
+      "paragraph": "YokaiVerse əsas əməliyyat fəlsəfəsi kimi \"Dizayndan Gələn Məxfilik\" memarlığını mənimsəyir. Biz inanırıq ki, rəqəmsal məxfilik bir xüsusiyyət deyil, əsas hüquqdur; buna görə də bütün infrastrukturumuz həssas istifadəçi məlumatlarının qabaqcıl şifrələmə və minimalist məlumat toplama təcrübələri vasitəsilə yalnız sizin nəzarətinizdə qalmasını təmin etmək üçün qurulmuşdur.",
+      "encryption": {
+        "header": "Ucdan-Uca Şifrələmə (E2EE) və Sıfır Bilgi Anbarı",
+        "paragraph_1": "Təhlükəsizlik öhdəliyimiz mənbədən başlayır. Bütün şəxsi məlumatlar infrastrukturumuza çatmazdan əvvəl cihazınızda yerli şifrələməyə məruz qalır. Sıfır Bilgi (Zero-Knowledge) Anbarı modelindən istifadə edərək, YokaiVerse serverləri yalnız şifrəsini açmaq üçün açarlarımız olmayan şifrəli sətirləri saxlayır. Bu, nə bizim heyətimizin, nə də hər hansı üçüncü tərəf qurumunun şəxsi məlumatlarınıza heç bir halda düz mətn formatında daxil ola və ya oxuya bilməməsini təmin edir."
+      },
+      "dataCollection": {
+        "header": "Məlumatların Toplanması, İstifadəsi və Alqoritmik Məxfilik",
+        "paragraph_1": "YokaiVerse məlumatların toplanmasını ciddi şəkildə platformanın bütövlüyü üçün zəruri olanlarla məhdudlaşdırır. Biz IP ünvanları və giriş vaxtları daxil olmaqla məcburi təhlükəsizlik qeydlərini yalnız fırıldaqçılığın qarşısını almaq və təhlükəsizlik auditi məqsədilə saxlayırıq. Diaqnostika və xəta hesabatları standart olaraq deaktiv edilsə də, istifadəçilər texniki problemlərin həllinə kömək etmək üçün bunlara əl ilə icazə verə bilərlər. Bundan əlavə, naviqasiya təcrübənizi təkmilləşdirmək üçün sayt fəaliyyətlərinizi qeyd etsək də, bu alqoritmik izləmə tamamilə istəyə bağlıdır və hesab parametrləri vasitəsilə deaktiv edilə bilər."
+      },
+      "APIKeys": {
+        "header": "Üçüncü Tərəf API Açarlarının Təhlükəsiz İdarə Edilməsi",
+        "paragraph_1": "Öz süni intellekt provayder açarlarınızı (məsələn, OpenAI və ya Gemini) inteqrasiya etdikdə, YokaiVerse bu məlumatlara şəxsi məlumatlara tətbiq edilən eyni ciddi şifrələmə protokolları ilə yanaşır. Biz təhlükəsiz körpü rolunu oynayırıq; süni intellekt provayderlərinizə göndərilən sorğuların məzmununu qeyd etmirik və bu açarları daxili sistemlərimiz üçün əlçatan formatda saxlamırıq."
+      },
+      "retention": {
+        "header": "Məlumatların Saxlanması, Təmizləmə Tsiklləri və Daimi Silinmə",
+        "paragraph_1": "Biz ciddi \"unudulmaq hüququ\" siyasətinə əməl edirik. İstifadəçi hesabını silmək istədikdə, bütün şifrəli şəxsi məlumatların və metadata-ların daimi və geri dönməz şəkildə məhv edildiyi 15 günlük bir pəncərə başladılır. Aktiv hesablar üçün əhəmiyyətsiz davranış məlumatlarının və müvəqqəti təhlükəsizlik qeydlərinin avtomatik silindiyi 30 günlük təmizləmə tsiklini tətbiq edirik. Bu müddətlər başa çatdıqdan sonra məlumatların bərpası texniki cəhətdən qeyri-mümkündür, çünki həm şifrəli sətirlər, həm də əlaqəli açarlar infrastrukturumuzdan silinir."
+      },
+      "advertising": {
+        "header": "Üçüncü Tərəf Açıqlamaları və Kontekstual Reklam",
+        "paragraph_1": "YokaiVerse istifadəçi məlumatlarının satışına qarşı ciddi siyasət yürüdür. Platformanı dəstəkləmək üçün reklam tərəfdaşları ilə ümumiləşdirilmiş, eyniləşdirilməyən məlumatları paylaşa bilərik. Bu reklamlar ciddi şəkildə kontekstualdır, yəni fərdi istifadəçi izləməsi və ya davranış profili əvəzinə, hazırda baxılan məzmuna əsaslanaraq təqdim olunur."
+      },
+      "minorSafety": {
+        "header": "Valideyn Nəzarəti və Yeniyetmələrin Təhlükəsizliyi",
+        "paragraph_1": "18 yaşınadək istifadəçilər üçün YokaiVerse şəffaf təhlükəsizlik çərçivəsi tətbiq edir. Valideyn Nəzarəti linki aktiv olduqda, xüsusi istifadə məlumatları — baxış tarixçəsi və axtarış terminləri daxil olmaqla — əlaqəli Valideyn/Qəyyum hesabına əlçatan olacaqdır. Yeniyetmə hesabını seçməklə istifadəçi və onun qanuni qəyyumu, gənc auditoriya üçün təhlükəsiz rəqəmsal mühit təmin etmək məqsədi daşıyan bu görünürlüyə razılıq verirlər."
+      },
+      "mandatoryConsent": {
+        "header": "Siyasət Yeniləmələri və Məcburi Razılıq",
+        "paragraph_1": "İstifadəçilərimizin hər zaman məlumatlı olmasını təmin etmək üçün bu Məxfilik Siyasətinə edilən hər hansı yeniləmə bütün razılıq vəziyyətlərinin avtomatik sıfırlanmasına səbəb olacaqdır. Yeniləmədən sonrakı ilk girişinizdə sizdən yenidən işlənmiş şərtləri nəzərdən keçirməyiniz tələb olunacaq. Xidmətdən istifadəyə davam etmək üçün ya yeni siyasəti qəbul etmək, ya da dəyişiklikləri rədd etmək seçiminiz olacaq; rədd etdiyiniz halda hesabınızın və bütün əlaqəli məlumatların 15 günlük daimi silinmə prosesi dərhal başlayacaqdır."
+      },
+      "BYOKResponsibility": {
+        "header": "Beynəlxalq Məlumat Transferləri və BYOK Məsuliyyəti",
+        "paragraph_1": "\"Öz Açarını Gətir\" (BYOK) xüsusiyyətimiz vasitəsilə məzmun tərcüməsi xüsusi API konfiqurasiyalarınıza uyğun olaraq üçüncü tərəf süni intellekt provayderləri tərəfindən həyata keçirilir. Bu açarları təqdim etməklə siz məlumatlarınızın rezidentliyinizdən kənar yurisdiksiyalarda emal oluna biləcəyini qəbul edirsiniz. YokaiVerse yalnız texniki vasitəçi kimi çıxış edir və bu xarici provayderlərin məlumatlarla işləmə təcrübələrinə görə heç bir məsuliyyət daşımır."
+      },
+      "Self-XSS": {
+        "header": "İstifadəçi Tərəfi Təhlükəsizliyi və Self-XSS-in Qarşısının Alınması",
+        "paragraph_1": "Hesabınızın bütövlüyünü qorumaq üçün brauzer konsoluna etibarsız skriptləri yapışdırmamağı tövsiyə edirik. YokaiVerse Self-XSS risklərini azaltmaq üçün güclü Məzmun Təhlükəsizliyi Siyasətlərindən (CSP) istifadə edir. Bununla belə, istifadəçilər sessiya tokenlərini paylaşmamaq və ya şifrəli mühitlərinə xələl gətirə biləcək yoxlanılmamış kodları icra etməməklə öz müştəri tərəfi təhlükəsizliyini qorumağa görə məsuliyyət daşıyırlar."
+      },
+      "KVKK": {
+        "header": "KVKK Uyğunluğu və Məlumat Subyektinin Hüquqları",
+        "paragraph_1": "Türkiyə mərkəzli bir layihə olaraq YokaiVerse 6698 saylı Şəxsi Məlumatların Qorunması Qanununun (KVKK) müstəsna yurisdiksiyası altında fəaliyyət göstərir. Fiziki yerinizdən asılı olmayaraq, məlumatlarınızın Türkiyə hüquqi standartlarına uyğun emal edildiyini qəbul edirsiniz. İstifadəçilər KVKK-nın 11-ci maddəsində qeyd olunduğu kimi məlumat almaq, düzəliş etmək və silmək hüququna malikdirlər. Nəzərə alın ki, E2EE memarlığımız səbəbindən giriş sorğularına cavab olaraq məlumatlarınızın \"düz mətn\" versiyalarını təqdim edə bilmirik, çünki onların şifrəsini açmaq imkanımız yoxdur."
+      },
+      "lawEnforcement": {
+        "header": "Hüquq-Mühafizə Orqanları ilə Əməkdaşlıq və Hüquqi Zərurət",
+        "paragraph_1": "Türkiyə Respublikasının məhkəmə və icra orqanlarına uyğun olaraq, kiber-cinayətkarlıq və ya fırıldaqçılıqla bağlı etibarlı hüquqi order təqdim edildikdə YokaiVerse mövcud təhlükəsizlik qeydlərini (IP ünvanları və giriş vaxtları) təqdim edəcəkdir. Əməkdaşlıq imkanımız 30 günlük təmizləmə tsikli ilə məhdudlaşır; biz yalnız sorğu zamanı mövcud olan qeydləri təqdim edə bilərik. Davranış məlumatları tez silinsə də, əsas təhlükəsizlik qeydləri yerli qanunvericiliklə tələb olunduqda və ya əhəmiyyətli təhlükəsizlik pozuntularının araşdırılması üçün zəruri olduqda daha uzun müddət saxlanıla bilər."
+      },
+      "storage": {
+        "header": "Hibrid Saxlama Memarlığı",
+        "paragraph_1": "Marketinq kukilərindən istifadə etmədən təhlükəsizliyi performansla balanslaşdırmaq üçün hazırlanmış iki səviyyəli saxlama sistemindən istifadə edirik. 1-ci Səviyyə XSS hücumlarının qarşısını almaq üçün şifrələnmiş və HttpOnly, Secure və SameSite=Strict bayraqları ilə qorunan Təhlükəsizlik-Kritik Kukilərdən (Sessiya Tokenləri, Şifrələmə Açarları və API Açarları) ibarətdir. 2-ci Səviyyə Qaranlıq Rejim ayarları, video pleyer konfiqurasiyaları və interfeys düzənləri kimi həssas olmayan üstünlüklər üçün Yerli Saxlamadan (Local Storage) istifadə edərək hər ziyarətdə rəvan və fərdiləşdirilmiş təcrübə təmin edir."
+      },
+      "dataBreach": {
+        "header": "Məlumat Pozuntusu Bildirişi və Qlobal Standartlar",
+        "paragraph_1": "Təhlükəsizlik pozuntusu baş verdikdə YokaiVerse təsirə məruz qalan istifadəçiləri və müvafiq məlumat qoruma qurumlarını yerli və beynəlxalq qaydalarla müəyyən edilmiş müddətlər daxilində məlumatlandırmağı öhdəsinə götürür. KVKK-ya əsaslansaq da, GDPR (Aİ) və CCPA/CPRA (ABŞ) təməl prinsiplərinə hörmətlə yanaşırıq, Türkiyə hüquqi bazamızın beynəlxalq birliyimizin təhlükəsizliyinə heç vaxt xələl gətirməməsini təmin etmək üçün bütün qlobal istifadəçilərə məlumatların daşınması və silinməsi hüquqlarını təklif edirik."
+      }
+    },
+    "cookiePolicy": {
+      "hero": {
+        "header": "Kuki Siyasəti",
+        "desc": "Kuki siyasəti üçün təsvir"
+      },
+      "paragraph": "Hazırlanma mərhələsindədir!"
+    }
+  }
+}

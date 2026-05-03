@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  /* Varsayılan olarak mavi bir ton (örneğin) */
+  --dynamic-rgb: 59 130 246;
+}
+
+@theme {
+  --font-Sans: "Poppins", sans-serif;
+  --font-Serif: "Lora", serif;
+  --font-Mono: "Jetbrains Mono", monospace;
+
+  /* --- DARK MODE --- */
+  --color-D_BG: #000000;
+  --color-D_Primary: #090019;
+  --color-D_Secondary: #0d0221;
+  --color-D_Tertiary: #10002a;
+  --color-D_Quaternary: #1a043f;
+
+  --color-D_Primary_Hover: #120032;
+  --color-D_Secondary_Hover: #170338;
+  --color-D_Tertiary_Hover: #180140;
+  --color-D_Quaternary_Hover: #26085c;
+
+  --color-DT_Primary: #f5f0ff;
+  --color-DT_Secondary: #a195b5;
+  --color-DT_Tertiary: #766c89;
+  --color-DT_Inverted: #05000f;
+
+  --color-DB_Primary: #230c47;
+  --color-DB_Secondary: #270c53;
+  --color-DB_Tertiary: #280a59;
+  --color-DB_Inverted: #caacfb;
+
+  /* --- LIGHT MODE --- */
+  --color-L_BG: #f5f0ff;
+  --color-L_Primary: #ffffff;
+  --color-L_Secondary: #f7f3ff;
+  --color-L_Tertiary: #efe6ff;
+  --color-L_Quaternary: #e9ddff;
+
+  --color-L_Primary_Hover: #e1cfff;
+  --color-L_Secondary_Hover: #dac8f9;
+  --color-L_Tertiary_Hover: #d0bcf3;
+  --color-L_Quaternary_Hover: #c4afe9;
+
+  --color-LT_Primary: #05000f;
+  --color-LT_Secondary: #120036;
+  --color-LT_Tertiary: #1a014d;
+  --color-LT_Inverted: #e5dbfa;
+
+  --color-LB_Primary: #caacfb;
+  --color-LB_Secondary: #be9cf5;
+  --color-LB_Tertiary: #af8ce8;
+  --color-LB_Inverted: #230c47;
+
+  /* --- SHARED COLORS --- */
+  --color-Accent: #8478fd;
+  --color-Dark_Disabled: #898989;
+  --color-Success: #00ff90;
+  --color-Warm_Orange: #ff9d00;
+  --color-Pinkish_Red: #ff005e;
+}
+
+@layer base {
+  .material-symbols-rounded {
+    font-family: "Material Symbols Rounded";
+    display: inline-block;
+    line-height: 1;
+    color: currentColor;
+
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 400,
+      "GRAD" 0,
+      "opsz" 24;
+
+    width: 1em;
+    height: 1em;
+  }
+}
+
+@layer utilities {
+  /* Custom Scrollbar */
+  .custom-scrollbar {
+    /* For Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(120, 45, 250, 0.4) transparent;
+  }
+
+  /* For Webkit (Chrome, Safari, Edge) */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px; /* Minimal width */
+    height: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(120, 45, 250, 0.5);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(120, 45, 250, 0.8);
+  }
+
+  /* İkon Doldurma Yardımcısı */
+  .icon-fill,
+  .hover\:icon-fill:hover {
+    font-variation-settings: "FILL" 1 !important;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#SpinningCircle {
+  display: inline-block; /* Required for transform to work */
+}

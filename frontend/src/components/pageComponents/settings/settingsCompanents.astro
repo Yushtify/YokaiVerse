@@ -1,0 +1,22 @@
+---
+import Layout from "../../pageContent_Wrappers/default.astro";
+
+import QuickLinks from "./quickLinks.astro";
+import HeroTemplate from "../../custom/heroTemplate.astro";
+
+import SettingTabs from "./tabs/tabs.astro";
+---
+
+<Layout>
+  <HeroTemplate
+    givenGoogleSymbol="settings"
+    givenTitle="Settings"
+    titleData="settings.hero.header"
+    givenDesc="Customize your experience."
+    descData="settings.hero.desc"
+  >
+    <QuickLinks />
+  </HeroTemplate>
+
+  <SettingTabs />
+</Layout>

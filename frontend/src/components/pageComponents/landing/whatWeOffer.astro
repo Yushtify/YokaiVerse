@@ -1,0 +1,63 @@
+---
+import KeyFeaturesCard from "../../custom/keyFeaturesCard.astro";
+---
+
+<div
+  class="flex flex-col items-start justify-center w-full h-fit text-[min(5vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+>
+  <p
+    data-i18n="Landing.whatWeOffer.title"
+    class="font-bold text-[min(7vw,4rem)] capitalize text-nowrap"
+  >
+    What do we offer?
+  </p>
+
+  <p
+    data-i18n="Landing.whatWeOffer.desc"
+    class="flex w-full lg:max-w-[70%] xl:max-w-[65%] text-LT_Secondary dark:text-DT_Secondary"
+  >
+    A collection of features designed to make your YokaiVerse experience faster,
+    smoother, and more enjoyable.
+  </p>
+
+  <!-- Grid -->
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center justify-center w-full h-fit mt-8 gap-4"
+  >
+    <KeyFeaturesCard
+      givenID="performanceCard"
+      givenSVG="bolt"
+      givenTitle="Fast Performance & Smooth UI"
+      titleData="Landing.whatWeOffer.cards.performance.title"
+      givenDesc="Built with modern tools and efficient code, YokaiVerse delivers a fast, responsive, and smooth experience across all devices."
+      descData="Landing.whatWeOffer.cards.performance.desc"
+    />
+
+    <KeyFeaturesCard
+      givenID="languageCard"
+      givenSVG="translate"
+      givenTitle="Translations & Community Support"
+      titleData="Landing.whatWeOffer.cards.language.title"
+      givenDesc="Our translation teams and community contributors work together to bring episodes to more languages and create a better experience for everyone."
+      descData="Landing.whatWeOffer.cards.language.desc"
+    />
+
+    <KeyFeaturesCard
+      givenID="privacyCard"
+      givenSVG="shield_lock"
+      givenTitle="Privacy-First Experience"
+      titleData="Landing.whatWeOffer.cards.privacy.title"
+      givenDesc="Watch anime, read manga, and enjoy webtoons without worrying about your data. We only collect what you explicitly allow — nothing more."
+      descData="Landing.whatWeOffer.cards.privacy.desc"
+    />
+
+    <KeyFeaturesCard
+      givenID="fasterCard"
+      givenSVG="download"
+      givenTitle="Fast Uploads & Downloads"
+      titleData="Landing.whatWeOffer.cards.downloads.title"
+      givenDesc="Enjoy high-speed uploads and downloads without bandwidth limits, so your content is always ready when you are."
+      descData="Landing.whatWeOffer.cards.downloads.desc"
+    />
+  </div>
+</div>

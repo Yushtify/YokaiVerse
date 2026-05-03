@@ -1,0 +1,26 @@
+---
+import TopInformation from "./topInformation.astro";
+import Video_MiddleControls from "./video_MiddleControls.astro";
+import Video_Controls from "./videoControls.astro";
+---
+
+<div
+  onfocus=""
+  id="videoPlayer_Container"
+  class="relative flex flex-col items-start justify-start w-full h-full rounded-3xl aspect-video bg-L_Tertiary dark:bg-D_Tertiary border-LB_Secondary dark:border-DB_Secondary cursor-default z-1"
+>
+  <canvas
+    id="glow-canvas"
+    class="absolute inset-0 w-full h-full blur-[80px] opacity-100 pointer-events-none transition-opacity duration-500 z-0"
+  ></canvas>
+  <video
+    src=""
+    poster=""
+    id="videoPlayer"
+    class="flex absolute top-0 left-0 w-full h-full rounded-3xl"
+  >
+  </video>
+  <TopInformation />
+  <Video_MiddleControls />
+  <Video_Controls />
+</div>

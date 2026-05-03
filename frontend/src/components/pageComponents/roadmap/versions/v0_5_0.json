@@ -1,0 +1,14 @@
+{
+  "milestone": "v0.5.0",
+  "eta": "Q4 2026",
+  "status": "Planned",
+  "description": "A feature-expansion update introducing universal search, Manga reader support, and a broader content discovery experience.",
+  "items": [
+    { "status": "Planned", "desc": "Universal search across Anime, Manga, and Settings from a single input." },
+    { "status": "Planned", "desc": "Integrated Manga reader with support for both page-by-page and scroll reading modes." },
+    { "status": "Planned", "desc": "Watch and reading progress tracking that persists across sessions." },
+    { "status": "Planned", "desc": "Community forums accessible directly within the platform." },
+    { "status": "Considering", "desc": "User-curated lists and bookmarking for Anime and Manga titles." },
+    { "status": "Considering", "desc": "Individual title rating and review system." }
+  ]
+}

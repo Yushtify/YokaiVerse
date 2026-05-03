@@ -1,0 +1,308 @@
+---
+import Horizontal from "../../seperators/horizontal.astro";
+
+import SubscriptionCard from "./subscriptionCard.astro";
+import SubscriptionFeatureChip from "./subscriptionFeatureChip.astro";
+---
+
+<div
+  class="relative flex flex-col items-start justify-center gap-4 w-full h-fit text-left text-[min(4vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+>
+  <!-- Grid -->
+  <div
+    class="flex flex-row flex-wrap items-start justify-center w-full h-fit gap-4 rounded-3xl"
+  >
+    <!-- Free -->
+    <SubscriptionCard
+      givenGoogleSymbol="eco"
+      givenTitle="free"
+      titleData="store.plans.free.title"
+      givenPrice="0"
+      givenBillingCycle="free"
+      billingCycleData="store.billing.free"
+    >
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="ads"
+        titleData="store.features.ads.title"
+        givenDesc="Only on main pages, will not disturb the video + Not personalized."
+        descData="store.features.ads.descFree"
+        givenGoogleSymbol="ad"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="rate limiting"
+        titleData="store.features.rateLimiting.title"
+        givenInformation="10 Gib / Week"
+        givenGoogleSymbol="data_usage"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="cloud storage"
+        titleData="store.features.cloudStorage.title"
+        givenInformation="1 Gib"
+        givenGoogleSymbol="cloud"
+      />
+
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="Security & Privacy"
+        titleData="store.features.security.title"
+        givenDesc="On any plan we have enchanced end-to-end encryption."
+        descData="store.features.security.desc"
+        givenGoogleSymbol="private_connectivity"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="forum"
+        titleData="store.features.forum.title"
+        givenInformation="10 posts / daily"
+        givenGoogleSymbol="forum"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="episodes"
+        titleData="store.features.episodes.title"
+        givenDesc="Max episodes per day"
+        descData="store.features.episodes.desc"
+        givenInformation="5 episodes / daily"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="close"
+        givenStateColor="text-red-400"
+        givenTitle="video uploading"
+        titleData="store.features.videoUploading.title"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="close"
+        givenStateColor="text-red-400"
+        givenTitle="priority support"
+        titleData="store.features.prioritySupport.title"
+        givenGoogleSymbol="support_agent"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="download & upload"
+        titleData="store.features.downloadUpload.title"
+        givenInformation="10 mib / sec"
+        givenGoogleSymbol="bolt"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="horizontal_rule"
+        givenTitle="translations"
+        titleData="store.features.translations.title"
+        givenDesc="English and the 'Main' language of the content."
+        descData="store.features.translations.descFree"
+        givenGoogleSymbol="translate"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="close"
+        givenStateColor="text-red-400"
+        givenTitle="customization"
+        titleData="store.features.customization.title"
+        givenDesc="This feature allows you to make custom themes, and custom profiles"
+        descData="store.features.customization.desc"
+        givenGoogleSymbol="data_object"
+      />
+    </SubscriptionCard>
+
+    <!-- Azure -->
+    <SubscriptionCard
+      givenGoogleSymbol="diamond"
+      givenTitle="azure"
+      titleData="store.plans.azure.title"
+      givenDiscount="11.99"
+      givenPrice="6.99"
+      givenBillingCycle="monthly"
+      billingCycleData="store.billing.monthly"
+      isHighlighted={true}
+    >
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenTitle="ads"
+        titleData="store.features.ads.title"
+        givenInformation="disabled"
+        informationData="store.values.disabled"
+        givenGoogleSymbol="ad"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="rate limiting"
+        titleData="store.features.rateLimiting.title"
+        givenInformation="limitless"
+        informationData="store.values.limitless"
+        givenGoogleSymbol="data_usage"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="cloud storage"
+        titleData="store.features.cloudStorage.title"
+        givenInformation="25 Gib"
+        givenGoogleSymbol="cloud"
+      />
+
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="Security & Privacy"
+        titleData="store.features.security.title"
+        givenDesc="On any plan we have enchanced end-to-end encryption."
+        descData="store.features.security.desc"
+        givenGoogleSymbol="private_connectivity"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="forum"
+        titleData="store.features.forum.title"
+        givenInformation="50 posts / daily"
+        givenGoogleSymbol="forum"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="episodes"
+        titleData="store.features.episodes.title"
+        givenDesc="Max episodes per day"
+        descData="store.features.episodes.desc"
+        givenInformation="limitless / daily"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="video uploading"
+        titleData="store.features.videoUploading.title"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="priority support"
+        titleData="store.features.prioritySupport.title"
+        givenGoogleSymbol="support_agent"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="download & upload"
+        titleData="store.features.downloadUpload.title"
+        givenInformation="Limitless"
+        informationData="store.values.limitless"
+        givenGoogleSymbol="bolt"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="horizontal_rule"
+        givenTitle="translations"
+        titleData="store.features.translations.title"
+        givenDesc="English, Turkish, Russian, German, Spanish, Chinese, Japanese, Korean."
+        descData="store.features.translations.descPaid"
+        givenGoogleSymbol="translate"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="customization"
+        titleData="store.features.customization.title"
+        givenDesc="This feature allows you to make custom themes, and custom profiles"
+        descData="store.features.customization.desc"
+        givenGoogleSymbol="data_object"
+      />
+    </SubscriptionCard>
+
+    <!-- Support -->
+    <SubscriptionCard
+      givenGoogleSymbol="favorite"
+      givenTitle="support"
+      titleData="store.plans.support.title"
+      givenPrice="14.99"
+      givenBillingCycle="monthly"
+      billingCycleData="store.billing.monthly"
+    >
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenTitle="ads"
+        titleData="store.features.ads.title"
+        givenInformation="disabled"
+        informationData="store.values.disabled"
+        givenGoogleSymbol="ad"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="rate limiting"
+        titleData="store.features.rateLimiting.title"
+        givenInformation="limitless"
+        informationData="store.values.limitless"
+        givenGoogleSymbol="data_usage"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="cloud storage"
+        titleData="store.features.cloudStorage.title"
+        givenInformation="50 Gib"
+        givenGoogleSymbol="cloud"
+      />
+
+      <Horizontal />
+
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="Security & Privacy"
+        titleData="store.features.security.title"
+        givenDesc="On any plan we have enchanced end-to-end encryption."
+        descData="store.features.security.desc"
+        givenGoogleSymbol="private_connectivity"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="forum"
+        titleData="store.features.forum.title"
+        givenInformation="50 posts / daily"
+        givenGoogleSymbol="forum"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="episodes"
+        titleData="store.features.episodes.title"
+        givenDesc="Max episodes per day"
+        descData="store.features.episodes.desc"
+        givenInformation="limitless / daily"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="video uploading"
+        titleData="store.features.videoUploading.title"
+        givenGoogleSymbol="video_template"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="priority support"
+        titleData="store.features.prioritySupport.title"
+        givenGoogleSymbol="support_agent"
+      />
+      <SubscriptionFeatureChip
+        givenTitle="download & upload"
+        titleData="store.features.downloadUpload.title"
+        givenInformation="Limitless"
+        informationData="store.values.limitless"
+        givenGoogleSymbol="bolt"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="horizontal_rule"
+        givenTitle="translations"
+        titleData="store.features.translations.title"
+        givenDesc="English, Turkish, Russian, German, Spanish, Chinese, Japanese, Korean."
+        descData="store.features.translations.descPaid"
+        givenGoogleSymbol="translate"
+      />
+      <SubscriptionFeatureChip
+        givenStateSymbol="check"
+        givenStateColor="text-green-300"
+        givenTitle="customization"
+        titleData="store.features.customization.title"
+        givenDesc="This feature allows you to make custom themes, and custom profiles"
+        descData="store.features.customization.desc"
+        givenGoogleSymbol="data_object"
+      />
+    </SubscriptionCard>
+  </div>
+</div>

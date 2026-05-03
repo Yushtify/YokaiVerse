@@ -1,0 +1,91 @@
+---
+import Button from "../buttons/Button.astro";
+import CustomRadioButton from "./languageRadioButton.astro";
+---
+
+<div class="relative flex flex-col items-start justify-start w-fit h-fit gap-4">
+  <Button
+    givenButtonID="languageSwitcher"
+    givenButtonAction="enableLanguageOptions()"
+    givenButtonSVG="keyboard_arrow_down"
+    givenButtonSVGSize="text-[min(6vw,1rem)]"
+    givenButtonCustomClass="flex-row-reverse! hover:text-LT_Inverted! dark:hover:text-DT_Inverted!"
+    givenTitle="Switch Language"
+    titleData="footer.languageSwitcher"
+    tooltipDescTrans="tooltip.footer.languageSwitcher"
+  />
+  <div
+    id="languageSwitch_Container"
+    class="hidden absolute bottom-[calc(100%+0.5rem)] left-0 flex-col items-start justify-start rounded-3xl p-2 gap-2 w-fit h-fit bg-L_Primary dark:bg-D_Primary border-2 border-LB_Primary dark:border-DB_Primary transition-all duration-250 ease-in-out overflow-hidden z-50"
+  >
+    <CustomRadioButton
+      groupName="languageSwitch"
+      givenID="automaticLanguage"
+      givenState={true}
+      givenSVG="translate"
+      givenSVGFill={true}
+      givenTitle="Automatic"
+      dataLang="auto"
+    />
+    <CustomRadioButton
+      groupName="languageSwitch"
+      givenID="azLanguage"
+      givenState={false}
+      givenSVG="translate"
+      givenSVGFill={true}
+      givenTitle="Azərbaycanca"
+      dataLang="az"
+    />
+    <CustomRadioButton
+      groupName="languageSwitch"
+      givenID="englishLanguage"
+      givenState={false}
+      givenSVG="translate"
+      givenSVGFill={true}
+      givenTitle="English UK"
+      dataLang="en_uk"
+    />
+    <CustomRadioButton
+      groupName="languageSwitch"
+      givenID="englishLanguage"
+      givenState={false}
+      givenSVG="translate"
+      givenSVGFill={true}
+      givenTitle="English US"
+      dataLang="en_us"
+    />
+    <CustomRadioButton
+      groupName="languageSwitch"
+      givenID="turkishLanguage"
+      givenState={false}
+      givenSVG="translate"
+      givenSVGFill={true}
+      givenTitle="Türkçe"
+      dataLang="tr"
+    />
+  </div>
+</div>
+
+<script>
+  function enableLanguageOptions() {
+    const container = document.getElementById(
+      "languageSwitch_Container",
+    ) as HTMLDivElement;
+    const btn = document.getElementById(
+      "languageSwitcher",
+    ) as HTMLButtonElement;
+    const svg = btn?.querySelector("#googleSymbol") as HTMLSpanElement;
+
+    if (!container || !btn || !svg) return;
+
+    if (container.classList.contains("hidden")) {
+      container.classList.replace("hidden", "flex");
+      svg.innerHTML = "keyboard_arrow_up";
+    } else {
+      container.classList.replace("flex", "hidden");
+      svg.innerHTML = "keyboard_arrow_down";
+    }
+  }
+
+  (window as any).enableLanguageOptions = enableLanguageOptions;
+</script>

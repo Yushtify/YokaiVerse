@@ -1,0 +1,37 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
+interface Props {
+  givenFill?: boolean;
+  givenHeader: string;
+  data: string;
+}
+
+const { givenFill, givenHeader, data } = Astro.props;
+
+const validFill = givenFill ? givenFill : false;
+---
+
+<div
+  class="flex flex-col items-start justify-start w-full h-fit py-4 md:pb-4 px-4"
+>
+  <!-- Header -->
+  <div
+    class="flex flex-row items-center justify-start gap-2 md:gap-4 w-full h-fit font-normal text-[min(6vw,1.1rem)] text-LT_Primary dark:text-DT_Primary"
+  >
+    <GoogleMaterialSymbol
+      SVG_Name="circle"
+      SVG_Style="text-LB_Primary dark:text-DB_Primary"
+      SvgSize="text-[min(6vw,1rem)]!"
+      isFilled={validFill}
+    />
+    <p data-i18n={data}>{givenHeader}</p>
+  </div>
+
+  <!-- Other -->
+  <div
+    class="flex flex-col items-start jusitfy-start w-full h-fit pl-2 md:pl-2 ml-2 border-l-2 border-LB_Primary dark:border-DB_Primary text-[min(6vw,1.2rem)] text-LT_Primary dark:text-DT_Primary"
+  >
+    <slot />
+  </div>
+</div>

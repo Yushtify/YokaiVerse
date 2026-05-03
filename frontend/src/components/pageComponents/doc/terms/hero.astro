@@ -1,0 +1,30 @@
+---
+import GoogleMaterialSymbol from "../../../custom/googleMaterial_Symbol.astro";
+import InformationBlobs from "../../../custom/public/informationBlobs.astro";
+import HeroTemplate from "../../../custom/heroTemplate.astro";
+
+const latestUpdate = "Mar 02, 2026"; // To specify the date to user so they don't need to go to Github for to check i
+// code link down below for lates commit
+---
+
+<HeroTemplate
+  givenGoogleSymbol="policy"
+  givenTitle="Terms Of Service"
+  titleData="doc.terms.hero.header"
+  givenDesc="We reserve the right to modify or replace these Terms of Service at any time at our sole discretion. In the event of a significant change, we will notify you through on-site announcements or via the email address associated with your account. Please note that any updated terms will not be considered accepted until you manually review and provide your explicit consent upon your next visit to the site. If you choose to decline the updated terms, you will be prompted for a final confirmation, after which your account and all associated data will be permanently deleted from our systems."
+  descData="doc.terms.hero.desc"
+>
+  <div
+    class="flex flex-col xl:flex-row items-start justify-start min-w-full h-fit gap-4 mt-4 py-4 text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+  >
+    <InformationBlobs
+      givenID="contentDuration_Banner"
+      givenTextID="contentDuration_BannerText"
+      givenTitle="latest update"
+      titleData="doc.terms.hero.LatestUpdateChip.header"
+      givenSVG="calendar_clock"
+      givenInformation={latestUpdate}
+      informationData=""
+    />
+  </div>
+</HeroTemplate>

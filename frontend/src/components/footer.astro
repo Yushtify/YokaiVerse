@@ -1,0 +1,152 @@
+---
+import GoogleMaterialSymbol from "./custom/googleMaterial_Symbol.astro";
+import LinkButton from "./custom/links/linkButton.astro";
+import LanguageSwitcher from "./custom/public/languageSwitcher.astro";
+---
+
+<footer
+  class="flex flex-col items-center justify-center w-screen h-fit gap-12 pb-0 p-8 px-8 md:px-36 lg:px-48 xl:px-58"
+>
+  <div
+    class="flex flex-col xl:flex-row items-start justify-between w-full lg:w-full h-fit gap-12 text-LT_Primary dark:text-DT_Primary"
+  >
+    <div class="flex flex-col items-start justify-start gap-4 w-fit h-fit">
+      <div
+        class="flex flex-col items-start justify-start w-fit h-fit gap-1 text-Accent"
+      >
+        <p class="font-bold text-[min(7vw,1.6rem)]" data-i18n="footer.brand">
+          YokaiVerse
+        </p>
+        <p
+          class="text-[min(7vw,0.9rem)] opacity-65 text-nowrap"
+          data-i18n="footer.slogan"
+        >
+          Your privacy is our goal to keep it safe and secure.
+        </p>
+      </div>
+    </div>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start justify-between gap-12 w-full h-fit"
+    >
+      <div class="flex flex-col items-start justify-start w-fit h-fit gap-4">
+        <p
+          class="font-semibold text-[min(7vw,1.2rem)]"
+          data-i18n="footer.sections.links.title"
+        >
+          Links
+        </p>
+        <div
+          class="flex flex-col items-start sm:items-start justify-start w-fit h-fit gap-4 overflow-hidden capitalize"
+        >
+          <LinkButton
+            givenID="aboutF_Link"
+            givenHREF="/register"
+            dataTranslation="footer.sections.links.support"
+          >
+            support us
+          </LinkButton>
+          <LinkButton
+            givenID="aboutF_Link"
+            givenHREF="/store"
+            dataTranslation="footer.sections.links.store"
+          >
+            store
+          </LinkButton>
+          <LinkButton
+            givenID="aboutF_Link"
+            givenHREF="/register"
+            dataTranslation="footer.sections.links.register"
+          >
+            register
+          </LinkButton>
+          <LinkButton
+            givenID="aboutF_Link"
+            givenHREF="/login"
+            dataTranslation="footer.sections.links.login"
+          >
+            login
+          </LinkButton>
+          <LinkButton
+            givenID="aboutF_Link"
+            givenHREF="/changelog"
+            dataTranslation="footer.sections.links.whats_new"
+          >
+            whats new
+          </LinkButton>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-start justify-start w-fit h-fit gap-4">
+        <p
+          class="font-semibold text-[min(7vw,1.2rem)]"
+          data-i18n="footer.sections.community.title"
+        >
+          Community
+        </p>
+        <div
+          class="flex flex-col items-start sm:items-start justify-start w-fit h-fit gap-4 overflow-hidden capitalize"
+        >
+          <LinkButton
+            givenID="aboutF_Link"
+            givenHREF="/forum"
+            dataTranslation="footer.sections.community.forums"
+          >
+            forums
+          </LinkButton>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-start justify-start w-fit h-fit gap-4">
+        <p
+          class="font-semibold text-[min(7vw,1.2rem)]"
+          data-i18n="footer.sections.company.title"
+        >
+          Company
+        </p>
+        <div
+          class="flex flex-col items-start sm:items-start justify-start w-fit h-fit gap-4 overflow-hidden capitalize"
+        >
+          <LinkButton
+            givenID="aboutF_Link"
+            givenHREF="/doc/about"
+            dataTranslation="footer.sections.company.about"
+          >
+            About Us
+          </LinkButton>
+          <LinkButton
+            givenID="aboutF_Link"
+            givenHREF="/doc/blog"
+            dataTranslation="footer.sections.company.blog"
+          >
+            blog
+          </LinkButton>
+          <LinkButton
+            givenID="aboutF_Link"
+            givenHREF="/doc"
+            dataTranslation="footer.sections.company.docs"
+          >
+            documentation
+          </LinkButton>
+          <LinkButton
+            givenID="aboutF_Link"
+            givenHREF="/doc/terms"
+            dataTranslation="footer.sections.company.terms"
+          >
+            terms of usage
+          </LinkButton>
+          <LinkButton
+            givenID="aboutF_Link"
+            givenHREF="/doc/privacy"
+            dataTranslation="footer.sections.company.privacy"
+          >
+            privacy and policy
+          </LinkButton>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row items-center justify-start pb-4 w-full h-fit gap-4">
+    <LanguageSwitcher />
+  </div>
+</footer>

@@ -1,0 +1,78 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
+// ensure it's a plain string you can inject into attributes/onclick
+
+interface Props {
+  givenVideoID: string;
+  VideoRootSRC: string;
+  givenVideoTitle: string;
+  givenVideoDesc: string;
+}
+
+const { givenVideoID, VideoRootSRC, givenVideoTitle, givenVideoDesc } =
+  Astro.props;
+const CoverIMG = VideoRootSRC + "/cover.webp";
+---
+
+<template id="videoCard_Template">
+  <button
+    id="videoCard"
+    class="group lg:flex-col items-start justify-start snap-start gap-2 xl:gap-4 cursor-pointer relative flex flex-col rounded-3xl aspect-video w-auto lg:w-full h-[min(16vw,36rem)] lg:h-auto group-hover:-translate-y-2 gorup-hover:scale-102 shadow-2xl shadow-transparent group-hover:shadow-LB_Primary/56 group-hover:dark:shadow-DB_Primary/56 transition-shadow-transform duration-250 ease-in-out overflow-hidden"
+    onclick={`findAnime('${givenVideoID}')`}
+  >
+    <img
+      id="videoCover"
+      src={CoverIMG}
+      alt="COVER"
+      class="rounded-3xl aspect-video w-full h-full border-2 border-LB_Primary dark:border-DB_Primary"
+    />
+
+    <div class="">
+      <div
+        class="absolute bottom-0 left-0 flex flex-col items-start justify-end p-4 gap-2 w-full h-[45%] group-hover:h-[70%] bg-gradient-to-t from-LB_Primary dark:from-DB_Primary to-transparent transition-normal duration-250 ease-in-out"
+      >
+        <div
+          class="flex flex-col items-start justify-start gap-1 text-left text-LT_Primary dark:text-DT_Primary"
+        >
+          <p
+            id="videoTitle"
+            class="font-bold text-[min(7vw,1.2rem)] capitalize line-clamp-1"
+          >
+            {givenVideoTitle}
+          </p>
+          <p
+            id="videoDesc"
+            class="text-[min(7vw,0.8rem)] text-LT_Secondary dark:text-DT_Secondary line-clamp-3"
+          >
+            {givenVideoDesc}
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-row items-center justify-between gap-4 p-4 pb-0 w-full h-fit"
+      >
+        <p
+          data-videoRootSRC={VideoRootSRC}
+          id="videoDuration"
+          class="flex flex-row items-center justify-center gap-2 rounded-full p-2 px-4 bg-L_Secondary dark:bg-D_Secondary border border-LB_Primary dark:border-DB_Primary text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+        >
+          <GoogleMaterialSymbol
+            SVG_Name="clock"
+            SvgSize="!text-[min(7vw,1.5rem)]"
+            isFilled={true}
+          />
+          Duration
+        </p>
+        <p
+          data-videoRootSRC={VideoRootSRC}
+          id="episodeCount"
+          class="flex flex-row items-center justify-center gap-1 rounded-full p-2 px-4 bg-L_Secondary dark:bg-D_Secondary border border-LB_Primary dark:border-DB_Primary text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+        >
+          Episode ?
+        </p>
+      </div>
+    </div>
+  </button>
+</template>

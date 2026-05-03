@@ -1,0 +1,22 @@
+---
+import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
+
+const { givenID, givenPlaceHolder, data } = Astro.props;
+---
+
+<div
+  class="group relative flex flex-row items-center justify-center gap-4 pl-4 p-2 rounded-3xl w-fit h-fit text-[min(7vw,1rem)] text-LT_Secondary dark:text-DT_Secondary bg-L_Secondary dark:bg-D_Secondary border-2 border-LB_Primary dark:border-DB_Primary transition-colors ease-in-out duration-300 has-[:focus]:border-Accent has-[:focus]:dark:border-Accent hover:bg-LB_Primary hover:dark:bg-DB_Primary cursor-pointer"
+>
+  <input
+    type="search"
+    id={givenID}
+    class="peer outline-none w-fit min-w-24 bg-transparent focus:text-LT_Primary focus:dark:text-DT_Primary"
+    placeholder={givenPlaceHolder}
+    data-i18n={data}
+  />
+  <button
+    class="flex flex-row items-center justify-center rounded-3xl aspect-square p-2 cursor-pointer transition-all duration-300 peer-focus:bg-Accent peer-focus:text-LT_Primary group-hover:bg-Accent group-hover:text-LT_Primary"
+  >
+    <GoogleMaterialSymbol SVG_Name="search" SvgSize="!text-[min(7vw,1.5rem)]" />
+  </button>
+</div>

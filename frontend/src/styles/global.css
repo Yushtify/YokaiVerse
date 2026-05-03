@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --font-Sans: "Poppins", sans-serif;
+  --font-Serif: "Lora", serif;
+  --font-Mono: "Jetbrains Mono", monospace;
+
+  /* --- DARK MODE --- */
+  --color-D_BG: #000000;
+  --color-D_Primary: #01000d;
+  --color-D_Secondary: #030118;
+  --color-D_Tertiary: #05021f;
+  --color-D_Quaternary: #060328;
+
+  --color-D_Primary_Hover: #030120;
+  --color-D_Secondary_Hover: #030026;
+  --color-D_Tertiary_Hover: #08042e;
+  --color-D_Quaternary_Hover: #0a0537;
+
+  --color-DT_Primary: #eeecff;
+  --color-DT_Secondary: #dad6ff;
+  --color-DT_Tertiary: #bbb4ff;
+  --color-DT_Inverted: #020011;
+
+  --color-DB_Primary: #0a063a;
+  --color-DB_Secondary: #0f0a48;
+  --color-DB_Tertiary: #140f50;
+  --color-DB_Inverted: #b2aaff;
+
+  /* --- LIGHT MODE --- */
+  --color-L_BG: #eae8ff;
+  --color-L_Primary: #f1efff;
+  --color-L_Secondary: #e0ddff;
+  --color-L_Tertiary: #d3cfff;
+  --color-L_Quaternary: #c4befa;
+
+  --color-L_Primary_Hover: #ffffff;
+  --color-L_Secondary_Hover: #cdc8ff;
+  --color-L_Tertiary_Hover: #e7e4ff;
+  --color-L_Quaternary_Hover: #dad6ff;
+
+  --color-LT_Primary: #020011;
+  --color-LT_Secondary: #08042d;
+  --color-LT_Tertiary: #0f0a43;
+  --color-LT_Inverted: #eeecff;
+
+  --color-LB_Primary: #b2aaff;
+  --color-LB_Secondary: #a79dff;
+  --color-LB_Tertiary: #9f94ff;
+  --color-LB_Inverted: #0a063a;
+
+  /* --- SHARED COLORS --- */
+  --color-Accent: #8478fd;
+  --color-Dark_Disabled: #898989;
+  --color-Success: #00ff90;
+  --color-Warm_Orange: #ff9d00;
+  --color-Pinkish_Red: #ff005e;
+}
+
+@layer base {
+  .material-symbols-rounded {
+    font-family: "Material Symbols Rounded";
+    display: inline-block;
+    line-height: 1;
+    color: currentColor;
+
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 400,
+      "GRAD" 0,
+      "opsz" 24;
+
+    width: 1em;
+    height: 1em;
+  }
+}
+
+@layer utilities {
+  /* Custom Scrollbar */
+  .custom-scrollbar {
+    /* For Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(132, 120, 253, 0.4) transparent;
+  }
+
+  /* For Webkit (Chrome, Safari, Edge) */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px; /* Minimal width */
+    height: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(132, 120, 253, 0.5);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(132, 120, 253, 1);
+  }
+
+  /* İkon Doldurma Yardımcısı */
+  .icon-fill,
+  .hover\:icon-fill:hover {
+    font-variation-settings: "FILL" 1 !important;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

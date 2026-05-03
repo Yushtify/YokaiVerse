@@ -1,0 +1,184 @@
+{
+  "version": "v0.3.0",
+  "commit": "",
+  "date": "April 23, 2026",
+  "description": "This update focuses on strengthening the platform's core foundation, improving stability, and refining the overall user experience. It introduces a more reliable video player, official legal documentation, expanded localization support, a range of UI/UX enhancements, and a fully rebuilt Roadmap page designed to make YokaiVerse feel smoother, clearer, and more consistent.",
+  "logs": [
+    {
+      "type": "Performance",
+      "desc": "The video player slider for greater precision and smoother seeking during both click and drag interactions."
+    },
+    {
+      "type": "Added",
+      "desc": "'videoPlayerFeedback.ts', a new core engine module that streamlines interaction handling and feedback loops within the custom video player."
+    },
+    {
+      "type": "Added",
+      "desc": "Official documentation pages, including '/doc', '/privacy', and '/terms', to improve transparency and make key project information easier to access."
+    },
+    {
+      "type": "Added",
+      "desc": "Expanded Markdown support with custom elements and improved list rendering for a cleaner, more readable documentation experience."
+    },
+    {
+      "type": "Added",
+      "desc": "A direct download option for the video player, improving accessibility and enabling offline viewing."
+    },
+    {
+      "type": "Added",
+      "desc": "'LICENSE.md' under the AGPLv3 license, reinforcing the project's commitment to open-source, community-driven development."
+    },
+    {
+      "type": "Added",
+      "desc": "Official localization support for Azerbaijani (AZ) and UK English."
+    },
+    {
+      "type": "Added",
+      "desc": "Smart language detection so the site can automatically match the user's browser language when no preference has been set."
+    },
+    {
+      "type": "Added",
+      "desc": "Interactive tooltips with full localization support."
+    },
+    {
+      "type": "Added",
+      "desc": "Translation support for parts of the Info page, including the Overview and Banner chip sections."
+    },
+    {
+      "type": "Added",
+      "desc": "'progressChip.astro', a reusable color-coded status chip component for roadmap items, supporting In Progress, Planned, Completed, Cancelled, and Considering states."
+    },
+    {
+      "type": "Added",
+      "desc": "'changelogChip.astro', a reusable type chip component for changelog entries, covering 12 log types including Performance, Breaking, Security, Deprecated, and Reverted."
+    },
+    {
+      "type": "Added",
+      "desc": "A fully configured Roadmap page with manifest-driven milestone loading, per-item status chips, and a dedicated hero section."
+    },
+    {
+      "type": "Added",
+      "desc": "Roadmap milestone files for v0.4.0, v0.5.0, and v1.0.0, each with an ETA, overall milestone status, and a breakdown of planned items."
+    },
+    {
+      "type": "Added",
+      "desc": "'manifest.json' for the roadmap versions directory, replacing sequential file crawling with an explicit and maintainable version list."
+    },
+    {
+      "type": "Added",
+      "desc": "A 'categories' field to all root anime 'information.json' files, allowing each title to appear in one or more category listers on the Featured page."
+    },
+    {
+      "type": "Breaking",
+      "desc": "The '/whats-new' route has been replaced by '/changelog'. Any existing bookmarks or external links pointing to the old URL will no longer work."
+    },
+    {
+      "type": "Changed",
+      "desc": "Text selection styling to improve contrast against the signature accent color."
+    },
+    {
+      "type": "Changed",
+      "desc": "'README.md' to better communicate the project's mission, setup details, and contributor guidelines."
+    },
+    {
+      "type": "Changed",
+      "desc": "The 'Latest Change' section so it dynamically pulls the most recent changelog configuration data."
+    },
+    {
+      "type": "Changed",
+      "desc": "The language switcher with a custom dropdown and integrated radio-button selection for a smoother localization experience."
+    },
+    {
+      "type": "Changed",
+      "desc": "'en_us' as the global fallback language to maintain a consistent experience when localization data is missing or unavailable."
+    },
+    {
+      "type": "Changed",
+      "desc": "Global Search with a full-screen overlay, preparing the foundation for upcoming universal search across Anime, Manga, and Settings."
+    },
+    {
+      "type": "Changed",
+      "desc": "The DOM to use a primary <div> wrapper instead of direct <body> manipulation, improving layout control and maintainability."
+    },
+    {
+      "type": "Changed",
+      "desc": "The 404 error page with a refreshed design and improved layout."
+    },
+    {
+      "type": "Changed",
+      "desc": "The loading overlay to provide smoother transitions and a more polished loading experience."
+    },
+    {
+      "type": "Changed",
+      "desc": "Brand assets and the primary accent color from #782DFA to #8478FD across both Light and Dark themes."
+    },
+    {
+      "type": "Changed",
+      "desc": "The Settings page with a cleaner interface and improved layout."
+    },
+    {
+      "type": "Changed",
+      "desc": "All changelog version descriptions and log entry text across v0.0.0 through v0.3.0 rewritten for improved clarity, grammar, and consistency."
+    },
+    {
+      "type": "Changed",
+      "desc": "Roadmap components ('versionTemplate', 'versionDetailTemplate', 'versionLogs', 'hero') overhauled from a changelog copy into a purpose-built roadmap layout with milestone-specific structure and status chip styling."
+    },
+    {
+      "type": "Changed",
+      "desc": "Changelog 'versionDetailTemplate.astro' and 'versionLogs.astro' refactored to use 'changelogChip', replacing raw color strings and innerHTML injection with the chip config pattern."
+    },
+    {
+      "type": "Changed",
+      "desc": "Log type assignments across all changelog versions corrected, with misclassified entries updated to use Performance, Breaking, and Deprecated types where appropriate."
+    },
+    {
+      "type": "Changed",
+      "desc": "Log entry order across all changelog versions now consistently sorted by priority: Performance, Added, Breaking, Changed, Fixed, Deprecated, Removed, Experimental, Known Bug, Misc."
+    },
+    {
+      "type": "Changed",
+      "desc": "'lister.astro' rewritten with a category-aware script that fetches 'animeIDs.json', groups titles by their categories array, and builds one independently paginated lister per category with working Previous and Next controls."
+    },
+    {
+      "type": "Changed",
+      "desc": "The Featured page container in 'companents.astro' updated with consistent gap and padding to match the rest of the page layout."
+    },
+    {
+      "type": "Changed",
+      "desc": "Pagination button IDs in 'lister.astro' corrected from the misleading 'nextPage'/'previousPage' to 'listerPrevPage'/'listerNextPage'."
+    },
+    {
+      "type": "Fixed",
+      "desc": "An issue where episode lists could occasionally fail to load on the watch page."
+    },
+    {
+      "type": "Fixed",
+      "desc": "A 'ListAnime.ts' bug that incorrectly displayed some age ratings as 'unknown'."
+    },
+    {
+      "type": "Fixed",
+      "desc": "A critical issue where the loading overlay could remain visible after switching episodes, causing a soft lock."
+    },
+    {
+      "type": "Fixed",
+      "desc": "Scrollbar styling to better match the site theme and improve visual consistency."
+    },
+    {
+      "type": "Fixed",
+      "desc": "The 'ADDED MISC' label in the changelog renderer, now correctly displaying as 'Misc'."
+    },
+    {
+      "type": "Fixed",
+      "desc": "Duplicate 'oshiNoKo' keys in 'animeIDs.json' that caused two of the three entries to be silently dropped by JSON parsers."
+    },
+    {
+      "type": "Deprecated",
+      "desc": "The 'Go To' navigation on the Changelog page has been temporarily disabled while the feature is being reworked."
+    },
+    {
+      "type": "Removed",
+      "desc": "Legacy Konami Code functionality to keep the codebase lean and focused."
+    }
+  ]
+}

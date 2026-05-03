@@ -1,0 +1,51 @@
+---
+/**
+ * AnimeAccent.astro
+ *
+ * Usage in /info/[id].astro and /watch/[id].astro:
+ *   <AnimeAccent id={anime.id} />
+ *
+ * It will look for an <img> with data-banner-id={id} in the DOM,
+ * falling back to data-cover-id={id} if no banner is found.
+ *
+ * Tag your images like:
+ *   <img data-banner-id={anime.id} src={anime.BannerImage} />
+ *   <img data-cover-id={anime.id}  src={anime.CoverImage} />
+ */
+
+interface Props {
+  id: string | number;
+  fallback?: string;
+}
+
+const { id, fallback = "#7c3aed" } = Astro.props;
+---
+
+<script define:vars={{ id, fallback }}>
+  import { getAccentColor, applyAccentColor } from "@/lib/accentColor";
+
+  (async () => {
+    // Priority: BannerImage → CoverImage → fallback color
+    const img =
+      document.querySelector(`img[data-banner-id="${id}"]`) ??
+      document.querySelector(`img[data-cover-id="${id}"]`);
+
+    if (!img) {
+      applyAccentColor(fallback);
+      return;
+    }
+
+    const extract = async () => {
+      const color = await getAccentColor(img.src, { fallback });
+      applyAccentColor(color);
+    };
+
+    // If image already loaded (e.g. cached), extract immediately
+    // Otherwise wait for the load event
+    if (img.complete && img.naturalWidth > 0) {
+      await extract();
+    } else {
+      img.addEventListener("load", extract, { once: true });
+    }
+  })();
+</script>

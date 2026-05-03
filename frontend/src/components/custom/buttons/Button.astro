@@ -1,0 +1,78 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
+interface Props {
+  givenButtonID: string;
+  givenButtonCustomClass?: string;
+  givenButtonTransparency?: boolean;
+  givenButtonFill?: boolean;
+  givenButtonAction: string;
+  givenButtonSVG?: string;
+  givenButtonSVGSize?: string;
+  givenButtonSVGFill?: boolean;
+  givenTitle?: string;
+  titleData?: string;
+  tooltipTitle?: string;
+  tooltipDesc?: string;
+  tooltipTitleTrans?: string;
+  tooltipDescTrans?: string;
+}
+
+const {
+  givenButtonID,
+  givenButtonCustomClass,
+  givenButtonTransparency,
+  givenButtonFill,
+  givenButtonAction,
+  givenButtonSVG,
+  givenButtonSVGSize,
+  givenButtonSVGFill,
+
+  givenTitle,
+  titleData,
+
+  tooltipTitle,
+  tooltipTitleTrans,
+  tooltipDesc,
+  tooltipDescTrans,
+} = Astro.props;
+
+const isWFill = givenButtonFill ? " w-full " : " w-fit ";
+const transparentBG =
+  "group flex flex-row items-center justify-center px-4 p-2 gap-2" +
+  isWFill +
+  "h-fit rounded-full hover:bg-Accent hover:font-semibold text-[min(7vw,1rem)] text-LT_Secondary dark:text-DT_Secondary hover:text-LT_Primary dark:hover:text-DT_Primary transition-colors duration-300 ease-in-out cursor-pointer";
+const BG =
+  "group flex flex-row items-center justify-center px-4 p-2 gap-2" +
+  isWFill +
+  "h-fit rounded-full bg-L_Tertiary dark:bg-D_Tertiary hover:bg-Accent border border-LB_Primary dark:border-DB_Primary hover:font-semibold text-[min(7vw,1rem)] text-LT_Secondary dark:text-DT_Secondary hover:text-LT_Primary dark:hover:text-DT_Primary transition-colors duration-300 ease-in-out cursor-pointer";
+
+const ButtonClass = givenButtonTransparency
+  ? transparentBG + " " + givenButtonCustomClass
+  : BG + " " + givenButtonCustomClass;
+
+const ValidSvgSize = givenButtonSVGSize
+  ? givenButtonSVGSize
+  : "text-[min(7vw,1rem)]!";
+
+const isTitleValid = givenTitle ? "flex" : "hidden";
+
+console.log(ButtonClass);
+---
+
+<button
+  id={givenButtonID}
+  class={ButtonClass}
+  onclick={givenButtonAction}
+  data-tooltip={tooltipDesc}
+  data-tooltip-title={tooltipTitle}
+  data-tooltip-desc-trans={tooltipDescTrans}
+  data-tooltip-title-trans={tooltipTitleTrans}
+>
+  <GoogleMaterialSymbol
+    SVG_Name={givenButtonSVG}
+    SvgSize={ValidSvgSize}
+    isFilled={givenButtonSVGFill}
+  />
+  <p data-i18n={titleData} class={` ${isTitleValid}`}>{givenTitle}</p>
+</button>

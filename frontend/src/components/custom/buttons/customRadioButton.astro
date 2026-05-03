@@ -1,0 +1,101 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
+interface Props {
+  givenTitle: string;
+  givenState: boolean;
+  givenID: string;
+  groupName: string;
+
+  titleData?: string;
+  givenSVG?: string;
+  givenSVGSize?: string;
+  givenSVGStyle?: string;
+  givenSVGFill?: boolean;
+}
+
+const {
+  givenTitle,
+  givenState,
+  givenID,
+  groupName,
+  titleData,
+  givenSVG,
+  givenSVGSize,
+  givenSVGStyle,
+  givenSVGFill,
+} = Astro.props;
+
+const activeClass =
+  "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-3xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary bg-LB_Primary dark:bg-DB_Primary hover:bg-LB_Secondary hover:dark:bg-DB_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
+const deActiveClass =
+  "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-3xl p-3 hover:bg-LB_Secondary hover:dark:bg-DB_Secondary text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
+
+const initialClass = givenState ? activeClass : deActiveClass;
+
+const isSVG = givenSVG ? "inline" : "hidden";
+const SVGSize = givenSVGSize ? givenSVGSize : "text-[min(7vw,1rem)]!";
+
+const isFilled = givenSVGFill ? "icon-fill" : "";
+const validStyle = isFilled + " " + isSVG;
+
+const TextID = givenID + "_Text";
+---
+
+<button
+  id={givenID}
+  data-group={groupName}
+  class={initialClass}
+  onclick="switchTheFilter(this, this.id)"
+>
+  <GoogleMaterialSymbol
+    SVG_Name={givenSVG}
+    SvgSize={SVGSize}
+    SVG_Style={validStyle}
+  />
+  <p id="title" data-i18n={titleData}>
+    {givenTitle}
+  </p>
+</button>
+
+<script>
+  function switchTheFilter(b: HTMLButtonElement, bID?: string) {
+    if (!b) return;
+
+    const group = b.getAttribute("data-group");
+
+    const activeClass =
+      "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-3xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary bg-LB_Primary dark:bg-DB_Primary hover:bg-LB_Secondary hover:dark:bg-DB_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
+    const deActiveClass =
+      "relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 rounded-3xl p-3 hover:bg-LB_Secondary hover:dark:bg-DB_Secondary text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
+
+    // radio input logic
+    if (group) {
+      // deactivate the other buttons in same group name
+      const groupButtons = document.querySelectorAll(
+        `button[data-group="${group}"]`,
+      );
+      groupButtons.forEach((btn) => {
+        if (btn !== b) btn.className = deActiveClass;
+        let googleFont = btn.querySelector("#googleSymbol") as HTMLSpanElement;
+
+        if (googleFont.classList.contains("icon-fill"))
+          googleFont.classList.remove("icon-fill");
+      });
+    }
+
+    // toggle the button had been clicked
+    let googleFont = b.querySelector("#googleSymbol") as HTMLSpanElement;
+    if (b.className === activeClass) {
+      b.className = deActiveClass;
+
+      if (googleFont.classList.contains("icon-fill"))
+        googleFont.classList.remove("icon-fill");
+    } else {
+      b.className = activeClass;
+      if (!googleFont.classList.contains("icon-fill"))
+        googleFont.classList.add("icon-fill");
+    }
+  }
+  (window as any).switchTheFilter = switchTheFilter;
+</script>

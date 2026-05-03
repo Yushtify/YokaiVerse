@@ -1,0 +1,113 @@
+---
+interface Props {
+  givenID?: string;
+  givenType?:
+    | "Added"
+    | "Changed"
+    | "Fixed"
+    | "Removed"
+    | "Experimental"
+    | "Misc"
+    | "Known_Bug"
+    | "Deprecated"
+    | "Security"
+    | "Performance"
+    | "Breaking"
+    | "Reverted";
+  givenData?: string;
+}
+
+const { givenID = "", givenType, givenData = "" } = Astro.props;
+
+const typeConfig: Record<
+  string,
+  { bg: string; text: string; border: string; label: string }
+> = {
+  Added: {
+    bg: "bg-green-500/20",
+    text: "text-green-400",
+    border: "border-green-500/30",
+    label: "Added",
+  },
+  Changed: {
+    bg: "bg-amber-500/20",
+    text: "text-amber-400",
+    border: "border-amber-500/30",
+    label: "Changed",
+  },
+  Fixed: {
+    bg: "bg-sky-500/20",
+    text: "text-sky-400",
+    border: "border-sky-500/30",
+    label: "Fixed",
+  },
+  Removed: {
+    bg: "bg-red-500/20",
+    text: "text-red-400",
+    border: "border-red-500/30",
+    label: "Removed",
+  },
+  Experimental: {
+    bg: "bg-Accent/10",
+    text: "text-Accent",
+    border: "border-Accent/20",
+    label: "Experimental",
+  },
+  Misc: {
+    bg: "bg-gray-500/20",
+    text: "text-gray-400",
+    border: "border-gray-500/30",
+    label: "Misc",
+  },
+  Known_Bug: {
+    bg: "bg-rose-700/20",
+    text: "text-rose-500",
+    border: "border-rose-700/30",
+    label: "Known Bug",
+  },
+  Deprecated: {
+    bg: "bg-orange-500/20",
+    text: "text-orange-400",
+    border: "border-orange-500/30",
+    label: "Deprecated",
+  },
+  Security: {
+    bg: "bg-teal-500/20",
+    text: "text-teal-400",
+    border: "border-teal-500/30",
+    label: "Security",
+  },
+  Performance: {
+    bg: "bg-cyan-500/20",
+    text: "text-cyan-400",
+    border: "border-cyan-500/30",
+    label: "Performance",
+  },
+  Breaking: {
+    bg: "bg-fuchsia-600/20",
+    text: "text-fuchsia-500",
+    border: "border-fuchsia-600/30",
+    label: "Breaking",
+  },
+  Reverted: {
+    bg: "bg-slate-500/20",
+    text: "text-slate-400",
+    border: "border-slate-500/30",
+    label: "Reverted",
+  },
+};
+
+const config = givenType ? typeConfig[givenType] : null;
+const colorClasses = config
+  ? `${config.bg} ${config.text} ${config.border}`
+  : "";
+const label = config ? config.label : "";
+---
+
+<div
+  id={givenID}
+  data-i18n={givenData}
+  class={`flex items-center justify-center px-2 py-0.5 rounded-full border text-[min(7vw,0.65rem)] font-semibold uppercase tracking-wide shrink-0 whitespace-nowrap ${colorClasses}`}
+>
+  {label}
+</div>

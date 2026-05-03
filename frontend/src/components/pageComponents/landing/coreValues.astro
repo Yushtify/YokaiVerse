@@ -1,0 +1,62 @@
+---
+import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
+---
+
+<div
+  class="flex flex-col items-center jusitfy-center w-full h-fit gap-4 text-[min(5vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+>
+  <p
+    data-i18n="Landing.coreValues.title"
+    class="font-bold text-[min(7vw,4rem)] capitalize text-nowrap"
+  >
+    our core values
+  </p>
+  <p
+    data-i18n="Landing.coreValues.desc"
+    class="flex w-full lg:max-w-[70%] xl:max-w-[65%] text-center text-LT_Secondary dark:text-DT_Secondary"
+  >
+    These aren't just technical features — they're our guiding beliefs. In a
+    world full of noise, ads, and data-hungry platforms, YokaiVerse stands for
+    clarity, freedom, and fan-powered evolution. Whether you're here to read,
+    watch, share, or create — you're part of something built on passion, not
+    profit.
+  </p>
+  <div
+    class="flex flex-col lg:flex-row items-center justify-center w-full h-fit px-4 md:px-8 mt-4"
+  >
+    <a
+      class="flex flex-row items-center jusitfy-center w-full lg:w-fit h-fit p-4 rounded-3xl gap-2 bg-L_Secondary dark:bg-D_Secondary hover:bg-L_Secondary_Hover dark:hover:bg-D_Secondary_Hover border border-LB_Primary dark:border-DB_Primary hover:border-transparent outline outline-transparent hover:outline-LB_Primary hover:dark:outline-DB_Primary hover:outline-offset-2 transition-all duration-300 ease-in-out"
+      target="_blank"
+      href="https://github.com/Yushtify/YokaiVerse"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name="person"
+        SvgSize="!text-[min(7vw,1.2rem)]"
+        isFilled={true}
+      />
+      <span data-i18n="Landing.coreValues.openSource">Open Source</span>
+    </a>
+    <div
+      class="flex flex-row items-center jusitfy-center w-full lg:w-fit h-fit p-4 gap-2"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name="check"
+        SvgSize="!text-[min(7vw,1.2rem)]"
+        isFilled={true}
+      />
+      <span data-i18n="Landing.coreValues.private"
+        >private and always up-to-date</span
+      >
+    </div>
+    <div
+      class="flex flex-row items-center jusitfy-center w-full lg:w-fit h-fit p-4 gap-2"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name="groups"
+        SvgSize="!text-[min(7vw,1.2rem)]"
+        isFilled={true}
+      />
+      <span data-i18n="Landing.coreValues.community">Community Supported</span>
+    </div>
+  </div>
+</div>

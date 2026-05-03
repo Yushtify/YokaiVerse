@@ -1,0 +1,7 @@
+{
+  "version": "v0.0.0",
+  "commit": "",
+  "date": "December 1th 2025",
+  "description": "Initial demo release of YokaiVerse, establishing the foundation for the project and its future development.",
+  "logs": [{ "type": "Added", "desc": "The initial project foundation." }]
+}

@@ -1,0 +1,35 @@
+<div
+  class="absolute bottom-24 xl:bottom-32 right-2 md:right-4 lg:right-8 hidden md:flex flex-col items-center justify-center w-fit h-fit gap-4 p-2 lg:p-4 rounded-full text-[min(7vw,1rem)] text-LT_Secondary/64 dark:text-DT_Secondary capitalize"
+>
+  <span translate="no" id="Arrow" class="material-symbols-rounded"
+    >arrow_downward_alt</span
+  >
+  <p data-i18n="scrollDown">scroll down</p>
+</div>
+<script>
+  const time = (1000 * 3) / 2; // multiply by 1000 to make it into seconds and divide by two to make it happen in that time up and down.
+
+  (() => {
+    const arrow = document.getElementById("Arrow");
+    if (!arrow) return;
+
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      arrow.style.transition = "none";
+      return;
+    }
+
+    arrow.style.willChange = "transform";
+    arrow.style.transition = "transform 2.5s linear";
+    arrow.style.transform = "translateY(0)";
+
+    let movedUp = false;
+    // Toggle every 2.5s so a full up-and-down cycle takes 5s
+    setInterval(() => {
+      movedUp = !movedUp;
+      arrow.style.transform = movedUp ? "translateY(-1rem)" : "translateY(0)";
+    }, time);
+  })();
+</script>

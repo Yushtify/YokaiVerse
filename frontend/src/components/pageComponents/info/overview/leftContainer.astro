@@ -1,0 +1,67 @@
+---
+import ExpandableInfoChip from "../../../custom/expandableInfoChip.astro";
+import InformationBlobs from "../../../custom/public/informationBlobs.astro";
+---
+
+<div class="flex flex-col items-start justify-center gap-4 w-full h-fit">
+  <div
+    class="flex flex-row flex-wrap items-start justify-start gap-2 w-full h-fit"
+  >
+    <InformationBlobs
+      givenID="contentAuthorStudio"
+      givenTextID="contentAuthorStudio_Text"
+      givenSVG="copyright"
+      givenTitle="Author Studio"
+      titleData="info.overview.authorStudio.title"
+      givenInformation="Loading Data..."
+      informationData=""
+    />
+    <div
+      class="lg:hidden flex flex-row flex-wrap items-start justify-start w-full h-fit"
+    >
+      <InformationBlobs
+        givenID="releaseDate"
+        givenTextID="releaseDate_Text"
+        givenTitle="release date"
+        titleData="info.overview.releaseDate.title"
+        givenSVG="date_range"
+        givenInformation="Loading Data..."
+        informationData=""
+      />
+      <InformationBlobs
+        givenID="contentRating"
+        givenTextID="contentRating_Text"
+        givenTitle="content rating"
+        titleData="info.overview.contentRating.title"
+        givenSVG="shield_question"
+        givenInformation="Loading Data..."
+        informationData=""
+      />
+      <InformationBlobs
+        givenID="contentDuration"
+        givenTextID="contentDuration_Text"
+        givenTitle="duration"
+        titleData="info.overview.contentDuration.title"
+        givenSVG="timer"
+        givenInformation="Loading Data..."
+        informationData=""
+      />
+    </div>
+    <InformationBlobs
+      givenID="contentEpisodes"
+      givenTextID="contentEpisodes_Text"
+      givenSVG="movie_info"
+      givenTitle="episodes"
+      titleData="info.overview.contentEpisodes.title"
+      givenInformation="Loading Data..."
+      informationData=""
+    />
+  </div>
+  <ExpandableInfoChip
+    givenID="contentDesc"
+    givenTextID="contentDescText"
+    givenTitle="Description"
+    titleData="info.description"
+    givenDesc="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde odit temporibus quas ipsa, cupiditate sunt officiis quam nulla? Rem assumenda ad, quia obcaecati itaque accusantium fuga placeat minus ipsam soluta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde odit temporibus quas ipsa, cupiditate sunt officiis quam nulla? Rem assumenda ad, quia obcaecati itaque accusantium fuga placeat minus ipsam soluta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde odit temporibus quas ipsa, cupiditate sunt officiis quam nulla? Rem assumenda ad, quia obcaecati itaque accusantium fuga placeat minus ipsam soluta."
+  />
+</div>

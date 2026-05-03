@@ -1,0 +1,145 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+---
+
+<div
+  id="videoControls_Middle"
+  class="hidden md:flex flex-row items-center justify-center gap-0 w-full h-full text-[min(7vw,1.4rem)] font-Mono font-bold text-center select-none"
+  onmouseenter="enable_VideoControls()"
+>
+  <!-- Left -->
+  <div
+    ondblclick="backwardVideo()"
+    onclick="pauseVideo()"
+    class="flex flex-col items-center justify-center gap-8 w-[55%] h-full p-4 text-LT_Inverted dark:text-DT_Inverted z-1"
+  >
+    <div
+      id="videoBackwardFeedback"
+      class="flex flex-row items-center justify-center aspect-square gap-2 font-semibold text-[min(7vw,2rem)] text-LT_Primary dark:text-DT_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name="chevron_left"
+        SvgSize="!text-[min(7vw,3rem)]"
+        isFilled={true}
+      />
+      <p>-5</p>
+    </div>
+  </div>
+
+  <!-- Middle -->
+  <div
+    onclick="pauseVideo()"
+    class="flex flex-col items-center justify-center gap-8 w-full h-full p-4 text-LT_Inverted dark:text-DT_Inverted z-1"
+  >
+    <div
+      id="videoFeedbackContainer"
+      class="absolute top-[1rem] flex flex-row items-center justify-center gap-2 p-4 rounded-full bg-L_Secondary_Hover dark:bg-D_Secondary_Hover font-semibold text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name="repeat"
+        SvgSize="!text-[min(7vw,1rem)]"
+        isFilled={true}
+      />
+      <p>Looping</p>
+    </div>
+    <div
+      id="videoPauseFeedback"
+      class="flex flex-row items-center justify-center aspect-square p-4 rounded-full bg-L_Secondary_Hover dark:bg-D_Secondary_Hover font-semibold text-[min(7vw,2rem)] text-LT_Primary dark:text-DT_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name="pause"
+        SvgSize="!text-[min(7vw,2rem)]"
+        isFilled={true}
+      />
+    </div>
+  </div>
+
+  <!-- Right -->
+  <div
+    ondblclick="forwardVideo()"
+    onclick="pauseVideo()"
+    class="flex flex-col items-center justify-center gap-8 w-[55%] h-full p-4 dark:text-DT_Inverted z-1"
+  >
+    <div
+      id="videoForwardFeedback"
+      class="flex flex-row items-center justify-center aspect-square gap-2 font-semibold text-[min(7vw,2rem)] text-LT_Primary dark:text-DT_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <p>+15</p>
+      <GoogleMaterialSymbol
+        SVG_Name="chevron_right"
+        SvgSize="!text-[min(7vw,3rem)]"
+        isFilled={true}
+      />
+    </div>
+  </div>
+</div>
+
+<div
+  id="videoControls_Middle"
+  class="hidden max-md:flex flex-row items-center justify-center gap-0 w-full h-full text-[min(7vw,1.4rem)] font-Mono font-bold text-center select-none"
+  onmouseenter="enable_VideoControls()"
+>
+  <!-- Left -->
+  <div
+    ondblclick="backwardVideo()"
+    class="flex flex-col items-center justify-center gap-8 w-[55%] h-full p-4 text-LT_Inverted dark:text-DT_Inverted z-1"
+  >
+    <div
+      id="videoBackwardFeedback"
+      class="flex flex-row items-center justify-center aspect-square gap-2 font-semibold text-[min(7vw,2rem)] text-LT_Primary dark:text-DT_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name="chevron_left"
+        SvgSize="!text-[min(7vw,3rem)]"
+        isFilled={true}
+      />
+      <p>-5</p>
+    </div>
+  </div>
+
+  <!-- Middle -->
+  <div
+    onclick="pauseVideo()"
+    class="flex flex-col items-center justify-center gap-8 w-full h-full p-4 text-LT_Inverted dark:text-DT_Inverted z-1"
+  >
+    <div
+      id="videoFeedbackContainer"
+      class="absolute top-[1rem] flex flex-row items-center justify-center gap-2 p-4 rounded-full bg-L_Secondary_Hover dark:bg-D_Secondary_Hover font-semibold text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name="repeat"
+        SvgSize="!text-[min(7vw,1rem)]"
+        isFilled={true}
+      />
+      <p>Looping</p>
+    </div>
+    <div
+      id="videoPauseFeedback"
+      class="flex flex-row items-center justify-center aspect-square p-4 rounded-full bg-L_Secondary_Hover dark:bg-D_Secondary_Hover font-semibold text-[min(7vw,2rem)] text-LT_Primary dark:text-DT_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <GoogleMaterialSymbol
+        SVG_Name="pause"
+        SvgSize="!text-[min(7vw,2rem)]"
+        isFilled={true}
+      />
+    </div>
+  </div>
+
+  <!-- Right -->
+  <div
+    ondblclick="forwardVideo()"
+    class="flex flex-col items-center justify-center gap-8 w-[55%] h-full p-4 dark:text-DT_Inverted z-1"
+  >
+    <div
+      id="videoForwardFeedback"
+      class="flex flex-row items-center justify-center aspect-square gap-2 font-semibold text-[min(7vw,2rem)] text-LT_Primary dark:text-DT_Primary opacity-0 transition-opacity ease-in-out duration-300"
+    >
+      <p>+15</p>
+      <GoogleMaterialSymbol
+        SVG_Name="chevron_right"
+        SvgSize="!text-[min(7vw,3rem)]"
+        isFilled={true}
+      />
+    </div>
+  </div>
+</div>
