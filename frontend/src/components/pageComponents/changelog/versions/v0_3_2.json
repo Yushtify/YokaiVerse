@@ -1,0 +1,24 @@
+{
+  "version": "v0.3.2",
+  "commit": "7f4652c",
+  "date": "May 04, 2026",
+  "description": "Minor fixes.",
+  "logs": [
+    {
+      "type": "Fixed",
+      "desc": "Vite version conflict with Astro."
+    },
+    {
+      "type": "Fixed",
+      "desc": "Unnecesarry duplicates from tr.json."
+    },
+    {
+      "type": "Fixed",
+      "desc": "Version naming on v0.3.1 and desc."
+    },
+    {
+      "type": "Fixed",
+      "desc": "26 Depandabot warnings now all is OK 👍."
+    }
+  ]
+}
