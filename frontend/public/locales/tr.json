@@ -125,39 +125,6 @@
       "limitless": "Sınırsız"
     }
   },
-  "slogan": {
-    "default": [
-      "Anime, Manga ve Webtoon dünyasını reklamsız ve sponsorsuz keşfedin.",
-      "Keşfetmeye başlamanın en hızlı yolu—hem de tamamen reklamsız.",
-      "Güvenlik endişeniz mi var? Rahat olun, biz bile ne izlediğinizi bilmiyoruz.",
-      "YokaiVerse'e dalın; takip edilmeden ve verileriniz satılmadan her şeyi keşfedin.",
-      "YokaiVerse: Reklamları veya yapay zekayı değil, kullanıcıları önemser.",
-      "YokaiVerse: Güvenlik, gizlilik ve kullanıcı deneyiminin öncelikli olduğu yer.",
-      "Teknoloji devlerinin sizi kâr için boğmasından bıktınız mı? Buradayız; cüzdanınızı değil sizi önemsiyoruz."
-    ],
-    "eastereggs": {
-      "common": [
-        "Çakmak ve Çelik!",
-        "ර",
-        "O Google mı!!!!?",
-        "Heh, tarayıcı geçmişini ele geçirdim :)"
-      ],
-      "rare": [
-        "Doğru mu görüyorum? Takipsiz bir Windows 11 mi...? Ah, rüyaymış.",
-        "HATIRLATMA! Biraz su iç."
-      ],
-      "mythic": ["Bilmem, fikirlerim tükendi lol."],
-      "mysterious": [
-        "Eski bir Japon efsanesi der ki: 'nigg-' Ehm.. 'Niggeria'"
-      ],
-      "gambleCore": [
-        "777",
-        "HADİ KUMAR OYNAYALIM!",
-        "AH KAHRETTSİN!",
-        "KAZANMAYI DURDURAMIYORUM!"
-      ]
-    }
-  },
 
   "Navbar": {
     "home": "ana sayfa",

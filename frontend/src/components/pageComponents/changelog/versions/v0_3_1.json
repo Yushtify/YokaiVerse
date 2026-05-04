@@ -1,8 +1,8 @@
 {
-  "version": "v0.3.0",
+  "version": "v0.3.1",
   "commit": "7f4652c",
   "date": "May 04, 2026",
-  "description": "This update focuses on strengthening the platform's core foundation, improving stability, and refining the overall user experience. It introduces a more reliable video player, official legal documentation, expanded localization support, a range of UI/UX enhancements, and a fully rebuilt Roadmap page designed to make YokaiVerse feel smoother, clearer, and more consistent.",
+  "description": "Minor fixes.",
   "logs": [
     {
       "type": "Changed",
