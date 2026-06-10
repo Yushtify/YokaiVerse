@@ -3,9 +3,9 @@
 ---
 
 <p align="left">
-  <img src="https://img.shields.io/github/last-commit/yushtify/YokaiVerse?style=for-the-badge&logo=git&color=8aadf4&labelColor=303446&logoColor=ffffff" alt="Last Commit">
-  <img src="https://img.shields.io/github/stars/yushtify/YokaiVerse?style=for-the-badge&logo=github&color=eed49f&labelColor=303446&logoColor=ffffff" alt="Stars">
-  <img src="https://img.shields.io/github/repo-size/yushtify/YokaiVerse?style=for-the-badge&logo=files&color=a6da95&labelColor=303446&logoColor=ffffff" alt="Size">
+  <img src="https://img.shields.io/github/last-commit/Yushtify/YokaiVerse?style=for-the-badge&logo=git&color=8aadf4&labelColor=303446&logoColor=ffffff" alt="Last Commit">
+  <img src="https://img.shields.io/github/stars/Yushtify/YokaiVerse?style=for-the-badge&logo=github&color=eed49f&labelColor=303446&logoColor=ffffff" alt="Stars">
+  <img src="https://img.shields.io/github/repo-size/Yushtify/YokaiVerse?style=for-the-badge&logo=files&color=a6da95&labelColor=303446&logoColor=ffffff" alt="Size">
 </p>
 
 **YokaiVerse** is an all-in-one platform designed to bring **Anime, Manga, and Webtoons** together in a single, seamless experience. Built with a "Privacy First" mindset, this project stands against data exploitation, ensuring your digital footprint remains yours and yours alone.
