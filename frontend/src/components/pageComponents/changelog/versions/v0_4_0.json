@@ -1,7 +1,7 @@
 {
   "version": "v0.4.0",
-  "commit": "",
-  "date": "Jul 16, 2026",
+  "commit": "374c420",
+  "date": "Jul 20, 2026",
   "description": "Introduces localization improvements, Material 3 Expressive design enhancements, and various bug fixes.",
   "logs": [
     {
