@@ -1,332 +1,77 @@
 ---
-import AnimeCard from "../../custom/buttons/animeCard.astro";
+import AnimeCard from "../../custom/buttons/animeCard/companents.astro";
 import Button from "../../custom/buttons/Button.astro";
 import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
-
-interface Props {
-  givenSVG?: string;
-  givenTitle: string;
-  givenDesc?: string;
-}
-
-const { givenSVG = "list", givenTitle, givenDesc } = Astro.props;
-const isDescValid = givenDesc ? "flex" : "hidden";
 ---
 
 <template id="animeLister">
-  <div
-    id="Lister"
-    class="flex flex-col items-start justify-center gap-8 w-full h-fit text-[min(5vw,1rem)] text-LT_Primary dark:text-DT_Primary"
-  >
-    <!-- Lister Header -->
-    <div class="flex flex-row items-center justify-start w-full h-fit gap-4">
-      <div class="flex flex-col w-full h-fit items-start justify-center">
-        <div
-          class="flex flex-row items-center justify-start gap-2 w-full h-fit"
-        >
-          <GoogleMaterialSymbol
-            SVG_ID="listerSVG"
-            SVG_Name={givenSVG}
-            isFilled={true}
-            SvgSize="!text-[min(6vw,2rem)]"
-          />
-          <p
-            id="listerTitle"
-            class="font-bold text-[min(6vw,2rem)] capitalize text-nowrap"
-          >
-            {givenTitle}
-          </p>
-        </div>
-        <p
-          id="listerDesc"
-          class={`w-full lg:max-w-[80%] xl:max-w-[65%] text-LT_Secondary dark:text-DT_Secondary ${isDescValid}`}
-        >
-          {givenDesc}
-        </p>
-      </div>
-
-      <!-- Pagination Controls -->
-      <div
-        class="flex flex-row items-center justify-center gap-4 p-2 rounded-3xl w-fit h-fit border border-LB_Primary dark:border-DB_Primary"
-      >
-        <Button
-          givenButtonID="listerPrevPage"
-          givenButtonAction=""
-          givenButtonSVG="chevron_backward"
-          givenButtonSVGSize="text-[min(7vw,1rem)]"
-        />
-        <Button
-          givenButtonID="listerNextPage"
-          givenButtonAction=""
-          givenButtonSVG="chevron_forward"
-          givenButtonSVGSize="text-[min(7vw,1rem)]"
-        />
-      </div>
-    </div>
-
-    <!-- Card Grid -->
     <div
-      id="animeCardLister"
-      class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 items-start justify-start gap-4 w-full h-fit"
+        id="Lister"
+        class="flex flex-col items-start justify-center gap-8 w-full h-fit text-[min(5vw,1rem)] text-LT_Primary dark:text-DT_Primary"
     >
-      <!-- AnimeCard renders <template id="animeCardTemplate"> used by the script below -->
-      <AnimeCard
-        givenVideoID="__template__"
-        VideoRootSRC="/src/assets/animes/murderDrones"
-        givenVideoTitle=""
-        givenVideoUploader=""
-        givenNSFW={false}
-      />
+        <!-- Lister Header -->
+        <div
+            class="flex flex-row flex-wrap items-center justify-start w-full h-fit gap-4"
+        >
+            <div class="flex flex-col w-full h-fit items-start justify-center">
+                <div
+                    class="flex flex-row items-center justify-start gap-2 w-full h-fit"
+                >
+                    <GoogleMaterialSymbol
+                        SVG_ID="listerSVG"
+                        symbol=""
+                        isFilled={true}
+                        SvgSize="!text-[min(6vw,2rem)]"
+                    />
+                    <p
+                        id="listerTitle"
+                        class="font-bold text-[min(6vw,2rem)] capitalize text-nowrap"
+                    >
+                        Title
+                    </p>
+                </div>
+                <p
+                    id="listerDesc"
+                    class="flex w-full lg:max-w-[80%] xl:max-w-[65%] text-LT_Secondary dark:text-DT_Secondary"
+                >
+                    Desc
+                </p>
+            </div>
+
+            <!-- Pagination Controls -->
+            <div
+                class="flex flex-row items-center justify-center gap-2 min-w-fit w-fit max-w-full h-fit"
+            >
+                <Button
+                    givenLocationFrom="horizontal"
+                    givenLocation="start"
+                    givenButtonID="listerPrevPage"
+                    givenButtonAction=""
+                    givenTitle="Previous Page"
+                    titleData="global.lister.prevPage"
+                    givenButtonSymbol="chevron_backward"
+                    givenButtonSymbolSize="text-[min(7vw,1rem)]"
+                />
+                <Button
+                    givenLocationFrom="horizontal"
+                    givenLocation="end"
+                    givenButtonID="listerNextPage"
+                    givenButtonAction=""
+                    givenButtonCustomClass="flex-row-reverse"
+                    givenTitle="Next Page"
+                    titleData="global.lister.nextPage"
+                    givenButtonSymbol="chevron_forward"
+                    givenButtonSymbolSize="text-[min(7vw,1rem)]"
+                />
+            </div>
+        </div>
+
+        <!-- Card Grid -->
+        <div
+            id="animeCardLister"
+            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 items-start justify-start gap-4 w-full h-fit"
+        >
+            <AnimeCard />
+        </div>
     </div>
-  </div>
 </template>
-
-<script>
-  // ─── TYPE DECLARATIONS ────────────────────────────────────────────────────
-  interface LoadingManagerInterface {
-    show: (message?: string) => void;
-    hide: () => void;
-    setError: (errorMessage: string) => void;
-  }
-  declare const LoadingManager: LoadingManagerInterface;
-
-  // ─── CONFIG ───────────────────────────────────────────────────────────────
-
-  const ITEMS_PER_PAGE = 6;
-
-  const CATEGORY_ICONS: Record<string, string> = {
-    Featured: "star",
-    Isekai: "swap_horiz",
-    Fantasy: "auto_awesome",
-    Supernatural: "bolt",
-    Drama: "theater_comedy",
-    Comedy: "emoji_emotions",
-    Animation: "animation",
-    "Sci-Fi": "rocket",
-    Action: "sports_martial_arts",
-    Psychological: "psychology",
-    Music: "music_note",
-    Horror: "skull",
-    Adult: "18_up_rating",
-  };
-
-  // ─── ENTRY POINT ─────────────────────────────────────────────────────────
-
-  async function loadFeaturedContent() {
-    const container = document.getElementById("featuredListComp");
-    if (!container) return;
-
-    LoadingManager.show("Loading Content...");
-
-    try {
-      // 1. Fetch the anime index
-      const indexRes = await fetch("/animeIDs.json");
-      if (!indexRes.ok) {
-        LoadingManager.setError("Failed to load the anime index.");
-        return;
-      }
-      const animeIndex: Record<string, string> = await indexRes.json();
-
-      // 2. Fetch each root information.json, deduplicating by path
-      const seenPaths = new Set<string>();
-      const animes: Array<{ id: string; path: string; info: any }> = [];
-
-      for (const [id, path] of Object.entries(animeIndex)) {
-        if (seenPaths.has(path)) continue;
-        seenPaths.add(path);
-
-        const infoRes = await fetch(`${path}/information.json`);
-        if (!infoRes.ok) continue;
-
-        const info = await infoRes.json();
-        animes.push({ id, path, info });
-      }
-
-      if (animes.length === 0) {
-        LoadingManager.setError("No titles found.");
-        return;
-      }
-
-      // 3. Group by category — an anime can appear in multiple categories
-      const categoryMap = new Map<
-        string,
-        Array<{ id: string; path: string; info: any }>
-      >();
-
-      for (const anime of animes) {
-        const cats: string[] = anime.info.categories ?? ["Uncategorized"];
-        for (const cat of cats) {
-          if (!categoryMap.has(cat)) categoryMap.set(cat, []);
-          categoryMap.get(cat)!.push(anime);
-        }
-      }
-
-      // 4. Sort: "Featured" always first, rest alphabetical
-      const sortedCategories = [...categoryMap.keys()].sort((a, b) => {
-        if (a === "Featured") return -1;
-        if (b === "Featured") return 1;
-        return a.localeCompare(b);
-      });
-
-      // 5. Build one lister per category
-      for (const category of sortedCategories) {
-        buildLister(category, categoryMap.get(category)!, container);
-      }
-
-      LoadingManager.hide();
-    } catch (err: any) {
-      console.error("[Featured] Load error:", err);
-      LoadingManager.setError(
-        err.message ?? "Failed to load content, try again later.",
-      );
-    }
-  }
-
-  // ─── LISTER BUILDER ───────────────────────────────────────────────────────
-
-  function buildLister(
-    category: string,
-    items: Array<{ id: string; path: string; info: any }>,
-    container: HTMLElement,
-  ) {
-    const listerTemplate = document.getElementById(
-      "animeLister",
-    ) as HTMLTemplateElement | null;
-    if (!listerTemplate) return;
-
-    // Clone the full lister template
-    const listerFragment = listerTemplate.content.cloneNode(
-      true,
-    ) as DocumentFragment;
-
-    // Grab the nested card template BEFORE clearing the grid
-    const cardTemplate = listerFragment.querySelector(
-      "#animeCardTemplate",
-    ) as HTMLTemplateElement | null;
-
-    // Give this lister a unique ID scoped to the category
-    const safeId =
-      "lister_" + category.replace(/[^a-zA-Z0-9]/g, "_").toLowerCase();
-    const listerRoot = listerFragment.querySelector(
-      "#Lister",
-    ) as HTMLElement | null;
-    if (listerRoot) listerRoot.id = safeId;
-
-    // Set title
-    const titleEl = listerFragment.querySelector(
-      "#listerTitle",
-    ) as HTMLElement | null;
-    if (titleEl) titleEl.textContent = category;
-
-    // Set icon
-    const iconEl = listerFragment.querySelector(
-      "#listerSVG",
-    ) as HTMLElement | null;
-    if (iconEl) iconEl.textContent = CATEGORY_ICONS[category] ?? "list";
-
-    // Clear the placeholder card from the grid
-    const gridEl = listerFragment.querySelector(
-      "#animeCardLister",
-    ) as HTMLElement | null;
-    if (gridEl) gridEl.innerHTML = "";
-
-    // Append to page — DocumentFragment is consumed here
-    container.appendChild(listerFragment);
-
-    // Work with live DOM elements from this point on
-    const listerEl = document.getElementById(safeId);
-    if (!listerEl) return;
-
-    const liveGrid = listerEl.querySelector(
-      "#animeCardLister",
-    ) as HTMLElement | null;
-    const prevBtn = listerEl.querySelector(
-      "#listerPrevPage",
-    ) as HTMLButtonElement | null;
-    const nextBtn = listerEl.querySelector(
-      "#listerNextPage",
-    ) as HTMLButtonElement | null;
-
-    let page = 0;
-    const totalPages = Math.max(1, Math.ceil(items.length / ITEMS_PER_PAGE));
-
-    // ── Render a single page of cards ──
-    function renderPage(p: number) {
-      if (!liveGrid || !cardTemplate) return;
-      liveGrid.innerHTML = "";
-
-      const pageItems = items.slice(
-        p * ITEMS_PER_PAGE,
-        (p + 1) * ITEMS_PER_PAGE,
-      );
-
-      for (const { id, path, info } of pageItems) {
-        const cardFragment = cardTemplate.content.cloneNode(
-          true,
-        ) as DocumentFragment;
-
-        const coverImg = cardFragment.querySelector(
-          "#animeCover",
-        ) as HTMLImageElement | null;
-        const titleText = cardFragment.querySelector(
-          "#animeTitle",
-        ) as HTMLElement | null;
-        const uploaderText = cardFragment.querySelector(
-          "#animeUploadedBy_Text",
-        ) as HTMLElement | null;
-        const nsfwBlock = cardFragment.querySelector(
-          "#animeCardNsfwFilter",
-        ) as HTMLElement | null;
-        const coverBtn = cardFragment.querySelector(
-          "#coverButton",
-        ) as HTMLButtonElement | null;
-        const playBtn = cardFragment.querySelector(
-          "#playButton",
-        ) as HTMLButtonElement | null;
-
-        if (coverImg) coverImg.src = `${path}/cover.webp`;
-        if (titleText) titleText.textContent = info.title ?? id;
-        if (uploaderText)
-          uploaderText.textContent = info.author ?? info.uploader ?? "Unknown";
-
-        // Toggle NSFW overlay
-        if (nsfwBlock) {
-          nsfwBlock.classList.toggle("flex", !!info.nsfw);
-          nsfwBlock.classList.toggle("hidden", !info.nsfw);
-        }
-
-        // Wire up navigation
-        if (coverBtn)
-          coverBtn.setAttribute("onclick", `findAnimeInfo('${id}')`);
-        if (playBtn) playBtn.setAttribute("onclick", `findAnime('${id}')`);
-
-        liveGrid.appendChild(cardFragment);
-      }
-
-      // Disable buttons at boundaries
-      if (prevBtn) prevBtn.disabled = p === 0;
-      if (nextBtn) nextBtn.disabled = p >= totalPages - 1;
-    }
-
-    // ── Pagination button handlers ──
-    prevBtn?.addEventListener("click", () => {
-      if (page > 0) {
-        page--;
-        renderPage(page);
-      }
-    });
-
-    nextBtn?.addEventListener("click", () => {
-      if (page < totalPages - 1) {
-        page++;
-        renderPage(page);
-      }
-    });
-
-    // Initial render
-    renderPage(0);
-  }
-
-  // ─── INIT ─────────────────────────────────────────────────────────────────
-  document.addEventListener("DOMContentLoaded", loadFeaturedContent);
-</script>

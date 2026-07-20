@@ -3,17 +3,17 @@
 const { pathname } = Astro.url;
 
 const routes: Record<string, string> = {
-  "/": "Welcome",
-  "/featured": "Featured",
-  "/discover": "Discover",
-  "/changelog": "Release Logs",
-  "/store": "Store",
-  "/settings": "Settings",
-  "/info": "Info",
-  "/watch": "Watching",
-  "/doc": "Documentation",
-  "/doc/terms": "Terms Of Service",
-  "/doc/privacy": "Privacy Policy",
+    "/": "Welcome",
+    "/featured": "Featured",
+    "/discover": "Discover",
+    "/changelog": "Release Logs",
+    "/store": "Store",
+    "/settings": "Settings",
+    "/info": "Info",
+    "/watch": "Watching",
+    "/doc": "Documentation",
+    "/doc/terms": "Terms Of Service",
+    "/doc/privacy": "Privacy Policy",
 };
 
 const title = "YokaiVerse | " + (routes[pathname] ?? "404: Not Found");
@@ -24,45 +24,97 @@ import Footer from "../components/footer.astro";
 import LoadingAnimation from "../components/custom/loadingAnimation.astro";
 import SearchBox from "../components/custom/searchBox/container.astro";
 import Tooltip from "../components/custom/public/tooltip.astro";
+
+import NavigationBar from "../components/navigationBar.astro";
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>{title}</title>
-    <link rel="icon" href="/favicon.svg" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-  </head>
-  <body
-    class="relative bg-L_BG dark:bg-D_BG font-Sans caret-Accent accent-Accent selection:text-Accent selection:bg-Accent/10 overflow-x-hidden select-text scroll-smooth custom-scrollbar"
-  >
-    <div
-      class="relative flex flex-col items-start jusitfy-start gap-2 w-screen h-screen overflow-x-hidden overflow-y-scroll scroll-smooth"
+        <title>{title}</title>
+        <link rel="icon" href="/favicon.svg" type="image/png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+    </head>
+    <body
+        class="relative bg-L_BG dark:bg-D_BG font-Sans caret-Accent accent-Accent selection:text-Accent selection:bg-Accent/10 overflow-x-hidden select-text scroll-smooth custom-scrollbar"
     >
-      <Tooltip />
-      <SearchBox />
-      <LoadingAnimation />
-      <slot />
-      <Footer givenTitle={title} />
-    </div>
-  </body>
-  <script>
+        <Tooltip />
+        <SearchBox />
+        <LoadingAnimation />
+        <!-- Navigation Bar -->
+        <NavigationBar />
+        <!-- Main Contents -->
+        <main
+            class="relative flex flex-col items-center jusitfy-start gap-8 w-full min-h-screen h-fit px-4 mb-24 overflow-hidden overflow-y-scroll"
+        >
+            <slot />
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<script>
+    import "../scripts/radioButtonHandler.ts"; // Radio Button Handler
     import "../scripts/languageHandler.ts"; // Language Handler
     import "../scripts/tooltipHandler.ts"; // Tooltip Handler
     import "../scripts/svgScripts.ts";
+    import "../scripts/infoPage_Scripts/infoHandler.ts"; // for the info handles and page.
     import "../scripts/watchPage_Scripts/videoPlayerFeedback.ts"; // for feedback of videoPlayer.ts
     import "../scripts/watchPage_Scripts/videoPlayer.ts"; // for anything that handles video Player
-    import "../scripts/watchPage_Scripts/playerControls.ts"; // for the video player controlls
     import "../scripts/watchPage_Scripts/playlistHandler.ts"; // for the playlist handles and page.
-    import "../scripts/infoPage_Scripts/infoHandler.ts"; // for the info handles and page.
-    import "../scripts/animeListerScript"; // handles the load on featured.
-  </script>
-</html>
+
+    /**
+     * Redirects to the INFO page of a series.
+     * Strips any season/episode info to show the main series page.
+     * Usage: findAnimeInfo("oshiNoKo+s1_ep5") -> /info?v=oshiNoKo
+     */
+    function findAnimeInfo(videoID: string): void {
+        if (!videoID) return;
+
+        // Extract only the base ID, remove any season/episode info (like +s1_ep1)
+        const baseID = videoID.split(/[+ ]/)[0];
+
+        console.log("[Navigation]: Redirecting to Info -> " + baseID);
+        window.location.href = "/info?v=" + baseID;
+    }
+    (window as any).findAnimeInfo = findAnimeInfo;
+
+    /**
+     * Redirects to the WATCH page with specific Season and Episode.
+     * Usage: findAnime("oshiNoKo", 1, 5) -> /watch?v=oshiNoKo+s1_ep5
+     */
+    function findAnime(
+        animeID: string,
+        season?: number,
+        episode?: number,
+    ): void {
+        if (!animeID) return;
+
+        // Extract only the base ID if it already contains "+s" etc.
+        const baseID = animeID.split(/[+ ]/)[0];
+
+        // If season and episode are provided as parameters, use them.
+        // If not provided and animeID already contains them (old format), keep them.
+        let target = baseID;
+
+        if (season !== undefined && episode !== undefined) {
+            target = `${baseID}+s${season}_ep${episode}`;
+        } else if (animeID.includes("+")) {
+            target = animeID; // Already formatted, don't modify
+        } else {
+            target = `${baseID}+s1_ep1`; // Default if nothing provided
+        }
+
+        console.log("[Navigation]: Redirecting to Watch -> " + target);
+        window.location.href = "/watch?v=" + target;
+    }
+    (window as any).findAnime = findAnime;
+</script>

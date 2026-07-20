@@ -1,83 +1,110 @@
 ---
 interface Props {
-  givenID: string;
-  givenOnInput?: string;
-  givenWidth: string;
-  givenMin: string;
-  givenMax: string;
-  givenValue: string;
-  givenStep: string;
+    givenID: string;
+    givenOnInput?: string;
+    givenWidth: string;
+    givenMin: string;
+    givenMax: string;
+    givenValue: string;
+    givenStep: string;
 }
-
 const {
-  givenID,
-  givenOnInput,
-  givenWidth,
-  givenMin,
-  givenMax,
-  givenValue,
-  givenStep,
+    givenID,
+    givenOnInput,
+    givenWidth,
+    givenMin,
+    givenMax,
+    givenValue,
+    givenStep,
 } = Astro.props;
 ---
 
 <div class="relative w-full flex items-center group">
-  <input
-    id={givenID}
-    class=`appearance-none ${givenWidth} h-1 hover:h-2 rounded-full outline-none transition-all duration-75 ease-out cursor-pointer bg-L_BG dark:bg-D_BG [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-0 [&::-webkit-slider-thumb]:h-0 [&::-webkit-slider-thumb]:bg-transparent [&::-webkit-slider-thumb]:border-none [&::-webkit-slider-thumb]:shadow-none [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-0 [&::-moz-range-thumb]:h-0 [&::-moz-range-thumb]:bg-transparent [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:shadow-none`
-    oninput={givenOnInput}
-    type="range"
-    min={givenMin}
-    max={givenMax}
-    value={givenValue}
-    step={givenStep}
-    data-yokai-slider
-  />
+    <input
+        id={givenID}
+        class=`appearance-none ${givenWidth} h-1 hover:h-2 rounded-full outline-none transition-all duration-75 ease-out cursor-pointer bg-L_BG dark:bg-D_BG [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-0 [&::-webkit-slider-thumb]:h-0 [&::-webkit-slider-thumb]:bg-transparent [&::-webkit-slider-thumb]:border-none [&::-webkit-slider-thumb]:shadow-none [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-0 [&::-moz-range-thumb]:h-0 [&::-moz-range-thumb]:bg-transparent [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:shadow-none`
+        oninput={givenOnInput}
+        type="range"
+        min={givenMin}
+        max={givenMax}
+        value={givenValue}
+        step={givenStep}
+        data-yokai-slider
+    />
 </div>
-
 <script>
-  const updateSliderTrack = (el: HTMLInputElement) => {
-    const min = Number(el.min) || 0;
-    const max = Number(el.max) || 100;
-    const val = Number(el.value);
-    if (max <= min) return;
+    const updateSliderTrack = (el: HTMLInputElement) => {
+        const min = Number(el.min) || 0;
+        const max = Number(el.max) || 100;
+        const val = Number(el.value);
+        if (max <= min) return;
+        const percentage = ((val - min) / (max - min)) * 100;
+        let Accent = getComputedStyle(document.documentElement)
+            .getPropertyValue("--Accent")
+            .trim();
+        if (!Accent) Accent = "#8478fd";
+        let LightAccent = getComputedStyle(document.documentElement)
+            .getPropertyValue("--LightAccent")
+            .trim();
+        if (!LightAccent) LightAccent = `rgba(132, 120, 253, 0.2)`;
+        el.style.background = `linear-gradient(to right, ${Accent} 0%, ${Accent} ${percentage}%, ${LightAccent} ${percentage}%, ${LightAccent} 100%)`;
+    };
 
-    const percentage = ((val - min) / (max - min)) * 100;
+    const handleSliderWheel = (e: WheelEvent) => {
+        e.preventDefault();
 
-    let Accent = getComputedStyle(document.documentElement)
-      .getPropertyValue("--Accent")
-      .trim();
-    if (!Accent) Accent = "#8478fd";
+        const slider = e.currentTarget as HTMLInputElement;
+        const min = Number(slider.min) || 0;
+        const max = Number(slider.max) || 100;
+        const step = Number(slider.step) || 1;
+        const current = Number(slider.value);
 
-    el.style.background = `linear-gradient(to right, ${Accent} 0%, ${Accent} ${percentage}%, rgba(255,255,255,0.1) ${percentage}%, rgba(255,255,255,0.1) 100%)`;
-  };
+        // deltaY > 0 → aşağı scroll → değeri azalt, < 0 → yukarı → artır
+        const delta = e.deltaY > 0 ? -step : step;
+        const next = Math.min(max, Math.max(min, current + delta));
 
-  const initSliders = () => {
-    const sliders = document.querySelectorAll<HTMLInputElement>(
-      "[data-yokai-slider]",
-    );
-    const descriptor = Object.getOwnPropertyDescriptor(
-      HTMLInputElement.prototype,
-      "value",
-    );
-    if (!descriptor?.set || !descriptor?.get) return;
+        // Değer zaten bu ise hiçbir şey tetikleme
+        if (next === current) return;
 
-    sliders.forEach((slider) => {
-      updateSliderTrack(slider);
-      slider.addEventListener("input", () => updateSliderTrack(slider));
+        // Setter üzerinden geç → updateSliderTrack otomatik tetiklenir
+        slider.value = String(next);
 
-      Object.defineProperty(slider, "value", {
-        configurable: true,
-        set(this: HTMLInputElement, newVal: string) {
-          descriptor.set!.call(this, newVal);
-          updateSliderTrack(this);
-        },
-        get(this: HTMLInputElement) {
-          return descriptor.get!.call(this);
-        },
-      });
-    });
-  };
+        // oninput handler'ı (givenOnInput) manuel tetikle
+        slider.dispatchEvent(new Event("input", { bubbles: true }));
+    };
 
-  initSliders();
-  document.addEventListener("astro:page-load", initSliders);
+    const initSliders = () => {
+        const sliders = document.querySelectorAll<HTMLInputElement>(
+            "[data-yokai-slider]",
+        );
+        const descriptor = Object.getOwnPropertyDescriptor(
+            HTMLInputElement.prototype,
+            "value",
+        );
+        if (!descriptor?.set || !descriptor?.get) return;
+
+        sliders.forEach((slider) => {
+            updateSliderTrack(slider);
+            slider.addEventListener("input", () => updateSliderTrack(slider));
+
+            // Wheel listener — passive: false zorunlu, yoksa preventDefault çalışmaz
+            slider.addEventListener("wheel", handleSliderWheel, {
+                passive: false,
+            });
+
+            Object.defineProperty(slider, "value", {
+                configurable: true,
+                set(this: HTMLInputElement, newVal: string) {
+                    descriptor.set!.call(this, newVal);
+                    updateSliderTrack(this);
+                },
+                get(this: HTMLInputElement) {
+                    return descriptor.get!.call(this);
+                },
+            });
+        });
+    };
+
+    initSliders();
+    document.addEventListener("astro:page-load", initSliders);
 </script>

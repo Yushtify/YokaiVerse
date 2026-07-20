@@ -2,53 +2,57 @@
 import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
 
 interface Props {
-  givenID: string;
-  givenTextID: string;
-  givenSVG?: string;
-  givenTitle: string;
-  titleData: string;
-  givenInformation: string;
-  informationData: string;
+    givenID: string;
+    givenTextID: string;
+    givenSymbol?: string;
+    givenTitle: string;
+    titleData: string;
+    givenInformation: string;
+    informationData: string;
 }
 
 const {
-  givenID,
-  givenTextID,
-  givenSVG,
-  givenTitle,
-  titleData,
-  givenInformation,
-  informationData,
+    givenID,
+    givenTextID,
+    givenSymbol,
+    givenTitle,
+    titleData,
+    givenInformation,
+    informationData,
 } = Astro.props;
 
-const displayClass = givenSVG ? "inline-block" : "!hidden";
+const displayClass = givenSymbol ? "inline-block" : "!hidden";
 ---
 
 <div
-  id={givenID}
-  class="flex flex-row items-center justify-start p-4 rounded-3xl w-fit h-fit gap-2 hover:bg-L_Secondary dark:hover:bg-D_Secondary text-LT_Primary dark:text-DT_Primary border border-transparent hover:border-LB_Primary hover:dark:border-DB_Primary hover:shadow-2xl shadow-LB_Primary/45 dark:shadow-DB_Primary/45 hover:z-1 hover:-translate-y-2.5 hover:scale-104 capitalize transition-all duration-250 ease-in-out"
+    id={givenID}
+    class="group flex flex-row items-center justify-start gap-2 md:gap-4 p-2 pr-6 md:p-4 md:pr-6 rounded-3xl w-fit h-fit bg-L_Primary dark:bg-D_Primary hover:bg-Highlight text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted hover:shadow-2xl shadow-Highlight/48 dark:shadow-Highlight/48 hover:z-2 hover:-translate-y-2 hover:scale-102 capitalize transition-colors-shadow duration-200 ease-in-out"
 >
-  <GoogleMaterialSymbol
-    SVG_Name={givenSVG}
-    SVG_Style={displayClass}
-    SvgSize="!text-[min(7vw,2rem)]"
-    isFilled={true}
-  />
-  <div
-    class="flex flex-col items-start justify-center gap-1 w-full h-full font-bold"
-  >
-    <p
-      data-i18n={titleData}
-      class="uppercase text-[min(7vw,0.6rem)] text-LT_Secondary dark:text-DT_Secondary leading-none"
+    <div
+        class="flex flex-row items-center justify-center p-3 rounded-3xl bg-L_BG dark:bg-D_BG group-hover:bg-LightAccent transition-colors duration-200 ease-in-out"
     >
-      {givenTitle}
-    </p>
-    <p
-      data-i18n={informationData}
-      id={givenTextID}
-      class="text-[min(7vw,0.8rem)] leading-none"
+        <GoogleMaterialSymbol
+            symbol={givenSymbol}
+            SVG_Style={displayClass}
+            SvgSize="!text-[min(7vw,2rem)]"
+            isFilled={true}
+        />
+    </div>
+    <div
+        class="flex flex-col items-start justify-center gap-1 w-full h-full font-bold"
     >
-      {givenInformation}
-    </p>
-  </div>
+        <p
+            data-i18n={titleData}
+            class="uppercase text-[min(7vw,0.6rem)] text-LT_Secondary dark:text-DT_Secondary group-hover:text-LT_Inverted dark:group-hover:text-DT_Inverted leading-none transition-colors duration-200 ease-in-out"
+        >
+            {givenTitle}
+        </p>
+        <p
+            data-i18n={informationData}
+            id={givenTextID}
+            class="text-[min(7vw,0.8rem)] leading-none"
+        >
+            {givenInformation}
+        </p>
+    </div>
 </div>

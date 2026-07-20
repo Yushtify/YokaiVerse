@@ -2,10 +2,10 @@
 import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
 
 interface Props {
-  givenID: string;
-  givenNumber: string;
-  givenHeader: string;
-  data: string;
+    givenID: string;
+    givenNumber: string;
+    givenHeader: string;
+    data: string;
 }
 
 const { givenID, givenNumber, givenHeader, data } = Astro.props;
@@ -13,58 +13,58 @@ const givenContentID: string = givenID + "_Content";
 ---
 
 <div class="flex flex-col items-start justify-start w-full h-fit py-2 px-4">
-  <!-- Header -->
-  <div
-    id={givenID}
-    class="flex flex-row items-center justify-start gap-4 w-full h-fit font-semibold text-[min(6vw,1rem)] text-LT_Secondary dark:text-DT_Secondary uppercase"
-  >
-    <button
-      onclick={`expandNumericListContent('${givenID}', this)`}
-      class="relative group flex flex-col items-center justify-center px-4 md:px-8 p-3 md:p-6 rounded-full min-w-fit h-auto bg-L_Secondary dark:bg-D_Secondary border-2 border-LB_Primary dark:border-DB_Primary cursor-n-resize overflow-hidden"
+    <!-- Header -->
+    <div
+        id={givenID}
+        class="flex flex-row items-center justify-start gap-4 w-full h-fit font-semibold text-[min(6vw,1rem)] text-LT_Secondary dark:text-DT_Secondary uppercase"
     >
-      <p>{givenNumber}</p>
-      <div
-        class="absolute top-0 left-0 flex flex-row items-center justify-center w-full h-full bg-Accent group-hover:opacity-100 opacity-0 transition-opacity duration-250 ease-in-out"
-      >
-        <GoogleMaterialSymbol
-          SVG_Name="unfold_less"
-          SVG_Style=" group-hover:text-LT_Inverted group-hover:dark:text-DT_Inverted"
-          SvgSize="text-[min(6vw,1rem)]!"
-        />
-      </div>
-    </button>
-    <p data-i18n={data}>{givenHeader}</p>
-  </div>
+        <button
+            onclick={`expandNumericListContent('${givenID}', this)`}
+            class="relative group flex flex-col items-center justify-center px-4 md:px-8 p-3 md:p-6 rounded-full min-w-fit h-auto bg-L_Secondary dark:bg-D_Secondary border-2 border-LB_Primary dark:border-DB_Primary cursor-n-resize overflow-hidden"
+        >
+            <p>{givenNumber}</p>
+            <div
+                class="absolute top-0 left-0 flex flex-row items-center justify-center w-full h-full bg-Accent group-hover:opacity-100 opacity-0 transition-opacity duration-250 ease-in-out"
+            >
+                <GoogleMaterialSymbol
+                    symbol="unfold_less"
+                    SVG_Style=" group-hover:text-LT_Inverted group-hover:dark:text-DT_Inverted"
+                    SvgSize="text-[min(6vw,1rem)]!"
+                />
+            </div>
+        </button>
+        <p data-i18n={data}>{givenHeader}</p>
+    </div>
 
-  <!-- Other -->
-  <div
-    id={givenContentID}
-    class="flex flex-col items-start jusitfy-start w-full h-fit pl-4 md:pl-8 ml-4 md:ml-8 border-l-2 border-LB_Primary dark:border-DB_Primary text-[min(6vw,1.2rem)] text-LT_Primary dark:text-DT_Primary"
-  >
-    <slot />
-  </div>
+    <!-- Other -->
+    <div
+        id={givenContentID}
+        class="flex flex-col items-start jusitfy-start w-full h-fit pl-4 md:pl-8 ml-4 md:ml-8 border-l-2 border-LB_Primary dark:border-DB_Primary text-[min(6vw,1.2rem)] text-LT_Primary dark:text-DT_Primary"
+    >
+        <slot />
+    </div>
 </div>
 
 <script>
-  function expandNumericListContent(eID: string, e: HTMLButtonElement) {
-    // This will expand and collapse the Numeric List's content, without an animation as it's an documentation so it should NOT draw eyes.
-    const contentDIV = document.getElementById(
-      eID + "_Content",
-    ) as HTMLDivElement;
-    const googleFont = e.querySelector("span") as HTMLSpanElement;
-    if (!contentDIV) return console.error(contentDIV, eID);
+    function expandNumericListContent(eID: string, e: HTMLButtonElement) {
+        // This will expand and collapse the Numeric List's content, without an animation as it's an documentation so it should NOT draw eyes.
+        const contentDIV = document.getElementById(
+            eID + "_Content",
+        ) as HTMLDivElement;
+        const googleFont = e.querySelector("span") as HTMLSpanElement;
+        if (!contentDIV) return console.error(contentDIV, eID);
 
-    // Look if it's flex or hidden, and determine if it's visible or not.
-    if (contentDIV.classList.contains("flex")) {
-      // The div is currently visible turn it off by replacing flex to hidden.
-      contentDIV.classList.replace("flex", "hidden");
-      e.classList.replace("cursor-n-resize", "cursor-s-resize");
-      googleFont.innerHTML = "unfold_more";
-    } else {
-      contentDIV.classList.replace("hidden", "flex");
-      e.classList.replace("cursor-s-resize", "cursor-n-resize");
-      googleFont.innerHTML = "unfold_less";
+        // Look if it's flex or hidden, and determine if it's visible or not.
+        if (contentDIV.classList.contains("flex")) {
+            // The div is currently visible turn it off by replacing flex to hidden.
+            contentDIV.classList.replace("flex", "hidden");
+            e.classList.replace("cursor-n-resize", "cursor-s-resize");
+            googleFont.innerHTML = "unfold_more";
+        } else {
+            contentDIV.classList.replace("hidden", "flex");
+            e.classList.replace("cursor-s-resize", "cursor-n-resize");
+            googleFont.innerHTML = "unfold_less";
+        }
     }
-  }
-  (window as any).expandNumericListContent = expandNumericListContent;
+    (window as any).expandNumericListContent = expandNumericListContent;
 </script>

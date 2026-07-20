@@ -100,7 +100,7 @@ async function LoadModularInfo(animeID: string): Promise<void> {
       root: animeRootSrc,
       onEpisodeClick: (seasonIndex, epIndex) => {
         // Directly send animeID, season, and episode parameters
-        findAnime(animeID, seasonIndex, epIndex);
+        window.findAnime(animeID, seasonIndex, epIndex);
       },
     });
 
@@ -146,60 +146,12 @@ function LoadAnimeData(
   const descTxt = document.getElementById("contentDescText");
   const authorTxt = document.getElementById("contentAuthorStudio_Text");
   const dateTxt = document.getElementById("releaseDate_Text");
-  const dateTxt_Banner = document.getElementById("releaseDate_BannerText");
   const contentRatingTxt = document.getElementById("contentRating_Text");
-  const contentRating_BannerTxt = document.getElementById(
-    "contentRating_BannerText",
-  );
 
   if (bannerImg) bannerImg.src = banner;
   if (titleTxt) titleTxt.innerText = title;
   if (descTxt) descTxt.innerText = desc;
   if (authorTxt) authorTxt.innerText = author;
   if (dateTxt) dateTxt.innerText = date;
-  if (dateTxt_Banner) dateTxt_Banner.innerText = date;
   if (contentRatingTxt) contentRatingTxt.innerText = age;
-  if (contentRating_BannerTxt) contentRating_BannerTxt.innerText = age;
 }
-
-/**
- * Redirects to the WATCH page with specific Season and Episode.
- * Usage: findAnime("oshiNoKo", 1, 5) -> /watch?v=oshiNoKo+s1_ep5
- */
-function findAnime(animeID: string, season?: number, episode?: number): void {
-  if (!animeID) return;
-
-  // Extract only the base ID if it already contains "+s" etc.
-  const baseID = animeID.split(/[+ ]/)[0];
-
-  // If season and episode are provided as parameters, use them.
-  // If not provided and animeID already contains them (old format), keep them.
-  let target = baseID;
-
-  if (season !== undefined && episode !== undefined) {
-    target = `${baseID}+s${season}_ep${episode}`;
-  } else if (animeID.includes("+")) {
-    target = animeID; // Already formatted, don't modify
-  } else {
-    target = `${baseID}+s1_ep1`; // Default if nothing provided
-  }
-
-  console.log("[Navigation]: Redirecting to Watch -> " + target);
-  window.location.href = "/watch?v=" + target;
-}
-
-/**
- * Redirects to the INFO page of a series.
- * Strips any season/episode info to show the main series page.
- * Usage: findAnimeInfo("oshiNoKo+s1_ep5") -> /info?v=oshiNoKo
- */
-function findAnimeInfo(videoID: string): void {
-  if (!videoID) return;
-
-  // Extract only the base ID, remove any season/episode info (like +s1_ep1)
-  const baseID = videoID.split(/[+ ]/)[0];
-
-  console.log("[Navigation]: Redirecting to Info -> " + baseID);
-  window.location.href = "/info?v=" + baseID;
-}
-(window as any).findAnimeInfo = findAnimeInfo;

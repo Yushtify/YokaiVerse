@@ -3,46 +3,46 @@ import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
 
 const currentPath = Astro.url.pathname;
 const ActiveTab =
-  "flex flex-row items-center justify-center w-fit h-full xl:h-fit max-xl:aspect-square gap-2 rounded-3xl p-4 font-semibold text-[min(7vw,1rem)] !text-Accent bg-L_Primary dark:bg-D_Primary hover:bg-L_Primary_Hover dark:hover:bg-D_Primary_Hover border-2 border-Accent transition-colors duration-300 ease-in-out overflow-hidden";
+    "flex flex-row items-center justify-center w-fit h-full xl:h-fit max-xl:aspect-square gap-2 rounded-3xl p-4 font-semibold text-[min(7vw,1rem)] !text-Accent bg-L_Primary dark:bg-D_Primary hover:bg-L_Primary_Hover dark:hover:bg-D_Primary_Hover border-2 border-Accent transition-colors duration-300 ease-in-out overflow-hidden";
 
 const isActive = (path: string) => currentPath === path;
 
 interface Props {
-  givenSVG: string;
-  givenSVGSize?: string;
-  givenSVGStyle?: string;
-  givenSVGFill?: boolean;
-  givenAction: string;
-  givenTitle?: string;
-  titleData?: string;
+    givenSymbol: string;
+    givenSymbolSize?: string;
+    givenSymbolStyle?: string;
+    givenSymbolFill?: boolean;
+    givenAction: string;
+    givenTitle?: string;
+    titleData?: string;
 }
 const {
-  givenSVG,
-  givenSVGSize,
-  givenSVGStyle,
-  givenSVGFill,
-  givenAction,
-  givenTitle,
-  titleData,
+    givenSymbol,
+    givenSymbolSize,
+    givenSymbolStyle,
+    givenSymbolFill,
+    givenAction,
+    givenTitle,
+    titleData,
 } = Astro.props;
 
 const isTitle = givenTitle
-  ? "flex flex-row items-center justify-center w-fit h-full xl:h-fit max-xl:aspect-square gap-2 rounded-3xl p-4 hover:font-semibold text-[min(7vw,1rem)] !text-LT_Secondary/64 dark:!text-DT_Secondary/64 hover:!text-Accent hover:bg-L_Primary_Hover dark:hover:bg-D_Primary_Hover border-2 border-transparent transition-colors duration-300 ease-in-out overflow-hidden"
-  : "hidden";
+    ? "flex flex-row items-center justify-center w-fit h-full xl:h-fit max-xl:aspect-square gap-2 rounded-3xl p-4 hover:font-semibold text-[min(7vw,1rem)] !text-LT_Secondary/64 dark:!text-DT_Secondary hover:!text-Accent hover:bg-L_Primary_Hover dark:hover:bg-D_Primary_Hover border-2 border-transparent transition-colors duration-300 ease-in-out overflow-hidden"
+    : "hidden";
 ---
 
 <button
-  onclick={givenAction}
-  class="flex flex-row items-center justify-center w-fit h-full xl:h-fit max-xl:aspect-square gap-2 rounded-3xl p-4 hover:font-semibold text-[min(7vw,1rem)] text-LT_Secondary/64 dark:text-DT_Secondary/64 hover:text-Accent hover:bg-L_Primary_Hover dark:hover:bg-D_Primary_Hover border-2 border-transparent transition-colors duration-300 ease-in-out overflow-hidden cursor-pointer"
+    onclick={givenAction}
+    class="flex flex-row items-center justify-center w-fit h-full xl:h-fit max-xl:aspect-square gap-2 rounded-3xl p-4 hover:font-semibold text-[min(7vw,1rem)] text-LT_Secondary/64 dark:text-DT_Secondary hover:text-Accent hover:bg-L_Primary_Hover dark:hover:bg-D_Primary_Hover border-2 border-transparent transition-colors duration-300 ease-in-out overflow-hidden cursor-pointer"
 >
-  <GoogleMaterialSymbol
-    SVG_Name={givenSVG}
-    SvgSize={givenSVGSize}
-    SVG_Style={givenSVGStyle}
-    isFilled={givenSVGFill}
-  />
+    <GoogleMaterialSymbol
+        symbol={givenSymbol}
+        SvgSize={givenSymbolSize}
+        SVG_Style={givenSymbolStyle}
+        isFilled={givenSymbolFill}
+    />
 
-  <p class={`max-xl:hidden capitalize ${isTitle}`} data-i18n={titleData}>
-    {givenTitle}
-  </p>
+    <p class={`max-xl:hidden capitalize ${isTitle}`} data-i18n={titleData}>
+        {givenTitle}
+    </p>
 </button>

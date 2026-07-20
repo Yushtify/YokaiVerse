@@ -1,102 +1,86 @@
 ---
+import { transitionEnabledOnThisPage } from "astro:transitions/client";
 import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+import { treeifyError } from "astro:schema";
 
 interface Props {
-  givenTitle: string;
-  givenState: boolean;
-  givenID: string;
-  groupName: string;
-
-  givenSVG?: string;
-  givenSVGSize?: string;
-  givenSVGStyle?: string;
-  givenSVGFill?: boolean;
-  dataLang: string;
+    givenPositionTo?: "horizontal" | "vertical";
+    givenPosition?: "start" | "center" | "end";
+    givenTitle: string;
+    givenState: boolean;
+    givenID: string;
+    groupName: string;
+    canDisabled?: boolean;
+    dataLang: string;
+    givenSymbol?: string;
 }
 
 const {
-  givenTitle,
-  givenState,
-  givenID,
-  groupName,
-  givenSVG,
-  givenSVGSize,
-  givenSVGStyle,
-  givenSVGFill,
-  dataLang,
+    givenPositionTo,
+    givenPosition,
+    givenTitle,
+    givenState,
+    givenID,
+    groupName,
+    canDisabled = true,
+    dataLang,
+    givenSymbol,
 } = Astro.props;
 
-const activeClass =
-  "relative flex flex-row items-center justify-start min-w-fit w-full h-fit gap-2 rounded-3xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary bg-LB_Primary dark:bg-DB_Primary hover:bg-LB_Secondary hover:dark:bg-DB_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
-const deActiveClass =
-  "relative flex flex-row items-center justify-start min-w-fit w-full h-fit gap-2 rounded-3xl p-3 hover:bg-LB_Secondary hover:dark:bg-DB_Secondary text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
+let validRounded = "rounded-3xl";
+if (givenPosition && givenPositionTo) {
+    if (givenPositionTo === "horizontal") {
+        if (givenPosition === "start") {
+            validRounded = "rounded-l-3xl rounded-r-xl";
+        } else if (givenPosition === "end") {
+            validRounded = "rounded-l-xl rounded-r-3xl";
+        } else if (givenPosition === "center") {
+            validRounded = "rounded-xl";
+        }
+    } else if (givenPositionTo === "vertical") {
+        if (givenPosition === "start") {
+            validRounded = "rounded-t-3xl rounded-b-xl";
+        } else if (givenPosition === "end") {
+            validRounded = "rounded-t-xl rounded-b-3xl";
+        } else if (givenPosition === "center") {
+            validRounded = "rounded-xl";
+        }
+    }
+}
+validRounded += " hover:rounded-3xl transition-all duration-200 ease-in-out";
 
-const initialClass = givenState ? activeClass : deActiveClass;
+// Base look = deactive state. This is always applied on the element.
+const baseClass = `${validRounded} filter-btn group relative flex flex-row items-center justify-start min-w-fit w-full h-fit gap-2 p-4 bg-L_Secondary dark:bg-D_Secondary hover:bg-Highlight text-nowrap font-semibold text-left text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted overflow-hidden cursor-pointer capitalize`;
 
-const isSVG = givenSVG ? "inline" : "hidden";
-const SVGSize = givenSVGSize ? givenSVGSize : "text-[min(7vw,1rem)]!";
+// Active-state overrides only (uses `!` so they win over baseClass
+// regardless of stylesheet order — same pattern as the icon-radio button).
+const activeOverrideClass =
+    "bg-Accent! hover:bg-Highlight! text-LT_Inverted! dark:text-DT_Inverted! uppercase! capitalize-none!";
 
-const isFilled = givenSVGFill ? "icon-fill" : "";
-const validStyle = isFilled + " " + isSVG;
-
-const TextID = givenID + "_Text";
+const isSVG = givenSymbol ? "inline" : "hidden";
 ---
 
 <button
-  id={givenID}
-  data-group={groupName}
-  data-lang={dataLang}
-  class={initialClass}
-  onclick="switchTheFilter(this, this.id)"
+    type="button"
+    id={givenID}
+    class={baseClass}
+    data-radgroup={groupName}
+    data-radstate={givenState ? "true" : "false"}
+    data-radActive={activeOverrideClass}
+    data-candisabled={canDisabled ? "true" : "false"}
+    data-lang={dataLang}
 >
-  <GoogleMaterialSymbol
-    SVG_Name={givenSVG}
-    SvgSize={SVGSize}
-    SVG_Style={validStyle}
-  />
-  <p id="title">
-    {givenTitle}
-  </p>
+    <div
+        class="flex flex-row items-center justify-center w-fit h-fit rounded-3xl p-2 bg-L_Primary dark:bg-D_Primary group-hover:bg-L_Primary_Hover dark:group-hover:bg-D_Primary_Hover text-LT_Secondary dark:text-DT_Secondary"
+        data-radActive="bg-LightAccent!"
+    >
+        <GoogleMaterialSymbol
+            symbol={givenSymbol}
+            SvgSize="text-[min(6vw,1.5rem)]"
+            isFilled={true}
+        />
+    </div>
+    <p id="title">
+        {givenTitle}
+    </p>
 </button>
-
-<script>
-  function switchTheFilter(b: HTMLButtonElement, bID?: string) {
-    if (!b) return;
-
-    const group = b.getAttribute("data-group");
-
-    const activeClass =
-      "relative flex flex-row items-center justify-start min-w-fit w-full h-fit gap-2 rounded-3xl p-3 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary bg-LB_Primary dark:bg-DB_Primary hover:bg-LB_Secondary hover:dark:bg-DB_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer uppercase";
-    const deActiveClass =
-      "relative flex flex-row items-center justify-start min-w-fit w-full h-fit gap-2 rounded-3xl p-3 hover:bg-LB_Secondary hover:dark:bg-DB_Secondary text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary transition-all duration-300 ease-in-out overflow-hidden cursor-pointer capitalize";
-
-    // radio input logic
-    if (group) {
-      // deactivate the other buttons in same group name
-      const groupButtons = document.querySelectorAll(
-        `button[data-group="${group}"]`,
-      );
-      groupButtons.forEach((btn) => {
-        if (btn !== b) btn.className = deActiveClass;
-        let googleFont = btn.querySelector("#googleSymbol") as HTMLSpanElement;
-
-        if (googleFont.classList.contains("icon-fill"))
-          googleFont.classList.remove("icon-fill");
-      });
-    }
-
-    // toggle the button had been clicked
-    let googleFont = b.querySelector("#googleSymbol") as HTMLSpanElement;
-    if (b.className === activeClass) {
-      b.className = deActiveClass;
-
-      if (googleFont.classList.contains("icon-fill"))
-        googleFont.classList.remove("icon-fill");
-    } else {
-      b.className = activeClass;
-      if (!googleFont.classList.contains("icon-fill"))
-        googleFont.classList.add("icon-fill");
-    }
-  }
-  (window as any).switchTheFilter = switchTheFilter;
-</script>

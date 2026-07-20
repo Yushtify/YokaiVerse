@@ -7,58 +7,60 @@ import Horizontal from "../../seperators/horizontal.astro";
 ---
 
 <HeroTemplate
-  givenGoogleSymbol="news"
-  givenTitle="Change Logs"
-  titleData="changelog.hero.header"
-  givenDesc="The recent drops of Yokaiverse is in 'Development' so anything that have been changed/added may broke the product or user experience, be patient as we try to do our best to make this platform better and safer for you. Thank you for your support and patience on us."
-  descData="changelog.hero.desc"
+    givenGoogleSymbol="news"
+    givenTitle="Change Logs"
+    titleData="changelog.hero.header"
+    givenDesc="The recent drops of Yokaiverse is in 'Development' so anything that have been changed/added may broke the product or user experience, be patient as we try to do our best to make this platform better and safer for you. Thank you for your support and patience on us."
+    descData="changelog.hero.desc"
 >
-  <div class="flex flex-row flex-wrap items-start justify-start w-full h-fit">
-    <!-- Stats -->
-    <InformationBlobs
-      givenID="UpdateCounter_Container"
-      givenTextID="UpdateCounter"
-      givenTitle="Updates"
-      titleData="changelog.navigation.updates"
-      givenSVG="deployed_code_history"
-      givenInformation="Loading..."
-      informationData=""
-    />
-    <InformationBlobs
-      givenID="latestUpdate"
-      givenTextID="latestUpdate_Text"
-      givenTitle="latest update"
-      titleData="changelog.navigation.latestUpdate"
-      givenSVG="deployed_code_history"
-      givenInformation="Loading"
-      informationData=""
-    />
-    <InformationBlobs
-      givenID=""
-      givenTextID=""
-      givenTitle="latest commit"
-      titleData="changelog.navigation.latestCommit"
-      givenSVG="commit"
-      givenInformation="unable to load"
-      informationData=""
-    />
-  </div>
-  <div
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 items-center justify-start w-full h-fit gap-4 text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary"
-  >
-    <CardLink
-      givenHREF="#version-v0_0_0"
-      givenGoogleSymbol="find_in_page"
-      givenID=""
-      givenTitle="first release"
-      titleData="changelog.navigation.firstRelease"
-    />
-    <CardLink
-      givenHREF="https://github.com/Yushtify/YokaiVerse/commits/main/"
-      givenGoogleSymbol="commit"
-      givenID=""
-      givenTitle="github releases"
-      titleData="changelog.navigation.git"
-    />
-  </div>
+    <div
+        class="flex flex-row flex-wrap items-start justify-start gap-4 w-full h-fit"
+    >
+        <!-- Stats -->
+        <InformationBlobs
+            givenID="UpdateCounter_Container"
+            givenTextID="UpdateCounter"
+            givenTitle="Updates"
+            titleData="changelog.navigation.updates"
+            givenSymbol="deployed_code_history"
+            givenInformation="Loading..."
+            informationData=""
+        />
+        <InformationBlobs
+            givenID="latestUpdate"
+            givenTextID="latestUpdate_Text"
+            givenTitle="latest update"
+            titleData="changelog.navigation.latestUpdate"
+            givenSymbol="deployed_code_history"
+            givenInformation="Loading"
+            informationData=""
+        />
+        <InformationBlobs
+            givenID=""
+            givenTextID=""
+            givenTitle="latest commit"
+            titleData="changelog.navigation.latestCommit"
+            givenSymbol="commit"
+            givenInformation="unable to load"
+            informationData=""
+        />
+    </div>
+    <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 items-center justify-start w-full h-fit gap-4 text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+    >
+        <CardLink
+            givenHREF="#version-v0_0_0"
+            givenGoogleSymbol="find_in_page"
+            givenID=""
+            givenTitle="first release"
+            titleData="changelog.navigation.firstRelease"
+        />
+        <CardLink
+            givenHREF="https://github.com/Yushtify/YokaiVerse/commits/main/"
+            givenGoogleSymbol="commit"
+            givenID=""
+            givenTitle="github releases"
+            titleData="changelog.navigation.git"
+        />
+    </div>
 </HeroTemplate>

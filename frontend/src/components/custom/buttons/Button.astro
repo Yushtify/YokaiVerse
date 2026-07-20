@@ -2,77 +2,101 @@
 import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
 
 interface Props {
-  givenButtonID: string;
-  givenButtonCustomClass?: string;
-  givenButtonTransparency?: boolean;
-  givenButtonFill?: boolean;
-  givenButtonAction: string;
-  givenButtonSVG?: string;
-  givenButtonSVGSize?: string;
-  givenButtonSVGFill?: boolean;
-  givenTitle?: string;
-  titleData?: string;
-  tooltipTitle?: string;
-  tooltipDesc?: string;
-  tooltipTitleTrans?: string;
-  tooltipDescTrans?: string;
+    givenLocationFrom?: "horizontal" | "vertical";
+    givenLocation?: "start" | "center" | "end";
+    givenButtonID: string;
+    givenButtonCustomClass?: string;
+    givenButtonTransparency?: boolean;
+    givenButtonFill?: boolean;
+    givenButtonAction: string;
+    givenButtonSymbol?: string;
+    givenButtonSymbolSize?: string;
+    givenButtonSymbolFill?: boolean;
+    givenTitle?: string;
+    titleData?: string;
+    tooltipTitle?: string;
+    tooltipDesc?: string;
+    tooltipTitleTrans?: string;
+    tooltipDescTrans?: string;
 }
 
 const {
-  givenButtonID,
-  givenButtonCustomClass,
-  givenButtonTransparency,
-  givenButtonFill,
-  givenButtonAction,
-  givenButtonSVG,
-  givenButtonSVGSize,
-  givenButtonSVGFill,
+    givenLocationFrom,
+    givenLocation,
 
-  givenTitle,
-  titleData,
+    givenButtonID,
+    givenButtonCustomClass,
+    givenButtonTransparency,
+    givenButtonFill,
+    givenButtonAction,
+    givenButtonSymbol,
+    givenButtonSymbolSize,
+    givenButtonSymbolFill,
 
-  tooltipTitle,
-  tooltipTitleTrans,
-  tooltipDesc,
-  tooltipDescTrans,
+    givenTitle,
+    titleData,
+
+    tooltipTitle,
+    tooltipTitleTrans,
+    tooltipDesc,
+    tooltipDescTrans,
 } = Astro.props;
 
-const isWFill = givenButtonFill ? " w-full " : " w-fit ";
-const transparentBG =
-  "group flex flex-row items-center justify-center px-4 p-2 gap-2" +
-  isWFill +
-  "h-fit rounded-full hover:bg-Accent hover:font-semibold text-[min(7vw,1rem)] text-LT_Secondary dark:text-DT_Secondary hover:text-LT_Primary dark:hover:text-DT_Primary transition-colors duration-300 ease-in-out cursor-pointer";
-const BG =
-  "group flex flex-row items-center justify-center px-4 p-2 gap-2" +
-  isWFill +
-  "h-fit rounded-full bg-L_Tertiary dark:bg-D_Tertiary hover:bg-Accent border border-LB_Primary dark:border-DB_Primary hover:font-semibold text-[min(7vw,1rem)] text-LT_Secondary dark:text-DT_Secondary hover:text-LT_Primary dark:hover:text-DT_Primary transition-colors duration-300 ease-in-out cursor-pointer";
+let borderRadius;
+if (givenLocationFrom && givenLocation) {
+    // checks if this companent got any of the attributes
+    if (givenLocationFrom === "horizontal") {
+        // if the buttons aligned left to right so horizontally
+        if (givenLocation === "start") {
+            borderRadius = "rounded-xl rounded-l-3xl";
+        } else if (givenLocation === "end") {
+            borderRadius = "rounded-xl rounded-r-3xl";
+        } else {
+            borderRadius = "rounded-xl";
+        }
+    } else if (givenLocationFrom === "vertical") {
+        // if the buttons aligned top to bottom so vertically
+        if (givenLocation === "start") {
+            borderRadius = "rounded-xl rounded-t-3xl";
+        } else if (givenLocation === "end") {
+            borderRadius = "rounded-xl rounded-b-3xl";
+        } else {
+            borderRadius = "rounded-xl";
+        }
+    }
+} else {
+    borderRadius = "rounded-3xl";
+}
+let validBorder = " " + borderRadius + " hover:rounded-3xl";
+
+const isWFill = givenButtonFill ? " w-full min-w-fit " : " min-w-fit w-fit ";
+const transparentBG = `group flex flex-row items-center justify-center px-4 p-2 gap-2 h-fit hover:bg-Accent hover:font-semibold text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer ${isWFill} ${validBorder}`;
+const BG = `group flex flex-row items-center justify-center px-4 p-2 gap-2 h-fit rounded-full bg-L_Secondary dark:bg-D_Secondary hover:bg-Accent hover:font-semibold text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer ${isWFill} ${validBorder}`;
 
 const ButtonClass = givenButtonTransparency
-  ? transparentBG + " " + givenButtonCustomClass
-  : BG + " " + givenButtonCustomClass;
+    ? transparentBG + " " + givenButtonCustomClass
+    : BG + " " + givenButtonCustomClass;
 
-const ValidSvgSize = givenButtonSVGSize
-  ? givenButtonSVGSize
-  : "text-[min(7vw,1rem)]!";
+const ValidSvgSize = givenButtonSymbolSize
+    ? givenButtonSymbolSize
+    : "text-[min(7vw,1rem)]!";
 
 const isTitleValid = givenTitle ? "flex" : "hidden";
-
-console.log(ButtonClass);
 ---
 
 <button
-  id={givenButtonID}
-  class={ButtonClass}
-  onclick={givenButtonAction}
-  data-tooltip={tooltipDesc}
-  data-tooltip-title={tooltipTitle}
-  data-tooltip-desc-trans={tooltipDescTrans}
-  data-tooltip-title-trans={tooltipTitleTrans}
+    id={givenButtonID}
+    class={ButtonClass}
+    onclick={givenButtonAction}
+    data-tooltip={tooltipDesc}
+    data-tooltip-title={tooltipTitle}
+    data-tooltip-desc-trans={tooltipDescTrans}
+    data-tooltip-title-trans={tooltipTitleTrans}
 >
-  <GoogleMaterialSymbol
-    SVG_Name={givenButtonSVG}
-    SvgSize={ValidSvgSize}
-    isFilled={givenButtonSVGFill}
-  />
-  <p data-i18n={titleData} class={` ${isTitleValid}`}>{givenTitle}</p>
+    <GoogleMaterialSymbol
+        symbol={givenButtonSymbol}
+        SvgSize={ValidSvgSize}
+        isFilled={givenButtonSymbolFill}
+    />
+    <p data-i18n={titleData} class={` ${isTitleValid}`}>{givenTitle}</p>
 </button>

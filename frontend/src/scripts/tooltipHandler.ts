@@ -29,7 +29,7 @@ const VIEWPORT_PADDING = 8;
 
 // How long the cursor must hover before the tooltip appears (ms).
 // If the cursor leaves before this fires, the tooltip is suppressed entirely.
-const SHOW_DELAY = 1000;
+const SHOW_DELAY = 500;
 
 let activeTooltip: HTMLElement | null = null;
 let showTimer: ReturnType<typeof setTimeout> | null = null;

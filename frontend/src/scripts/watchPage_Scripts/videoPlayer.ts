@@ -1,5 +1,3 @@
-// TODO: Add List for multiple episodes with auto-cycling
-
 interface Values {
   forwardAmount: number;
   backwardAmount: number;
@@ -18,8 +16,8 @@ const values: Values = {
   timePlayed: 0,
   volume: 1,
   loop: false,
-  videoPlayerID: "videoPlayer",
-  videoPlayer_ContainerID: "videoPlayer_Container",
+  videoPlayerID: "episodePlayer",
+  videoPlayer_ContainerID: "epPlayerContainer",
 };
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -30,8 +28,8 @@ const videoPlayer_Container = document.getElementById(
 let videoPlayer = document.getElementById(
   values.videoPlayerID,
 ) as HTMLVideoElement;
-let TimeStamp_Slider = document.getElementById(
-  "timeStamp_Slider",
+let TimelineSlider = document.getElementById(
+  "timelineSlider",
 ) as HTMLInputElement;
 
 const feedbackTimers: { [key: string]: any } = {};
@@ -40,7 +38,7 @@ const feedbackCounts: { [key: string]: number } = {
   videoBackwardFeedback: 0,
 };
 
-const canvas = document.getElementById("glow-canvas") as HTMLCanvasElement;
+const canvas = document.getElementById("epCinemaLights") as HTMLCanvasElement;
 const ctx = canvas?.getContext("2d", { alpha: false });
 let lastRecordedVolume = 0.5;
 
@@ -182,84 +180,13 @@ function showFeedback(message: string, duration: number) {
   showTextFeedback(message, duration);
 }
 
-// Video control functions
-function sliderEnter(ID: string) {
-  const timeBar = getElement<HTMLDivElement>(ID);
-  timeBar?.classList.replace("h-[0.2rem]", "h-[1rem]");
-}
-
-function sliderLeave(ID: string) {
-  const timeBar = getElement<HTMLDivElement>(ID);
-  timeBar?.classList.replace("h-[1rem]", "h-[0.2rem]");
-}
-
-function resizeVideo() {
-  const btn = getElement<HTMLButtonElement>("fullscreen_Button");
-  if (!btn) return console.error("Button not found");
-
-  const svg = getSVG(btn);
-  if (!svg) return console.error("SVG not found");
-
-  if (!document.fullscreenElement) {
-    svg.classList.replace("fa-expand", "fa-compress");
-    isFullscreen = true;
-    SendFeedback("fullscreenToggle", "enabled", values.feedbackDuration);
-    videoPlayer_Container.requestFullscreen().catch((err) => {
-      console.log("Fullscreen error:", err);
-      if (svg.innerHTML === "expand_content")
-        svg.innerHTML = "collapse_content";
-      isFullscreen = false;
-      SendFeedback("fullscreenToggle", "disabled", values.feedbackDuration);
-    });
-  } else {
-    document.exitFullscreen();
-    svg.innerHTML = "expand_content";
-    isFullscreen = false;
-    SendFeedback("fullscreenToggle", "disabled", values.feedbackDuration);
-  }
-
-  // Listen on document to catch ESC key and all fullscreen changes
-  document.addEventListener("fullscreenchange", () => {
-    // Check the actual browser state instead of a manual variable
-    const isCurrentlyFull = !!document.fullscreenElement;
-
-    if (isCurrentlyFull) {
-      videoPlayer.classList.replace("rounded-3xl", "rounded-none");
-      videoPlayer_Container.classList.replace("rounded-3xl", "rounded-none");
-    } else {
-      videoPlayer.classList.replace("rounded-none", "rounded-3xl");
-      videoPlayer_Container.classList.replace("rounded-none", "rounded-3xl");
-    }
-  });
-}
-
-function pauseVideo() {
-  if (!videoPlayer)
-    return console.error("[pauseVideo]: Video player not found");
-
-  const btn = getElement<HTMLButtonElement>("pauseButton_TimeBar");
-  if (!btn) return console.error("Button not found");
-
-  const svg = getSVG(btn);
-  if (!svg) return;
-  if (videoPlayer.paused) {
-    videoPlayer.play();
-    svg.innerHTML = "pause";
-    SendFeedback("videoPause", "paused", values.feedbackDuration);
-  } else {
-    videoPlayer.pause();
-    svg.innerHTML = "play_arrow";
-    SendFeedback("videoPause", "playing", values.feedbackDuration);
-  }
-}
-
 function updateCurrentTime(value: string) {
   if (!videoPlayer)
     videoPlayer = getElement<HTMLVideoElement>(
       "videoPlayer",
     ) as HTMLVideoElement;
-  if (!TimeStamp_Slider) return;
-  TimeStamp_Slider.max = videoPlayer.duration.toString();
+  if (!TimelineSlider) return;
+  TimelineSlider.max = videoPlayer.duration.toString();
   videoPlayer.currentTime = parseFloat(value);
 }
 
@@ -315,56 +242,6 @@ function updateSoundIcons(value: number) {
   } else {
     svg.innerHTML = "volume_up";
   }
-}
-
-function muteVideo() {
-  if (!videoPlayer) return console.error("Video player not found");
-  const newVolume = videoPlayer.volume !== 0 ? 0 : lastRecordedVolume;
-  applyVolume(newVolume, newVolume);
-  updateVolumeSlider(newVolume, newVolume);
-  const volumePercent =
-    newVolume === 0 ? "0%" : `${Math.round(newVolume * 100)}%`;
-  SendFeedback("volumeChange", volumePercent, values.feedbackDuration);
-}
-
-function updateVolumeSlider(value: number, save: number) {
-  const slider = getElement<HTMLInputElement>("volumeSlider");
-  if (!slider) return;
-  slider.value = value.toString();
-  applyVolume(value, save);
-}
-
-function applyVolume(value: number, save: number) {
-  if (!videoPlayer) return;
-  lastRecordedVolume = save;
-  videoPlayer.volume = value;
-  updateSoundIcons(videoPlayer.volume);
-}
-
-function increaseVolume() {
-  if (!videoPlayer) return;
-  let newVolume = videoPlayer.volume + 0.1;
-  newVolume = Math.min(newVolume, 1);
-  applyVolume(newVolume, newVolume);
-  updateVolumeSlider(newVolume, newVolume);
-  SendFeedback(
-    "volumeChange",
-    `${Math.round(newVolume * 100)}%`,
-    values.feedbackDuration,
-  );
-}
-
-function decreaseVolume() {
-  if (!videoPlayer) return;
-  let newVolume = videoPlayer.volume - 0.1;
-  newVolume = Math.max(newVolume, 0);
-  applyVolume(newVolume, newVolume);
-  updateVolumeSlider(newVolume, newVolume);
-  SendFeedback(
-    "volumeChange",
-    `${Math.round(newVolume * 100)}%`,
-    values.feedbackDuration,
-  );
 }
 
 // Canvas animation
@@ -454,9 +331,9 @@ function addListeners() {
 
   // Timeline updates
   videoPlayer.addEventListener("timeupdate", () => {
-    if (TimeStamp_Slider) {
-      TimeStamp_Slider.value = videoPlayer.currentTime.toString();
-      TimeStamp_Slider.max = videoPlayer.duration.toString();
+    if (TimelineSlider) {
+      TimelineSlider.value = videoPlayer.currentTime.toString();
+      TimelineSlider.max = videoPlayer.duration.toString();
     }
 
     const currentTime = calculateCurrentTime(videoPlayer.currentTime);
@@ -464,63 +341,8 @@ function addListeners() {
 
     getElement<HTMLParagraphElement>("current_TimeStamp")!.innerHTML =
       currentTime;
-    getElement<HTMLParagraphElement>("current_TimeStamp_Second")!.innerHTML =
-      currentTime;
     getElement<HTMLParagraphElement>("duration_TimeStamp")!.innerHTML =
       ` / ${duration}`;
-    getElement<HTMLParagraphElement>("duration_TimeStamp_Second")!.innerHTML =
-      ` / ${duration}`;
-  });
-
-  // Keyboard shortcuts
-  window.addEventListener("keyup", (e: KeyboardEvent) => {
-    if (videoPlayer_Container.classList.contains("hidden")) return;
-
-    // Pause/Play
-    if (e.code === "Space" || e.key === "k") {
-      e.preventDefault();
-      pauseVideo();
-    }
-
-    // Mute
-    if (e.key === "m" || e.key === "M") {
-      e.preventDefault();
-      muteVideo();
-    }
-
-    // Fullscreen
-    if (e.key === "f" || e.key === "F") {
-      e.preventDefault();
-      resizeVideo();
-    }
-
-    // Volume up
-    if (e.code === "ArrowUp") {
-      e.preventDefault();
-      increaseVolume();
-    }
-
-    // Volume down
-    if (e.code === "ArrowDown") {
-      e.preventDefault();
-      decreaseVolume();
-    }
-  });
-
-  window.addEventListener("keydown", (e: KeyboardEvent) => {
-    if (videoPlayer_Container.classList.contains("hidden")) return;
-
-    // Forward 15 seconds
-    if (e.code === "ArrowRight" || e.key === "l" || e.key === "L") {
-      e.preventDefault();
-      forwardVideo();
-    }
-
-    // Backward 5 seconds
-    if (e.code === "ArrowLeft" || e.key === "j" || e.key === "J") {
-      e.preventDefault();
-      backwardVideo();
-    }
   });
 
   // Canvas animation on play
@@ -603,18 +425,10 @@ function smartControlsHandler(event: MouseEvent) {
 }
 
 // Export functions for global scope
-(window as any).sliderEnter = sliderEnter;
-(window as any).sliderLeave = sliderLeave;
-(window as any).resizeVideo = resizeVideo;
-(window as any).pauseVideo = pauseVideo;
 (window as any).updateCurrentTime = updateCurrentTime;
 (window as any).loopVideo = loopVideo;
 (window as any).forwardVideo = forwardVideo;
 (window as any).backwardVideo = backwardVideo;
-(window as any).muteVideo = muteVideo;
-(window as any).updateVolumeSlider = updateVolumeSlider;
-(window as any).increaseVolume = increaseVolume;
-(window as any).decreaseVolume = decreaseVolume;
 (window as any).downloadVideo = downloadVideo;
 (window as any).toggleCinemaLights = toggleCinemaLights;
 (window as any).enable_VideoControls = enable_VideoControls;

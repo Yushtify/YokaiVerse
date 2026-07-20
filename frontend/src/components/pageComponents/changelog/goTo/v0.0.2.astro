@@ -7,24 +7,24 @@ const Desc = "Patch update";
 ---
 
 <div
-  class="flex flex-col items-center justify-between gap-2 p-2 w-full h-fit bg-L_Secondary dark:bg-D_Secondary"
+    class="flex flex-col items-center justify-between gap-2 p-2 w-full h-fit bg-L_Secondary dark:bg-D_Secondary"
 >
-  <div
-    class="flex flex-row items-center justify-between gap-2 pl-2 w-full h-fit"
-  >
-    <p class="font-semibold text-[min(7vw,1.2rem)]">{Version}</p>
-    <a
-      onclick="fadeDIV('goTo_DIV', true, 150)"
-      href={HREF}
-      class="flex flex-row items-center justify-center aspect-square rounded-3xl gap-2 p-2 w-fit h-fit hover:text-Accent"
+    <div
+        class="flex flex-row items-center justify-between gap-2 pl-2 w-full h-fit"
     >
-      <GoogleMaterialSymbol
-        SVG_Name="search"
-        SvgSize="!text-[min(7vw,1.5rem)]"
-      />
-    </a>
-  </div>
-  <p class="ml-2 w-full text-left text-LT_Secondary dark:text-DT_Secondary">
-    {Desc}
-  </p>
+        <p class="font-semibold text-[min(7vw,1.2rem)]">{Version}</p>
+        <a
+            onclick="fadeDIV('goTo_DIV', true, 150)"
+            href={HREF}
+            class="flex flex-row items-center justify-center aspect-square rounded-3xl gap-2 p-2 w-fit h-fit hover:text-Accent"
+        >
+            <GoogleMaterialSymbol
+                symbol="search"
+                SvgSize="!text-[min(7vw,1.5rem)]"
+            />
+        </a>
+    </div>
+    <p class="ml-2 w-full text-left text-LT_Secondary dark:text-DT_Secondary">
+        {Desc}
+    </p>
 </div>

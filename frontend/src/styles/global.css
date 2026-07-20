@@ -1,118 +1,119 @@
 @import "tailwindcss";
+* {
+    corner-shape: squircle;
+}
 
 @theme {
-  --font-Sans: "Poppins", sans-serif;
-  --font-Serif: "Lora", serif;
-  --font-Mono: "Jetbrains Mono", monospace;
+    --font-Sans: "Poppins", sans-serif;
+    --font-Serif: "Lora", serif;
+    --font-Mono: "Jetbrains Mono", monospace;
 
-  /* --- DARK MODE --- */
-  --color-D_BG: #000000;
-  --color-D_Primary: #01000d;
-  --color-D_Secondary: #030118;
-  --color-D_Tertiary: #05021f;
-  --color-D_Quaternary: #060328;
+    /* --- DARK MODE --- */
+    --color-D_BG: #000000;
+    --color-D_Primary: #171717;
+    --color-D_Secondary: #1f1f1f;
+    --color-D_Tertiary: #2a2a2a;
+    --color-D_Quaternary: #313131;
 
-  --color-D_Primary_Hover: #030120;
-  --color-D_Secondary_Hover: #030026;
-  --color-D_Tertiary_Hover: #08042e;
-  --color-D_Quaternary_Hover: #0a0537;
+    --color-D_Primary_Hover: #222222;
+    --color-D_Secondary_Hover: #282828;
+    --color-D_Tertiary_Hover: #2f2f2f;
+    --color-D_Quaternary_Hover: #3a3a3a;
 
-  --color-DT_Primary: #eeecff;
-  --color-DT_Secondary: #dad6ff;
-  --color-DT_Tertiary: #bbb4ff;
-  --color-DT_Inverted: #020011;
+    --color-DT_Primary: #ffffff;
+    --color-DT_Secondary: #d9d9d9;
+    --color-DT_Tertiary: #a7a7a7;
+    --color-DT_Inverted: #000000;
 
-  --color-DB_Primary: #0a063a;
-  --color-DB_Secondary: #0f0a48;
-  --color-DB_Tertiary: #140f50;
-  --color-DB_Inverted: #b2aaff;
+    --color-DB_Primary: #323232;
+    --color-DB_Secondary: #383838;
+    --color-DB_Tertiary: #403f3f;
+    --color-DB_Inverted: #cecece;
 
-  /* --- LIGHT MODE --- */
-  --color-L_BG: #eae8ff;
-  --color-L_Primary: #f1efff;
-  --color-L_Secondary: #e0ddff;
-  --color-L_Tertiary: #d3cfff;
-  --color-L_Quaternary: #c4befa;
+    /* --- LIGHT MODE --- */
+    --color-L_BG: #ffffff;
+    --color-L_Primary: #f4f4f4;
+    --color-L_Secondary: #e6e6e6;
+    --color-L_Tertiary: #d9d9d9;
+    --color-L_Quaternary: #cecece;
 
-  --color-L_Primary_Hover: #ffffff;
-  --color-L_Secondary_Hover: #cdc8ff;
-  --color-L_Tertiary_Hover: #e7e4ff;
-  --color-L_Quaternary_Hover: #dad6ff;
+    --color-L_Primary_Hover: #ffffff;
+    --color-L_Secondary_Hover: #f2f2f2;
+    --color-L_Tertiary_Hover: #e6e6e6;
+    --color-L_Quaternary_Hover: #dadada;
 
-  --color-LT_Primary: #020011;
-  --color-LT_Secondary: #08042d;
-  --color-LT_Tertiary: #0f0a43;
-  --color-LT_Inverted: #eeecff;
+    --color-LT_Primary: #000000;
+    --color-LT_Secondary: #353535;
+    --color-LT_Tertiary: #4b4b4b;
+    --color-LT_Inverted: #ffffff;
 
-  --color-LB_Primary: #b2aaff;
-  --color-LB_Secondary: #a79dff;
-  --color-LB_Tertiary: #9f94ff;
-  --color-LB_Inverted: #0a063a;
+    --color-LB_Primary: #cecece;
+    --color-LB_Secondary: #c0c0c0;
+    --color-LB_Tertiary: #a9a9a9;
+    --color-LB_Inverted: #323232;
 
-  /* --- SHARED COLORS --- */
-  --color-Accent: #8478fd;
-  --color-Dark_Disabled: #898989;
-  --color-Success: #00ff90;
-  --color-Warm_Orange: #ff9d00;
-  --color-Pinkish_Red: #ff005e;
+    /* --- SHARED COLORS --- */
+    --color-Accent: #8478fd;
+    --color-LightAccent: #bab3ff;
+    --color-Highlight: #9489fd;
 }
 
 @layer base {
-  .material-symbols-rounded {
-    font-family: "Material Symbols Rounded";
-    display: inline-block;
-    line-height: 1;
-    color: currentColor;
+    .material-symbols-rounded {
+        font-family: "Material Symbols Rounded";
+        display: inline-block;
+        line-height: 1;
+        color: currentColor;
 
-    font-variation-settings:
-      "FILL" 0,
-      "wght" 400,
-      "GRAD" 0,
-      "opsz" 24;
+        font-variation-settings:
+            "FILL" 0,
+            "wght" 400,
+            "GRAD" 0,
+            "opsz" 24;
 
-    width: 1em;
-    height: 1em;
-  }
+        width: 1em;
+        height: 1em;
+    }
 }
 
 @layer utilities {
-  /* Custom Scrollbar */
-  .custom-scrollbar {
-    /* For Firefox */
-    scrollbar-width: thin;
-    scrollbar-color: rgba(132, 120, 253, 0.4) transparent;
-  }
+    /* Custom Scrollbar */
+    .custom-scrollbar {
+        /* For Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(132, 120, 253, 0.4) transparent;
+    }
 
-  /* For Webkit (Chrome, Safari, Edge) */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 4px; /* Minimal width */
-    height: 4px;
-  }
+    /* For Webkit (Chrome, Safari, Edge) */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px; /* Minimal width */
+        height: 4px;
+    }
 
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-  }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
 
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(132, 120, 253, 0.5);
-  }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(132, 120, 253, 0.5);
+    }
 
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(132, 120, 253, 1);
-  }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(132, 120, 253, 1);
+    }
 
-  /* İkon Doldurma Yardımcısı */
-  .icon-fill,
-  .hover\:icon-fill:hover {
-    font-variation-settings: "FILL" 1 !important;
-  }
+    /* İkon Doldurma Yardımcısı */
+    .icon-fill,
+    .hover\:icon-fill:hover {
+        font-variation-settings: "FILL" 1 !important;
+    }
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

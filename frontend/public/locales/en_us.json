@@ -1,29 +1,71 @@
 {
   "scrollDown": "scroll down",
+  "global": {
+    "variable": {
+      "episode": "episode",
+      "episodes": "episodes",
+      "season": "season",
+      "seasons": "seasons",
+      "allEpisodes": "all episodes"
+    }
+  },
   "tooltip": {
     "footer": {
-      "languageSwitcher": "Switch the website's language from US English to your preferred one."
+      "languageSwitcher": "Change the website language from American English to your preferred language."
     },
-    "videoPlayer": {
-      "topInfo": {
-        "nextEp_Button": {
-          "header": "Next episode",
-          "desc": "Switches to the next episode instantly if exists, without reloading the page."
+    "epPlayer": {
+      "titleBar": {},
+      "controlBar": {
+        "pauseButton": "Play/pause video",
+        "muteButton": "Mute/unmute video",
+        "subtitlesButton": "Toggle subtitles",
+        "settingsButton": {
+          "title": "video player settings",
+          "desc": "Configure the general settings of the video player"
         },
-        "prevEp_Button": {
-          "header": "Previous episode",
-          "desc": "Switches to the previous episode instantly if exists, without reloading the page."
+        "fullscreenButton": "Toggle fullscreen",
+        "loopButton": "Toggle loop",
+        "autoPlayButton": {
+          "title": "Autoplay",
+          "desc": "Autoplay is a feature that automatically plays the next episode when the current one ends."
+        },
+        "cinemaLightsButton": {
+          "title": "Cinema Lights",
+          "desc": "Cinema lights is a visual feature that emits a soft light from behind the video player to give a more immersive sensation. This feature may cause performance issues on lower-spec devices."
+        },
+        "gesturesButton": {
+          "title": "Touch Gestures",
+          "desc": "Touch gestures are touch-based controls that allow you to interact with the video player without using a keyboard or mouse."
+        },
+        "keybindsButton": {
+          "title": "Keyboard Shortcuts",
+          "desc": "Keyboard shortcuts are quick ways to control the video player. This feature serves no purpose other than on computers or devices with a physical keyboard."
         }
-      },
-      "videoControls": {
-        "playPause_Button": "Toggle play/pause video.",
-        "download_Button": "Download episode.",
-        "cinemaLights_Button": {
-          "header": "Cinema Lighting",
-          "desc": "Creates a visually immersive ambient glow behind the player that synchronises with the video, similar to cinematic wall-reflected lighting."
+      }
+    }
+  },
+
+  "watch" :{
+    "epPlayer": {
+      "settings": {
+        "behaviour": {
+          "title": "behavior",
+          "loop": {
+            "title": "loop"
+          },
+          "autoPlay": {
+            "title": "Autoplay"
+          },
+          "playbackSpeed": {
+            "title": "Playback Speed"
+          }
         },
-        "loop_Button": "Toggle looping.",
-        "fullScreen_Button": "Enter / Leave fullscreen."
+        "appearance": {
+          "title": "appearance",
+          "cinemaLights": {
+            "title": "Cinema Lights"
+          }
+        }
       }
     }
   },
@@ -66,12 +108,12 @@
     "home": "home",
     "featured": "featured",
     "discover": "discover",
-    "search_placeholder": "Search anything..."
+    "search_placeholder": "Search for something..."
   },
   "footer": {
     "brand": "YokaiVerse",
-    "slogan": "Your privacy is our goal; keeping it safe and secure.",
-    "languageSwitcher": "Switch Language - US English",
+    "slogan": "Your privacy is our goal; we keep it safe and secure.",
+    "languageSwitcher": "Change Language - American English",
     "sections": {
       "links": {
         "title": "Links",
@@ -89,25 +131,25 @@
         "title": "Company",
         "about": "about us",
         "blog": "blog",
-        "docs": "documentation",
+        "docs": "docs",
         "terms": "terms of use",
         "privacy": "privacy policy"
       }
     }
   },
   "Landing": {
-    "title": "Bored of ads?",
+    "title": "Tired of advertisements?",
     "title2": "YokaiVerse",
-    "title3": "is for you",
+    "title3": "is just for you",
     "join_now": "Don't have an account?",
     "search_placeholder": "Enter your email to log in",
     "whatWeOffer": {
-      "title": "What Do We Offer?",
-      "desc": "A collection of features designed to make your YokaiVerse experience faster, smoother, and more enjoyable.",
+      "title": "What We Offer",
+      "desc": "A suite of features designed to make your YokaiVerse experience faster, smoother, and more enjoyable.",
       "cards": {
         "performance": {
-          "title": "Fast Performance & Smooth UI",
-          "desc": "Built with modern tools and efficient code, YokaiVerse delivers a fast, responsive, and smooth experience across all devices."
+          "title": "Fast Performance & Fluid Interface",
+          "desc": "Built with modern tools and efficient code, YokaiVerse offers a fast, responsive, and fluid experience across all devices."
         },
         "language": {
           "title": "Translations & Community Support",
@@ -115,57 +157,26 @@
         },
         "privacy": {
           "title": "Privacy-First Experience",
-          "desc": "Watch anime, read manga, and enjoy webtoons without worrying about your data. We only collect what you explicitly allow — nothing more."
+          "desc": "Watch anime, read manga, and enjoy webtoons without worrying about your data. We only collect the data you explicitly permit — nothing more."
         },
         "downloads": {
           "title": "Fast Uploads & Downloads",
-          "desc": "Enjoy high-speed uploads and downloads without bandwidth limits, so your content is always ready when you are."
+          "desc": "Enjoy high-speed uploads and downloads with no bandwidth limits, so your content is always ready when you are."
         }
       }
     },
     "coreValues": {
       "title": "Our Core Values",
-      "desc": "These aren't just technical features — they're our guiding beliefs. In a world full of noise, ads, and data-hungry platforms, YokaiVerse stands for clarity, freedom, and fan-powered evolution. Whether you're here to read, watch, share, or create — you're part of something built on passion, not profit.",
+      "desc": "These aren't just technical features; they are our guiding beliefs. In a world cluttered with noise, ads, and data-hungry platforms, YokaiVerse stands for clarity, freedom, and fan-powered growth. Whether you are here to read, watch, share, or create — you are part of something non-profit, built with passion.",
       "openSource": "Open Source",
-      "private": "Private and Always Up-to-date",
-      "community": "Community Supported"
-    }
-  },
-  "slogan": {
-    "default": [
-      "Explore Anime, Manga, and Webtoons without annoying ads or sponsorships.",
-      "The fastest way to start exploring—all without ads.",
-      "Safety concerns? No problem. Even we don't know what you're watching.",
-      "Dive into YokaiVerse. Explore everything without limits, tracking, or being sold.",
-      "YokaiVerse: We care about users, not AI or ads.",
-      "YokaiVerse: Where safety, privacy, and users are the priority.",
-      "Tired of tech giants choking you for profit? Come here—we care about you, not your wallet."
-    ],
-    "eastereggs": {
-      "common": [
-        "Flint and Steeeeeeeeeeeeel!",
-        "ඞ",
-        "Is that Google!!!!?",
-        "Heh, got your browsing history :)"
-      ],
-      "rare": [
-        "Am I seeing right? Is that Windows 11 without tracking...? Oh, it was a dream.",
-        "REMINDER! Drink some water."
-      ],
-      "mythic": ["I dunno, I ran out of ideas lol."],
-      "mysterious": ["A Japanese legend once said: 'nigg-' Ehm.. 'Niggeria'"],
-      "gambleCore": [
-        "777",
-        "LET'S GO GAMBLING",
-        "AW DANG IT!",
-        "I CAN'T STOP WINNING!"
-      ]
+      "private": "Private & Always Up-to-Date",
+      "community": "Community-Powered"
     }
   },
   "settings": {
     "hero": {
       "header": "settings",
-      "desc": "Customize your experience however you like.",
+      "desc": "Customize your experience just the way you like.",
       "quickLinks": {
         "general": {
           "title": "general",
@@ -173,11 +184,11 @@
         },
         "appearance": {
           "title": "appearance",
-          "desc": "Customize themes, accent colors, and the overall UI."
+          "desc": "Customize themes, accent colors, and the general user interface."
         },
         "experimental": {
           "title": "experimental",
-          "desc": "Test out beta features and upcoming site enhancements."
+          "desc": "Test beta features and upcoming site enhancements."
         },
         "privacy": {
           "title": "privacy",
@@ -185,7 +196,7 @@
         },
         "player": {
           "title": "video player",
-          "desc": "Fine-tune playback, quality, and streaming buffers."
+          "desc": "Fine-tune playback, quality, and streaming caches."
         },
         "account": {
           "title": "account",
@@ -217,39 +228,33 @@
   "featured": {
     "hero": {
       "header": "Featured [BETA]",
-      "desc": "Browse featured anime titles. Find something new to watch, or revisit your favorites.",
-      "searchPlaceholder": "Type or press CTRL + K to search",
+      "desc": "Browse featured anime titles. Find something new to watch or revisit your favorites.",
+      "searchPlaceholder": "Type to search or press CTRL + K",
       "filters": {
-        "topAnime": "Top Anime",
-        "topManga": "Top Manga",
-        "topWebtoon": "Top Webtoon",
-        "sfw": "SFW",
-        "nsfw": "NSFW"
+        "anime": "Anime",
+        "manga": "Manga",
+        "webtoon": "Webtoons",
+        "sfw": "SFW (Safe)",
+        "nsfw": "NSFW (18+)"
       }
     }
   },
   "404": {
-    "message": "We're having trouble finding what you're looking for.",
-    "helpText": "Please make sure there are no typos in the URL. If you believe we're responsible for this issue, please reach out to our support team.",
-    "nerdsLabel": "Information for nerds:",
+    "message": "We are having trouble finding what you are looking for.",
+    "helpText": "Please ensure there are no typos in the URL. If you believe this is our mistake, please contact our support team.",
+    "nerdsLabel": "Information for developers / nerds:",
     "path": "Path:",
     "device": "Device:",
     "browser": "Browser:",
     "browserVersion": "Browser Version:",
-    "os": "OS:",
+    "os": "Operating System:",
     "backFeatured": { "title": "Back to Featured" },
     "backHome": { "title": "Back to Home" }
-  },
-  "watch": {
-    "fansubSection": {
-      "title": "Choose a Language:",
-      "none": "None"
-    }
   },
   "store": {
     "hero": {
       "header": "Store",
-      "desc": "Get better features and faster drops, with cancellation at any time and a guaranteed 20-day refund. Your first month is on us — and if you don't like it, you can still use our free plan forever!"
+      "desc": "Access better features and faster new episodes with the option to cancel at any time and a guaranteed 20-day refund policy. Your first month is on us — if you don't like it, you can keep using our free plan forever!"
     },
     "billing": {
       "free": "free",
@@ -262,8 +267,8 @@
     },
     "features": {
       "ads": {
-        "title": "Ads",
-        "descFree": "Only on main pages, won't interrupt your video. Not personalized."
+        "title": "Advertisements",
+        "descFree": "Only shown on home pages, does not interrupt your video. Non-personalized."
       },
       "rateLimiting": { "title": "Rate Limiting" },
       "cloudStorage": { "title": "Cloud Storage" },
@@ -274,14 +279,14 @@
       "forum": { "title": "Forum" },
       "episodes": {
         "title": "Episodes",
-        "desc": "Max episodes per day"
+        "desc": "Maximum daily episodes limit"
       },
       "videoUploading": { "title": "Video Uploading" },
       "prioritySupport": { "title": "Priority Support" },
       "downloadUpload": { "title": "Download & Upload" },
       "translations": {
         "title": "Translations",
-        "descFree": "English and the main language of the content.",
+        "descFree": "English and the content's native language.",
         "descPaid": "English, Turkish, Russian, German, Spanish, Chinese, Japanese, and Korean."
       },
       "customization": {
@@ -296,8 +301,8 @@
   },
   "changelog": {
     "hero": {
-      "header": "Change Logs",
-      "desc": "YokaiVerse is currently in development. Recent updates may affect product stability or user experience. We appreciate your patience as we work to make this platform better and safer for you."
+      "header": "Changelogs",
+      "desc": "YokaiVerse is currently under active development. Recent updates may affect product stability or user experience. Thank you for your patience as we work to make this platform better and safer for you."
     },
     "navigation": {
       "firstRelease": "First Release",
@@ -318,12 +323,12 @@
         "desc": "This list includes various site policies.",
         "content": {
           "terms": {
-            "header": "Terms of Service",
-            "desc": "Learn how we protect your rights and what it means to stay completely anonymous with us."
+            "header": "Terms of Use",
+            "desc": "Learn how we protect your rights and what it means to remain completely anonymous with us."
           },
           "privacy": {
             "header": "Privacy Policy",
-            "desc": "Discover how we safeguard your data and get a transparent look at what's happening behind the scenes."
+            "desc": "Discover how we protect your data and take a transparent look at what goes on behind the scenes."
           },
           "cookiePolicy": {
             "header": "Cookie Policy",
@@ -335,132 +340,132 @@
           },
           "openSourceLicense": {
             "header": "Open Source License",
-            "desc": "Open Source & AGPLv3 Compliant: Transparent metadata management and legal integrity."
+            "desc": "Open Source and AGPLv3 Compliant: Transparent metadata management and legal integrity."
           }
         }
       },
       "news": {
         "header": "news",
-        "desc": "Curious about what’s cooking? Track our evolution and the latest updates to YokaiVerse."
+        "desc": "Curious about what's cooking? Follow our development and the latest updates coming to YokaiVerse."
       }
     },
     "terms": {
       "hero": {
-        "header": "Terms of Service",
-        "desc": "We reserve the right to modify or replace these Terms of Service at any time. Significant changes will be announced on-site or via email. Updated terms require manual review and explicit consent.",
+        "header": "Terms of Use",
+        "desc": "We reserve the right to modify or replace these Terms of Use at any time. Material changes will be announced on the site or via email. Updated terms require manual review and explicit consent.",
         "LatestUpdateChip": {
           "header": "Latest update"
         }
       },
       "paragraph": "By accessing YokaiVerse, you agree to be bound by these terms. Please read them carefully before creating an account.",
       "AccessAndRegistration": {
-        "header": "Access & Registration",
-        "paragraph_1": "Access to YokaiVerse is provided subject to these terms. We reserve the right to modify services or terminate accounts that violate our community standards."
+        "header": "Access and Registration",
+        "paragraph_1": "Access to YokaiVerse is subject to these terms. We reserve the right to modify services or terminate accounts that violate our community standards."
       },
       "ThirdPartyAIIntegrationAndTranslations": {
-        "header": "Third-Party AI Integration & Translations",
-        "paragraph_1": "YokaiVerse utilizes a hybrid translation system of human-verified and automated AI processing. Users may integrate their own AI API keys for real-time translation.",
-        "paragraph_2": "Operational logic prioritizes human-verified translations, followed by user AI keys. We do not guarantee the accuracy of AI-generated content."
+        "header": "Third-Party AI Integration and Translations",
+        "paragraph_1": "YokaiVerse uses a hybrid translation system consisting of human-verified and automated AI operations. Users can integrate their own AI API keys for real-time translation.",
+        "paragraph_2": "The workflow prioritizes human-verified translations, followed by the user's AI keys. We do not guarantee the accuracy of AI-generated content."
       },
       "Advertisements": {
         "header": "Advertisements",
-        "paragraph_1": "We use non-personalized, contextual advertisements based on content genre rather than individual user profiles or behavioral tracking."
+        "paragraph_1": "Instead of ads based on individual user profiles or behavioral tracking, we use non-personalized, contextual advertisements based on the content type."
       },
       "ServiceModification": {
         "header": "Service Modification",
         "paragraph_1": "We reserve the right to add or remove support for specific Third-Party AI providers at any time without prior notice to the user."
       },
       "AmendmentsAndModifications": {
-        "header": "Amendments & Modifications",
-        "paragraph_1": "YokaiVerse reserves the right to modify or replace these Terms at any time at our sole discretion. Users will be notified of significant changes via their registered email or through an on-site notification 7 to 30 days in advance. By registering and continuing to use the service, you provide legal consent to these terms. If you do not agree to the updated terms, you must cease using the platform."
+        "header": "Amendments and Modifications",
+        "paragraph_1": "YokaiVerse reserves the right to modify or renew these Terms at any time at its sole discretion. Users will be notified of significant changes 7 to 30 days in advance via their registered email or in-site announcements. By registering and continuing to use the service, you give legal consent to these terms. If you do not agree to the updated terms, you must stop using the platform."
       },
       "UserIdentity": {
         "header": "User Identity and @Username Policy",
-        "paragraph_1": "Every user is assigned a unique @username. Once an account is deleted, its @username is retired and will never be available for registration again to prevent identity theft."
+        "paragraph_1": "Each user is assigned a unique @username. When an account is deleted, that @username is retired to prevent identity theft and will never be made available for registration again."
       },
       "AgeRestrictions": {
-        "header": "Age Restrictions & Verification",
-        "paragraph_1": "By registering, you certify that you are at least 16 years of age. Users under 18 are prohibited from participating in Forums or Comments."
+        "header": "Age Restrictions and Verification",
+        "paragraph_1": "By registering, you declare that you are at least 16 years of age. Users under the age of 18 are prohibited from participating in Forums or Comments."
       },
       "ProhibitedConductAndEnforcement": {
-        "header": "Prohibited Conduct & Enforcement",
-        "paragraph_1": "If a user is found violating age restrictions, engaging in harassment, or bypassing security, their IP address will be permanently blacklisted. Any new accounts created from a blacklisted IP will be terminated automatically. Users are solely responsible for their actions; in the event of illegal activities, YokaiVerse will cooperate fully with local law enforcement by providing all available logs and behavioral data without delay."
+        "header": "Prohibited Conduct and Enforcement",
+        "paragraph_1": "If a user is found to be violating age limits, engaging in harassment, or attempting to breach security, their IP address will be permanently blacklisted. New accounts created from a blacklisted IP will be automatically closed. Users are solely responsible for their actions; in the event of illegal activities, YokaiVerse will cooperate fully with local law enforcement by providing all available logs and behavioral data without delay."
       },
       "DataIntegrityAndUserResponsibility_ALT": {
-        "header": "Data Integrity & User Responsibility",
-        "paragraph_1": "YokaiVerse utilizes HttpOnly technology for critical keys to prevent access by browser scripts. However, Tier 2 preferences like themes and settings are stored in Local Storage and remain accessible via the console. Users are strictly warned against executing third-party code in the browser console (Self-XSS). YokaiVerse is not responsible for data theft or account breaches resulting from user-initiated script execution."
+        "header": "Data Integrity and User Responsibility",
+        "paragraph_1": "YokaiVerse uses HttpOnly technology for critical keys to prevent access by browser scripts. However, Stage 2 preferences such as themes and settings are stored in Local Storage and are accessible via the console. Users are strictly warned not to execute third-party code in the browser console (Self-XSS). YokaiVerse is not responsible for data theft or account breaches resulting from user-initiated code execution."
       },
       "MandatoryParentalControl": {
-        "header": "Prohibited Conduct & Enforcement",
-        "paragraph_1": "For users between 16 and 18, the account must be linked to a verified Parent/Guardian account. Parents have comprehensive oversight, including screen time management, content filtering by tags or genres, and full visibility into viewing history.",
-        "paragraph_2": "The parent account holds administrative authority, meaning the minor cannot change birth years or sensitive settings without authorization. Parents can also remotely delete the minor's account at any time. Upon reaching age 18, these restrictions are automatically deactivated."
+        "header": "Prohibited Conduct and Enforcement",
+        "paragraph_1": "For users between 16 and 18 years of age, linking the account to a verified Parent/Guardian account is mandatory. Parents have comprehensive oversight authority, including screen time management, content filtering by tag or genre, and full visibility of watch history.",
+        "paragraph_2": "The parent account holds administrative authority, meaning the minor cannot alter their birth year or sensitive settings without authorization. Parents can also delete the minor's account remotely at any time. Upon turning 18, these restrictions are automatically disabled."
       },
       "ParentalConnectionMechanism_ALT": {
         "header": "Parental Connection Mechanism",
-        "paragraph_1": "YokaiVerse utilizes HttpOnly technology for critical keys to prevent access by browser scripts. However, Tier 2 preferences like themes and settings are stored in Local Storage and remain accessible via the console. Users are strictly warned against executing third-party code in the browser console (Self-XSS). YokaiVerse is not responsible for data theft or account breaches resulting from user-initiated script execution."
+        "paragraph_1": "YokaiVerse uses HttpOnly technology for critical keys to prevent access by browser scripts. However, Stage 2 preferences such as themes and settings are stored in Local Storage and are accessible via the console. Users are strictly warned not to execute third-party code in the browser console (Self-XSS). YokaiVerse is not responsible for data theft or account breaches resulting from user-initiated code execution."
       },
       "GoverningLawAndDisputeResolution": {
-        "header": "Governing Law & Dispute Resolution",
-        "paragraph_1": "The connection between accounts is established using secure, local-based authentication. This is done either via QR Synchronization, where the parent scans a code on the minor's device, or through a manual 10-character alphanumeric code. This ensures authorization happens through direct interaction, maintaining our commitment to zero-knowledge security protocols."
+        "header": "Governing Law and Dispute Resolution",
+        "paragraph_1": "The connection between accounts is established using secure, local-based authentication. This is done via QR Sync, where the parent scans a code on the minor's device, or via a manually entered 10-character alphanumeric code. This ensures authorization occurs through direct interaction, protecting our zero-knowledge security protocols."
       },
       "ConflictOfLaws": {
-        "header": "Conflict of Laws & Global Compliance",
-        "paragraph_1": "YokaiVerse is developed and hosted in Türkiye, and data processing is governed strictly by Law No. 6698 KVKK. While we respect global privacy principles, YokaiVerse will not comply with foreign regulations that contradict the mandatory provisions of Turkish Law. In the event of a legal conflict, the laws of the Republic of Türkiye shall prevail."
+        "header": "Conflict of Laws and Global Compliance",
+        "paragraph_1": "YokaiVerse is developed and hosted in Turkey; data processing activities are strictly subject to the KVKK Law No. 6698. While respecting global privacy principles, YokaiVerse will not comply with foreign regulations that conflict with mandatory provisions of Turkish Law. In the event of a legal dispute, the laws of the Republic of Turkey shall apply."
       }
     },
     "privacy": {
-      "paragraph": "YokaiVerse incorporates a \"Privacy-by-Design\" architecture as its core operational philosophy. We believe that digital privacy is not a feature but a fundamental right; therefore, our entire infrastructure is built to ensure that sensitive user data remains exclusively under your own control through advanced encryption and minimalist data collection practices.",
+      "paragraph": "YokaiVerse adopts a \"Privacy-by-Design\" architecture as its core operational philosophy. We believe digital privacy is a fundamental right, not an optional feature; thus, our entire infrastructure is built to ensure your sensitive user data remains solely under your control through advanced encryption and minimalist data collection practices.",
       "encryption": {
-        "header": "End-to-End Encryption (E2EE) & Zero-Knowledge Storage",
-        "paragraph_1": "Our commitment to security begins at the source. All personal data is subjected to local encryption on your device before it ever reaches our infrastructure. By utilizing a Zero-Knowledge Storage model, YokaiVerse servers only host encrypted strings for which we do not possess the decryption keys. This ensures that neither our staff nor any third-party entities can access or read your private information in plain text under any circumstances."
+        "header": "End-to-End Encryption (E2EE) and Zero-Knowledge Storage",
+        "paragraph_1": "Our commitment to security begins at the source. All personal data is encrypted locally on your device before reaching our infrastructure. YokaiVerse servers use a Zero-Knowledge Storage model, hosting only ciphertext for which we do not possess the decryption keys. This ensures that neither our staff nor any third party can access or read your private information in plain text under any circumstances."
       },
       "dataCollection": {
-        "header": "Data Collection, Usage & Algorithmic Privacy",
-        "paragraph_1": "YokaiVerse strictly limits data collection to what is necessary for platform integrity. We maintain mandatory security logs, including IP addresses and login timestamps, solely for the purpose of fraud prevention and security auditing. While diagnostics and error reports are disabled by default, users may manually opt-in to assist our technical troubleshooting. Furthermore, while we record site actions to improve your navigation experience, this algorithmic tracking remains entirely optional and can be deactivated through account settings at your discretion."
+        "header": "Data Collection, Usage, and Algorithmic Privacy",
+        "paragraph_1": "YokaiVerse strictly limits data collection to what is necessary for platform integrity. We maintain only mandatory security logs, including IP addresses and login timestamps, for fraud prevention and security auditing. Diagnostic and error reports are disabled by default, though users may manually enable them to help us resolve technical issues. Additionally, while we record in-site actions to improve your navigation experience, this algorithmic tracking is entirely optional and can be turned off at any time in your account settings."
       },
       "APIKeys": {
-        "header": "Secure Handling of Third-Party API Keys",
-        "paragraph_1": "When you integrate your own AI provider keys (such as OpenAI or Gemini), YokaiVerse treats this data with the same rigorous encryption protocols applied to personal information. We function as a secure bridge; we do not log the content of the requests sent to your AI providers, nor do we store these keys in a format accessible to our internal systems."
+        "header": "Secure Use of Third-Party API Keys",
+        "paragraph_1": "When you integrate your own AI provider keys (such as OpenAI or Gemini), YokaiVerse applies the same rigorous encryption protocols to this data as it does to personal information. We act as a secure bridge; we do not log the content of requests sent to your AI providers, and we do not store these keys in a format accessible by our internal systems."
       },
       "retention": {
-        "header": "Data Retention, Purge Cycles & Permanent Deletion",
-        "paragraph_1": "We adhere to a strict \"right to be forgotten\" policy. Upon a user's request to delete their account, a 15-day window is initiated during which all encrypted personal information and metadata are permanently and irreversibly destroyed. For active accounts, we maintain a 30-day purge cycle where non-essential behavioral data and temporary security logs are automatically wiped. Once these periods conclude, data recovery is technically impossible as both the encrypted strings and associated keys are removed from our infrastructure."
+        "header": "Data Retention, Erasure Cycles, and Permanent Deletion",
+        "paragraph_1": "We enforce a strict \"right to be forgotten\" policy. Upon a user's request to delete their account, a 15-day period is initiated during which all encrypted personal information and metadata are permanently and irreversibly destroyed. For active accounts, we run a 30-day purge cycle where non-essential behavioral data and temporary security logs are automatically deleted. Once these periods expire, data recovery is technically impossible as both the encrypted data and associated keys are removed from our infrastructure."
       },
       "advertising": {
-        "header": "Third-Party Disclosures & Contextual Advertising",
-        "paragraph_1": "YokaiVerse maintains a strict policy against the sale of user data. To support the platform, we may share aggregated, non-identifiable information with advertising partners. These advertisements are strictly contextual, meaning they are served based on the content currently being viewed rather than individual user tracking or behavioral profiling."
+        "header": "Third-Party Sharing and Contextual Advertising",
+        "paragraph_1": "YokaiVerse maintains a strict policy against selling user data. To support the platform, we may share non-identifiable, aggregated information with advertising partners. These ads are entirely contextual; meaning they are served solely based on the content currently being viewed rather than individual tracking or behavioral profiling."
       },
       "minorSafety": {
-        "header": "Parental Control & Minor Safety",
-        "paragraph_1": "For users under the age of 18, YokaiVerse implements a transparent safety framework. When a Parental Control link is active, specific usage data—including watch history and search terms—will be accessible to the linked Parent/Guardian account. By opting into a Minor account, the user and their legal guardian consent to this visibility, which is designed to ensure a safe digital environment for younger audiences."
+        "header": "Parental Control and Minor Safety",
+        "paragraph_1": "For users under the age of 18, YokaiVerse enforces a transparent safety framework. When a Parental Control link is activated, certain usage data, including watch history and search terms, will be accessible by the linked Parent/Guardian account. By selecting the minor account, the user and their legal guardian consent to this visibility, designed to ensure a safe digital environment for young audiences."
       },
       "mandatoryConsent": {
-        "header": "Policy Updates & Mandatory Consent",
-        "paragraph_1": "To ensure our users are always informed, any update to this Privacy Policy will trigger an automatic reset of all consent states. Upon your next login following an update, you will be required to review the revised terms. You will have the choice to either accept the new policy to continue your service or decline the changes, which will immediately initiate the 15-day permanent deletion process for your account and all associated data."
+        "header": "Policy Updates and Mandatory Consent",
+        "paragraph_1": "To ensure our users are always informed, any update to this Privacy Policy will trigger an automatic reset of all consent statuses. Upon your first login following an update, you will be required to review the revised terms. You will have the choice to accept the new policy to continue service or reject the changes; if rejected, the 15-day permanent erasure process for your account and all associated data will be initiated immediately."
       },
       "BYOKResponsibility": {
-        "header": "International Data Transfers & BYOK Responsibility",
-        "paragraph_1": "Through our \"Bring Your Own Key\" (BYOK) feature, content translation is processed by third-party AI providers according to your specific API configurations. By providing these keys, you acknowledge that your data may be processed in jurisdictions outside of your residency. YokaiVerse acts solely as a technical intermediary and assumes no liability for the data handling practices of these external providers."
+        "header": "International Data Transfers and BYOK Responsibility",
+        "paragraph_1": "Content translations via our \"Bring Your Own Key\" (BYOK) feature are processed by third-party AI providers in accordance with your specific API configurations. By providing these keys, you acknowledge that your data may be processed in jurisdictions outside your country of residence. YokaiVerse acts solely as a technical intermediary and assumes no responsibility for the data handling practices of these external providers."
       },
       "Self-XSS": {
-        "header": "User-Side Security & Self-XSS Prevention",
-        "paragraph_1": "Through our \"Bring Your Own Key\" (BYOK) feature, content translation is processed by third-party AI providers according to your specific API configurations. By providing these keys, you acknowledge that your data may be processed in jurisdictions outside of your residency. YokaiVerse acts solely as a technical intermediary and assumes no liability for the data handling practices of these external providers."
+        "header": "User-Side Security and Self-XSS Prevention",
+        "paragraph_1": "Content translations via our \"Bring Your Own Key\" (BYOK) feature are processed by third-party AI providers in accordance with your specific API configurations. By providing these keys, you acknowledge that your data may be processed in jurisdictions outside your country of residence. YokaiVerse acts solely as a technical intermediary and assumes no responsibility for the data handling practices of these external providers."
       },
       "KVKK": {
-        "header": "KVKK Compliance & Data Subject Rights",
-        "paragraph_1": "As a Türkiye-based project, YokaiVerse operates under the exclusive jurisdiction of the Law No. 6698 on the Protection of Personal Data (KVKK). Regardless of your physical location, you acknowledge that your data is processed in accordance with Turkish legal standards. Users hold the right to information, correction, and erasure as outlined in Article 11 of the KVKK. Please note that due to our E2EE architecture, we cannot provide \"plain text\" versions of your data in response to access requests, as we do not possess the means to decrypt it."
+        "header": "KVKK Compliance and Data Subject Rights",
+        "paragraph_1": "As a Turkey-based project, YokaiVerse is exclusively subject to the provisions of the Law on Protection of Personal Data No. 6698 (KVKK). Regardless of your physical location, you acknowledge that your data is processed in accordance with Turkish legal standards. Users possess the rights to information, rectification, and erasure specified in Article 11 of the KVKK. Please note that due to our E2EE architecture, we cannot provide \"plain text\" versions of your data in response to access requests, as we do not possess the means to decrypt it."
       },
       "lawEnforcement": {
-        "header": "Law Enforcement Cooperation & Legal Necessity",
-        "paragraph_1": "In compliance with the judicial and executive bodies of the Republic of Türkiye, YokaiVerse will provide available security logs (IP addresses and timestamps) if presented with a valid legal warrant regarding cybercrime or fraud. Our ability to cooperate is limited by our 30-day purge cycle; we can only provide logs that exist at the time of the request. While behavioral data is purged quickly, basic security logs may be retained longer if mandated by local law or necessary for investigating significant security breaches."
+        "header": "Law Enforcement Cooperation and Legal Obligation",
+        "paragraph_1": "In the event of a valid legal ruling concerning cybercrime or fraud, YokaiVerse will provide available security logs (IP addresses and timestamps) to the judicial and administrative authorities of the Republic of Turkey. Our capacity to cooperate is limited by our 30-day purge cycle; we can only provide logs that exist at the time of the request. While behavioral data is rapidly erased, basic security logs may be retained longer if required by local law or needed to investigate major security breaches."
       },
       "storage": {
         "header": "Hybrid Storage Architecture",
-        "paragraph_1": "We utilize a two-tier storage system designed to balance security with performance without the use of marketing cookies. Tier 1 consists of Security-Critical Cookies (Session Tokens, Encryption Keys, and API Keys) which are encrypted and protected with HttpOnly, Secure, and SameSite=Strict flags to prevent XSS attacks. Tier 2 utilizes Local Storage for non-sensitive preferences, such as Dark Mode settings, video player configurations, and UI layouts, ensuring a seamless and personalized experience upon every visit."
+        "paragraph_1": "We utilize a two-tier storage system designed to balance security with performance without using marketing cookies. Stage 1 consists of Security-Critical Cookies (Session Tokens, Encryption Keys, and API Keys), which are encrypted to prevent XSS attacks and protected by HttpOnly, Secure, and SameSite=Strict flags. Stage 2 retains non-sensitive preferences like Dark Mode settings, video player configurations, and UI layouts in Local Storage to offer a seamless and personalized experience on every visit."
       },
       "dataBreach": {
-        "header": "Data Breach Notification & Global Standards",
-        "paragraph_1": "In the event of a security compromise, YokaiVerse is committed to notifying affected users and relevant data protection authorities within the timeframes mandated by local and international regulations. While anchored in KVKK, we respect the fundamental principles of the GDPR (EU) and CCPA/CPRA (USA), offering data portability and erasure rights to all users globally to ensure that our Turkish legal base never compromises the security of our international community."
+        "header": "Data Breach Notification and Global Standards",
+        "paragraph_1": "In the event of a security breach, YokaiVerse undertakes to notify affected users and relevant data protection authorities within the timeframes prescribed by local and international regulations. While bound by the KVKK, we respect the core principles of the GDPR (EU) and CCPA/CPRA (US) by offering data portability and erasure rights to users worldwide, ensuring our Turkey-based legal foundation never compromises our international community's security."
       }
     },
     "cookiePolicy": {

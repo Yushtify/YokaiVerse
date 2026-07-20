@@ -1,52 +1,53 @@
 ---
-import Slogan from "./slogan.astro";
 import TransparentScrollDown from "../../scrollDownIndicators/transparent.astro";
 import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
-import SearchBar from "../../custom/searchBar.astro";
+import TextInput from "../../custom/public/textInput.astro";
 ---
 
 <div
-  class="relative flex flex-col items-center justify-center w-full h-fit min-h-screen max-h-fit gap-12 z-0"
+    class="relative flex flex-col items-center justify-center w-full h-fit min-h-screen max-h-fit gap-12 z-0"
 >
-  <div
-    class="absolute inset-0 pointer-events-none overflow-hidden mask-[radial-gradient(circle,white_40%,transparent_100%)] z-[-1]"
-  >
-    <!-- Dot pattern -->
     <div
-      class="absolute inset-0 bg-L_Primary dark:bg-D_Primary bg-[radial-gradient(currentColor_0.1rem,transparent_0.1rem)] bg-size-[1.2rem_1.2rem] text-Accent opacity-20"
+        class="absolute inset-0 pointer-events-none overflow-hidden mask-[radial-gradient(circle,white_40%,transparent_100%)] z-[-1]"
     >
+        <!-- Dot pattern -->
+        <div
+            class="absolute inset-0 bg-L_Primary dark:bg-D_Primary bg-[radial-gradient(currentColor_0.1rem,transparent_0.1rem)] bg-size-[1.2rem_1.2rem] text-Accent opacity-20"
+        >
+        </div>
     </div>
-  </div>
 
-  <p
-    class="relative flex flex-col items-center jusitfy-center w-fit h-fit gap-2 font-Serif text-nowrap text-center text-[min(5vw,3rem)] text-LT_Primary dark:text-DT_Primary capitalize"
-  >
-    <span data-i18n="Landing.title">bored from ads?</span>
-    <span
-      data-i18n="Landing.title2"
-      class="font-semibold text-[min(10vw,8rem)] text-Accent">YokaiVerse</span
+    <p
+        class="relative flex flex-col items-center jusitfy-center w-fit h-fit gap-2 font-Serif text-nowrap text-center text-[min(5vw,3rem)] text-LT_Primary dark:text-DT_Primary capitalize"
     >
-    <span data-i18n="Landing.title3">is for you</span>
-  </p>
-  <div
-    class="flex flex-col items-center justify-center w-full h-fit gap-8 capitalize"
-  >
-    <SearchBar
-      givenID="LogIn"
-      data="Landing.search_placeholder"
-      givenPlaceHolder="Enter your email to log in"
-    />
-    <a
-      href="/register"
-      class="flex flex-row items-center justify-between lg:jusitfy-center w-full lg:w-fit h-fit gap-2 rounded-3xl font-semibold text-[1rem] text-LT_Tertiary dark:text-DT_Tertiary hover:text-Accent transition-colors duration-300 ease-in-out"
+        <span data-i18n="Landing.title">bored from ads?</span>
+        <span
+            data-i18n="Landing.title2"
+            class="font-semibold text-[min(10vw,8rem)] text-Accent"
+            >YokaiVerse</span
+        >
+        <span data-i18n="Landing.title3">is for you</span>
+    </p>
+    <div
+        class="flex flex-col items-center justify-center w-full h-fit gap-8 capitalize"
     >
-      <span data-i18n="Landing.join_now"> don't have one? </span>
-      <GoogleMaterialSymbol
-        SVG_Name="arrow_right_alt"
-        SvgSize="!text-[min(7vw,1.5rem)]"
-      />
-    </a>
-  </div>
-  <TransparentScrollDown />
-  <Slogan />
+        <TextInput
+            givenID="LogIn"
+            givenTitle="email"
+            titleData=""
+            givenPlaceholder="Please enter your email"
+            placeholderData=""
+        />
+        <a
+            href="/register"
+            class="flex flex-row items-center justify-between lg:jusitfy-center w-full lg:w-fit h-fit gap-2 rounded-3xl font-semibold text-[1rem] text-LT_Tertiary dark:text-DT_Tertiary hover:text-Accent transition-colors duration-300 ease-in-out"
+        >
+            <span data-i18n="Landing.join_now"> don't have one? </span>
+            <GoogleMaterialSymbol
+                symbol="arrow_right_alt"
+                SvgSize="!text-[min(7vw,1.5rem)]"
+            />
+        </a>
+    </div>
+    <TransparentScrollDown />
 </div>

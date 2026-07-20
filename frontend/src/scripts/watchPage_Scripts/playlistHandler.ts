@@ -14,7 +14,7 @@ interface LoadingManagerInterface {
 
 declare const LoadingManager: LoadingManagerInterface;
 declare function addListeners(): void;
-declare const videoPlayer: HTMLVideoElement;
+declare const episodePlayer: HTMLVideoElement;
 
 // --- CONFIGURATION & GLOBAL STATE ---
 let videoRootSRC: string;
@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       LoadingManager.hide();
 
-      if (videoPlayer) {
-        videoPlayer.play().catch(() => console.warn("Autoplay blocked."));
+      if (episodePlayer) {
+        episodePlayer.play().catch(() => console.warn("Autoplay blocked."));
       }
     } else {
       throw new Error("Series not found.");
@@ -114,7 +114,7 @@ async function SwitchEpisode(sNum: number, epNum: number) {
   setActiveCard(sNum, epNum);
 
   LoadingManager.hide();
-  if (videoPlayer) videoPlayer.play().catch(() => {});
+  if (episodePlayer) episodePlayer.play().catch(() => {});
 }
 (window as any).SwitchEpisode = SwitchEpisode;
 
@@ -144,10 +144,10 @@ async function GetTheVideos(root: string) {
       `${epPath}/uploader.webp`,
     );
 
-    if (videoPlayer) {
-      videoPlayer.src = videoSrc;
-      videoPlayer.poster = `${epPath}/cover.webp`;
-      videoPlayer.onended = () => (window as any).NextEpisode();
+    if (episodePlayer) {
+      episodePlayer.src = videoSrc;
+      episodePlayer.poster = `${epPath}/cover.webp`;
+      episodePlayer.onended = () => (window as any).NextEpisode();
     }
   } catch (e) {
     console.error("[Player Error]:", e);
@@ -182,6 +182,14 @@ async function PreviousEpisode() {
  * NEXT EPISODE LOGIC
  */
 async function NextEpisode() {
+  const settings = JSON.parse(
+    sessionStorage.getItem("epPlayerStorage") ??
+      localStorage.getItem("epPlayerStorage") ??
+      "{}",
+  );
+
+  if (!settings.autoPlay) return;
+
   // Check next episode in current season
   const nextEpCheck = await fetch(
     `${videoRootSRC}/season_${currentSeason_Num}/ep_${currentEpisode_Num + 1}/information.json`,
@@ -222,7 +230,8 @@ function LoadVideoData(
   Img: string,
 ) {
   const els = {
-    vTitle: document.getElementById("videoTitle") as HTMLParagraphElement,
+    epAnimeTitle: document.getElementById("animeTitle") as HTMLParagraphElement,
+    epTitle: document.getElementById("episodeTitle") as HTMLParagraphElement,
     pTitle: document.getElementById("pageVideoTitle") as HTMLParagraphElement,
     pDesc: document.getElementById("pageVideoDesc") as HTMLParagraphElement,
     pStudioUploader: document.getElementById(
@@ -236,7 +245,8 @@ function LoadVideoData(
     pDate: document.getElementById("pageVideoUpload") as HTMLParagraphElement,
   };
   const fullTitle = `${Title} - ${EpisodeName}`;
-  if (els.vTitle) els.vTitle.innerText = fullTitle;
+  if (els.epAnimeTitle) els.epAnimeTitle.innerText = Title;
+  if (els.epTitle) els.epTitle.innerText = EpisodeName;
   if (els.pTitle) els.pTitle.innerText = fullTitle;
   if (els.pDesc) els.pDesc.innerText = Desc;
   if (els.pStudioUploader)

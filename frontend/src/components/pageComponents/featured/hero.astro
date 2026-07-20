@@ -1,5 +1,8 @@
 ---
-import RadioButton from "../../custom/buttons/customRadioButton.astro";
+import { fade } from "astro:transitions";
+import CustomRadioButton from "../../custom/buttons/customRadioButton.astro";
+import RadioButton from "../../custom/buttons/radioButton.astro";
+
 import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
 import HeroTemplate from "../../custom/heroTemplate.astro";
 
@@ -7,87 +10,101 @@ import SearchBar from "../../custom/searchBar.astro";
 ---
 
 <HeroTemplate
-  givenTitle="featured [BETA]"
-  titleData="featured.hero.header"
-  givenDesc="Browse and featured anime titles. Find something new to watch, or revisit your favorites."
-  descData="featured.hero.desc"
-  givenGoogleSymbol="star"
+    givenTitle="featured [BETA]"
+    titleData="featured.hero.header"
+    givenDesc="Browse and featured anime titles. Find something new to watch, or revisit your favorites."
+    descData="featured.hero.desc"
+    givenGoogleSymbol="star"
 >
-  <div
-    class="relative flex flex-col items-start justify-center gap-4 w-full h-fit text-left text-[min(4vw,1rem)] text-LT_Primary dark:text-DT_Primary"
-  >
     <div
-      class="relative flex flex-col items-start justify-center gap-4 w-full h-fit text-left text-[min(4vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+        class="relative flex flex-col items-start justify-center gap-4 w-full h-fit text-left text-[min(4vw,1rem)] text-LT_Primary dark:text-DT_Primary"
     >
-      <div
-        class="flex flex-row flex-wrap w-full h-fit items-center justify-start gap-4"
-      >
-        <!-- Searchbar and quick tags -->
-
         <div
-          class="relative flex flex-row items-center justify-start gap-2 rounded-3xl p-2 w-fit h-fit border border-LB_Primary dark:border-DB_Primary"
+            class="relative flex flex-col items-start justify-center gap-4 w-full h-fit text-left text-[min(4vw,1rem)] text-LT_Primary dark:text-DT_Primary"
         >
-          <RadioButton
-            givenTitle="Top Anime"
-            givenID="topAnimeFilter"
-            titleData="featured.hero.filters.topAnime"
-            groupName="mediaTypeFilter"
-            givenState={true}
-            givenSVG="comic_bubble"
-            givenSVGSize="!text-[min(7vw,1.5rem)]"
-            givenSVGFill={true}
-          />
-          <RadioButton
-            givenTitle="Top Manga"
-            givenID="topMangaFilter"
-            titleData="featured.hero.filters.topManga"
-            groupName="mediaTypeFilter"
-            givenState={false}
-            givenSVG="manga"
-            givenSVGSize="!text-[min(7vw,1.5rem)]"
-          />
-          <RadioButton
-            givenTitle="Top Webtoon"
-            givenID="topWebtoonFilter"
-            titleData="featured.hero.filters.topWebtoon"
-            groupName="mediaTypeFilter"
-            givenState={false}
-            givenSVG="web"
-            givenSVGSize="!text-[min(7vw,1.5rem)]"
-          />
-        </div>
-        <div
-          class="relative flex flex-row items-center justify-start gap-2 rounded-3xl p-2 w-fit h-fit border border-LB_Primary dark:border-DB_Primary"
-        >
-          <RadioButton
-            givenTitle="SFW"
-            givenID="sfwFilter"
-            titleData="featured.hero.filters.sfw"
-            groupName="nsfwToggle"
-            givenState={true}
-            givenSVG="shield"
-            givenSVGSize="!text-[min(7vw,1.5rem)]"
-            givenSVGFill={true}
-          />
-          <RadioButton
-            givenTitle="NSFW"
-            givenID="nsfwFilter"
-            titleData="featured.hero.filters.nsfw"
-            groupName="nsfwToggle"
-            givenState={false}
-            givenSVG="18_up_rating"
-            givenSVGSize="!text-[min(7vw,1.5rem)]"
-          />
-        </div>
+            <div
+                class="flex flex-row flex-wrap w-full h-fit items-center justify-start gap-4"
+            >
+                <div
+                    class="flex flex-col w-fit h-fit items-start justify-start rounded-3xl p-4 gap-2 border-2 border-LB_Primary dark:border-DB_Primary font-semibold text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary uppercase"
+                >
+                    <p>filter by</p>
+                    <!-- Filter options -->
+                    <div
+                        class="flex flex-row flex-wrap items-start justify-start gap-4 w-fit h-fit"
+                    >
+                        <div
+                            class="relative flex flex-row items-center justify-start gap-2 w-fit h-fit"
+                        >
+                            <RadioButton
+                                givenPositionTo="horizontal"
+                                givenPosition="start"
+                                givenRadGroup="mediaTypeFilter"
+                                givenState={true}
+                                givenID="animeFilter"
+                                givenTitle="Top Anime"
+                                titleData="featured.hero.filters.anime"
+                                givenSymbol="comic_bubble"
+                            />
+                            <RadioButton
+                                givenPositionTo="horizontal"
+                                givenPosition="center"
+                                givenRadGroup="mediaTypeFilter"
+                                givenState={false}
+                                givenID="mangaFilter"
+                                givenTitle="Top Manga"
+                                titleData="featured.hero.filters.manga"
+                                givenSymbol="manga"
+                            />
+                            <RadioButton
+                                givenPositionTo="horizontal"
+                                givenPosition="end"
+                                givenRadGroup="mediaTypeFilter"
+                                givenState={false}
+                                givenID="webtoonFilter"
+                                givenTitle="Top Webtoon"
+                                titleData="featured.hero.filters.webtoon"
+                                givenSymbol="web"
+                            />
+                        </div>
 
-        <!-- Search bar -->
-        <SearchBar
-          givenID="featuredSearch"
-          givenClass="w-full h-fit outline-0"
-          givenPlaceHolder="Type or Press CTRL + K to search"
-          data="featured.hero.searchPlaceholder"
-        />
-      </div>
+                        <div
+                            class="relative flex flex-row items-center justify-start gap-2 w-fit h-fit"
+                        >
+                            <RadioButton
+                                givenPositionTo="horizontal"
+                                givenPosition="start"
+                                givenRadGroup="nsfwToggle"
+                                givenCanDisabled={false}
+                                givenState={false}
+                                givenID="sfwFilter"
+                                givenTitle="SFW"
+                                titleData="featured.hero.filters.sfw"
+                                givenSymbol="shield"
+                            />
+                            <RadioButton
+                                givenPositionTo="horizontal"
+                                givenPosition="end"
+                                givenRadGroup="nsfwToggle"
+                                givenCanDisabled={false}
+                                givenState={false}
+                                givenID="nsfwFilter"
+                                givenTitle="NSFW"
+                                titleData="featured.hero.filters.nsfw"
+                                givenSymbol="18_up_rating"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search bar -->
+                <SearchBar
+                    givenID="featuredSearch"
+                    givenClass="w-full h-fit outline-0"
+                    givenPlaceHolder="Type or Press CTRL + K to search"
+                    data="featured.hero.searchPlaceholder"
+                />
+            </div>
+        </div>
     </div>
-  </div>
 </HeroTemplate>

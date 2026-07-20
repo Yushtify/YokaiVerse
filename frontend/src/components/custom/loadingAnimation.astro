@@ -3,179 +3,191 @@ import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
 ---
 
 <div
-  id="LoadingDIV"
-  class="fixed top-0 left-0 hidden flex-col items-center justify-center gap-4 p-4 w-screen h-screen bg-L_Primary/65 dark:bg-D_Primary/65 backdrop-blur-3xl text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary opacity-100 select-none z-9999"
+    id="LoadingDIV"
+    class="fixed top-0 left-0 hidden flex-col items-center justify-center gap-4 p-4 w-screen h-screen bg-L_Primary/65 dark:bg-D_Primary/65 backdrop-blur-3xl text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary opacity-100 select-none z-9999"
 >
-  <div
-    class="flex flex-col sm:flex-row items-start justify-start gap-4 w-full sm:w-fit max-w-none md:max-w-[85%] xl:max-w-[65%] h-fit"
-  >
     <div
-      class="flex flex-row items-center justify-center w-fit h-fit p-4 rounded-full bg-LB_Primary dark:bg-DB_Primary"
+        class="flex flex-col sm:flex-row items-start justify-start gap-4 w-full sm:w-fit max-w-none md:max-w-[85%] xl:max-w-[65%] h-fit"
     >
-      <GoogleMaterialSymbol
-        SVG_Name="progress_activity"
-        SVG_ID="SpinningCircle"
-        SVG_Style="!font-bold text-Accent"
-        SvgSize="!text-[min(6vw,4rem)]"
-        isFilled={true}
-      />
-    </div>
-
-    <div class="flex flex-col items-start justify-center gap-2">
-      <div class="flex flex-col items-start justify-center gap-1">
-        <p
-          id="AnimatingText"
-          class="font-bold text-[min(7vw,2.5rem)] text-Accent capitalize"
+        <div
+            class="flex flex-row items-center justify-center w-fit h-fit p-4 rounded-3xl bg-Accent"
         >
-          Loading...
-        </p>
+            <GoogleMaterialSymbol
+                symbol="progress_activity"
+                SVG_ID="SpinningCircle"
+                SVG_Style="!font-bold text-LT_Inverted dark:text-DT_Inverted"
+                SvgSize="!text-[min(6vw,4rem)]"
+                isFilled={true}
+            />
+        </div>
 
-        <p id="DescText" class="text-[min(7vw,1rem)] opacity-80">
-          Content is now loading, this can take up to 1 minute depending to your
-          device capabilities.
-        </p>
-      </div>
+        <div class="flex flex-col items-start justify-center gap-2">
+            <div class="flex flex-col items-start justify-center gap-1">
+                <p
+                    id="AnimatingText"
+                    class="font-bold text-[min(7vw,2.5rem)] text-Accent capitalize"
+                >
+                    Loading...
+                </p>
 
-      <div
-        id="errorLine_Container"
-        class="hidden flex-col items-start justify-start gap-2 w-full h-fit p-4 rounded-3xl bg-L_BG dark:bg-D_BG border-2 border-LB_Primary dark:border-DB_Primary font-Mono select-text uppercase"
-      >
-        <p class="font-bold text-[min(6vw,0.8rem)]">error:</p>
-        <p id="errorLine_Text" class="text-red-500 text-[min(7vw,0.9rem)]">
-          no errors for now.
-        </p>
-      </div>
+                <p id="DescText" class="text-[min(7vw,1rem)] opacity-80">
+                    Content is now loading, this can take up to 1 minute
+                    depending to your device capabilities.
+                </p>
+            </div>
+
+            <div
+                id="errorLine_Container"
+                class="hidden flex-col items-start justify-start gap-2 w-full h-fit p-4 rounded-3xl bg-L_BG dark:bg-D_BG border-2 border-LB_Primary dark:border-DB_Primary font-Mono select-text uppercase"
+            >
+                <p class="font-bold text-[min(6vw,0.8rem)]">error:</p>
+                <p
+                    id="errorLine_Text"
+                    class="text-red-500 text-[min(7vw,0.9rem)]"
+                >
+                    no errors for now.
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <script>
-  /**
-   * Interface defining the structure of the Loading UI elements.
-   */
-  interface LoadingElements {
-    div: HTMLElement | null;
-    spin: HTMLElement | null;
-    text: HTMLElement | null;
-    desc: HTMLElement | null;
-    errorContainer: HTMLElement | null;
-    error: HTMLElement | null;
-  }
+    /**
+     * Interface defining the structure of the Loading UI elements.
+     */
+    interface LoadingElements {
+        div: HTMLElement | null;
+        spin: HTMLElement | null;
+        text: HTMLElement | null;
+        desc: HTMLElement | null;
+        errorContainer: HTMLElement | null;
+        error: HTMLElement | null;
+    }
 
-  /**
-   * Global Loading Manager Function.
-   */
-  function LoadingManager() {
-    // Listener çakışmalarını önlemek için handler referansını burada tutuyoruz
-    let activeTransitionHandler: ((event: Event) => void) | null = null;
+    /**
+     * Global Loading Manager Function.
+     */
+    function LoadingManager() {
+        // Listener çakışmalarını önlemek için handler referansını burada tutuyoruz
+        let activeTransitionHandler: ((event: Event) => void) | null = null;
 
-    return {
-      getElements(): LoadingElements {
         return {
-          div: document.getElementById("LoadingDIV"),
-          spin: document.getElementById("SpinningCircle"),
-          text: document.getElementById("AnimatingText"),
-          desc: document.getElementById("DescText"),
-          error: document.getElementById("errorLine_Text"),
-          errorContainer: document.getElementById("errorLine_Container"),
+            getElements(): LoadingElements {
+                return {
+                    div: document.getElementById("LoadingDIV"),
+                    spin: document.getElementById("SpinningCircle"),
+                    text: document.getElementById("AnimatingText"),
+                    desc: document.getElementById("DescText"),
+                    error: document.getElementById("errorLine_Text"),
+                    errorContainer: document.getElementById(
+                        "errorLine_Container",
+                    ),
+                };
+            },
+
+            /**
+             * Elemanın opacity 0 ise ama hala flex ise zorla gizler.
+             */
+            reconcileState(): void {
+                const { div } = this.getElements();
+                if (!div || div.classList.contains("hidden")) return;
+
+                const opacity = parseFloat(
+                    window.getComputedStyle(div).opacity,
+                );
+                if (opacity === 0) {
+                    div.classList.replace("flex", "hidden");
+                    div.style.transition = "none";
+                }
+            },
+
+            show(message: string = "Loading"): void {
+                const { div, text, error, spin } = this.getElements();
+
+                if (div) {
+                    // Eğer kapanma animasyonu sürerken tekrar açılırsa, eski listener'ı temizle
+                    if (activeTransitionHandler) {
+                        div.removeEventListener(
+                            "transitionend",
+                            activeTransitionHandler,
+                        );
+                        activeTransitionHandler = null;
+                    }
+
+                    // Stuck state kontrolü
+                    this.reconcileState();
+
+                    div.style.transition = "opacity 0.3s ease";
+                    div.classList.replace("hidden", "flex");
+
+                    // Display değişiminden sonra opacity tetikle
+                    requestAnimationFrame(() => {
+                        div.style.opacity = "1";
+                    });
+                }
+
+                if (error) error.innerText = "";
+                if (text)
+                    text.innerHTML = `${message}<span class="dots"></span>`;
+                if (spin) {
+                    spin.innerText = "progress_activity";
+                    spin.style.animation = "spin 1.2s linear infinite";
+                }
+            },
+
+            setError(errorMessage: string): void {
+                const { error, errorContainer, desc, spin, text } =
+                    this.getElements();
+
+                if (error && errorContainer && desc) {
+                    error.innerText = errorMessage;
+                    errorContainer.classList.replace("hidden", "flex");
+                    desc.classList.add("hidden!");
+                }
+
+                if (spin) {
+                    spin.innerText = "error";
+                    spin.style.animation = "none";
+                }
+
+                if (text) text.innerHTML = "Error Occurred";
+            },
+
+            hide(): void {
+                const { div } = this.getElements();
+
+                if (div) {
+                    // Zaten gizli veya gizleniyorsa işlem yapma
+                    if (
+                        div.classList.contains("hidden") ||
+                        parseFloat(window.getComputedStyle(div).opacity) === 0
+                    ) {
+                        div.classList.replace("flex", "hidden");
+                        return;
+                    }
+
+                    div.style.transition = "opacity 0.4s ease";
+                    div.style.opacity = "0";
+
+                    const handleEnd = (event: Event) => {
+                        const transitionEvent = event as TransitionEvent;
+                        if (transitionEvent.propertyName === "opacity") {
+                            div.classList.replace("flex", "hidden");
+                            div.removeEventListener("transitionend", handleEnd);
+                            activeTransitionHandler = null;
+                        }
+                    };
+
+                    activeTransitionHandler = handleEnd;
+                    div.addEventListener("transitionend", handleEnd);
+
+                    // Tarayıcı bazen transitionend kaçırabilir, 500ms sonra zorla kontrol et
+                    setTimeout(() => this.reconcileState(), 500);
+                }
+            },
         };
-      },
+    }
 
-      /**
-       * Elemanın opacity 0 ise ama hala flex ise zorla gizler.
-       */
-      reconcileState(): void {
-        const { div } = this.getElements();
-        if (!div || div.classList.contains("hidden")) return;
-
-        const opacity = parseFloat(window.getComputedStyle(div).opacity);
-        if (opacity === 0) {
-          div.classList.replace("flex", "hidden");
-          div.style.transition = "none";
-        }
-      },
-
-      show(message: string = "Loading"): void {
-        const { div, text, error, spin } = this.getElements();
-
-        if (div) {
-          // Eğer kapanma animasyonu sürerken tekrar açılırsa, eski listener'ı temizle
-          if (activeTransitionHandler) {
-            div.removeEventListener("transitionend", activeTransitionHandler);
-            activeTransitionHandler = null;
-          }
-
-          // Stuck state kontrolü
-          this.reconcileState();
-
-          div.style.transition = "opacity 0.3s ease";
-          div.classList.replace("hidden", "flex");
-
-          // Display değişiminden sonra opacity tetikle
-          requestAnimationFrame(() => {
-            div.style.opacity = "1";
-          });
-        }
-
-        if (error) error.innerText = "";
-        if (text) text.innerHTML = `${message}<span class="dots"></span>`;
-        if (spin) {
-          spin.innerText = "progress_activity";
-          spin.style.animation = "spin 1.2s linear infinite";
-        }
-      },
-
-      setError(errorMessage: string): void {
-        const { error, errorContainer, desc, spin, text } = this.getElements();
-
-        if (error && errorContainer && desc) {
-          error.innerText = errorMessage;
-          errorContainer.classList.replace("hidden", "flex");
-          desc.classList.add("hidden!");
-        }
-
-        if (spin) {
-          spin.innerText = "error";
-          spin.style.animation = "none";
-        }
-
-        if (text) text.innerHTML = "Error Occurred";
-      },
-
-      hide(): void {
-        const { div } = this.getElements();
-
-        if (div) {
-          // Zaten gizli veya gizleniyorsa işlem yapma
-          if (
-            div.classList.contains("hidden") ||
-            parseFloat(window.getComputedStyle(div).opacity) === 0
-          ) {
-            div.classList.replace("flex", "hidden");
-            return;
-          }
-
-          div.style.transition = "opacity 0.4s ease";
-          div.style.opacity = "0";
-
-          const handleEnd = (event: Event) => {
-            const transitionEvent = event as TransitionEvent;
-            if (transitionEvent.propertyName === "opacity") {
-              div.classList.replace("flex", "hidden");
-              div.removeEventListener("transitionend", handleEnd);
-              activeTransitionHandler = null;
-            }
-          };
-
-          activeTransitionHandler = handleEnd;
-          div.addEventListener("transitionend", handleEnd);
-
-          // Tarayıcı bazen transitionend kaçırabilir, 500ms sonra zorla kontrol et
-          setTimeout(() => this.reconcileState(), 500);
-        }
-      },
-    };
-  }
-
-  (window as any).LoadingManager = LoadingManager();
+    (window as any).LoadingManager = LoadingManager();
 </script>

@@ -2,74 +2,74 @@
 import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
 
 interface Props {
-  givenGoogleSymbol: string;
-  givenTitle: string;
-  titleData?: string;
-  givenDiscount?: string;
-  givenPrice: string;
-  givenBillingCycle: string;
-  billingCycleData?: string;
-  isHighlighted?: boolean;
+    givenGoogleSymbol: string;
+    givenTitle: string;
+    titleData?: string;
+    givenDiscount?: string;
+    givenPrice: string;
+    givenBillingCycle: string;
+    billingCycleData?: string;
+    isHighlighted?: boolean;
 }
 
 const {
-  givenGoogleSymbol,
-  givenTitle,
-  titleData,
-  givenDiscount,
-  givenPrice,
-  givenBillingCycle,
-  billingCycleData,
-  isHighlighted,
+    givenGoogleSymbol,
+    givenTitle,
+    titleData,
+    givenDiscount,
+    givenPrice,
+    givenBillingCycle,
+    billingCycleData,
+    isHighlighted,
 } = Astro.props;
 
 const isDiscounted = givenDiscount ? "inline" : "!hidden";
 
 const Highlighted =
-  "bg-Accent/32 border-2 border-Accent/50 font-bold text-Accent shadow-2xl shadow-Accent/48";
+    "bg-Accent/32 border-2 border-Accent/50 font-bold text-Accent shadow-2xl shadow-Accent/48";
 const NotHighlighted =
-  "bg-L_Tertiary dark:bg-D_Tertiary border border-LB_Secondary/50 dark:border-DB_Secondary/50 font-bold text-LT_Secondary dark:text-DT_Secondary";
+    "bg-L_Tertiary dark:bg-D_Tertiary border border-LB_Secondary/50 dark:border-DB_Secondary/50 font-bold text-LT_Secondary dark:text-DT_Secondary";
 const ColorValidation = isHighlighted ? Highlighted : NotHighlighted;
 const ColorValidationSVG = isHighlighted
-  ? "text-Accent"
-  : "text-LT_Secondary dark:text-DT_Secondary";
+    ? "text-Accent"
+    : "text-LT_Secondary dark:text-DT_Secondary";
 ---
 
 <div
-  class="flex flex-col items-center justify-start w-full max-w-124 h-fit rounded-3xl gap-8 p-0 md:p-4 lg:p-8"
+    class="flex flex-col items-center justify-start w-full max-w-124 h-fit rounded-3xl gap-8 p-0 md:p-4 lg:p-8"
 >
-  <div
-    class={`flex flex-row items-center justify-center gap-2 p-4 rounded-full capitalize ${ColorValidation}`}
-  >
-    <GoogleMaterialSymbol
-      SVG_Name={givenGoogleSymbol}
-      SVG_Style={ColorValidationSVG}
-      SvgSize="!text-[min(7vw,2rem)]"
-      isFilled={true}
-    />
-    <p data-i18n={titleData}>{givenTitle}</p>
-  </div>
-  <div class="flex flex-col items-center justify-center gap-0 w-full h-fit">
-    <p
-      class={`text-[min(7vw,2rem)] text-LT_Secondary dark:text-DT_Secondary uppercase text-center line-through ${isDiscounted}`}
-    >
-      ${givenDiscount}
-    </p>
     <div
-      class="flex flex-row items-center justify-center w-full h-fit text-nowrap gap-2"
+        class={`flex flex-row items-center justify-center gap-2 p-4 rounded-full capitalize ${ColorValidation}`}
     >
-      <p class="text-[min(7vw,4rem)] uppercase text-center">
-        ${givenPrice}
-      </p>
-      <p
-        class="text-[min(7vw,1rem)] uppercase text-center text-LT_Secondary dark:text-DT_Secondary"
-      >
-        / <span data-i18n={billingCycleData}>{givenBillingCycle}</span>
-      </p>
+        <GoogleMaterialSymbol
+            symbol={givenGoogleSymbol}
+            SVG_Style={ColorValidationSVG}
+            SvgSize="!text-[min(7vw,2rem)]"
+            isFilled={true}
+        />
+        <p data-i18n={titleData}>{givenTitle}</p>
     </div>
-  </div>
+    <div class="flex flex-col items-center justify-center gap-0 w-full h-fit">
+        <p
+            class={`text-[min(7vw,2rem)] text-LT_Secondary dark:text-DT_Secondary uppercase text-center line-through ${isDiscounted}`}
+        >
+            ${givenDiscount}
+        </p>
+        <div
+            class="flex flex-row items-center justify-center w-full h-fit text-nowrap gap-2"
+        >
+            <p class="text-[min(7vw,4rem)] uppercase text-center">
+                ${givenPrice}
+            </p>
+            <p
+                class="text-[min(7vw,1rem)] uppercase text-center text-LT_Secondary dark:text-DT_Secondary"
+            >
+                / <span data-i18n={billingCycleData}>{givenBillingCycle}</span>
+            </p>
+        </div>
+    </div>
 
-  <div class="flex flex-col items-start justify-center w-full h-fit gap-4">
-    <slot />
-  </div>
+    <div class="flex flex-col items-start justify-center w-full h-fit gap-4">
+        <slot />
+    </div>
 </div>

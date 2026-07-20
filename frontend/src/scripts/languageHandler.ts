@@ -1,266 +1,336 @@
-type Language = "en_us" | "en_uk" | "tr" | "az";
+// ─── Configuration ────────────────────────────────────────────────────────────
 
-// All supported language codes. Add new languages here to extend support.
-const SUPPORTED_LANGS: Language[] = ["en_us", "en_uk", "tr", "az"];
+// Default language used as fallback when no match is found or on first visit.
+const DEFAULT_LANG = "en_us" as const;
 
-// Human-readable display names for each supported language.
-// Used in the "Automatic - {Lang Name}" label on the auto-detect button.
+// All supported language codes. Add new entries here to extend support.
+const SUPPORTED_LANGS = ["az", "de", "en_us", "en_uk", "es", "fr", "ru", "tr", "jp"] as const;
+
+// Human-readable display names used in the "Automatic - {Name}" button label.
 const LANG_NAMES: Record<Language, string> = {
+  az: "Azərbaycan",
+  de: "Deutsch",
   en_us: "English (US)",
   en_uk: "English (UK)",
+  es: "Español",
+  fr: "Français",
+  ru: "Русский",
   tr: "Türkçe",
-  az: "Azərbaycan",
+  jp: "日本語",
 };
 
-// Validates an arbitrary string against the supported language list.
-// Falls back to "en_us" if the value is null, undefined, or unrecognized.
+// localStorage keys used to persist language preferences across sessions.
+const STORAGE_KEYS = {
+  lang: "user_lang",
+  auto: "user_lang_auto",
+} as const;
+
+// UPDATED: Broadened selector to target any element containing a data-lang attribute
+const RADIO_SELECTOR = `[data-lang]`;
+
+// Base path where translation JSON files are served from.
+const LOCALES_PATH = "/locales";
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+type Language = (typeof SUPPORTED_LANGS)[number];
+type Translations = Record<string, any>;
+
+// ─── Language Utilities ───────────────────────────────────────────────────────
+
+/**
+ * Checks whether a raw string is a recognized Language code.
+ */
+function isSupportedLang(raw: string): raw is Language {
+  return SUPPORTED_LANGS.includes(raw as Language);
+}
+
+/**
+ * Coerces an arbitrary string to a Language, falling back to DEFAULT_LANG
+ * when the value is null, undefined, or unrecognized.
+ */
 function resolveLanguage(raw: string | null | undefined): Language {
-  if (raw && SUPPORTED_LANGS.includes(raw as Language)) {
-    return raw as Language;
-  }
-  // Unknown or missing value — default to American English.
-  return "en_us";
+  if (raw && isSupportedLang(raw)) return raw;
+  return DEFAULT_LANG;
 }
 
-// Reads the browser's preferred language and maps it to a supported Language.
-// Matching priority:
-//   1. Exact match after normalizing separators (e.g. "en-US" → "en_us")
-//   2. Prefix match on the base language tag (e.g. "az-AZ" → "az")
-//   3. Fallback to "en_us" if nothing matches.
+/**
+ * Reads the browser's preferred locale and maps it to a supported Language.
+ */
 function detectBrowserLanguage(): Language {
-  const browserRaw = navigator.language.toLowerCase();
+  const raw = navigator.language.toLowerCase();
+  const normalized = raw.replace("-", "_");
 
-  // Normalize BCP-47 hyphen to underscore so "en-US" becomes "en_us".
-  const normalized = browserRaw.replace("-", "_");
+  const exact = SUPPORTED_LANGS.find((l) => l === normalized);
+  const prefix = SUPPORTED_LANGS.find((l) => l.startsWith(raw.split("-")[0]));
 
-  // Step 1 — try an exact match against a supported code.
-  const exactMatch = SUPPORTED_LANGS.find((l) => l === normalized);
-
-  // Step 2 — fall back to the base language tag (the part before the hyphen).
-  const prefixMatch = SUPPORTED_LANGS.find((l) =>
-    l.startsWith(browserRaw.split("-")[0]),
-  );
-
-  return exactMatch ?? prefixMatch ?? "en_us";
+  return exact ?? prefix ?? DEFAULT_LANG;
 }
+
+/**
+ * Resolves a dot-separated i18n key against a translations object.
+ */
+function resolveKey(
+  key: string,
+  translations: Translations,
+): string | undefined {
+  const value = key.split(".").reduce((obj: any, k) => obj?.[k], translations);
+  return typeof value === "string" ? value : undefined;
+}
+
+// ─── Translation Fetcher ──────────────────────────────────────────────────────
+
+async function fetchTranslations(lang: Language): Promise<Translations> {
+  const res = await fetch(`${LOCALES_PATH}/${lang}.json`);
+  if (!res.ok)
+    throw new Error(`Translation file not found: ${LOCALES_PATH}/${lang}.json`);
+  return res.json();
+}
+
+// ─── DOM Helpers ──────────────────────────────────────────────────────────────
+
+function translateElement(el: HTMLElement, translations: Translations): void {
+  if (el.getAttribute("data-translate") === "false") return;
+
+  const key = el.getAttribute("data-i18n");
+  if (!key) return;
+
+  const text = resolveKey(key, translations);
+  if (!text) return;
+
+  if (el instanceof HTMLInputElement) {
+    el.placeholder = text;
+  } else {
+    el.innerText = text;
+  }
+}
+
+function translateSubtree(
+  translations: Translations,
+  root: Element | Document = document,
+): void {
+  root.querySelectorAll<HTMLElement>("[data-i18n]").forEach((el) => {
+    translateElement(el, translations);
+  });
+}
+
+/**
+ * Updates the language indicator badge text if the element exists on the page.
+ */
+function updateLangBadge(lang: Language): void {
+  const badge = document.getElementById("languageSwitch_Text");
+  if (badge) badge.innerText = lang.toUpperCase();
+}
+
+// ─── MutationObserver ─────────────────────────────────────────────────────────
+
+/**
+ * Creates and starts a MutationObserver that watches for newly added DOM nodes.
+ * Now also automatically wires up clicking mechanics if new language triggers are added.
+ */
+function createI18nObserver(
+  getTranslations: () => Translations | null,
+  bindClickToElement: (el: HTMLElement) => void,
+): MutationObserver {
+  const observer = new MutationObserver((mutations) => {
+    const translations = getTranslations();
+    if (!translations) return;
+
+    for (const { addedNodes } of mutations) {
+      for (const node of addedNodes) {
+        if (!(node instanceof Element)) continue;
+
+        if (node.hasAttribute("data-i18n")) {
+          translateElement(node as HTMLElement, translations);
+        }
+        translateSubtree(translations, node);
+
+        // Dynamic addition safety: bind interaction logic if elements containing data-lang appear
+        if (node.hasAttribute("data-lang")) {
+          bindClickToElement(node as HTMLElement);
+        }
+        node.querySelectorAll<HTMLElement>("[data-lang]").forEach((el) => {
+          bindClickToElement(el);
+        });
+      }
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+  return observer;
+}
+
+// ─── Persistence Helpers ──────────────────────────────────────────────────────
+
+function saveManualLang(lang: Language): void {
+  localStorage.setItem(STORAGE_KEYS.lang, lang);
+  localStorage.setItem(STORAGE_KEYS.auto, "false");
+}
+
+function saveAutoMode(): void {
+  localStorage.setItem(STORAGE_KEYS.auto, "true");
+  localStorage.removeItem(STORAGE_KEYS.lang);
+}
+
+function loadPersistedPreference(): { lang: Language; isAuto: boolean } {
+  const saved = localStorage.getItem(STORAGE_KEYS.lang);
+  const savedAuto = localStorage.getItem(STORAGE_KEYS.auto);
+
+  if (savedAuto === "true" || !saved) {
+    return { lang: detectBrowserLanguage(), isAuto: true };
+  }
+
+  return { lang: resolveLanguage(saved), isAuto: false };
+}
+
+// ─── Radio Button Helpers ─────────────────────────────────────────────────────
+
+// UPDATED: Now queries elements dynamically without locking down strict button tag limits
+function getAllRadioButtons(): NodeListOf<HTMLElement> {
+  return document.querySelectorAll<HTMLElement>(RADIO_SELECTOR);
+}
+
+function updateAutoButtonLabel(btn: HTMLElement, lang: Language): void {
+  const title = btn.querySelector<HTMLElement>("#title");
+  if (title) title.innerText = `Automatic - ${LANG_NAMES[lang]}`;
+}
+
+function resetAutoButtonLabel(): void {
+  const autoBtn = document.getElementById("autoLanguage");
+  const title = autoBtn?.querySelector<HTMLElement>("#title");
+  if (title) title.innerText = "Automatic";
+}
+
+/**
+ * Visually activates the selector option matching the current state.
+ */
+function syncRadioButtons(currentLang: Language, isAuto: boolean): void {
+  getAllRadioButtons().forEach((btn) => {
+    const lang = btn.getAttribute("data-lang");
+
+    if (isAuto && lang === "auto") {
+      (window as any).switchTheFilter?.(btn);
+      updateAutoButtonLabel(btn, currentLang);
+    } else if (!isAuto && lang === currentLang) {
+      (window as any).switchTheFilter?.(btn);
+    }
+  });
+}
+
+// ─── Language Manager ─────────────────────────────────────────────────────────
 
 class LanguageManager {
-  // The language currently applied to the page.
-  private currentLang: Language = "en_us";
-
-  // When true the active language is derived from the browser rather than
-  // a manual selection. This state is persisted in localStorage so it
-  // survives page reloads.
-  private isAuto: boolean = false;
+  private currentLang: Language;
+  private isAuto: boolean;
+  private translations: Translations | null = null;
+  private observer: MutationObserver | null = null;
 
   constructor() {
-    this.init();
+    const pref = loadPersistedPreference();
+    this.currentLang = pref.lang;
+    this.isAuto = pref.isAuto;
+    this.boot();
   }
 
-  // ─── Initialization ───────────────────────────────────────────────────────
+  // ─── Boot ──────────────────────────────────────────────────────────────────
 
-  private async init() {
-    const saved = localStorage.getItem("user_lang");
-    const savedAuto = localStorage.getItem("user_lang_auto");
-
-    // Auto mode is active when:
-    //   • The user explicitly chose "Automatic" before (savedAuto === "true"), OR
-    //   • There is no saved preference at all (first visit).
-    if (savedAuto === "true" || !saved) {
-      this.isAuto = true;
-      this.currentLang = detectBrowserLanguage();
-    } else {
-      // A manual language was previously selected — restore it.
-      this.isAuto = false;
-      this.currentLang = resolveLanguage(saved);
-    }
-
-    // Apply translations as soon as the DOM is available.
+  private async boot() {
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", () => {
-        this.applyLanguage();
-        this.syncRadioButtons();
-        this.attachRadioListeners();
-      });
+      document.addEventListener("DOMContentLoaded", () => this.onReady());
     } else {
-      // DOM is already ready — apply immediately.
-      await this.applyLanguage();
-      this.syncRadioButtons();
-      this.attachRadioListeners();
+      await this.onReady();
     }
   }
 
-  // ─── Radio Button Sync ────────────────────────────────────────────────────
+  private async onReady() {
+    await this.applyLanguage();
+    syncRadioButtons(this.currentLang, this.isAuto);
+    this.attachRadioListeners();
 
-  // Visually activates the radio button that matches the current language state.
-  // Delegates the actual style toggling to the existing switchTheFilter helper
-  // so radio button appearance logic stays in one place.
-  private syncRadioButtons() {
-    const allButtons = document.querySelectorAll<HTMLButtonElement>(
-      `button[data-group="languageSwitch"]`,
+    // Pass the click binder handler to the mutation observer ecosystem
+    this.observer = createI18nObserver(
+      () => this.translations,
+      (el) => this.bindLanguageTrigger(el),
     );
-
-    allButtons.forEach((btn) => {
-      const lang = btn.getAttribute("data-lang");
-
-      if (this.isAuto && lang === "auto") {
-        // Auto mode is active — highlight the Automatic button and update its label.
-        (window as any).switchTheFilter?.(btn);
-        this.updateAutoButtonLabel(btn);
-      } else if (!this.isAuto && lang === this.currentLang) {
-        // Manual mode — highlight whichever button matches the saved language.
-        (window as any).switchTheFilter?.(btn);
-      }
-    });
   }
 
-  // Updates the Automatic button's inner text to show the detected language,
-  // e.g. "Automatic - Türkçe". Called whenever auto mode is active.
-  private updateAutoButtonLabel(btn: HTMLButtonElement) {
-    const titleEl = btn.querySelector<HTMLElement>("#title");
-    if (titleEl) {
-      titleEl.innerText = `Automatic - ${LANG_NAMES[this.currentLang]}`;
-    }
-  }
+  // ─── Radio Listeners ───────────────────────────────────────────────────────
 
-  // Resets the Automatic button label back to plain "Automatic".
-  // Called when the user switches away from auto mode to a manual language.
-  private resetAutoButtonLabel() {
-    const autoBtn = document.getElementById(
-      "autoLanguage",
-    ) as HTMLButtonElement | null;
-    const titleEl = autoBtn?.querySelector<HTMLElement>("#title");
-    if (titleEl) titleEl.innerText = "Automatic";
-  }
-
-  // ─── Event Listeners ──────────────────────────────────────────────────────
-
-  // Attaches a click listener to every radio button in the language switcher group.
-  // Handles two cases:
-  //   • "auto"  — enable browser-based detection.
-  //   • any other data-lang value — apply that specific language manually.
+  /**
+   * Scans existing DOM matching elements and registers the translation interaction.
+   */
   private attachRadioListeners() {
-    const allButtons = document.querySelectorAll<HTMLButtonElement>(
-      `button[data-group="languageSwitch"]`,
-    );
-
-    allButtons.forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        const raw = btn.getAttribute("data-lang");
-
-        // ── Auto mode selected ───────────────────────────────────────────
-        if (raw === "auto") {
-          this.isAuto = true;
-
-          // Persist auto preference and clear any previous manual selection.
-          localStorage.setItem("user_lang_auto", "true");
-          localStorage.removeItem("user_lang");
-
-          // Re-detect the browser language in case it changed since init.
-          this.currentLang = detectBrowserLanguage();
-
-          this.updateAutoButtonLabel(btn);
-          await this.applyLanguage();
-
-          // Notify the rest of the app about the language change.
-          window.dispatchEvent(
-            new CustomEvent("langChanged", { detail: this.currentLang }),
-          );
-          return;
-        }
-
-        // ── Manual language selected ─────────────────────────────────────
-        const resolved = resolveLanguage(raw);
-
-        // Skip if the user clicked the language that is already active.
-        if (!this.isAuto && resolved === this.currentLang) return;
-
-        // Leaving auto mode — reset auto flag and restore the button label.
-        this.isAuto = false;
-        localStorage.setItem("user_lang_auto", "false");
-        this.resetAutoButtonLabel();
-
-        await this.setLanguage(resolved);
-      });
+    getAllRadioButtons().forEach((btn) => {
+      this.bindLanguageTrigger(btn);
     });
   }
 
-  // ─── Language Application ─────────────────────────────────────────────────
+  /**
+   * Safely adds event actions into the elements without wiping out external onclick modifications.
+   */
+  private bindLanguageTrigger(btn: HTMLElement) {
+    // Check to ensure we don't bind duplicate listeners if mutation observer triggers twice
+    if (btn.dataset.i18nBound === "true") return;
+    btn.dataset.i18nBound = "true";
 
-  // Persists and applies a manually chosen language.
+    btn.addEventListener("click", async () => {
+      const raw = btn.getAttribute("data-lang");
+
+      if (raw === "auto") {
+        this.isAuto = true;
+        saveAutoMode();
+        this.currentLang = detectBrowserLanguage();
+        updateAutoButtonLabel(btn, this.currentLang);
+        await this.applyLanguage();
+        this.dispatchChange();
+        return;
+      }
+
+      const resolved = resolveLanguage(raw);
+      if (!this.isAuto && resolved === this.currentLang) return;
+
+      this.isAuto = false;
+      resetAutoButtonLabel();
+      await this.setLanguage(resolved);
+    });
+  }
+
+  // ─── Public API ────────────────────────────────────────────────────────────
+
   public async setLanguage(lang: Language) {
     this.currentLang = lang;
-    localStorage.setItem("user_lang", lang);
-
+    saveManualLang(lang);
     console.log(`Switching language to: ${lang}`);
     await this.applyLanguage();
-
-    // Broadcast the change so other components can react (e.g. dynamic islands).
-    window.dispatchEvent(new CustomEvent("langChanged", { detail: lang }));
+    this.dispatchChange();
   }
 
-  // Legacy helper — toggles between en_us and tr.
-  // Kept for backward compatibility with any external callers.
   public async toggleLanguage() {
-    await this.setLanguage(this.currentLang === "en_us" ? "tr" : "en_us");
+    await this.setLanguage(
+      this.currentLang === DEFAULT_LANG ? "tr" : DEFAULT_LANG,
+    );
   }
 
-  // Fetches the translation file for the current language and applies every
-  // [data-i18n] binding on the page.
-  //
-  // Key format: "Section.subsection.key" — resolved by splitting on "."
-  // and walking the translations object.
-  //
-  // Special handling:
-  //   • <input> elements → updates placeholder instead of innerText.
-  //   • All other elements → updates innerText.
+  // ─── Internal ──────────────────────────────────────────────────────────────
+
   private async applyLanguage() {
     try {
-      const response = await fetch(`/locales/${this.currentLang}.json`);
-
-      if (!response.ok) {
-        throw new Error(
-          `Translation file not found: /locales/${this.currentLang}.json`,
-        );
-      }
-
-      const translations = await response.json();
-
-      // Update the language indicator badge if one exists on the page.
-      const langText = document.getElementById("languageSwitch_Text");
-      if (langText) langText.innerText = this.currentLang.toUpperCase();
-
-      // Walk every element that declares a translation key and swap its text.
-      document.querySelectorAll("[data-i18n]").forEach((el) => {
-        const key = el.getAttribute("data-i18n");
-        if (!key) return;
-
-        // Resolve nested keys like "Landing.search_placeholder" by reducing
-        // the dot-separated path against the translations object.
-        const text = key
-          .split(".")
-          .reduce((obj: any, i) => obj?.[i], translations);
-
-        if (!text) return;
-
-        if (el instanceof HTMLInputElement) {
-          // Inputs use placeholder instead of visible text content.
-          el.placeholder = text;
-        } else {
-          (el as HTMLElement).innerText = text;
-        }
-      });
+      this.translations = await fetchTranslations(this.currentLang);
+      updateLangBadge(this.currentLang);
+      translateSubtree(this.translations);
     } catch (err) {
       console.error("Failed to load translations:", err);
     }
+  }
+
+  private dispatchChange() {
+    window.dispatchEvent(
+      new CustomEvent("langChanged", { detail: this.currentLang }),
+    );
   }
 }
 
 // ─── Bootstrap ────────────────────────────────────────────────────────────────
 
-// Create the singleton instance — kicks off init() automatically.
 const langManager = new LanguageManager();
-
-// Expose a global helper for any inline onclick attributes that need to
-// trigger a language toggle without direct access to the class instance.
 (window as any).switchLanguage = () => langManager.toggleLanguage();

@@ -1,48 +1,67 @@
 ---
-import ContentWrapper from "./wrapper.astro";
-import CustomVideoPlayer from "../../custom/videoPlayer/customVideoPlayer.astro";
+import CustomVideoPlayer from "../../videoPlayer/companents.astro"; // v2
 
 // Things Releated to Video And that's seperated into same root with this file.
 import DescriptionSlot from "./descriptionSection.astro";
 import VideoInfoSlot from "./videoInfoSection.astro";
-import FansubSlot from "./fansubSection.astro";
 import EpisodeContainerGlobal from "../../custom/episodeContainerGlobal.astro";
 import ExpandableInfoChip from "../../custom/expandableInfoChip.astro";
+import Button from "../../custom/buttons/Button.astro";
 ---
 
-<ContentWrapper>
-  <!-- Video Player title and so on -->
-  <div
-    class="flex flex-col items-start justify-start w-full lg:max-w-[90%] xl:max-w-[75%] gap-4"
-  >
+<!-- Video Player title and so on -->
+<div
+    class="flex flex-col items-start justify-start pt-4 w-full h-fit lg:max-w-[90%] xl:max-w-[75%] gap-4"
+>
     <CustomVideoPlayer />
     <div
-      class="flex flex-col items-start justify-start px-4 gap-4 w-full h-fit text-[min(6vw,0.9rem)] text-left text-LT_Secondary dark:text-DT_Secondary z-2"
+        class="flex flex-col items-start justify-start px-4 gap-4 w-full h-fit text-[min(6vw,0.9rem)] text-left text-LT_Secondary dark:text-DT_Secondary z-0"
     >
-      <!-- Description -->
-      <VideoInfoSlot />
-      <ExpandableInfoChip
-        givenID="pageVideoDesc_Continer"
-        givenTextID="pageVideoDesc"
-        givenTitle="description"
-        givenDesc=""
-      />
-      <FansubSlot />
-
-      <!-- The Fansub Selection -->
+        <VideoInfoSlot />
+        <div class="flex flex-row items-start justify-end gap-4 w-full h-fit">
+            <div
+                class="flex flex-row items-center justify-center gap-2 w-fit h-fit"
+            >
+                <Button
+                    givenLocationFrom="horizontal"
+                    givenLocation="start"
+                    givenButtonID="previousEpButton"
+                    givenButtonAction="PreviousEpisode()"
+                    givenTitle="previous episode"
+                    givenButtonSymbol="chevron_left"
+                    tooltipTitleTrans=""
+                />
+                <Button
+                    givenLocationFrom="horizontal"
+                    givenLocation="end"
+                    givenButtonID="nextEpButton"
+                    givenButtonCustomClass="flex-row-reverse"
+                    givenButtonAction="NextEpisode()"
+                    givenTitle="next episode"
+                    givenButtonSymbol="chevron_right"
+                    tooltipTitleTrans=""
+                />
+            </div>
+        </div>
+        <!-- Description -->
+        <ExpandableInfoChip
+            givenID="pageVideoDesc_Continer"
+            givenTextID="pageVideoDesc"
+            givenTitle="description"
+            givenDesc=""
+        />
     </div>
-  </div>
+</div>
 
-  <!-- The rec videos / next ep -->
+<!-- The rec videos / next ep -->
 
-  <div
+<div
     class="flex flex-col items-start justify-start w-full lg:max-w-[90%] xl:max-w-[75%] gap-4"
-  >
+>
     <EpisodeContainerGlobal
-      givenSVG="video_template"
-      givenTitle="All Episodes"
-      titleData="info.allEpisodes"
-      givenWidth="w-full"
+        givenSymbol="video_template"
+        givenTitle="All Episodes"
+        titleData="info.allEpisodes"
+        givenWidth="w-full"
     />
-  </div>
-</ContentWrapper>
+</div>

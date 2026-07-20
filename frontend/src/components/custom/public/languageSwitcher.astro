@@ -1,91 +1,146 @@
 ---
 import Button from "../buttons/Button.astro";
-import CustomRadioButton from "./languageRadioButton.astro";
+import LanguageRadioButton from "./languageRadioButton.astro";
 ---
 
 <div class="relative flex flex-col items-start justify-start w-fit h-fit gap-4">
-  <Button
-    givenButtonID="languageSwitcher"
-    givenButtonAction="enableLanguageOptions()"
-    givenButtonSVG="keyboard_arrow_down"
-    givenButtonSVGSize="text-[min(6vw,1rem)]"
-    givenButtonCustomClass="flex-row-reverse! hover:text-LT_Inverted! dark:hover:text-DT_Inverted!"
-    givenTitle="Switch Language"
-    titleData="footer.languageSwitcher"
-    tooltipDescTrans="tooltip.footer.languageSwitcher"
-  />
-  <div
-    id="languageSwitch_Container"
-    class="hidden absolute bottom-[calc(100%+0.5rem)] left-0 flex-col items-start justify-start rounded-3xl p-2 gap-2 w-fit h-fit bg-L_Primary dark:bg-D_Primary border-2 border-LB_Primary dark:border-DB_Primary transition-all duration-250 ease-in-out overflow-hidden z-50"
-  >
-    <CustomRadioButton
-      groupName="languageSwitch"
-      givenID="automaticLanguage"
-      givenState={true}
-      givenSVG="translate"
-      givenSVGFill={true}
-      givenTitle="Automatic"
-      dataLang="auto"
+    <Button
+        givenButtonID="languageSwitcher"
+        givenButtonAction="enableLanguageOptions()"
+        givenButtonSymbol="keyboard_arrow_down"
+        givenButtonSymbolSize="text-[min(6vw,1rem)]"
+        givenButtonCustomClass="flex-row-reverse! hover:text-LT_Inverted! dark:hover:text-DT_Inverted!"
+        givenTitle="Switch Language"
+        titleData="footer.languageSwitcher"
+        tooltipDescTrans="tooltip.footer.languageSwitcher"
     />
-    <CustomRadioButton
-      groupName="languageSwitch"
-      givenID="azLanguage"
-      givenState={false}
-      givenSVG="translate"
-      givenSVGFill={true}
-      givenTitle="Azərbaycanca"
-      dataLang="az"
-    />
-    <CustomRadioButton
-      groupName="languageSwitch"
-      givenID="englishLanguage"
-      givenState={false}
-      givenSVG="translate"
-      givenSVGFill={true}
-      givenTitle="English UK"
-      dataLang="en_uk"
-    />
-    <CustomRadioButton
-      groupName="languageSwitch"
-      givenID="englishLanguage"
-      givenState={false}
-      givenSVG="translate"
-      givenSVGFill={true}
-      givenTitle="English US"
-      dataLang="en_us"
-    />
-    <CustomRadioButton
-      groupName="languageSwitch"
-      givenID="turkishLanguage"
-      givenState={false}
-      givenSVG="translate"
-      givenSVGFill={true}
-      givenTitle="Türkçe"
-      dataLang="tr"
-    />
-  </div>
+    <div
+        id="languageSwitch_Container"
+        class="hidden absolute bottom-[calc(100%+0.5rem)] left-0 flex-col items-start justify-start rounded-3xl p-2 gap-2 w-fit h-fit bg-L_Primary dark:bg-D_Primary border-2 border-LB_Primary dark:border-DB_Primary overflow-hidden z-50"
+    >
+        <LanguageRadioButton
+            givenPositionTo="vertical"
+            givenPosition="start"
+            groupName="languageSwitch"
+            givenID="automaticLanguage"
+            givenState={true}
+            givenSymbol="translate"
+            givenTitle="Automatic"
+            dataLang="auto"
+        />
+        <LanguageRadioButton
+            givenPositionTo="vertical"
+            givenPosition="center"
+            groupName="languageSwitch"
+            givenID="azLanguage"
+            givenState={false}
+            givenSymbol="translate"
+            givenTitle="Azərbaycanca"
+            dataLang="az"
+        />
+        <LanguageRadioButton
+            givenPositionTo="vertical"
+            givenPosition="center"
+            groupName="languageSwitch"
+            givenID="deLanguage"
+            givenState={false}
+            givenSymbol="translate"
+            givenTitle="Deutsch"
+            dataLang="de"
+        />
+        <LanguageRadioButton
+            givenPositionTo="vertical"
+            givenPosition="center"
+            groupName="languageSwitch"
+            givenID="englishLanguage"
+            givenState={false}
+            givenSymbol="translate"
+            givenTitle="English UK"
+            dataLang="en_uk"
+        />
+        <LanguageRadioButton
+            givenPositionTo="vertical"
+            givenPosition="center"
+            groupName="languageSwitch"
+            givenID="englishLanguage"
+            givenState={false}
+            givenSymbol="translate"
+            givenTitle="English US"
+            dataLang="en_us"
+        />
+        <LanguageRadioButton
+            givenPositionTo="vertical"
+            givenPosition="center"
+            groupName="languageSwitch"
+            givenID="espanolLanguage"
+            givenState={false}
+            givenSymbol="translate"
+            givenTitle="Español"
+            dataLang="es"
+        />
+        <LanguageRadioButton
+            givenPositionTo="vertical"
+            givenPosition="center"
+            groupName="languageSwitch"
+            givenID="frenchLanguage"
+            givenState={false}
+            givenSymbol="translate"
+            givenTitle="Français"
+            dataLang="fr"
+        />
+        <LanguageRadioButton
+            givenPositionTo="vertical"
+            givenPosition="center"
+            groupName="languageSwitch"
+            givenID="japaneseLanguage"
+            givenState={false}
+            givenSymbol="translate"
+            givenTitle="日本語"
+            dataLang="jp"
+        />
+        <LanguageRadioButton
+            givenPositionTo="vertical"
+            givenPosition="center"
+            groupName="languageSwitch"
+            givenID="russianLanguage"
+            givenState={false}
+            givenSymbol="translate"
+            givenTitle="Русский"
+            dataLang="ru"
+        />
+        <LanguageRadioButton
+            givenPositionTo="vertical"
+            givenPosition="end"
+            groupName="languageSwitch"
+            givenID="turkishLanguage"
+            givenState={false}
+            givenSymbol="translate"
+            givenTitle="Türkçe"
+            dataLang="tr"
+        />
+    </div>
 </div>
 
 <script>
-  function enableLanguageOptions() {
-    const container = document.getElementById(
-      "languageSwitch_Container",
-    ) as HTMLDivElement;
-    const btn = document.getElementById(
-      "languageSwitcher",
-    ) as HTMLButtonElement;
-    const svg = btn?.querySelector("#googleSymbol") as HTMLSpanElement;
+    function enableLanguageOptions() {
+        const container = document.getElementById(
+            "languageSwitch_Container",
+        ) as HTMLDivElement;
+        const btn = document.getElementById(
+            "languageSwitcher",
+        ) as HTMLButtonElement;
+        const svg = btn?.querySelector("#googleSymbol") as HTMLSpanElement;
 
-    if (!container || !btn || !svg) return;
+        if (!container || !btn || !svg) return;
 
-    if (container.classList.contains("hidden")) {
-      container.classList.replace("hidden", "flex");
-      svg.innerHTML = "keyboard_arrow_up";
-    } else {
-      container.classList.replace("flex", "hidden");
-      svg.innerHTML = "keyboard_arrow_down";
+        if (container.classList.contains("hidden")) {
+            container.classList.replace("hidden", "flex");
+            svg.innerHTML = "keyboard_arrow_up";
+        } else {
+            container.classList.replace("flex", "hidden");
+            svg.innerHTML = "keyboard_arrow_down";
+        }
     }
-  }
 
-  (window as any).enableLanguageOptions = enableLanguageOptions;
+    (window as any).enableLanguageOptions = enableLanguageOptions;
 </script>

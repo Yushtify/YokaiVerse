@@ -2,34 +2,33 @@
 import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
 
 interface Props {
-  givenID: string;
-  givenTextID: string;
-  givenSVG?: string;
-  givenTitle: string;
-  givenIsBannerTag?: boolean;
+    givenID: string;
+    givenTextID: string;
+    givenSymbol?: string;
+    givenTitle: string;
 }
 
-const { givenID, givenTextID, givenSVG, givenTitle, givenIsBannerTag } =
-  Astro.props;
-const displayClass = givenSVG ? "inline-block" : "!hidden";
-
-const regularStyle =
-  "flex flex-row items-center justify-center gap-2 py-2 px-4 w-fit h-fit rounded-full bg-L_Secondary dark:bg-D_Secondary hover:bg-L_Secondary_Hover hover:dark:bg-D_Secondary_Hover border border-LB_Primary dark:border-DB_Primary text-nowrap text-[min(7vw,0.8rem)] !text-LT_Secondary/64 dark:!text-DT_Secondary/64 hover:!text-LT_Primary dark:hover:!text-DT_Primary hover:shadow-2xl shadow-LB_Primary dark:shadow-DB_Primary hover:scale-120 hover:z-1 transition-all duration-250 ease-in-out capitalize";
-const bannerStyle =
-  "flex flex-row items-center justify-center gap-2 py-2 px-4 w-fit h-fit rounded-full bg-L_Secondary/32 dark:bg-D_Secondary/32 hover:bg-L_Secondary_Hover/32 hover:dark:bg-D_Secondary_Hover/32 border border-LB_Primary dark:border-DB_Primary text-nowrap text-[min(7vw,0.8rem)] !text-LT_Secondary/64 dark:!text-DT_Secondary/64 hover:!text-LT_Primary dark:hover:!text-DT_Primary backdrop-blur-3xl hover:shadow-2xl shadow-LB_Primary dark:shadow-DB_Primary hover:scale-120 hover:z-1 transition-all duration-250 ease-in-out capitalize";
-
-const Style = givenIsBannerTag ? bannerStyle : regularStyle;
+const { givenID, givenTextID, givenSymbol, givenTitle } = Astro.props;
+const displayClass = givenSymbol ? "inline-block" : "!hidden";
 ---
 
 <template id={givenID}>
-  <a rel="stylesheet" href={givenTitle} class={Style}>
-    <GoogleMaterialSymbol
-      SVG_Name={givenSVG}
-      SVG_Style={displayClass}
-      isFilled={true}
-    />
-    <p id={givenTextID}>
-      {givenTitle}
-    </p>
-  </a>
+    <a
+        rel="stylesheet"
+        href={givenTitle}
+        class="group flex flex-row items-center justify-center gap-2 py-2 pl-2 px-4 w-fit h-fit rounded-full bg-L_Primary dark:bg-D_Primary hover:bg-Highlight font-regular hover:font-semibold text-nowrap text-[min(7vw,0.8rem)] text-LT_Secondary dark:text-DT_Secondary hover:text-LT_Inverted dark:hover:text-DT_Inverted hover:shadow-2xl shadow-LB_Primary dark:shadow-DB_Primary hover:scale-108 hover:z-1 transition-all duration-200 ease-in-out capitalize"
+    >
+        <div
+            class="flex flex-row items-center justify-center p-2 rounded-3xl bg-L_BG dark:bg-D_BG group-hover:bg-LightAccent transition-colors duration-200 ease-in-out"
+        >
+            <GoogleMaterialSymbol
+                symbol={givenSymbol}
+                SVG_Style={displayClass}
+                isFilled={true}
+            />
+        </div>
+        <p id={givenTextID}>
+            {givenTitle}
+        </p>
+    </a>
 </template>
