@@ -1,0 +1,148 @@
+{
+  "version": "v0.4.0",
+  "commit": "",
+  "date": "Jul 16, 2026",
+  "description": "Introduces localization improvements, Material 3 Expressive design enhancements, and various bug fixes.",
+  "logs": [
+    {
+      "type": "Added",
+      "desc": "Gestures support allowing the user to use physical or mouse gestures to interact with video player actions."
+    },
+    {
+      "type": "Added",
+      "desc": "A dedicated keybind toggle master switch (\"toggleKeybindsEp\") allowing users to enable/disable keyboard shortcuts dynamically, persisting state via PlayerStorage."
+    },
+    {
+      "type": "Performance",
+      "desc": "Optimized the video player even further for low-end devices."
+    },
+    {
+      "type": "Rewritten",
+      "desc": "Rebuilt the \"Video Player\" from scratch."
+    },
+    {
+      "type": "Added",
+      "desc": "Cookie Policy page."
+    },
+    {
+      "type": "Added",
+      "desc": "Keyboard shortcuts (keybinds) for video player controls: Play/Pause (Space/K), Mute (M), Fullscreen (F), Loop (L), Autoplay (A), Cinema Mode (C), Subtitles (S), Volume Up/Down (ArrowUp/ArrowDown), Seek Forward/Backward (ArrowRight/ArrowLeft), and Playback Speed Up/Down (] or . / [ or ,)."
+    },
+    {
+      "type": "Added",
+      "desc": "Japanese and German localization support."
+    },
+    {
+      "type": "Added",
+      "desc": "Material 3 Expressive placeholders on the Settings page."
+    },
+    {
+      "type": "Added",
+      "desc": "A new Material 3 Expressive context menu with actions for opening pages, refreshing, and browser navigation (back/forward)."
+    },
+    {
+      "type": "Added",
+      "desc": "Added an SVG button to the hero template featuring a new back navigation icon."
+    },
+    {
+      "type": "Added",
+      "desc": "Caching support to \"LanguageHandler\"."
+    },
+    {
+      "type": "Added",
+      "desc": "Additional descriptive tooltips across the interface."
+    },
+    {
+      "type": "Added",
+      "desc": "\"Previous episode\", \"Next episode\", \"Like episode\", and \"Dislike episode\" buttons above the watch page description."
+    },
+    {
+      "type": "Added",
+      "desc": "\"radioButton.astro\" and \"radioButtonHandler.ts\" to unify and modularize radio button logic."
+    },
+    {
+      "type": "Added",
+      "desc": "\"Auto Play\", \"Settings\", and \"Playback Speed\" controls to the \"Video Player\"."
+    },
+    {
+      "type": "Changed",
+      "desc": "Updated Button and NavBar components to follow the Material 3 Expressive design language."
+    },
+    {
+      "type": "Changed",
+      "desc": "Refactored the overall website layout for improved responsiveness and usability."
+    },
+    {
+      "type": "Changed",
+      "desc": "Adjusted the episode list layout: smaller screens now display a single-column view, while larger screens use three columns instead of four."
+    },
+    {
+      "type": "Changed",
+      "desc": "LanguageHandler now ignores elements and their descendants when `data-translate=\"false\"` is present."
+    },
+    {
+      "type": "Changed",
+      "desc": "Sliders now modify values on hover when the scroll wheel is moved up or down."
+    },
+    {
+      "type": "Changed",
+      "desc": "Season switcher buttons now display season cover art and the season name, defaulting to the anime name if unavailable."
+    },
+    {
+      "type": "Changed",
+      "desc": "Applied Material 3 Expressive themes to input fields and custom toggle buttons."
+    },
+    {
+      "type": "Changed",
+      "desc": "Set the global theme to monochrome and introduced accessibility-focused 'LightAccent' and 'Highlight' variants."
+    },
+    {
+      "type": "Changed",
+      "desc": "Redesigned the loading screen to be more visually consistent with the website."
+    },
+    {
+      "type": "Changed",
+      "desc": "Removed translucent backgrounds from changelog type pills (e.g., Added, Changed, Fixed)."
+    },
+    {
+      "type": "Changed",
+      "desc": "Enhanced \"animeCard\", \"gridEpisodeButton\", \"seasonSwitcher\", and \"info\" layouts with modern Material 3 Expressive styling."
+    },
+    {
+      "type": "Fixed",
+      "desc": "Resolved layout clipping issues in the video player and episode list. The looping and cinema-light toggle buttons are now properly hidden."
+    },
+    {
+      "type": "Fixed",
+      "desc": "LanguageHandler now correctly translates dynamically appended elements after the initial page load."
+    },
+    {
+      "type": "Deprecated",
+      "desc": "Temporarily deprecated the \"Fansub\" / \"translations\" section on the watch page until its functionality is fully implemented."
+    },
+    {
+      "type": "Removed",
+      "desc": "Removed the slogan section from the landing page."
+    },
+    {
+      "type": "Removed",
+      "desc": "Transparency and blur effects from the video player elements."
+    },
+    {
+      "type": "Removed",
+      "desc": "\"Previous episode\" and \"Next episode\" buttons from the video player controller."
+    },
+    {
+      "type": "Removed",
+      "desc": "Accent-colored hover backgrounds from \"Title\" and \"Time Stamp\" elements, replacing them with a bold font transition."
+    },
+    {
+      "type": "Removed",
+      "desc": "Legacy \"customRadioButton.astro\" component."
+    },
+    {
+      "type": "Removed",
+      "desc": "Banner information details from the anime info page."
+    }
+  ]
+}

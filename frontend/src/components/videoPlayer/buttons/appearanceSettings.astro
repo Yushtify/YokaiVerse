@@ -1,0 +1,31 @@
+---
+import ToggleButton from "../../custom/buttons/toggleButton.astro";
+---
+
+<div
+    class="flex flex-col items-start justify-center gap-4 p-2 rounded-3xl w-full h-fit"
+>
+    <p
+        data-i18n="watch.epPlayer.settings.appearance.title"
+        class="font-semibold text-[min(6vw,0.8rem)] text-LT_Secondary dark:text-DT_Secondary capitalize"
+    >
+        appearance
+    </p>
+    <div class="flex flex-row items-center justify-between gap-6 w-full h-fit">
+        <p
+            data-i18n="watch.epPlayer.settings.appearance.cinemaLights.title"
+            class="font-semibold text-[min(6vw,0.9rem)] capitalize"
+        >
+            Cinema Lights
+        </p>
+        <ToggleButton
+            givenButtonID="epCinemaLightsToggleButton"
+            givenButtonAction="cinemaLightEp"
+            givenState={true}
+            givenTitle="Cinema Lights"
+            givenButtonSymbol="cinematic_blur"
+            tooltipTitleTrans="tooltip.epPlayer.controlBar.cinemaLightsButton.title"
+            tooltipDescTrans="tooltip.epPlayer.controlBar.cinemaLightsButton.desc"
+        />
+    </div>
+</div>

@@ -1,0 +1,72 @@
+---
+import GoogleMaterialSymbol from "../../googleMaterial_Symbol.astro";
+---
+
+<div
+    id="animeCardNsfwFilter"
+    class="hidden absolute top-0 right-0 flex-col items-start justify-start gap-2 p-4 aspect-2/3 w-full h-full rounded-3xl rounded-b-xl text-[min(6vw,1rem)] bg-L_Primary dark:bg-D_Primary z-10"
+>
+    <div
+        class="flex flex-col items-start justify-start gap-2 p-2 w-full h-fit max-h-full"
+    >
+        <div
+            class="flex flex-row items-center justify-center gap-2 w-fit h-fit font-bold text-Accent"
+        >
+            <GoogleMaterialSymbol
+                symbol="18_up_rating"
+                SvgSize="!text-[min(6vw,2rem)] text-Accent"
+                isFilled={true}
+            />
+            <p class="text-[min(6vw,1.4rem)]">NSFW</p>
+        </div>
+        <p class="text-LT_Secondary dark:text-DT_Secondary text-left">
+            This content is marked as an NSFW content. Here is why;
+        </p>
+    </div>
+
+    <!-- Reasons -->
+    <div
+        class="flex flex-col items-start justify-start gap-2 p-4 rounded-3xl w-full h-full bg-L_BG dark:bg-D_BG overflow-hidden overflow-y-scroll"
+    >
+        <div class="flex flex-row items-start justify-center gap-1 rounded-3xl">
+            <p
+                class="font-semibold text-LT_Secondary dark:text-DT_Secondary text-left"
+            >
+                1.
+            </p>
+            <p class="text-LT_Secondary dark:text-DT_Secondary text-left">
+                You might not be above 18 or not verified your age.
+            </p>
+        </div>
+        <div class="flex flex-row items-start justify-center gap-1 rounded-3xl">
+            <p
+                class="font-semibold text-LT_Secondary dark:text-DT_Secondary text-left"
+            >
+                2.
+            </p>
+            <p class="text-LT_Secondary dark:text-DT_Secondary text-left">
+                Your validation on age might be on progress.
+            </p>
+        </div>
+        <div class="flex flex-row items-start justify-center gap-1 rounded-3xl">
+            <p
+                class="font-semibold text-LT_Secondary dark:text-DT_Secondary text-left"
+            >
+                3.
+            </p>
+            <p class="text-LT_Secondary dark:text-DT_Secondary text-left">
+                Your location may have disabled NSFW content permanently.
+            </p>
+        </div>
+        <div class="flex flex-row items-start justify-center gap-1 rounded-3xl">
+            <p
+                class="font-semibold text-LT_Secondary dark:text-DT_Secondary text-left"
+            >
+                4.
+            </p>
+            <p class="text-LT_Secondary dark:text-DT_Secondary text-left">
+                THis might be an wrong marking on NSFW.
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+{
+  "title": "Manifest",
+  "desc": "A idol group in turkey that makes music blah blah",
+  "author": "Manifest",
+  "ageRestriction": "12+",
+  "nsfw": false,
+  "categories": ["Featured", "Music"],
+  "type": {
+    "movie": false,
+    "anime": true
+  },
+  "meta": {
+    "rating": "4.8",
+    "uploadDate": "18 Feb 2023",
+    "tags": {
+      "tag_11": "Idol Group",
+      "tag_12": "Music"
+    }
+  }
+}

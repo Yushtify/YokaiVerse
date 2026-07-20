@@ -1,0 +1,132 @@
+---
+import ToggleButton from "../../custom/buttons/toggleButton.astro";
+import CustomSlider from "../../custom/customSlider.astro";
+---
+
+<div
+    class="flex flex-col items-start justify-center gap-4 p-2 rounded-3xl w-full h-fit"
+>
+    <p
+        data-i18n="watch.epPlayer.settings.behaviour.title"
+        class="font-semibold text-[min(6vw,0.8rem)] text-LT_Secondary dark:text-DT_Secondary capitalize"
+    >
+        Behaviour
+    </p>
+
+    <!-- Loop -->
+    <div class="flex flex-row items-center justify-between gap-6 w-full h-fit">
+        <p
+            data-i18n="watch.epPlayer.settings.behaviour.loop.title"
+            class="font-semibold text-[min(6vw,1rem)] capitalize"
+        >
+            Loop
+        </p>
+        <ToggleButton
+            givenButtonID="epLoopToggleButton"
+            givenButtonAction="loopEp"
+            givenState={false}
+            givenTitle="Auto Play"
+            givenButtonSymbol="repeat"
+            tooltipDescTrans="tooltip.epPlayer.controlBar.loopButton"
+        />
+    </div>
+
+    <!-- Auto Play -->
+    <div class="flex flex-row items-center justify-between gap-6 w-full h-fit">
+        <p
+            data-i18n="watch.epPlayer.settings.behaviour.autoPlay.title"
+            class="font-semibold text-[min(6vw,1rem)] capitalize"
+        >
+            Auto Play
+        </p>
+        <ToggleButton
+            givenButtonID="epAutoPlayToggleButton"
+            givenButtonAction="autoPlayEp"
+            givenState={true}
+            givenTitle="Auto Play"
+            givenButtonSymbol="autopause"
+            tooltipTitleTrans="tooltip.epPlayer.controlBar.autoPlayButton.title"
+            tooltipDescTrans="tooltip.epPlayer.controlBar.autoPlayButton.desc"
+        />
+    </div>
+
+    <!-- Gestures -->
+    <div class="flex flex-row items-center justify-between gap-6 w-full h-fit">
+        <p
+            data-i18n="tooltip.epPlayer.controlBar.gesturesButton.title"
+            class="font-semibold text-[min(6vw,1rem)] capitalize"
+        >
+            Gestures
+        </p>
+        <ToggleButton
+            givenButtonID="epGesturesToggleButton"
+            givenButtonAction="toggleGesturesEp"
+            givenState={true}
+            givenTitle="Gestures"
+            givenButtonSymbol="pan_tool_alt"
+            tooltipTitleTrans="tooltip.epPlayer.controlBar.gesturesButton.title"
+            tooltipDescTrans="tooltip.epPlayer.controlBar.gesturesButton.desc"
+        />
+    </div>
+
+    <!-- Keybinds -->
+    <div class="flex flex-row items-center justify-between gap-6 w-full h-fit">
+        <p
+            data-i18n="tooltip.epPlayer.controlBar.keybindsButton.title"
+            class="font-semibold text-[min(6vw,1rem)] capitalize"
+        >
+            Keybinds
+        </p>
+        <ToggleButton
+            givenButtonID="epKeybindsToggleButton"
+            givenButtonAction="toggleKeybindsEp"
+            givenState={true}
+            givenTitle="Keybinds"
+            givenButtonSymbol="action_key"
+            tooltipTitleTrans="tooltip.epPlayer.controlBar.keybindsButton.title"
+            tooltipDescTrans="tooltip.epPlayer.controlBar.keybindsButton.desc"
+        />
+    </div>
+
+    <!-- Playback Speed -->
+    <div
+        class="flex flex-col md:flex-row items-center justify-between gap-6 w-full h-fit"
+    >
+        <div
+            class="flex flex-row items-center justify-between gap-2 w-full h-fit"
+        >
+            <p
+                data-i18n="watch.epPlayer.settings.behaviour.playbackSpeed.title"
+                class="font-semibold text-[min(6vw,1rem)] capitalize"
+            >
+                Playback Speed
+            </p>
+            <p
+                id="epCurrentPlaybackSpeed"
+                class="font-semibold text-[min(6vw,1rem)] capitalize"
+            >
+                1x
+            </p>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center gap-1 w-fit h-fit"
+        >
+            <CustomSlider
+                givenID="epPlaybackSpeedSlider"
+                givenOnInput="playbackSpeedEp(value)"
+                givenWidth="min-w-32! w-full"
+                givenMin="0.15"
+                givenMax="7"
+                givenValue="1"
+                givenStep="0.05"
+            />
+            <div
+                class="flex flex-row items-center justify-between min-w-32 w-full h-fit gap-4 text-[min(6vw,0.8rem)]"
+            >
+                <p>0.1x</p>
+                <p>4x</p>
+                <p>7x</p>
+            </div>
+        </div>
+    </div>
+</div>

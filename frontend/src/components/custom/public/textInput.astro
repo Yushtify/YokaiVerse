@@ -1,0 +1,43 @@
+---
+import { propsToFilename } from "astro/assets";
+import Button from "../buttons/Button.astro";
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
+interface Props {
+    givenPositionTo?: "horizontal" | "vertical";
+    givenPosition?: "start" | "center" | "end";
+    givenID: string;
+
+    givenTitle: string;
+    titleData: string;
+    givenPlaceholder: string;
+    placeholderData: string;
+}
+
+const {
+    givenPositionTo,
+    givenPosition,
+    givenID,
+    givenTitle,
+    titleData,
+    givenPlaceholder,
+    placeholderData,
+} = Astro.props;
+---
+
+<div
+    id={givenID}
+    class="group:flex flex-col items-start justify-center p-4 gap-4 rounded-3xl min-w-fit w-full lg:w-fit h-fit bg-L_Primary dark:bg-D_Primary hover:bg-Highlight text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:bg-DT_Inverted transition-colors duration-200 ease-in-out"
+>
+    <p
+        data-i18n={titleData}
+        class="font-semibold text-[min(6vw,0.8rem)] uppercase"
+    >
+        {givenTitle}
+    </p>
+    <input
+        type="text"
+        class="appearance-none outline-none w-full"
+        placeholder={givenPlaceholder}
+    />
+</div>

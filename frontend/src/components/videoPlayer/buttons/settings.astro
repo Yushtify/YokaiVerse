@@ -1,0 +1,54 @@
+---
+import Button from "../../custom/buttons/Button.astro";
+import ToggleButton from "../../custom/buttons/toggleButton.astro";
+
+// Settings
+import BehaviourSettings from "./behaviourSettings.astro";
+import AppearanceSettings from "./appearanceSettings.astro";
+---
+
+<div class="relative flex flex-col items-start justify-start w-fit h-fit gap-4">
+    <Button
+        givenLocationFrom="horizontal"
+        givenLocation="center"
+        givenButtonID="epSettingsButton"
+        givenButtonAction="toggleSettings()"
+        givenButtonSymbol="settings"
+        givenButtonSymbolFill={true}
+        tooltipTitleTrans="tooltip.epPlayer.controlBar.settingsButton.title"
+        tooltipDescTrans="tooltip.epPlayer.controlBar.settingsButton.desc"
+    />
+    <div
+        id="settingsContainer"
+        class="hidden absolute max-md:top-[calc(100%+1rem)] md:bottom-[calc(100%+1rem)] right-0 flex-col items-start justify-start rounded-3xl p-4 gap-6 w-fit h-fit bg-L_Primary dark:bg-D_Primary border border-LB_Primary dark:border-DB_Primary shadow-2xl shadow-L_Primary/64 dark:shadow-D_Primary/64 overflow-hidden z-50"
+        data-radActive="bg-lightAccent!"
+    >
+        <BehaviourSettings />
+        <AppearanceSettings />
+    </div>
+</div>
+
+<script>
+    (window as any).toggleSettings = function toggleSettings() {
+        const container = document.getElementById(
+            "settingsContainer",
+        ) as HTMLDivElement;
+        const btn = document.getElementById(
+            "epSettingsButton",
+        ) as HTMLButtonElement;
+        const svg = btn?.querySelector("#googleSymbol") as HTMLSpanElement;
+
+        if (!container || !btn || !svg)
+            return console.error(
+                "[toggleSettings ERR]: Container, Button or SVG does not appear on the document.",
+            );
+
+        if (container.classList.contains("hidden")) {
+            container.classList.replace("hidden", "flex");
+            svg.classList.add("text-LightAccent!");
+        } else {
+            container.classList.replace("flex", "hidden");
+            svg.classList.remove("text-LightAccent!");
+        }
+    };
+</script>

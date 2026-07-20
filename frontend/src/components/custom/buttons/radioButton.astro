@@ -1,0 +1,88 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
+// ---- Props ----
+interface Props {
+    givenPositionTo?: "horizontal" | "vertical";
+    givenPosition?: "start" | "center" | "end";
+
+    givenID?: string;
+    givenRadGroup: string;
+    givenState?: boolean;
+    givenCanDisabled: boolean;
+
+    givenTitle: string;
+    titleData: string;
+
+    givenSymbol?: string;
+    givenSymbolStyle?: string;
+}
+
+const {
+    givenPositionTo,
+    givenPosition,
+    givenID,
+    givenRadGroup,
+    givenCanDisabled,
+    givenState,
+    givenTitle,
+    titleData,
+    givenSymbol,
+    givenSymbolStyle,
+} = Astro.props;
+
+let validatedClass: string;
+let validSvgSize: string;
+let validTextSize: string;
+let validRounded: string = "rounded-3xl";
+if (givenPosition && givenPositionTo) {
+    if (givenPositionTo === "horizontal") {
+        if (givenPosition === "start")
+            validRounded = "rounded-l-3xl rounded-r-xl";
+        else if (givenPosition === "end")
+            validRounded = "rounded-l-xl rounded-r-3xl";
+        else if (givenPosition === "center") validRounded = "rounded-xl";
+    } else if (givenPositionTo === "vertical") {
+        if (givenPosition === "start")
+            validRounded = "rounded-t-3xl rounded-b-xl";
+        else if (givenPosition === "end")
+            validRounded = "rounded-t-xl rounded-b-3xl";
+        else if (givenPosition === "center") validRounded = "rounded-xl";
+    }
+}
+validTextSize = " text-[min(6vw,1rem)] ";
+validSvgSize = "text-[min(6vw,1.5rem)]";
+validRounded += " hover:rounded-3xl";
+validatedClass = `group flex flex-row items-center justify-center w-fit max-w-full h-fit ${validRounded} gap-2 p-2 pl-2 px-4  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${validTextSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer`;
+const validatedSvgContainer_Class =
+    "flex flex-row items-center justify-center w-fit h-fit rounded-3xl p-2 bg-L_Secondary dark:bg-D_Secondary group-hover:bg-LightAccent transition-colors duration-200 ease-in-out";
+const activeSvgContainer_Class = "bg-LightAccent! !";
+
+const activeClass =
+    "rounded-3xl! bg-Accent! hover:bg-Highlight! text-LT_Inverted! dark:text-DT_Inverted!";
+---
+
+<button
+    type="button"
+    id={givenID}
+    data-radgroup={givenRadGroup}
+    data-canDisabled={givenCanDisabled}
+    data-radstate={givenState}
+    data-radActive={activeClass}
+    class={validatedClass}
+>
+    <div
+        class={validatedSvgContainer_Class}
+        data-radActive={activeSvgContainer_Class}
+    >
+        <GoogleMaterialSymbol
+            symbol={givenSymbol}
+            SvgSize={validSvgSize}
+            SVG_Style={givenSymbolStyle}
+            isFilled={true}
+        />
+    </div>
+    <p data-i18n={titleData} class="text-left">
+        {givenTitle}
+    </p>
+</button>

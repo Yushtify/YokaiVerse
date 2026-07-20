@@ -1,0 +1,61 @@
+---
+import GoogleMaterialSymbol from "../../googleMaterial_Symbol.astro";
+import Button from "../Button.astro";
+
+import NSFWFilter from "./filterOverlay.astro";
+---
+
+<template id="animeCardTemplate">
+    <button
+        id="coverButton"
+        class="group relative flex flex-col items-start justify-start gap-4 p-2 pb-4 rounded-3xl min-w-fit w-full min-h-fit h-full bg-L_Primary dark:bg-D_Primary hover:-translate-y-2 hover:scale-102 shadow-2xl shadow-transparent hover:shadow-LB_Primary/48 hover:dark:shadow-DB_Primary/48 transition-transform duration-250 ease-in-out cursor-pointer overflow-hidden"
+    >
+        <NSFWFilter />
+        <!-- Cover -->
+        <div
+            class="relative flex flex-col rounded-3xl rounded-b-xl aspect-2/3 w-full h-auto overflow-hidden"
+        >
+            <img
+                id="animeCover"
+                alt="COVER"
+                class="aspect-9/16 w-full h-full"
+            />
+            <p
+                id="animeUploadedBy"
+                class="absolute bottom-2 right-2 min-w-fit w-fit rounded-3xl p-2 px-4 bg-L_BG dark:bg-D_BG font-bold text-[min(6vw,0.8rem)] text-left capitalize line-clamp-1"
+            >
+                By @<span id="animeUploadedBy_Text"> Unknown</span>
+            </p>
+        </div>
+        <div
+            class="flex flex-col items-center justify-start gap-2 px-2 w-full h-fit"
+        >
+            <div
+                class="flex flex-row items-center justify-start gap-2 w-full h-fit"
+            >
+                <p
+                    id="animeTitle"
+                    class="w-full h-fit text-left font-bold text-[min(6vw,1.2rem)] capitalize line-clamp-2 group-hover:line-clamp-4"
+                >
+                    unnamed anime
+                </p>
+                <p
+                    class="flex flex-row items-center justify-center gap-1 min-w-fit w-fit rounded-3xl p-2 px-4 bg-L_BG dark:bg-D_BG font-bold text-[min(6vw,0.8rem)] text-left capitalize line-clamp-1"
+                >
+                    <GoogleMaterialSymbol
+                        symbol="star"
+                        SvgSize="!text-[min(6vw,1rem)]"
+                        isFilled={true}
+                    />
+                    <span id="animeRating">Not Rated</span>
+                </p>
+            </div>
+            <p
+                id="animeDesc"
+                class="w-full h-fit text-left text-[min(6vw,1rem)] text-LT_Secondary dark:text-DT_Secondary line-clamp-2"
+            >
+                No description available
+            </p>
+        </div>
+    </button>
+</template>

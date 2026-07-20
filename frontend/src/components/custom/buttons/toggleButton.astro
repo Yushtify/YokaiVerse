@@ -1,0 +1,48 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+interface Props {
+    givenButtonID: string;
+    givenButtonAction: string;
+    givenButtonSymbol?: string;
+    givenState?: boolean;
+    givenTitle?: string;
+    titleData?: string;
+    tooltipTitle?: string;
+    tooltipDesc?: string;
+    tooltipTitleTrans?: string;
+    tooltipDescTrans?: string;
+}
+const {
+    givenButtonID,
+    givenButtonAction,
+    givenButtonSymbol,
+    givenState,
+    givenTitle,
+    titleData,
+    tooltipTitle,
+    tooltipTitleTrans,
+    tooltipDesc,
+    tooltipDescTrans,
+} = Astro.props;
+---
+
+<button
+    id={givenButtonID}
+    class="flex flex-row items-end justify-center rounded-full gap-2 p-1 pr-6 bg-L_Secondary dark:bg-D_Secondary hover:bg-L_Secondary_Hover dark:hover:bg-D_Secondary_Hover border border-L_Secondary dark:border-D_Secondary text-LT_Primary dark:text-DT_Primary cursor-pointer transition-all duration-200 ease-in-out"
+    data-togglestate={givenState ?? false}
+    data-toggleaction={givenButtonAction}
+    data-toggleactive="pr-1! pl-6! bg-Accent! hover:bg-Highlight! border-transparent!"
+    data-tooltip-desc-trans={tooltipDescTrans}
+    data-tooltip-title-trans={tooltipTitleTrans}
+>
+    <div
+        class="flex flex-row items-center justify-end gap-2 p-1 rounded-3xl bg-L_Primary dark:bg-D_Primary"
+        data-toggleactive="bg-LightAccent! text-LT_Inverted! dark:text-DT_Inverted!"
+    >
+        <GoogleMaterialSymbol
+            symbol={givenButtonSymbol}
+            SvgSize="text-[min(6vw,1rem)]!"
+            isFilled={true}
+        />
+    </div>
+</button>
