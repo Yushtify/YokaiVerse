@@ -1,0 +1,55 @@
+---
+import Horizontal from "../seperators/horizontal.astro";
+import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
+
+// FilterRounded.astro
+interface Props {
+    givenGoogleSymbol: string;
+    givenTitle: string;
+    givenDesc: string;
+    titleData: string;
+    descData: string;
+}
+
+const { givenGoogleSymbol, givenTitle, givenDesc, titleData, descData } =
+    Astro.props;
+---
+
+<div
+    class="relative flex flex-col items-start justify-center gap-4 my-4 w-full max-w-full h-fit text-LT_Primary dark:text-DT_Primary text-[min(6vw,1rem)]"
+>
+    <div class="flex flex-row flex-wrap h-fit w-fit gap-4">
+        <div
+            class="relative flex flex-row items-center justify-start w-full h-fit gap-4 text-left text-[min(3vw,0.7rem)] font-semibold capitalize"
+        >
+            <button
+                onclick="history.back()"
+                class="group relative flex flex-row p-6 rounded-3xl hover:rounded-[80px] bg-L_Primary dark:bg-D_Primary hover:bg-Accent shadow-2xl shadow-transparent hover:shadow-Accent/64 transition-all duration-200 ease-in-out overflow-hidden cursor-pointer"
+            >
+                <GoogleMaterialSymbol
+                    symbol={givenGoogleSymbol}
+                    SVG_Style="text-LT_Secondary dark:text-DT_Secondary opacity-100 group-hover:opacity-0 transition-opacity duration-200 ease-in-out"
+                    SvgSize="!text-[min(7vw,2.6rem)]"
+                    isFilled={true}
+                />
+                <GoogleMaterialSymbol
+                    symbol="undo"
+                    SVG_Style="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-LT_Inverted dark:text-DT_Inverted opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out"
+                    SvgSize="!text-[min(7vw,2rem)]"
+                    isFilled={true}
+                />
+            </button>
+            <p data-i18n={titleData} class="text-[min(6vw,2.5rem)]">
+                {givenTitle}
+            </p>
+        </div>
+        <p
+            data-i18n={descData}
+            class="text-LT_Secondary dark:text-DT_Secondary mt-2 w-full"
+        >
+            {givenDesc}
+        </p>
+    </div>
+
+    <slot />
+</div>

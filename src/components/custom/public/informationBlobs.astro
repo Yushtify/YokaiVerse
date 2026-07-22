@@ -1,0 +1,58 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
+interface Props {
+    givenID: string;
+    givenTextID: string;
+    givenSymbol?: string;
+    givenTitle: string;
+    titleData: string;
+    givenInformation: string;
+    informationData: string;
+}
+
+const {
+    givenID,
+    givenTextID,
+    givenSymbol,
+    givenTitle,
+    titleData,
+    givenInformation,
+    informationData,
+} = Astro.props;
+
+const displayClass = givenSymbol ? "inline-block" : "!hidden";
+---
+
+<div
+    id={givenID}
+    class="group flex flex-row items-center justify-start gap-2 md:gap-4 p-2 pr-6 md:p-4 md:pr-6 rounded-3xl min-w-fit w-fit h-fit bg-L_Primary dark:bg-D_Primary hover:bg-Highlight text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted hover:shadow-2xl shadow-Highlight/48 dark:shadow-Highlight/48 hover:z-2 hover:-translate-y-2 hover:scale-102 capitalize transition-colors-shadow duration-200 ease-in-out"
+>
+    <div
+        class="flex flex-row items-center justify-center p-3 rounded-3xl bg-L_BG dark:bg-D_BG group-hover:bg-LightAccent transition-colors duration-200 ease-in-out"
+    >
+        <GoogleMaterialSymbol
+            symbol={givenSymbol}
+            SVG_Style={displayClass}
+            SvgSize="!text-[min(7vw,2rem)]"
+            isFilled={true}
+        />
+    </div>
+    <div
+        class="flex flex-col items-start justify-center gap-1 w-full h-full font-bold"
+    >
+        <p
+            data-i18n={titleData}
+            class="uppercase text-[min(7vw,0.6rem)] text-LT_Secondary dark:text-DT_Secondary group-hover:text-LT_Inverted dark:group-hover:text-DT_Inverted leading-none transition-colors duration-200 ease-in-out"
+        >
+            {givenTitle}
+        </p>
+        <p
+            data-i18n={informationData}
+            id={givenTextID}
+            class="text-[min(7vw,0.8rem)] leading-none"
+        >
+            {givenInformation}
+        </p>
+    </div>
+</div>

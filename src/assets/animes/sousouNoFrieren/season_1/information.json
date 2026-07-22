@@ -1,0 +1,28 @@
+{
+  "title": "First Class Mage Exam Arc",
+  "desc": "After the party of heroes defeats the Demon King and saves the world, Frieren, an elven mage with a lifespan far longer than humans, sets out on a journey to understand the flow of time, the value of life, and human relationships.",
+  "author": "Madhouse",
+  "ageRestriction": "13+",
+  "nsfw": false,
+  "categories": ["Popular", "Featured", "Fantasy", "Adventure", "Drama", "Shounen"],
+  "type": {
+    "movie": false,
+    "anime": true
+  },
+  "meta": {
+    "rating": "4.9",
+    "uploadDate": "29 Sep 2023",
+    "tags": {
+      "tag_1": "Elf",
+      "tag_2": "Magic",
+      "tag_3": "Adventure",
+      "tag_4": "Based on a Manga",
+      "tag_5": "Fantasy World",
+      "tag_6": "Journeys",
+      "tag_7": "Time Skip",
+      "tag_8": "Bittersweet",
+      "tag_9": "Shounen",
+      "tag_10": "Coming of Age"
+    }
+  }
+}

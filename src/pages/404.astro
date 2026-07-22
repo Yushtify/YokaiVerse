@@ -1,0 +1,146 @@
+---
+import GoogleMaterialSymbol from "../components/custom/googleMaterial_Symbol.astro";
+import CardLink from "../components/custom/links/cardLink.astro";
+import Body from "../layouts/body.astro";
+
+const { pathname } = Astro.url;
+---
+
+<Body>
+    <div
+        class="flex flex-col items-center justify-center rounded-3xl gap-4 p-8 m-auto w-full max-w-none md:max-w-[75%] lg:max-w-[65%] xl:max-w-[45%] h-fit bg-L_Secondary dark:bg-D_Secondary border-2 border-LB_Primary dark:border-DB_Primary"
+    >
+        <div
+            class="flex flex-row items-center justify-start gap-4 min-w-fit w-full h-fit font-semibold text-[min(6vw,4rem)] text-LT_Primary dark:text-DT_Primary"
+        >
+            <div
+                class="flex flex-row items-center justify-center rounded-full p-4 bg-LB_Primary dark:bg-DB_Primary"
+            >
+                <GoogleMaterialSymbol
+                    symbol="sentiment_sad"
+                    SvgSize="text-[min(6vw,4rem)]!"
+                    isFilled={true}
+                />
+            </div>
+            <p>404</p>
+        </div>
+        <p
+            data-i18n="404.message"
+            class="w-full text-[min(6vw,1rem)] text-LT_Secondary dark:text-DT_Secondary text-left"
+        >
+            We're having trouble finding what you're looking for.
+        </p>
+        <div
+            class="flex flex-col items-start justify-start gap-4 p-4 rounded-3xl w-full h-fit bg-L_Primary dark:bg-D_Primary text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+        >
+            <p
+                data-i18n="404.helpText"
+                class="w-full text-wrap text-[min(6vw,1rem)] text-LT_Secondary dark:text-DT_Secondary"
+            >
+                Please make sure there are no typos in the URL. If you believe
+                we're responsible for this issue, please reach out to our
+                support team.
+            </p>
+            <div
+                class="flex flex-col md:flex-row items-start justify-start gap-2"
+            >
+                <p data-i18n="404.path" class="font-semibold">Path:</p>
+                <p>{pathname}</p>
+            </div>
+        </div>
+
+        <!-- Device and Browser Info Section -->
+        <p
+            data-i18n="404.nerdsLabel"
+            class="w-full text-[min(6vw,1rem)] text-LT_Secondary dark:text-DT_Secondary text-left uppercase"
+        >
+            Information for nerds:
+        </p>
+        <div
+            class="flex flex-col items-start justify-start gap-4 p-4 rounded-3xl w-full h-fit bg-L_Primary dark:bg-D_Primary text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+        >
+            <div
+                class="flex flex-col md:flex-row items-start justify-start gap-2"
+            >
+                <p data-i18n="404.device" class="font-semibold">Device:</p>
+                <p id="device-info">Loading...</p>
+            </div>
+            <div
+                class="flex flex-col md:flex-row items-start justify-start gap-2"
+            >
+                <p data-i18n="404.browser" class="font-semibold">Browser:</p>
+                <p id="browser-info">Loading...</p>
+            </div>
+            <div
+                class="flex flex-col md:flex-row items-start justify-start gap-2"
+            >
+                <p data-i18n="404.browserVersion" class="font-semibold">
+                    Browser Version:
+                </p>
+                <p id="browser-version-info">Loading...</p>
+            </div>
+            <div
+                class="flex flex-col md:flex-row items-start justify-start gap-2"
+            >
+                <p data-i18n="404.os" class="font-semibold">OS:</p>
+                <p id="os-info">Loading...</p>
+            </div>
+        </div>
+
+        <div
+            class="flex flex-col md:flex-row items-center justify-center w-full h-fit gap-4"
+        >
+            <CardLink
+                givenID="backFeatured"
+                givenHREF="/featured"
+                givenGoogleSymbol="star"
+                givenTitle="Back to featured"
+                titleData="404.backFeatured.title"
+            />
+            <CardLink
+                givenID="backHome"
+                givenHREF="/"
+                givenGoogleSymbol="home"
+                givenTitle="Back to home"
+                titleData="404.backHome.title"
+            />
+        </div>
+    </div>
+</Body>
+
+<script>
+    async function loadUserInfo() {
+        try {
+            console.log("Fetching user info from /api/user-info...");
+            const response = await fetch("/api/user-info");
+            console.log("Response status:", response.status);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log("Received data:", data);
+
+            // Update DOM elements
+            document.getElementById("device-info")!.textContent = data.device;
+            document.getElementById("browser-info")!.textContent = data.browser;
+            document.getElementById("browser-version-info")!.textContent =
+                data.browserVersion;
+            document.getElementById("os-info")!.textContent = data.os;
+        } catch (error) {
+            console.error("Error fetching user info:", error);
+            document.getElementById("device-info")!.textContent =
+                "Unable to retrieve";
+            document.getElementById("browser-info")!.textContent =
+                "Unable to retrieve";
+            document.getElementById("browser-version-info")!.textContent =
+                "Unable to retrieve";
+            document.getElementById("os-info")!.textContent =
+                "Unable to retrieve";
+        }
+    }
+
+    // Load user info when the page loads
+    loadUserInfo();
+</script>

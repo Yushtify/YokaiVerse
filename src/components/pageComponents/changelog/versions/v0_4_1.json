@@ -1,0 +1,24 @@
+{
+  "version": "v0.4.1",
+  "commit": "7e5ff3f",
+  "date": "Jul 22, 2026",
+  "description": "Quick Patch.",
+  "logs": [
+    {
+      "type": "Added",
+      "desc": "Home page."
+    },
+    {
+      "type": "Changed",
+      "desc": "Layout of the folders."
+    },
+    {
+      "type": "Removed",
+      "desc": "Landing page for more clear layout."
+    },
+    {
+      "type": "Removed",
+      "desc": "\"backend\" folder. This was due to make the cloudflare pages work with the Astro instead of building a server \"This is due to my bad coding on the backend sorry ;(\"."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+---
+import HeroTemplate from "../../custom/heroTemplate.astro";
+import CardLink from "../../custom/links/cardLink.astro";
+import InformationBlob from "../../custom/public/informationBlobs.astro";
+import Lister from "../public/lister.astro";
+---
+
+<HeroTemplate
+    givenGoogleSymbol="favorite"
+    givenTitle="Welcome To YokaiVerse"
+    titleData="home.hero.title"
+    givenDesc="Welcome to your experience with YokaiVerse! This is where we enjoy Anime, Manga, Webtoon seamlessly."
+    descData="home.hero.desc"
+>
+    <div
+        class="flex flex-col items-start justify-start gap-4 mb-8 w-full h-fit"
+    >
+        <div
+            class="flex flex-row flex-wrap items-center justify-start gap-4 w-full h-fit"
+        >
+            <InformationBlob
+                givenID="languages"
+                givenSymbol="translate"
+                givenTextID="languages_TXT"
+                givenTitle="Languages"
+                titleData="home.hero.languages.title"
+                givenInformation="Watch in 9 different languages"
+                informationData="home.hero.languages.info"
+            />
+            <InformationBlob
+                givenID="upToDate"
+                givenSymbol="update"
+                givenTextID="upToDate_TXT"
+                givenTitle="Up to Date"
+                titleData="home.hero.upToDate.title"
+                givenInformation="Always up to date"
+                informationData="home.hero.upToDate.info"
+            />
+            <InformationBlob
+                givenID="annoyingAdds"
+                givenSymbol="ad"
+                givenTextID="annoyingAdds_TXT"
+                givenTitle="Annoying Adds"
+                titleData="home.hero.annoyingAdds.title"
+                givenInformation="Never get annoying adds"
+                informationData="home.hero.annoyingAdds.info"
+            />
+            <InformationBlob
+                givenID="positiveReviews"
+                givenSymbol="favorite"
+                givenTextID="positiveReviews_TXT"
+                givenTitle="Positive Reviews"
+                titleData="home.hero.positiveReviews.title"
+                givenInformation="over 9,648 people recommended YokaiVerse"
+                informationData="home.hero.positiveReviews.info"
+            />
+            <InformationBlob
+                givenID="activeUsers"
+                givenSymbol="sentiment_very_satisfied"
+                givenTextID="activeUsers_TXT"
+                givenTitle="Active Users"
+                titleData="home.hero.activeUsers.title"
+                givenInformation="over 16,849 people are using our service!"
+                informationData="home.hero.activeUsers.info"
+            />
+        </div>
+        <div
+            class="flex flex-row flex-wrap items-center justify-start gap-4 w-fit h-fit"
+        >
+            <CardLink
+                givenID="github_link"
+                givenHREF="https://github.com/Yushtify/YokaiVerse"
+                givenGoogleSymbol="commit"
+                givenTitle="Open source"
+                titleData="home.hero.github.title"
+            />
+        </div>
+    </div>
+
+    <Lister givenSymbol="star" givenTitle="Popular" />
+    <div
+        class="flex flex-col items-start justify-start gap-12 w-full h-fit"
+        id="categoryContainer"
+    >
+    </div>
+</HeroTemplate>
+
+<script>
+    import "../../../scripts/homePopularHandler";
+</script>

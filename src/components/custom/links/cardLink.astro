@@ -1,0 +1,62 @@
+---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
+interface Props {
+    givenID: string;
+    givenHREF: string;
+    givenTitle: string;
+    titleData: string;
+    givenDesc?: string;
+    descData?: string;
+    givenGoogleSymbol: string;
+}
+const {
+    givenID,
+    givenHREF,
+    givenTitle,
+    titleData,
+    givenDesc,
+    descData,
+    givenGoogleSymbol,
+} = Astro.props;
+const isDescActive = givenDesc ? "inline" : "hidden";
+---
+
+<a
+    id={givenID}
+    href={givenHREF}
+    class="group flex flex-col items-center justify-start gap-4 min-w-fit w-full min-h-fit h-full p-4 rounded-3xl bg-L_Primary dark:bg-D_Primary hover:bg-Accent text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted shadow-2xl shadow-transparent hover:shadow-Accent/48 hover:-translate-y-2 hover:scale-102 transition-colors-transform duration-200 ease-in-out"
+>
+    <div
+        class="flex flex-row items-center justify-start gap-4 pr-2 w-full h-fit font-semibold"
+    >
+        <div
+            class="flex flex-row items-center justify-center rounded-3xl p-2 w-fit h-auto aspect-square bg-L_BG dark:bg-D_BG group-hover:bg-LightAccent"
+        >
+            <GoogleMaterialSymbol
+                symbol={givenGoogleSymbol}
+                SvgSize="text-[min(6vw,1.6rem)]! "
+                SVG_Style="group-hover:opacity-0! transition-opacity duration-200 ease-in-out"
+                isFilled={true}
+            />
+            <GoogleMaterialSymbol
+                symbol="arrow_outward"
+                SvgSize="text-[min(6vw,1.6rem)]!"
+                SVG_Style="absolute top-[50% 50%] left-[50% 50%] opacity-0! text-LT_Inverted dark:text-DT_Inverted group-hover:opacity-100! transition-opacity duration-200 ease-in-out"
+                isFilled={true}
+            />
+        </div>
+        <p
+            data-i18n={titleData}
+            class="w-full font-semibold text-[min(6vw,1.3rem)] capitalize"
+        >
+            {givenTitle}
+        </p>
+    </div>
+    <p
+        data-i18n={descData}
+        class={`w-full text-LT_Secondary dark:text-DT_Secondary group-hover:text-LT_Inverted dark:group-hover:text-DT_Inverted ${isDescActive}`}
+    >
+        {givenDesc}
+    </p>
+</a>
