@@ -26,10 +26,6 @@
     },
     {
       "type": "Added",
-      "desc": "Cookie Policy page."
-    },
-    {
-      "type": "Added",
       "desc": "Keyboard shortcuts (keybinds) for video player controls: Play/Pause (Space/K), Mute (M), Fullscreen (F), Loop (L), Autoplay (A), Cinema Mode (C), Subtitles (S), Volume Up/Down (ArrowUp/ArrowDown), Seek Forward/Backward (ArrowRight/ArrowLeft), and Playback Speed Up/Down (] or . / [ or ,)."
     },
     {
