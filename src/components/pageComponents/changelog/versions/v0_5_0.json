@@ -1,0 +1,16 @@
+{
+  "version": "v0.5.0",
+  "commit": "",
+  "date": "Jul 23, 2026",
+  "description": "Episode player improvements and script refactoring.",
+  "logs": [
+    {
+      "type": "Added",
+      "desc": "Added a quality switcher to the episode player."
+    },
+    {
+      "type": "Changed",
+      "desc": "Improved player code quality and maintainability by modularizing scripts, reducing single-file length from ~1k lines to a maximum of 347 lines."
+    }
+  ]
+}

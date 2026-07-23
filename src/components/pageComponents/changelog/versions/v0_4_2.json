@@ -1,0 +1,12 @@
+{
+  "version": "v0.4.2",
+  "commit": "",
+  "date": "Jul 23, 2026",
+  "description": "v.0.4.0 log fix.",
+  "logs": [
+    {
+      "type": "Fixed",
+      "desc": "\"v0.4.0\" changelog, due to my PC getting hard resetted I had lost progress and I had to use some broken backups and I have forgot to update the changelog after a while or check on it, due to this issue I have submitted wrong changelog. I apologize."
+    }
+  ]
+}

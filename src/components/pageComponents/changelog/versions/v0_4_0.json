@@ -21,6 +21,10 @@
       "desc": "Rebuilt the \"Video Player\" from scratch."
     },
     {
+      "type": "Rewritten",
+      "desc": "the overall website layout for improved responsiveness and usability."
+    },
+    {
       "type": "Added",
       "desc": "Cookie Policy page."
     },
@@ -30,15 +34,11 @@
     },
     {
       "type": "Added",
-      "desc": "Japanese and German localization support."
+      "desc": "Japanese, German, Spanish, Russian, French, En-UK localization support."
     },
     {
       "type": "Added",
       "desc": "Material 3 Expressive placeholders on the Settings page."
-    },
-    {
-      "type": "Added",
-      "desc": "A new Material 3 Expressive context menu with actions for opening pages, refreshing, and browser navigation (back/forward)."
     },
     {
       "type": "Added",
@@ -54,7 +54,7 @@
     },
     {
       "type": "Added",
-      "desc": "\"Previous episode\", \"Next episode\", \"Like episode\", and \"Dislike episode\" buttons above the watch page description."
+      "desc": "\"Previous episode\", \"Next episode\" buttons above the watch page description."
     },
     {
       "type": "Added",
@@ -67,10 +67,6 @@
     {
       "type": "Changed",
       "desc": "Updated Button and NavBar components to follow the Material 3 Expressive design language."
-    },
-    {
-      "type": "Changed",
-      "desc": "Refactored the overall website layout for improved responsiveness and usability."
     },
     {
       "type": "Changed",
@@ -118,11 +114,11 @@
     },
     {
       "type": "Deprecated",
-      "desc": "Temporarily deprecated the \"Fansub\" / \"translations\" section on the watch page until its functionality is fully implemented."
+      "desc": "the \"Fansub\" section on the watch page."
     },
     {
       "type": "Removed",
-      "desc": "Removed the slogan section from the landing page."
+      "desc": "landing page."
     },
     {
       "type": "Removed",
