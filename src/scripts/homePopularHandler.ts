@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
-    LoadingManager.show("Loading popular anime...");
+    LoadingManager.show("Loading home page...");
 
     try {
         const idMap = await fetchAnimeDatabase();
@@ -317,7 +317,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const popularEntries = filterPopularAnime(allEntries);
 
         if (popularEntries.length === 0) {
-            LoadingManager.setError("No popular titles found right now.");
+            LoadingManager.setError("Loading page failed. [No popular entries found]");
             return;
         }
 

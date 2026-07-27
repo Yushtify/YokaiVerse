@@ -53,9 +53,12 @@ if (givenPosition && givenPositionTo) {
 validTextSize = " text-[min(6vw,1rem)] ";
 validSvgSize = "text-[min(6vw,1.5rem)]";
 validRounded += " hover:rounded-3xl";
-validatedClass = `group flex flex-row items-center justify-center w-fit max-w-full h-fit ${validRounded} gap-2 p-2 pl-2 px-4  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${validTextSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer`;
-const validatedSvgContainer_Class =
-    "flex flex-row items-center justify-center w-fit h-fit rounded-3xl p-2 bg-L_Secondary dark:bg-D_Secondary group-hover:bg-LightAccent transition-colors duration-200 ease-in-out";
+validatedClass = givenSymbol
+    ? `group flex flex-row items-center justify-center w-fit max-w-full h-fit ${validRounded} gap-2 p-2 pl-2 px-4  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${validTextSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer`
+    : `group flex flex-row items-center justify-center w-fit max-w-full h-fit ${validRounded} gap-2 p-2 px-4  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${validTextSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer`;
+const validatedSvgContainer_Class = givenSymbol
+    ? "flex flex-row items-center justify-center w-fit h-fit rounded-3xl p-2 bg-L_BG dark:bg-D_BG group-hover:bg-LightAccent transition-colors duration-200 ease-in-out"
+    : "hidden";
 const activeSvgContainer_Class = "bg-LightAccent! !";
 
 const activeClass =

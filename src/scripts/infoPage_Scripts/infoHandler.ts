@@ -82,6 +82,8 @@ async function LoadModularInfo(animeID: string): Promise<void> {
       animeRootSrc + "/banner.webp",
       data.title || "Untitled Series",
       data.desc || "No description available.",
+      data.meta?.views || "0",
+      data.meta?.rating || "Not Rated",
       data.author || "Unknown",
       ageRestriction,
       data.meta?.uploadDate || "TBA",
@@ -137,6 +139,8 @@ function LoadAnimeData(
   banner: string,
   title: string,
   desc: string,
+  contentViews: string,
+  contentRating: string,
   author: string,
   age: string,
   date: string,
@@ -144,14 +148,18 @@ function LoadAnimeData(
   const bannerImg = document.getElementById("BannerImage") as HTMLImageElement;
   const titleTxt = document.getElementById("contentTitle");
   const descTxt = document.getElementById("contentDescText");
+  const contentViewsTxt = document.getElementById("contentViews_Text");
+  const contentRatingTxt = document.getElementById("contentRating_Text");
   const authorTxt = document.getElementById("contentAuthorStudio_Text");
   const dateTxt = document.getElementById("releaseDate_Text");
-  const contentRatingTxt = document.getElementById("contentRating_Text");
+  const contentAgeRatingTxt = document.getElementById("contentAgeRating_Text");
 
   if (bannerImg) bannerImg.src = banner;
   if (titleTxt) titleTxt.innerText = title;
   if (descTxt) descTxt.innerText = desc;
+  if (contentViewsTxt) contentViewsTxt.innerText = contentViews;
+  if (contentRatingTxt) contentRatingTxt.innerText = contentRating;
   if (authorTxt) authorTxt.innerText = author;
   if (dateTxt) dateTxt.innerText = date;
-  if (contentRatingTxt) contentRatingTxt.innerText = age;
+  if (contentAgeRatingTxt) contentAgeRatingTxt.innerText = age;
 }

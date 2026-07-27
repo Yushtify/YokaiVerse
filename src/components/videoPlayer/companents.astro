@@ -16,6 +16,7 @@ import ControlBar from "./controlBar.astro";
         id="episodePlayer"
         class="absolute top-0 left-0 flex rounded-3xl w-full h-full aspect-video"
     >
+        <source src="/videos/ep1_master/1080p.webm" type="video/webm" />
     </video>
     <div
         id="epControlContainer"
@@ -28,6 +29,4 @@ import ControlBar from "./controlBar.astro";
 
 <script>
     import "./playerControls"; // Controls for the Player.
-    import "./playerKeybinds"; // Keyboard Keybinds For Player.
-    import "./playerGesturesAndMouse"; // Controls mouse gestures for the Player.
 </script>

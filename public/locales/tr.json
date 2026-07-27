@@ -71,14 +71,15 @@
   },
 
   "info": {
-    "banner": {
-      "bottomBar": {
-        "contentDuration": { "title": "Süre" },
-        "contentRating": { "title": "İçerik Sınıflandırması" },
-        "contentRelease": { "title": "Yayın Tarihi" }
-      }
-    },
     "overview": {
+      "contentViews": {
+        "title": "İzlenme",
+        "description": ""
+      },
+      "contentRating": {
+        "title": "İçerik Puanı",
+        "description": ""
+      },
       "authorStudio": {
         "title": "Yazar Stüdyosu",
         "description": ""
@@ -91,8 +92,8 @@
         "title": "Bölümler",
         "description": ""
       },
-      "contentRating": {
-        "title": "İçerik Sınıflandırması",
+      "contentAgeRating": {
+        "title": "İçerik Yaş Sınıflandırması",
         "description": ""
       },
       "contentDuration": {

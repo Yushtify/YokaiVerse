@@ -121,39 +121,57 @@ async function SwitchEpisode(sNum: number, epNum: number) {
 /**
  * PLAYER SETUP
  */
-async function GetTheVideos(root: string) {
-  // Slash safety check
-  const cleanRoot = root.replace(/\/+$/, "");
-  const epPath = `${cleanRoot}/season_${currentSeason_Num}/ep_${currentEpisode_Num}`;
+ async function GetTheVideos(root: string) {
+   // Slash safety check
+   const cleanRoot = root.replace(/\/+$/, "");
+   const epPath = `${cleanRoot}/season_${currentSeason_Num}/ep_${currentEpisode_Num}`;
 
-  try {
-    const data = await fetchJson(`${epPath}/information.json`);
-    if (!data) throw new Error("Episode data missing.");
+   try {
+     const data = await fetchJson(`${epPath}/information.json`);
+     if (!data) throw new Error("Episode data missing.");
 
-    const vType = data.videoType.startsWith(".")
-      ? data.videoType
-      : `.${data.videoType}`;
-    const videoSrc = `${epPath}/video${vType}`;
+     LoadVideoData(
+       data.title || "Untitled Anime",
+       data.episodeName || "Untitled Episdode",
+       data.desc || "Error while fetching.",
+       data.author || "Unknown Studio",
+       data.uploader || "Unknown Uploader",
+       `${epPath}/uploader.webp`,
+     );
 
-    LoadVideoData(
-      data.title || "Untitled Anime",
-      data.episodeName || "Untitled Episdode",
-      data.desc || "Error while fetching.",
-      data.author || "Unknown Studio",
-      data.uploader || "Unknown Uploader",
-      `${epPath}/uploader.webp`,
-    );
+     if (episodePlayer) {
+       // 1. Artık direkt src atamıyoruz. Master videonuzun adı "video.webm" olduğu için,
+       // bash scriptiniz "video" adında bir klasör oluşturdu.
+       // Base yolumuz bu klasör oluyor:
+       const videoBasePath = `${epPath}/video`;
+       episodePlayer.setAttribute("data-video-base", videoBasePath);
 
-    if (episodePlayer) {
-      episodePlayer.src = videoSrc;
-      episodePlayer.poster = `${epPath}/cover.webp`;
-      episodePlayer.onended = () => (window as any).NextEpisode();
-    }
-  } catch (e) {
-    console.error("[Player Error]:", e);
-    LoadingManager.setError("Failed to load episode, try again later.");
-  }
-}
+       episodePlayer.poster = `${epPath}/cover.webp`;
+       episodePlayer.onended = () => (window as any).NextEpisode();
+
+       // 2. LocalStorage'dan kullanıcının son seçtiği kaliteyi (veya varsayılan 'auto') alıyoruz.
+       const settings = JSON.parse(
+         sessionStorage.getItem("epPlayerStorage") ??
+         localStorage.getItem("epPlayerStorage") ??
+         "{}"
+       );
+       const savedMode = settings.quality || "auto";
+
+       // 3. playerControls.ts içindeki setQualityMode fonksiyonunu tetikliyoruz.
+       // Bu fonksiyon arka planda hem 720p/1080p yolunu oluşturacak hem de .load() işlemini yapacak.
+       if (typeof (window as any).setQualityMode === "function") {
+         (window as any).setQualityMode(savedMode);
+       } else {
+         // Eğer playerControls.ts henüz yüklenmemişse güvenli bir fallback:
+         episodePlayer.src = `${videoBasePath}/1080p.webm`;
+         episodePlayer.load();
+       }
+     }
+   } catch (e) {
+     console.error("[Player Error]:", e);
+     LoadingManager.setError("Failed to load episode, try again later.");
+   }
+ }
 
 /**
  * Previous EPISODE LOGIC

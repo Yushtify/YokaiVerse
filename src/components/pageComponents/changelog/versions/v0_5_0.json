@@ -9,8 +9,16 @@
       "desc": "Added a quality switcher to the episode player."
     },
     {
+      "type": "Added",
+      "desc": "\"Content Views\" and \"Content Rating\" to information page."
+    },
+    {
       "type": "Changed",
       "desc": "Improved player code quality and maintainability by modularizing scripts, reducing single-file length from ~1k lines to a maximum of 347 lines."
+    },
+    {
+      "type": "Changed",
+      "desc": "\"contentRating\" to \"contentAgeRating\" to use \"contentRating\" as the rating of an anime instead of rating of min age of the content."
     }
   ]
 }

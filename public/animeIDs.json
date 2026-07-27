@@ -1,15 +1,7 @@
 {
   "sousouNoFrieren": "/src/assets/animes/sousouNoFrieren",
-  "oshiNoKo": "/src/assets/animes/oshiNoKo",
   "nsfwFilterTest": "/src/assets/animes/nsfwFilterTest",
   "manifest": "/src/assets/animes/manifest",
   "murderDrones": "/src/assets/animes/murderDrones",
-  "helluvaBoss": "/src/assets/animes/helluvaBoss",
-  "helluvaBoss2": "/src/assets/animes/helluvaBoss2",
-  "helluvaBoss3": "/src/assets/animes/helluvaBoss3",
-  "helluvaBoss4": "/src/assets/animes/helluvaBoss4",
-  "helluvaBoss5": "/src/assets/animes/helluvaBoss5",
-  "helluvaBoss6": "/src/assets/animes/helluvaBoss6",
-  "helluvaBoss7": "/src/assets/animes/helluvaBoss7",
-  "helluvaBoss8": "/src/assets/animes/helluvaBoss8"
+  "helluvaBoss": "/src/assets/animes/helluvaBoss"
 }

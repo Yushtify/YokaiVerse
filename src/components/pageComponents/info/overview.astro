@@ -35,6 +35,24 @@ import CategoryList from "./categoryList.astro";
                     class="flex flex-row flex-wrap items-start justify-start gap-2 w-full h-fit"
                 >
                     <InformationBlobs
+                        givenID="contentViews"
+                        givenTextID="contentViews_Text"
+                        givenTitle="content views"
+                        titleData="info.overview.contentViews.title"
+                        givenSymbol="visibility"
+                        givenInformation="Loading Data..."
+                        informationData=""
+                    />
+                    <InformationBlobs
+                        givenID="contentRating"
+                        givenTextID="contentRating_Text"
+                        givenTitle="content rating"
+                        titleData="info.overview.contentRating.title"
+                        givenSymbol="star"
+                        givenInformation="Loading Data..."
+                        informationData=""
+                    />
+                    <InformationBlobs
                         givenID="contentAuthorStudio"
                         givenTextID="contentAuthorStudio_Text"
                         givenSymbol="copyright"
@@ -53,10 +71,10 @@ import CategoryList from "./categoryList.astro";
                         informationData=""
                     />
                     <InformationBlobs
-                        givenID="contentRating"
-                        givenTextID="contentRating_Text"
-                        givenTitle="content rating"
-                        titleData="info.overview.contentRating.title"
+                        givenID="contentAgeRating"
+                        givenTextID="contentAgeRating_Text"
+                        givenTitle="content age rating"
+                        titleData="info.overview.contentAgeRating.title"
                         givenSymbol="shield_question"
                         givenInformation="Loading Data..."
                         informationData=""

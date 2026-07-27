@@ -3,210 +3,209 @@ import RoadmapCardTemplate from "./versionTemplate.astro";
 ---
 
 <div
-  id="roadmapContainer"
-  class="flex flex-col items-center justify-start gap-8 w-full h-fit p-2 md:p-4 lg:p-8 xl:p-12 xl:px-48"
+    id="roadmapContainer"
+    class="flex flex-col items-center justify-start gap-8 w-full h-fit p-2 md:p-4 lg:p-8 xl:p-12 xl:px-48"
 >
-  <RoadmapCardTemplate />
+    <RoadmapCardTemplate />
 </div>
 
 <script>
-  // --- TYPE DECLARATIONS ---
-  interface LoadingManagerInterface {
-    show: (message?: string) => void;
-    hide: () => void;
-    setError: (errorMessage: string) => void;
-  }
+    // --- TYPE DECLARATIONS ---
+    interface LoadingManagerInterface {
+        show: (message?: string) => void;
+        hide: () => void;
+        setError: (errorMessage: string) => void;
+    }
 
-  declare const LoadingManager: LoadingManagerInterface;
+    declare const LoadingManager: LoadingManagerInterface;
 
-  // Milestone-level status badge styles
-  const milestoneStatusConfig: Record<
-    string,
-    { bg: string; text: string; border: string; label: string }
-  > = {
-    In_Progress: {
-      bg: "bg-amber-500/20",
-      text: "text-amber-400",
-      border: "border-amber-500/30",
-      label: "In Progress",
-    },
-    Planned: {
-      bg: "bg-blue-500/20",
-      text: "text-blue-400",
-      border: "border-blue-500/30",
-      label: "Planned",
-    },
-    Completed: {
-      bg: "bg-green-500/20",
-      text: "text-green-400",
-      border: "border-green-500/30",
-      label: "Completed",
-    },
-    Cancelled: {
-      bg: "bg-red-500/20",
-      text: "text-red-400",
-      border: "border-red-500/30",
-      label: "Cancelled",
-    },
-  };
+    // Milestone-level status badge styles
+    const milestoneStatusConfig: Record<
+        string,
+        { bg: string; text: string; border: string; label: string }
+    > = {
+        In_Progress: {
+            bg: "bg-amber-500",
+            text: "text-LT_Inverted dark:text-DT_Inverted",
+            border: "border-transparent",
+            label: "In Progress",
+        },
+        Planned: {
+            bg: "bg-blue-500",
+            text: "text-LT_Inverted dark:text-DT_Inverted",
+            border: "border-transparent",
+            label: "Planned",
+        },
+        Completed: {
+            bg: "bg-green-500",
+            text: "text-LT_Inverted dark:text-DT_Inverted",
+            border: "border-transparent",
+            label: "Completed",
+        },
+        Cancelled: {
+            bg: "bg-red-500",
+            text: "text-LT_Inverted dark:text-DT_Inverted",
+            border: "border-transparent",
+            label: "Cancelled",
+        },
+    };
 
-  // Per-item status chip styles
-  const itemStatusConfig: Record<
-    string,
-    { bg: string; text: string; border: string; label: string }
-  > = {
-    In_Progress: {
-      bg: "bg-amber-500/20",
-      text: "text-amber-400",
-      border: "border-amber-500/30",
-      label: "In Progress",
-    },
-    Planned: {
-      bg: "bg-blue-500/20",
-      text: "text-blue-400",
-      border: "border-blue-500/30",
-      label: "Planned",
-    },
-    Completed: {
-      bg: "bg-green-500/20",
-      text: "text-green-400",
-      border: "border-green-500/30",
-      label: "Completed",
-    },
-    Cancelled: {
-      bg: "bg-red-500/20",
-      text: "text-red-400",
-      border: "border-red-500/30",
-      label: "Cancelled",
-    },
-    Considering: {
-      bg: "bg-purple-500/20",
-      text: "text-purple-400",
-      border: "border-purple-500/30",
-      label: "Considering",
-    },
-  };
+    // Per-item status chip styles
+    const itemStatusConfig: Record<
+        string,
+        { bg: string; text: string; border: string; label: string }
+    > = {
+        In_Progress: {
+            bg: "bg-amber-500",
+            text: "text-LT_Inverted dark:text-DT_Inverted",
+            border: "border-transparent",
+            label: "In Progress",
+        },
+        Planned: {
+            bg: "bg-blue-500",
+            text: "text-LT_Inverted dark:text-DT_Inverted",
+            border: "border-transparent",
+            label: "Planned",
+        },
+        Completed: {
+            bg: "bg-green-500",
+            text: "text-LT_Inverted dark:text-DT_Inverted",
+            border: "border-transparent",
+            label: "Completed",
+        },
+        Cancelled: {
+            bg: "bg-red-500",
+            text: "text-LT_Inverted dark:text-DT_Inverted",
+            border: "border-transparent",
+            label: "Cancelled",
+        },
+    };
 
-  async function loadRoadmap() {
-    const container = document.getElementById("roadmapContainer");
-    const milestoneCounter = document.getElementById("roadmapMilestoneCount");
-    if (!container) return;
-
-    LoadingManager.show("Fetching Roadmap...");
-
-    try {
-      // Fetch the manifest to get the list of milestone files
-      const manifestRes = await fetch(
-        "/src/components/pageComponents/roadmap/versions/manifest.json",
-      );
-      if (!manifestRes.ok) {
-        LoadingManager.setError("Failed to load the roadmap manifest.");
-        return;
-      }
-
-      const manifest = await manifestRes.json();
-      const versions: string[] = manifest.versions;
-
-      if (!versions || versions.length === 0) {
-        LoadingManager.setError("No roadmap entries were found.");
-        return;
-      }
-
-      // Render each milestone in order (nearest first)
-      for (const version of versions) {
-        const res = await fetch(
-          `/src/components/pageComponents/roadmap/versions/${version}.json`,
+    async function loadRoadmap() {
+        const container = document.getElementById("roadmapContainer");
+        const milestoneCounter = document.getElementById(
+            "roadmapMilestoneCount",
         );
-        if (!res.ok) {
-          console.warn(`Roadmap entry not found: ${version}`);
-          continue;
+        if (!container) return;
+
+        LoadingManager.show("Fetching Roadmap...");
+
+        try {
+            // Fetch the manifest to get the list of milestone files
+            const manifestRes = await fetch(
+                "/src/components/pageComponents/roadmap/versions/manifest.json",
+            );
+            if (!manifestRes.ok) {
+                LoadingManager.setError("Failed to load the roadmap manifest.");
+                return;
+            }
+
+            const manifest = await manifestRes.json();
+            const versions: string[] = manifest.versions;
+
+            if (!versions || versions.length === 0) {
+                LoadingManager.setError("No roadmap entries were found.");
+                return;
+            }
+
+            // Render each milestone in order (nearest first)
+            for (const version of versions) {
+                const res = await fetch(
+                    `/src/components/pageComponents/roadmap/versions/${version}.json`,
+                );
+                if (!res.ok) {
+                    console.warn(`Roadmap entry not found: ${version}`);
+                    continue;
+                }
+                const data = await res.json();
+                renderRoadmapCard(data, container);
+            }
+
+            // Update the milestone counter in the hero
+            if (milestoneCounter) {
+                milestoneCounter.textContent =
+                    versions.length.toString() + " milestones";
+            }
+
+            LoadingManager.hide();
+        } catch (error: any) {
+            console.error("Roadmap Load Error:", error);
+            LoadingManager.setError(
+                error.message || "Failed to load the roadmap, try again later.",
+            );
         }
-        const data = await res.json();
-        renderRoadmapCard(data, container);
-      }
-
-      // Update the milestone counter in the hero
-      if (milestoneCounter) {
-        milestoneCounter.textContent =
-          versions.length.toString() + " milestones";
-      }
-
-      LoadingManager.hide();
-    } catch (error: any) {
-      console.error("Roadmap Load Error:", error);
-      LoadingManager.setError(
-        error.message || "Failed to load the roadmap, try again later.",
-      );
-    }
-  }
-
-  function renderRoadmapCard(data: any, container: HTMLElement) {
-    const template = document.getElementById(
-      "roadmapCardTemplate",
-    ) as HTMLTemplateElement;
-    if (!template) return;
-
-    const cardClone = template.content.cloneNode(true) as DocumentFragment;
-
-    // Populate milestone header
-    cardClone.querySelector("#roadmap_Milestone")!.textContent = data.milestone;
-    cardClone.querySelector("#roadmap_ETA")!.textContent = `ETA: ${data.eta}`;
-    cardClone.querySelector("#roadmap_Description")!.textContent =
-      data.description;
-
-    // Apply milestone status badge
-    const badge = cardClone.querySelector(
-      "#roadmap_StatusBadge",
-    ) as HTMLElement;
-    if (badge) {
-      const config =
-        milestoneStatusConfig[data.status] || milestoneStatusConfig["Planned"];
-      badge.className += ` ${config.bg} ${config.text} ${config.border}`;
-      badge.textContent = config.label;
     }
 
-    // Populate item list
-    const itemTemplate = cardClone.querySelector(
-      "#roadmapItemTemplate",
-    ) as HTMLTemplateElement;
-    const itemList = cardClone.querySelector("#roadmapItemList")!;
+    function renderRoadmapCard(data: any, container: HTMLElement) {
+        const template = document.getElementById(
+            "roadmapCardTemplate",
+        ) as HTMLTemplateElement;
+        if (!template) return;
 
-    if (itemTemplate && itemList) {
-      itemList.innerHTML = "";
+        const cardClone = template.content.cloneNode(true) as DocumentFragment;
 
-      data.items.forEach((item: any) => {
-        const itemClone = itemTemplate.content.cloneNode(
-          true,
-        ) as DocumentFragment;
+        // Populate milestone header
+        cardClone.querySelector("#roadmap_Milestone")!.textContent =
+            data.milestone;
+        cardClone.querySelector("#roadmap_ETA")!.textContent =
+            `ETA: ${data.eta}`;
+        cardClone.querySelector("#roadmap_Description")!.textContent =
+            data.description;
 
-        const chip = itemClone.querySelector(
-          "#roadmapItem_StatusChip",
+        // Apply milestone status badge
+        const badge = cardClone.querySelector(
+            "#roadmap_StatusBadge",
         ) as HTMLElement;
-        const desc = itemClone.querySelector(
-          "#roadmapItem_Desc",
-        ) as HTMLElement;
-
-        if (chip) {
-          const config = itemStatusConfig[item.status] || {
-            bg: "bg-gray-500/20",
-            text: "text-gray-400",
-            border: "border-gray-500/30",
-            label: item.status,
-          };
-          chip.className += ` ${config.bg} ${config.text} ${config.border}`;
-          chip.textContent = config.label;
-        }
-        if (desc) {
-          desc.textContent = item.desc;
+        if (badge) {
+            const config =
+                milestoneStatusConfig[data.status] ||
+                milestoneStatusConfig["Planned"];
+            badge.className += ` ${config.bg} ${config.text} ${config.border}`;
+            badge.textContent = config.label;
         }
 
-        itemList.appendChild(itemClone);
-      });
+        // Populate item list
+        const itemTemplate = cardClone.querySelector(
+            "#roadmapItemTemplate",
+        ) as HTMLTemplateElement;
+        const itemList = cardClone.querySelector("#roadmapItemList")!;
+
+        if (itemTemplate && itemList) {
+            itemList.innerHTML = "";
+
+            data.items.forEach((item: any) => {
+                const itemClone = itemTemplate.content.cloneNode(
+                    true,
+                ) as DocumentFragment;
+
+                const chip = itemClone.querySelector(
+                    "#roadmapItem_StatusChip",
+                ) as HTMLElement;
+                const desc = itemClone.querySelector(
+                    "#roadmapItem_Desc",
+                ) as HTMLElement;
+
+                if (chip) {
+                    const config = itemStatusConfig[item.status] || {
+                        bg: "bg-gray-500/20",
+                        text: "text-gray-400",
+                        border: "border-gray-500/30",
+                        label: item.status,
+                    };
+                    chip.className += ` ${config.bg} ${config.text} ${config.border}`;
+                    chip.textContent = config.label;
+                }
+                if (desc) {
+                    desc.textContent = item.desc;
+                }
+
+                itemList.appendChild(itemClone);
+            });
+        }
+
+        // Append so nearest milestone appears first
+        container.appendChild(cardClone);
     }
 
-    // Append so nearest milestone appears first
-    container.appendChild(cardClone);
-  }
-
-  document.addEventListener("DOMContentLoaded", loadRoadmap);
+    document.addEventListener("DOMContentLoaded", loadRoadmap);
 </script>

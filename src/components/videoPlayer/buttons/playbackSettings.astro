@@ -1,0 +1,137 @@
+---
+import Button from "../../custom/buttons/Button.astro";
+import RadioButton from "../../custom/buttons/radioButton.astro";
+import ToggleButton from "../../custom/buttons/toggleButton.astro";
+import CustomSlider from "../../custom/customSlider.astro";
+---
+
+<div
+    class="flex flex-col items-start justify-center gap-4 p-2 rounded-3xl w-full h-fit"
+>
+    <p
+        data-i18n="watch.epPlayer.settings.playback.title"
+        class="font-semibold text-[min(6vw,0.8rem)] text-LT_Secondary dark:text-DT_Secondary capitalize"
+    >
+        Playback
+    </p>
+
+    <!-- Playback Quality -->
+    <div class="flex flex-col items-center justify-between gap-6 w-full h-fit">
+        <div
+            class="flex flex-row items-center justify-start gap-2 w-full h-fit"
+        >
+            <p
+                data-i18n="watch.epPlayer.settings.playback.quality.title"
+                class="font-semibold text-[min(6vw,1rem)] capitalize"
+            >
+                Quality
+            </p>
+            <p
+                id="epCurrentQuality"
+                class="font-semibold text-[min(6vw,1rem)] capitalize"
+            >
+                1080p
+            </p>
+        </div>
+        <div
+            class="flex flex-row items-center justify-center p-2 rounded-3xl gap-2 w-fit h-fit bg-L_Secondary dark:bg-D_Secondary"
+        >
+            <RadioButton
+                givenPositionTo="horizontal"
+                givenPosition="start"
+                givenID="quality144p"
+                givenRadGroup="quality"
+                givenCanDisabled={true}
+                givenTitle="144p"
+                titleData=""
+            />
+            <RadioButton
+                givenPositionTo="horizontal"
+                givenPosition="center"
+                givenID="quality240p"
+                givenRadGroup="quality"
+                givenCanDisabled={true}
+                givenTitle="240p"
+                titleData=""
+            />
+            <RadioButton
+                givenPositionTo="horizontal"
+                givenPosition="center"
+                givenID="quality360p"
+                givenRadGroup="quality"
+                givenCanDisabled={true}
+                givenTitle="360p"
+                titleData=""
+            />
+            <RadioButton
+                givenPositionTo="horizontal"
+                givenPosition="center"
+                givenID="quality480p"
+                givenRadGroup="quality"
+                givenCanDisabled={true}
+                givenTitle="480p"
+                titleData=""
+            />
+            <RadioButton
+                givenPositionTo="horizontal"
+                givenPosition="center"
+                givenID="quality720p"
+                givenRadGroup="quality"
+                givenCanDisabled={true}
+                givenTitle="720p"
+                titleData=""
+            />
+            <RadioButton
+                givenPositionTo="horizontal"
+                givenPosition="end"
+                givenID="quality1080p"
+                givenRadGroup="quality"
+                givenCanDisabled={true}
+                givenTitle="1080p"
+                titleData=""
+            />
+        </div>
+    </div>
+
+    <!-- Playback Speed -->
+    <div
+        class="flex flex-col md:flex-row items-center justify-between gap-6 w-full h-fit"
+    >
+        <div
+            class="flex flex-row items-center justify-between gap-2 w-full h-fit"
+        >
+            <p
+                data-i18n="watch.epPlayer.settings.playback.playbackSpeed.title"
+                class="font-semibold text-[min(6vw,1rem)] capitalize"
+            >
+                Playback Speed
+            </p>
+            <p
+                id="epCurrentPlaybackSpeed"
+                class="font-semibold text-[min(6vw,1rem)] capitalize"
+            >
+                1x
+            </p>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center gap-1 w-fit h-fit"
+        >
+            <CustomSlider
+                givenID="epPlaybackSpeedSlider"
+                givenOnInput="playbackSpeedEp(value)"
+                givenWidth="min-w-32! w-full"
+                givenMin="0.15"
+                givenMax="7"
+                givenValue="1"
+                givenStep="0.05"
+            />
+            <div
+                class="flex flex-row items-center justify-between min-w-32 w-full h-fit gap-4 text-[min(6vw,0.8rem)]"
+            >
+                <p>0.1x</p>
+                <p>4x</p>
+                <p>7x</p>
+            </div>
+        </div>
+    </div>
+</div>
