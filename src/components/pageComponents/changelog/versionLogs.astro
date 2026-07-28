@@ -42,67 +42,72 @@ import VersionTemplate from "./versionTemplate.astro";
             { bg: string; text: string; label: string }
         > = {
             Added: {
-                bg: "bg-green-500",
+                bg: "bg-green-400", // Pozitif/Yeni özellik ekleme (Canlı yeşil)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Added",
             },
             Changed: {
-                bg: "bg-amber-500",
+                bg: "bg-amber-500", // Değişiklik/Modifikasyon (Dikkat çeken sarı/turuncu tonu)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Changed",
             },
+            Updated: {
+                bg: "bg-sky-400", // İyileştirme/Güncelleme (Güven veren mavi)
+                text: "text-LT_Inverted dark:text-DT_Inverted",
+                label: "Updated",
+            },
             Fixed: {
-                bg: "bg-sky-500",
+                bg: "bg-sky-600", // Sorun çözme/Hata giderme (Ferahlatan teal tonu)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Fixed",
             },
             Removed: {
-                bg: "bg-red-500",
+                bg: "bg-rose-600", // Kaldırılan/Silinen öğe (Kırmızı/Gülkurusu)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Removed",
             },
             Experimental: {
-                bg: "bg-LightAccent",
+                bg: "bg-purple-600", // Deneysel/Gelişme aşamasında (Mor/Yaratıcı ton)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Experimental",
             },
             Misc: {
-                bg: "bg-gray-500",
+                bg: "bg-slate-500", // Çeşitli/Genel (Nötr gri)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Misc",
             },
             Known_Bug: {
-                bg: "bg-rose-700",
+                bg: "bg-rose-800", // Bilinen Hata (Koyu ve ciddi kırmızı)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Known Bug",
             },
             Deprecated: {
-                bg: "bg-orange-500",
+                bg: "bg-amber-600", // Artık kullanılmayan/Desteklenmeyen (Uyarı turuncusu)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Deprecated",
             },
             Security: {
-                bg: "bg-teal-500",
+                bg: "bg-cyan-700", // Güvenlik yamaları (Koyu cyan/sistem güvenliği hissi)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Security",
             },
             Performance: {
-                bg: "bg-cyan-500",
+                bg: "bg-indigo-600", // Performans/Hız optimizasyonu (İndigo tonu)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Performance",
             },
-            Rewrited: {
-                bg: "bg-Accent",
+            Rewritten: {
+                bg: "bg-violet-600", // Baştan yazılan kod blokları (Canlı violet)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                label: "Rewrited",
+                label: "Rewritten",
             },
             Breaking: {
-                bg: "bg-fuchsia-600",
+                bg: "bg-fuchsia-700", // Kritik/Uyum bozucu değişiklik (Dikkat çekici fuşya)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Breaking",
             },
             Reverted: {
-                bg: "bg-slate-500",
+                bg: "bg-zinc-600", // Geri alınan commit/işlemler (Geri planda kalan nötr ton)
                 text: "text-LT_Inverted dark:text-DT_Inverted",
                 label: "Reverted",
             },
@@ -241,9 +246,8 @@ import VersionTemplate from "./versionTemplate.astro";
 
                 if (chip && chipTXT) {
                     const config = typeConfig[log.type] || {
-                        bg: "bg-gray-500",
-                        text: "text-gray-400",
-                        border: "border-gray-500",
+                        bg: "bg-white",
+                        text: "text-LT_Inverted dark:text-DT_Inverted",
                         label: log.type,
                     };
                     chip.className += ` ${config.bg} ${config.text} ${config.border}`;

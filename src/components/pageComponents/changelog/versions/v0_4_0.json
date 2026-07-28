@@ -108,9 +108,14 @@
       "type": "Fixed",
       "desc": "LanguageHandler now correctly translates dynamically appended elements after the initial page load."
     },
+
     {
       "type": "Deprecated",
       "desc": "the \"Fansub\" section on the watch page."
+    },
+    {
+      "type": "Deprecated",
+      "desc": "Downloading on episode player temporarily."
     },
     {
       "type": "Removed",
@@ -135,10 +140,6 @@
     {
       "type": "Removed",
       "desc": "Banner information details from the anime info page."
-    },
-    {
-      "type": "Deprecated",
-      "desc": "Downloading on episode player temporarily."
     }
   ]
 }
