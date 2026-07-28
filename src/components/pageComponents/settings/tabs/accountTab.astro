@@ -1,12 +1,15 @@
 ---
-import TabHeader from "./tabHeader.astro";
+import TabTemplate from "./tabTemplate.astro";
 ---
 
-<TabHeader
-    givenDivID="accountTab"
+<TabTemplate
+    givenLocationFrom="vertical"
+    givenLocation="center"
+    givenContentAlign="grid"
+    givenTabID="accountTab"
     givenSymbol="person"
-    givenTitle="Account"
-    titleData="settings.tabs.account.hero.header"
-    givenDesc="Manage your permanent @username and security logs."
-    descData="settings.tabs.account.hero.desc"
+    givenTitle="account"
+    titleData="settings.tabs.account.title"
+    givenDesc=""
+    descData="settings.tabs.account.desc"
 />

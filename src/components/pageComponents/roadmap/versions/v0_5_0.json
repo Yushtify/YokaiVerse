@@ -2,12 +2,13 @@
   "milestone": "v0.5.0",
   "eta": "Q4 2026",
   "status": "In_Progress",
-  "description": "A feature-expansion update introducing universal search, Manga reader support, and a broader content discovery experience.",
+  "description": "A feature-expansion update introducing universal search, Manga reader support, a revamped settings page, and a broader content discovery experience.",
   "items": [
     { "status": "Completed", "desc": "More Optimization to episode player." },
     { "status": "Completed", "desc": "Quality switcher for episode player." },
+    { "status": "Completed", "desc": "Working Theme switcher page." },
     { "status": "Planned", "desc": "Integrated subtitles to episode player." },
     { "status": "Planned", "desc": "More customization on episode player." },
-    { "status": "Planned", "desc": "Revamping settings page." }
+    { "status": "In_Progress", "desc": "Revamping settings page." }
   ]
 }

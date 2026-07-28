@@ -3,10 +3,11 @@
 const { pathname } = Astro.url;
 
 const routes: Record<string, string> = {
-    "/": "Welcome",
-    "/featured": "Featured",
+    "/": "Home",
+    "/featured": "Featured [BETA]",
     "/discover": "Discover",
     "/changelog": "Release Logs",
+    "/roadmap": "Road Map",
     "/store": "Store",
     "/settings": "Settings",
     "/info": "Info",
@@ -66,10 +67,7 @@ import NavigationBar from "../components/navigationBar.astro";
     import "../scripts/languageHandler.ts"; // Language Handler
     import "../scripts/tooltipHandler.ts"; // Tooltip Handler
     import "../scripts/svgScripts.ts";
-    import "../scripts/infoPage_Scripts/infoHandler.ts"; // for the info handles and page.
-    import "../scripts/watchPage_Scripts/videoPlayerFeedback.ts"; // for feedback of videoPlayer.ts
-    import "../scripts/watchPage_Scripts/videoPlayer.ts"; // for anything that handles video Player
-    import "../scripts/watchPage_Scripts/playlistHandler.ts"; // for the playlist handles and page.
+    import "../scripts/themeHandler.ts"; // Theme handler script
 
     /**
      * Redirects to the INFO page of a series.
@@ -117,4 +115,23 @@ import NavigationBar from "../components/navigationBar.astro";
         window.location.href = "/watch?v=" + target;
     }
     (window as any).findAnime = findAnime;
+</script>
+
+<script>
+    (function () {
+        let theme = "system";
+        try {
+            const raw = localStorage.getItem("yokaiverseSettings");
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (parsed && typeof parsed.theme === "string")
+                    theme = parsed.theme;
+            }
+        } catch (_) {}
+        const isDark =
+            theme === "dark" ||
+            (theme === "system" &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.classList.toggle("dark", isDark);
+    })();
 </script>

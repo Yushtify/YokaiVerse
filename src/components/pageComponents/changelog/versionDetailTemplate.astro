@@ -3,12 +3,11 @@ import ChangelogChip from "../../custom/public/changelogChip.astro";
 ---
 
 <template id="versionDetail_Template">
-  <div class="flex flex-row items-start justify-start gap-3">
-    <ChangelogChip givenID="versionDetail_TypeChip" />
-    <p
-      id="versionDetail_Desc"
-      class="text-LT_Primary dark:text-DT_Primary text-[min(7vw,0.9rem)] mt-0.5"
-    >
-    </p>
-  </div>
+    <ChangelogChip givenID="versionDetail_TypeChip">
+        <p
+            id="versionDetail_Desc"
+            class="text-LT_Primary dark:text-DT_Primary text-[min(7vw,0.9rem)] mt-0.5"
+        >
+        </p>
+    </ChangelogChip>
 </template>

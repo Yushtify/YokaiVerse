@@ -50,7 +50,7 @@ if (givenPosition && givenPositionTo) {
 validRounded += " hover:rounded-3xl transition-all duration-200 ease-in-out";
 
 // Base look = deactive state. This is always applied on the element.
-const baseClass = `${validRounded} filter-btn group relative flex flex-row items-center justify-start min-w-fit w-full h-fit gap-2 p-4 bg-L_Secondary dark:bg-D_Secondary hover:bg-Highlight text-nowrap font-semibold text-left text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted overflow-hidden cursor-pointer capitalize`;
+const baseClass = `${validRounded} filter-btn group relative flex flex-row items-center justify-start min-w-fit w-full h-fit gap-4 p-4 pr-6 bg-L_Secondary dark:bg-D_Secondary hover:bg-Highlight text-nowrap font-semibold text-left text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted overflow-hidden cursor-pointer capitalize`;
 
 // Active-state overrides only (uses `!` so they win over baseClass
 // regardless of stylesheet order — same pattern as the icon-radio button).
@@ -72,7 +72,7 @@ const isSVG = givenSymbol ? "inline" : "hidden";
 >
     <div
         class="flex flex-row items-center justify-center w-fit h-fit rounded-3xl p-2 bg-L_Primary dark:bg-D_Primary group-hover:bg-L_Primary_Hover dark:group-hover:bg-D_Primary_Hover text-LT_Secondary dark:text-DT_Secondary"
-        data-radActive="bg-LightAccent!"
+        data-radActive="bg-LightAccent! text-LT_Inverted! dark:text-DT_Inverted!"
     >
         <GoogleMaterialSymbol
             symbol={givenSymbol}

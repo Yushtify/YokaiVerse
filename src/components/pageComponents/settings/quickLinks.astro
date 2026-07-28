@@ -3,60 +3,41 @@ import CardLink from "../../custom/links/cardLink.astro";
 ---
 
 <div
-  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 items-start justify-start w-full h-fit"
+    class="flex flex-row flex-wrap gap-4 items-center justify-start w-full max-w-screen h-fit"
 >
-  <CardLink
-    givenID="general-settings"
-    givenHREF="#generalTab"
-    givenGoogleSymbol="tune"
-    givenTitle="general"
-    titleData="settings.hero.quickLinks.general.title"
-    givenDesc="Manage core site behavior and basic site preferences."
-    descData="settings.hero.quickLinks.general.desc"
-  />
-  <CardLink
-    givenID="account-settings"
-    givenHREF="#accountTab"
-    givenGoogleSymbol="person"
-    givenTitle="account"
-    titleData="settings.hero.quickLinks.account.title"
-    givenDesc="Manage your permanent @username and security logs."
-    descData="settings.hero.quickLinks.account.desc"
-  />
-  <CardLink
-    givenID="privacy-settings"
-    givenHREF="#privacyTab"
-    givenGoogleSymbol="shield_lock"
-    givenTitle="privacy"
-    titleData="settings.hero.quickLinks.privacy.title"
-    givenDesc="Control your data visibility and anonymity protocols."
-    descData="settings.hero.quickLinks.privacy.desc"
-  />
-  <CardLink
-    givenID="appearance-settings"
-    givenHREF="#appearanceTab"
-    givenGoogleSymbol="palette"
-    givenTitle="appearance"
-    titleData="settings.hero.quickLinks.appearance.title"
-    givenDesc="Customize themes, accent colors, and the overall UI."
-    descData="settings.hero.quickLinks.appearance.desc"
-  />
-  <CardLink
-    givenID="player-settings"
-    givenHREF="#playerTab"
-    givenGoogleSymbol="smart_display"
-    givenTitle="video player"
-    titleData="settings.hero.quickLinks.player.title"
-    givenDesc="Fine-tune playback, quality, and streaming buffers."
-    descData="settings.hero.quickLinks.player.desc"
-  />
-  <CardLink
-    givenID="experimental-settings"
-    givenHREF="#experimentalTab"
-    givenGoogleSymbol="science"
-    givenTitle="experimental"
-    titleData="settings.hero.quickLinks.experimental.title"
-    givenDesc="Test out beta features and upcoming site enhancements."
-    descData="settings.hero.quickLinks.experimental.desc"
-  />
+    <CardLink
+        givenID="general-settings"
+        givenHREF="#generalTab"
+        givenGoogleSymbol="tune"
+        givenTitle="general"
+        titleData="settings.hero.quickLinks.general"
+    />
+    <CardLink
+        givenID="account-settings"
+        givenHREF="#accountTab"
+        givenGoogleSymbol="person"
+        givenTitle="account"
+        titleData="settings.hero.quickLinks.account"
+    />
+    <CardLink
+        givenID="privacy-settings"
+        givenHREF="#privacyTab"
+        givenGoogleSymbol="shield_lock"
+        givenTitle="privacy"
+        titleData="settings.hero.quickLinks.privacy"
+    />
+    <CardLink
+        givenID="appearance-settings"
+        givenHREF="#appearanceTab"
+        givenGoogleSymbol="palette"
+        givenTitle="appearance"
+        titleData="settings.hero.quickLinks.appearance"
+    />
+    <CardLink
+        givenID="experimental-settings"
+        givenHREF="#experimentalTab"
+        givenGoogleSymbol="science"
+        givenTitle="experimental"
+        titleData="settings.hero.quickLinks.experimental"
+    />
 </div>

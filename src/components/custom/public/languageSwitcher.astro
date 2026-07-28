@@ -9,14 +9,14 @@ import LanguageRadioButton from "./languageRadioButton.astro";
         givenButtonAction="enableLanguageOptions()"
         givenButtonSymbol="keyboard_arrow_down"
         givenButtonSymbolSize="text-[min(6vw,1rem)]"
-        givenButtonCustomClass="flex-row-reverse! hover:text-LT_Inverted! dark:hover:text-DT_Inverted!"
+        givenButtonCustomClass="flex-row-reverse! font-bold hover:text-LT_Inverted! dark:hover:text-DT_Inverted!"
         givenTitle="Switch Language"
         titleData="footer.languageSwitcher"
         tooltipDescTrans="tooltip.footer.languageSwitcher"
     />
     <div
         id="languageSwitch_Container"
-        class="hidden absolute bottom-[calc(100%+0.5rem)] left-0 flex-col items-start justify-start rounded-3xl p-2 gap-2 w-fit h-fit bg-L_Primary dark:bg-D_Primary border-2 border-LB_Primary dark:border-DB_Primary overflow-hidden z-50"
+        class="hidden absolute bottom-[calc(100%+0.5rem)] left-0 flex-col items-start justify-start rounded-3xl p-2 gap-2 w-fit h-fit bg-L_Primary dark:bg-D_Primary border border-LB_Primary dark:border-DB_Primary shadow-2xl shadow-LB_Primary/64 dark:shadow-DB_Primary/64 overflow-hidden z-50"
     >
         <LanguageRadioButton
             givenPositionTo="vertical"

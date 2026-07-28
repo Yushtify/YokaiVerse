@@ -17,10 +17,13 @@ const isDescValid = givenDesc ? "flex" : "hidden";
     id="Lister"
     class="flex flex-col items-start justify-center gap-8 w-full h-fit text-[min(5vw,1rem)] text-LT_Primary dark:text-DT_Primary"
 >
-    <div class="flex flex-row items-center justify-start w-full h-fit gap-4">
+    <!-- Lister Header -->
+    <div
+        class="flex flex-row flex-wrap items-center justify-start w-full h-fit gap-4"
+    >
         <div class="flex flex-col w-full h-fit items-start justify-center">
             <div
-                class="flex flex-row items-center justify-start gap-2 w-full h-fit"
+                class="flex flex-row items-center justify-start gap-4 w-full h-fit"
             >
                 <GoogleMaterialSymbol
                     SVG_ID="listerSVG"
@@ -39,43 +42,46 @@ const isDescValid = givenDesc ? "flex" : "hidden";
             <p
                 id="listerDesc"
                 data-i18n={descData}
-                class={`w-full lg:max-w-[80%] xl:max-w-[65%] text-LT_Secondary dark:text-DT_Secondary ${isDescValid}`}
+                class="flex w-full lg:max-w-[80%] xl:max-w-[65%] text-LT_Secondary dark:text-DT_Secondary"
             >
                 {givenDesc}
             </p>
         </div>
 
+        <!-- Pagination Controls -->
         <div
-            id="seasonSwitch"
-            class="flex flex-row items-center justify-center gap-4 p-2 rounded-3xl w-fit h-fit border border-LB_Primary dark:border-DB_Primary"
+            class="flex flex-row items-center justify-center gap-2 min-w-fit w-fit max-w-full h-fit"
         >
             <Button
-                givenButtonID="nextPage"
+                givenLocationFrom="horizontal"
+                givenLocation="start"
+                givenButtonID="listerPrevPage"
                 givenButtonAction=""
+                givenTitle="Previous Page"
+                titleData="global.lister.prevPage"
                 givenButtonSymbol="chevron_backward"
                 givenButtonSymbolSize="text-[min(7vw,1rem)]"
             />
             <Button
-                givenButtonID="previousPage"
+                givenLocationFrom="horizontal"
+                givenLocation="end"
+                givenButtonID="listerNextPage"
                 givenButtonAction=""
+                givenButtonCustomClass="flex-row-reverse"
+                givenTitle="Next Page"
+                titleData="global.lister.nextPage"
                 givenButtonSymbol="chevron_forward"
                 givenButtonSymbolSize="text-[min(7vw,1rem)]"
             />
         </div>
     </div>
 
-    <!-- Grid -->
+    <!-- Card Grid -->
     <div
         id="animeCardLister"
         class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 items-start justify-start gap-4 w-full h-fit"
     >
-        <AnimeCard
-            givenVideoID="Template"
-            VideoRootSRC="/src/assets/animes/murderDrones"
-            givenVideoTitle="Template"
-            givenVideoUploader="Template"
-            givenNSFW={false}
-        />
+        <AnimeCard />
         <slot />
     </div>
 </div>

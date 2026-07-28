@@ -1,0 +1,94 @@
+---
+import GoogleMaterialSymbol from "../../../custom/googleMaterial_Symbol.astro";
+
+interface Props {
+    givenLocationFrom?: "horizontal" | "vertical";
+    givenLocation?: "start" | "center" | "end";
+    givenContentAlign?: "flex" | "grid";
+    givenTabID: string;
+    givenSymbol: string;
+    givenTitle: string;
+    titleData: string;
+    givenDesc: string;
+    descData: string;
+}
+
+const {
+    givenLocationFrom,
+    givenLocation,
+    givenContentAlign,
+    givenTabID,
+
+    givenSymbol,
+    givenTitle,
+    givenDesc,
+    descData,
+    titleData,
+} = Astro.props;
+
+let validRounded;
+
+if (givenLocationFrom && givenLocationFrom === "vertical") {
+    if (givenLocation && givenLocation === "start")
+        validRounded = "rounded-b-xl rounded-t-3xl";
+    else if (givenLocation && givenLocation === "end")
+        validRounded = "rounded-t-xl rounded-b-3xl";
+    else validRounded = "rounded-xl";
+} else if (givenLocationFrom && givenLocationFrom === "horizontal") {
+    if (givenLocation && givenLocation === "start")
+        validRounded = "rounded-r-xl rounded-l-3xl";
+    else if (givenLocation && givenLocation === "end")
+        validRounded = "rounded-l-xl rounded-r-3xl";
+    else validRounded = "rounded-xl";
+} else validRounded = "rounded-3xl";
+
+validRounded = validRounded + " " + "hover:rounded-3xl";
+
+const tabContentID = givenTabID + "_content";
+
+let contentAlign;
+if (givenContentAlign && givenContentAlign === "grid")
+    contentAlign =
+        "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6";
+else contentAlign = "flex flex-col items-start justify-start";
+---
+
+<div
+    id={givenTabID}
+    class={`flex flex-col items-start justify-start gap-4 p-4 md:p-6 lg:p-8 w-full max-w-screen h-fit bg-L_Primary dark:bg-D_Primary  text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary transition-all duration-200 ease-in-out ${validRounded}`}
+>
+    <!-- Header -->
+    <div class="flex flex-col items-start justify-center gap-2 w-full h-fit">
+        <div
+            class="flex flex-row items-center justify-start gap-6 w-full h-fit"
+        >
+            <div
+                class="flex flex-row items-center justify-center p-4 rounded-3xl bg-L_BG dark:bg-D_BG"
+            >
+                <GoogleMaterialSymbol
+                    symbol={givenSymbol}
+                    SvgSize="text-[min(6vw,2rem)]!"
+                    isFilled={true}
+                />
+            </div>
+            <p
+                data-i18n={titleData}
+                class="font-semibold text-[min(6vw,2rem)] capitalize"
+            >
+                {givenTitle}
+            </p>
+        </div>
+        <p
+            data-i18n={descData}
+            class="text-LT_Secondary dark:text-DT_Secondary"
+        >
+            {givenDesc}
+        </p>
+    </div>
+    <div
+        id={tabContentID}
+        class={`${contentAlign} justify-start gap-6 rounded-3xl p-6 w-full h-fit bg-L_BG dark:bg-D_BG`}
+    >
+        <slot />
+    </div>
+</div>

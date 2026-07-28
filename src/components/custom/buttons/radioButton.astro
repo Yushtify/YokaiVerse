@@ -11,8 +11,8 @@ interface Props {
     givenState?: boolean;
     givenCanDisabled: boolean;
 
-    givenTitle: string;
-    titleData: string;
+    givenTitle?: string;
+    titleData?: string;
 
     givenSymbol?: string;
     givenSymbolStyle?: string;
@@ -35,6 +35,7 @@ let validatedClass: string;
 let validSvgSize: string;
 let validTextSize: string;
 let validRounded: string = "rounded-3xl";
+let validP: string = "p-2 px-4";
 if (givenPosition && givenPositionTo) {
     if (givenPositionTo === "horizontal") {
         if (givenPosition === "start")
@@ -53,8 +54,9 @@ if (givenPosition && givenPositionTo) {
 validTextSize = " text-[min(6vw,1rem)] ";
 validSvgSize = "text-[min(6vw,1.5rem)]";
 validRounded += " hover:rounded-3xl";
+validP = givenTitle ? "p-2 px-4 pl-2" : "p-2";
 validatedClass = givenSymbol
-    ? `group flex flex-row items-center justify-center w-fit max-w-full h-fit ${validRounded} gap-2 p-2 pl-2 px-4  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${validTextSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer`
+    ? `group flex flex-row items-center justify-center w-fit max-w-full h-fit ${validRounded} gap-2 ${validP}  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${validTextSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer`
     : `group flex flex-row items-center justify-center w-fit max-w-full h-fit ${validRounded} gap-2 p-2 px-4  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${validTextSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer`;
 const validatedSvgContainer_Class = givenSymbol
     ? "flex flex-row items-center justify-center w-fit h-fit rounded-3xl p-2 bg-L_BG dark:bg-D_BG group-hover:bg-LightAccent transition-colors duration-200 ease-in-out"
@@ -62,7 +64,9 @@ const validatedSvgContainer_Class = givenSymbol
 const activeSvgContainer_Class = "bg-LightAccent! !";
 
 const activeClass =
-    "rounded-3xl! bg-Accent! hover:bg-Highlight! text-LT_Inverted! dark:text-DT_Inverted!";
+    "bg-Accent! hover:bg-Highlight! text-LT_Inverted! dark:text-DT_Inverted!";
+
+const titleActive = givenTitle ? "inline" : "hidden";
 ---
 
 <button
@@ -85,7 +89,7 @@ const activeClass =
             isFilled={true}
         />
     </div>
-    <p data-i18n={titleData} class="text-left">
+    <p data-i18n={titleData} class={`${titleActive} text-left`}>
         {givenTitle}
     </p>
 </button>

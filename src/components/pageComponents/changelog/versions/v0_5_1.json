@@ -1,0 +1,24 @@
+{
+  "version": "v0.5.1",
+  "commit": "",
+  "date": "Jul 27, 2026",
+  "description": "A quality-of-life update featuring a new theme switcher in settings, roadmap navigation in the footer, and settings cleanup.",
+  "logs": [
+    {
+      "type": "Added",
+      "desc": "Theme switcher to \"/settings\" this includes; \"System (auto)\", \"Light\", \"Dark\" Theme."
+    },
+    {
+      "type": "Added",
+      "desc": "\"/roadmap\" navigation to footer under \"Links\" collumn"
+    },
+    {
+      "type": "Changed",
+      "desc": "\"/chnagelog\" page's changelog chips to be more colorful"
+    },
+    {
+      "type": "Removed",
+      "desc": "\"video player\" settings from \"/settings\"."
+    }
+  ]
+}

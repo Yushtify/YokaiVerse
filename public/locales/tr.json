@@ -44,8 +44,7 @@
       }
     }
   },
-
-  "watch" :{
+  "watch": {
     "epPlayer": {
       "settings": {
         "behaviour": {
@@ -69,7 +68,6 @@
       }
     }
   },
-
   "info": {
     "overview": {
       "contentViews": {
@@ -104,7 +102,6 @@
     "description": "Açıklama",
     "allEpisodes": "Tüm Bölümler"
   },
-
   "Navbar": {
     "home": "ana sayfa",
     "featured": "öne çıkanlar",
@@ -122,7 +119,8 @@
         "store": "mağaza",
         "register": "kayıt ol",
         "login": "giriş yap",
-        "whats_new": "yenilikler"
+        "whats_new": "yenilikler",
+        "road_map": "gelecek yenilikler"
       },
       "community": {
         "title": "Topluluk",
@@ -139,69 +137,32 @@
     }
   },
   "home": {
-      "hero": {
-        "title": "YokaiVerse'e Hoş Geldiniz",
-        "desc": "YokaiVerse deneyimine hoş geldiniz! Anime, Manga ve Webtoon'ların keyfini kesintisiz çıkardığımız yer burası.",
-        "languages": {
-          "title": "Diller",
-          "info": "9 farklı dilde izleyin"
-        },
-        "upToDate": {
-          "title": "Güncel",
-          "info": "Her zaman güncel"
-        },
-        "annoyingAdds": {
-          "title": "Rahatsız Edici Reklamlar",
-          "info": "Asla rahatsız edici reklamlar yok"
-        },
-        "positiveReviews": {
-          "title": "Olumlu Yorumlar",
-          "info": "9.648'den fazla kişi YokaiVerse'i öneriyor"
-        },
-        "activeUsers": {
-          "title": "Aktif Kullanıcılar",
-          "info": "16.849'dan fazla kişi hizmetimizi kullanıyor!"
-        },
-        "github": {
-          "title": "Açık Kaynak"
-        }
+    "hero": {
+      "title": "YokaiVerse'e Hoş Geldiniz",
+      "desc": "YokaiVerse deneyimine hoş geldiniz! Anime, Manga ve Webtoon'ların keyfini kesintisiz çıkardığımız yer burası.",
+      "languages": {
+        "title": "Diller",
+        "info": "9 farklı dilde izleyin"
+      },
+      "upToDate": {
+        "title": "Güncel",
+        "info": "Her zaman güncel"
+      },
+      "annoyingAdds": {
+        "title": "Rahatsız Edici Reklamlar",
+        "info": "Asla rahatsız edici reklamlar yok"
+      },
+      "positiveReviews": {
+        "title": "Olumlu Yorumlar",
+        "info": "9.648'den fazla kişi YokaiVerse'i öneriyor"
+      },
+      "activeUsers": {
+        "title": "Aktif Kullanıcılar",
+        "info": "16.849'dan fazla kişi hizmetimizi kullanıyor!"
+      },
+      "github": {
+        "title": "Açık Kaynak"
       }
-    },
-
-  "Landing": {
-    "title": "Reklamlardan sıkıldınız mı?",
-    "title2": "YokaiVerse",
-    "title3": "tam size göre",
-    "join_now": "Hesabınız yok mu?",
-    "search_placeholder": "Giriş yapmak için e-postanızı girin",
-    "whatWeOffer": {
-      "title": "Neler Sunuyoruz?",
-      "desc": "YokaiVerse deneyiminizi daha hızlı, pürüzsüz ve keyifli hale getirmek için tasarlanmış bir dizi özellik.",
-      "cards": {
-        "performance": {
-          "title": "Hızlı Performans ve Akıcı Arayüz",
-          "desc": "Modern araçlar ve verimli kodlarla oluşturulan YokaiVerse, tüm cihazlarda hızlı, duyarlı ve akıcı bir deneyim sunar."
-        },
-        "language": {
-          "title": "Çeviriler ve Topluluk Desteği",
-          "desc": "Çeviri ekiplerimiz ve topluluk katkıda bulunanlarımız, bölümleri daha fazla dile kazandırmak ve herkes için daha iyi bir deneyim oluşturmak için birlikte çalışır."
-        },
-        "privacy": {
-          "title": "Gizlilik Öncelikli Deneyim",
-          "desc": "Verileriniz için endişelenmeden anime izleyin, manga okuyun ve webtoonların tadını çıkarın. Sadece açıkça izin verdiğiniz verileri topluyoruz — daha fazlasını değil."
-        },
-        "downloads": {
-          "title": "Hızlı Yüklemeler ve İndirmeler",
-          "desc": "Bant genişliği sınırları olmadan yüksek hızlı yükleme ve indirmelerin keyfini çıkarın, böylece içeriğiniz her zaman hazır olsun."
-        }
-      }
-    },
-    "coreValues": {
-      "title": "Temel Değerlerimiz",
-      "desc": "Bunlar sadece teknik özellikler değil; bizim yol gösterici inançlarımızdır. Gürültü, reklamlar ve veri canavarı platformlarla dolu bir dünyada, YokaiVerse netlik, özgürlük ve hayran gücüyle gelişim için ayakta duruyor. İster okumak, ister izlemek, paylaşmak veya üretmek için burada olun — kâr amacı gütmeyen, tutkuyla inşa edilmiş bir şeyin parçasısınız.",
-      "openSource": "Açık Kaynak",
-      "private": "Gizli ve Her Zaman Güncel",
-      "community": "Topluluk Destekli"
     }
   },
   "settings": {
@@ -209,50 +170,43 @@
       "header": "ayarlar",
       "desc": "Deneyiminizi dilediğiniz gibi özelleştirin.",
       "quickLinks": {
-        "general": {
-          "title": "genel",
-          "desc": "Temel site davranışını ve temel site tercihlerini yönetin."
-        },
-        "appearance": {
-          "title": "görünüm",
-          "desc": "Temaları, vurgu renklerini ve genel kullanıcı arayüzünü özelleştirin."
-        },
-        "experimental": {
-          "title": "deneysel",
-          "desc": "Beta özellikleri ve yaklaşan site geliştirmelerini test edin."
-        },
-        "privacy": {
-          "title": "gizlilik",
-          "desc": "Veri görünürlüğünüzü ve anonimlik protokollerinizi kontrol edin."
-        },
-        "player": {
-          "title": "video oynatıcı",
-          "desc": "Oynatma, kalite ve akış önbelleklerini hassaslaştırın."
-        },
-        "account": {
-          "title": "hesap",
-          "desc": "Kalıcı @kullanıcıadınızı ve güvenlik günlüklerinizi yönetin."
-        }
+        "general": "genel",
+        "appearance": "görünüm",
+        "experimental": "deneysel",
+        "privacy": "gizlilik",
+        "account": "hesap"
       }
     },
     "tabs": {
       "general": {
-        "hero": {
-          "header": "genel",
-          "desc": "Temel site davranışını ve temel site tercihlerini yönetin."
-        }
+        "title": "Genel",
+        "desc": "Temel site davranışını ve temel site tercihlerini yönetin",
+        "contents": {}
       },
       "account": {
-        "hero": {
-          "header": "hesap",
-          "desc": "Kalıcı @kullanıcıadınızı ve güvenlik günlüklerinizi yönetin."
-        }
+        "title": "Hesap",
+        "desc": "Kalıcı @kullanıcıadınızı ve güvenlik günlüklerinizi yönetin",
+        "contents": {}
       },
       "privacy": {
-        "hero": {
-          "header": "gizlilik",
-          "desc": "Veri görünürlüğünüzü ve anonimlik protokollerinizi kontrol edin."
+        "title": "Gizlilik",
+        "desc": "Veri görünürlüğünüzü ve anonimlik protokollerinizi kontrol edin",
+        "contents": {}
+      },
+      "appearance": {
+        "title": "Görünüm",
+        "desc": "Temaları, vurgu renklerini ve genel kullanıcı arayüzünü özelleştirin",
+        "contents": {
+          "theme": {
+            "title": "Temalar",
+            "desc": "Temayı istediğinizle değiştirin yada sistemin seçimini uygulayın"
+          }
         }
+      },
+      "experimental": {
+        "title": "Deneysel",
+        "desc": "Deneysel özellikleri ve yaklaşan site geliştirmelerini test edin",
+        "contents": {}
       }
     }
   },
@@ -279,8 +233,12 @@
     "browser": "Tarayıcı:",
     "browserVersion": "Tarayıcı Sürümü:",
     "os": "İşletim Sistemi:",
-    "backFeatured": { "title": "Öne Çıkanlara Dön" },
-    "backHome": { "title": "Ana Sayfaya Dön" }
+    "backFeatured": {
+      "title": "Öne Çıkanlara Dön"
+    },
+    "backHome": {
+      "title": "Ana Sayfaya Dön"
+    }
   },
   "store": {
     "hero": {
@@ -292,29 +250,47 @@
       "monthly": "aylık"
     },
     "plans": {
-      "free": { "title": "Ücretsiz" },
-      "azure": { "title": "Azure" },
-      "support": { "title": "Destek" }
+      "free": {
+        "title": "Ücretsiz"
+      },
+      "azure": {
+        "title": "Azure"
+      },
+      "support": {
+        "title": "Destek"
+      }
     },
     "features": {
       "ads": {
         "title": "Reklamlar",
         "descFree": "Yalnızca ana sayfalarda gösterilir, videonuzu bölmez. Kişiselleştirilmemiştir."
       },
-      "rateLimiting": { "title": "Hız Sınırlandırması" },
-      "cloudStorage": { "title": "Bulut Depolama" },
+      "rateLimiting": {
+        "title": "Hız Sınırlandırması"
+      },
+      "cloudStorage": {
+        "title": "Bulut Depolama"
+      },
       "security": {
         "title": "Güvenlik ve Gizlilik",
         "desc": "Her plan, geliştirilmiş uçtan uca şifreleme içerir."
       },
-      "forum": { "title": "Forum" },
+      "forum": {
+        "title": "Forum"
+      },
       "episodes": {
         "title": "Bölümler",
         "desc": "Günlük maksimum bölüm sayısı"
       },
-      "videoUploading": { "title": "Video Yükleme" },
-      "prioritySupport": { "title": "Öncelikli Destek" },
-      "downloadUpload": { "title": "İndirme ve Yükleme" },
+      "videoUploading": {
+        "title": "Video Yükleme"
+      },
+      "prioritySupport": {
+        "title": "Öncelikli Destek"
+      },
+      "downloadUpload": {
+        "title": "İndirme ve Yükleme"
+      },
       "translations": {
         "title": "Çeviriler",
         "descFree": "İngilizce ve içeriğin ana dili.",
@@ -480,7 +456,7 @@
       },
       "Self-XSS": {
         "header": "Kullanıcı Tarafı Güvenliği ve Self-XSS Önleme",
-        "paragraph_1": "\"Kendi Anahtarını Getir\" (BYOK) özelliğimiz aracılığıyla içerik çevirileri, özel API yapılandırmalarınıza göre üçüncü taraf yapay zeka sağlayıcıları tarafından işlenir. Bu anahtarları sağlayarak, verilerinizin ikamet ettiğiniz ülkenin dışındaki yargı bölgelerinde işlenebileceğini kabul etmiş olursunuz. YokaiVerse yalnızca teknik bir aracı olarak hareket eder ve bu harici sağlayıcıların veri işleme uygulamalarından dolayı hiçbir sorumluluk kabul etmez."
+        "paragraph_1": "\"Kendi Anahtarını Getir\" (BYOK) özelliğimiz aracılığıyla içerik çevirileri, özel API yapılandırmalarınıza göre üçüncü taraf yapay zeka sağlayıcıları tarafından işlenរ. Bu anahtarları sağlayarak, verilerinizin ikamet ettiğiniz ülkenin dışındaki yargı bölgelerinde işlenebileceğini kabul etmiş olursunuz. YokaiVerse yalnızca teknik bir aracı olarak hareket eder ve bu harici sağlayıcıların veri işleme uygulamalarondan dolayı hiçbir sorumluluk kabul etmez."
       },
       "KVKK": {
         "header": "KVKK Uyumluluğu ve Veri Sahibi Hakları",

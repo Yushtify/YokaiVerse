@@ -11,11 +11,13 @@ import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
     >
         <!-- Lister Header -->
         <div
-            class="flex flex-row flex-wrap items-center justify-start w-full h-fit gap-4"
+            class="flex flex-col items-start justify-start md:flex-row md:items-end md:justify-between w-full h-fit gap-4"
         >
-            <div class="flex flex-col w-full h-fit items-start justify-center">
+            <div
+                class="flex flex-col w-fit max-w-full h-fit items-start justify-center"
+            >
                 <div
-                    class="flex flex-row items-center justify-start gap-4 w-full h-fit"
+                    class="flex flex-row items-center justify-start gap-4 w-fit max-w-full h-fit"
                 >
                     <GoogleMaterialSymbol
                         SVG_ID="listerSVG"
@@ -25,14 +27,14 @@ import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
                     />
                     <p
                         id="listerTitle"
-                        class="font-bold text-[min(6vw,2rem)] capitalize text-nowrap"
+                        class="font-bold text-[min(6vw,2rem)] capitalize"
                     >
                         Title
                     </p>
                 </div>
                 <p
                     id="listerDesc"
-                    class="flex w-full lg:max-w-[80%] xl:max-w-[65%] text-LT_Secondary dark:text-DT_Secondary"
+                    class="flex w-fit text-LT_Secondary dark:text-DT_Secondary"
                 >
                     Desc
                 </p>

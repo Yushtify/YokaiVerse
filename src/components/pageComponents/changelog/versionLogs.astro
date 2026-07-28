@@ -39,84 +39,71 @@ import VersionTemplate from "./versionTemplate.astro";
 
         const logTypeConfig: Record<
             string,
-            { bg: string; text: string; border: string; label: string }
+            { bg: string; text: string; label: string }
         > = {
             Added: {
                 bg: "bg-green-500",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Added",
             },
             Changed: {
                 bg: "bg-amber-500",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Changed",
             },
             Fixed: {
                 bg: "bg-sky-500",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Fixed",
             },
             Removed: {
                 bg: "bg-red-500",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Removed",
             },
             Experimental: {
                 bg: "bg-LightAccent",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Experimental",
             },
             Misc: {
                 bg: "bg-gray-500",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Misc",
             },
             Known_Bug: {
                 bg: "bg-rose-700",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Known Bug",
             },
             Deprecated: {
                 bg: "bg-orange-500",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Deprecated",
             },
             Security: {
                 bg: "bg-teal-500",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Security",
             },
             Performance: {
                 bg: "bg-cyan-500",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Performance",
             },
             Rewrited: {
                 bg: "bg-Accent",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Rewrited",
             },
             Breaking: {
                 bg: "bg-fuchsia-600",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Breaking",
             },
             Reverted: {
                 bg: "bg-slate-500",
                 text: "text-LT_Inverted dark:text-DT_Inverted",
-                border: "border-transparent",
                 label: "Reverted",
             },
         };
@@ -246,12 +233,13 @@ import VersionTemplate from "./versionTemplate.astro";
 
                 const chip = detailClone.querySelector(
                     "#versionDetail_TypeChip",
-                ) as HTMLElement;
-                const descElement = detailClone.querySelector(
+                ) as HTMLDivElement;
+                const chipTXT = chip.querySelector("p") as HTMLParagraphElement;
+                const descElement = chip?.querySelector(
                     "#versionDetail_Desc",
-                ) as HTMLElement;
+                ) as HTMLParagraphElement;
 
-                if (chip) {
+                if (chip && chipTXT) {
                     const config = typeConfig[log.type] || {
                         bg: "bg-gray-500",
                         text: "text-gray-400",
@@ -259,11 +247,15 @@ import VersionTemplate from "./versionTemplate.astro";
                         label: log.type,
                     };
                     chip.className += ` ${config.bg} ${config.text} ${config.border}`;
-                    chip.textContent = config.label;
+                    chipTXT.innerHTML = config.label;
                 }
 
                 if (descElement) {
-                    descElement.textContent = log.desc;
+                    descElement.innerHTML = log.desc;
+                } else {
+                    return console.error(
+                        "[Version Logs]: Desc Element not found for info chips",
+                    );
                 }
 
                 logList.appendChild(detailClone);
