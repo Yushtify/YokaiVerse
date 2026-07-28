@@ -1,6 +1,6 @@
 {
   "version": "v0.5.2",
-  "commit": "",
+  "commit": "ffff1aa",
   "date": "Jul 28, 2026",
   "description": "A patch update.",
   "logs": [
@@ -15,6 +15,10 @@
     {
       "type": "Removed",
       "desc": "Remaining text's such as localization texts of \"landing\""
+    },
+    {
+      "type": "Deprecated",
+      "desc": "\"cloudflare pages\" due to it took 4 hours for me to setup and then find out i broke thr project (I had a backup), so i reverted back. plus in the meantime i noticed Astro and Vite has compability issues."
     }
   ]
 }
