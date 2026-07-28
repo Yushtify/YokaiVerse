@@ -13,20 +13,8 @@
       "desc": "\"/roadmap\" navigation to footer under \"Links\" collumn"
     },
     {
-      "type": "Updated",
-      "desc": "\"/chnagelog\" page's changelog chips to be more colorful"
-    },
-    {
-      "type": "Changed",
-      "desc": "\"/chnagelog\" page's changelog chips to be more colorful"
-    },
-    {
       "type": "Removed",
       "desc": "\"video player\" settings from \"/settings\"."
-    },
-    {
-      "type": "Removed",
-      "desc": "Remaining text's such as localization texts of \"landing\""
     }
   ]
 }
