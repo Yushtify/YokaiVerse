@@ -1,7 +1,7 @@
 {
   "version": "v0.5.1",
-  "commit": "",
-  "date": "Jul 27, 2026",
+  "commit": "5044d71",
+  "date": "Jul 28, 2026",
   "description": "A quality-of-life update featuring a new theme switcher in settings, roadmap navigation in the footer, and settings cleanup.",
   "logs": [
     {
