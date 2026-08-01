@@ -1,20 +1,20 @@
 ---
 import GoogleMaterialSymbol from "../components/custom/googleMaterial_Symbol.astro";
 import CardLink from "../components/custom/links/cardLink.astro";
-import Body from "../layouts/body.astro";
+import Body from "../layouts/default.astro";
 
 const { pathname } = Astro.url;
 ---
 
 <Body>
     <div
-        class="flex flex-col items-center justify-center rounded-3xl gap-4 p-8 m-auto w-full max-w-none md:max-w-[75%] lg:max-w-[65%] xl:max-w-[45%] h-fit bg-L_Secondary dark:bg-D_Secondary border-2 border-LB_Primary dark:border-DB_Primary"
+        class="flex flex-col items-center justify-center rounded-3xl gap-4 p-8 m-auto w-full max-w-none md:max-w-[75%] lg:max-w-[65%] xl:max-w-[45%] h-fit bg-L_Primary dark:bg-D_Primary"
     >
         <div
             class="flex flex-row items-center justify-start gap-4 min-w-fit w-full h-fit font-semibold text-[min(6vw,4rem)] text-LT_Primary dark:text-DT_Primary"
         >
             <div
-                class="flex flex-row items-center justify-center rounded-full p-4 bg-LB_Primary dark:bg-DB_Primary"
+                class="flex flex-row items-center justify-center rounded-full p-4 bg-L_BG dark:bg-D_BG"
             >
                 <GoogleMaterialSymbol
                     symbol="sentiment_sad"
@@ -26,16 +26,16 @@ const { pathname } = Astro.url;
         </div>
         <p
             data-i18n="404.message"
-            class="w-full text-[min(6vw,1rem)] text-LT_Secondary dark:text-DT_Secondary text-left"
+            class="w-full text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary text-left"
         >
             We're having trouble finding what you're looking for.
         </p>
         <div
-            class="flex flex-col items-start justify-start gap-4 p-4 rounded-3xl w-full h-fit bg-L_Primary dark:bg-D_Primary text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+            class="flex flex-col items-start justify-start gap-4 p-4 rounded-3xl w-full h-fit bg-L_BG dark:bg-D_BG text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary"
         >
             <p
                 data-i18n="404.helpText"
-                class="w-full text-wrap text-[min(6vw,1rem)] text-LT_Secondary dark:text-DT_Secondary"
+                class="w-full text-wrap text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary"
             >
                 Please make sure there are no typos in the URL. If you believe
                 we're responsible for this issue, please reach out to our
@@ -52,12 +52,12 @@ const { pathname } = Astro.url;
         <!-- Device and Browser Info Section -->
         <p
             data-i18n="404.nerdsLabel"
-            class="w-full text-[min(6vw,1rem)] text-LT_Secondary dark:text-DT_Secondary text-left uppercase"
+            class="w-full text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary text-left uppercase"
         >
             Information for nerds:
         </p>
         <div
-            class="flex flex-col items-start justify-start gap-4 p-4 rounded-3xl w-full h-fit bg-L_Primary dark:bg-D_Primary text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+            class="flex flex-col items-start justify-start gap-4 p-4 rounded-3xl w-full h-fit bg-L_BG dark:bg-D_BG text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary"
         >
             <div
                 class="flex flex-col md:flex-row items-start justify-start gap-2"
@@ -109,38 +109,81 @@ const { pathname } = Astro.url;
 </Body>
 
 <script>
-    async function loadUserInfo() {
+    function loadClientInfo() {
         try {
-            console.log("Fetching user info from /api/user-info...");
-            const response = await fetch("/api/user-info");
-            console.log("Response status:", response.status);
+            // Kullanıcının tarayıcı imzasını alıyoruz
+            const ua = navigator.userAgent;
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            // --- 1. Cihaz Tespiti ---
+            const isMobile = /Mobile|Android|iP(hone|od|ad)/i.test(ua);
+            const device = isMobile ? "Mobile" : "Desktop";
+
+            // --- 2. İşletim Sistemi (OS) Tespiti ---
+            let os = "Unknown";
+            if (ua.includes("Win")) os = "Windows";
+            else if (ua.includes("Mac")) os = "MacOS";
+            else if (ua.includes("Android")) os = "Android";
+            else if (ua.includes("like Mac")) os = "iOS";
+            else if (ua.includes("Linux")) os = "Linux";
+
+            // --- 3. Tarayıcı ve Sürüm Tespiti ---
+            let browser = "Unknown";
+            let version = "Unknown";
+
+            // Not: Sıralama önemlidir çünkü Chrome tabanlı diğer tarayıcılar (Edge, Opera)
+            // kendi isimlerinin yanında "Chrome" ibaresini de barındırır.
+            if (ua.includes("Firefox")) {
+                browser = "Firefox";
+                version = ua.match(/Firefox\/([0-9.]+)/)?.[1] || "Unknown";
+            } else if (ua.includes("OPR") || ua.includes("Opera")) {
+                browser = "Opera";
+                version =
+                    ua.match(/(?:Opera|OPR)\/([0-9.]+)/)?.[1] || "Unknown";
+            } else if (ua.includes("Edg")) {
+                browser = "Edge";
+                version = ua.match(/Edg\/([0-9.]+)/)?.[1] || "Unknown";
+            } else if (ua.includes("Chrome")) {
+                browser = "Chrome";
+                version = ua.match(/Chrome\/([0-9.]+)/)?.[1] || "Unknown";
+            } else if (ua.includes("Safari")) {
+                browser = "Safari";
+                version = ua.match(/Version\/([0-9.]+)/)?.[1] || "Unknown";
             }
 
-            const data = await response.json();
-            console.log("Received data:", data);
+            // --- 4. DOM'a Yazdırma İşlemi ---
+            const setElementText = (id: string, text: string) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = text;
+            };
 
-            // Update DOM elements
-            document.getElementById("device-info")!.textContent = data.device;
-            document.getElementById("browser-info")!.textContent = data.browser;
-            document.getElementById("browser-version-info")!.textContent =
-                data.browserVersion;
-            document.getElementById("os-info")!.textContent = data.os;
+            setElementText("device-info", device);
+            setElementText("browser-info", browser);
+            setElementText("browser-version-info", version);
+            setElementText("os-info", os);
         } catch (error) {
-            console.error("Error fetching user info:", error);
-            document.getElementById("device-info")!.textContent =
-                "Unable to retrieve";
-            document.getElementById("browser-info")!.textContent =
-                "Unable to retrieve";
-            document.getElementById("browser-version-info")!.textContent =
-                "Unable to retrieve";
-            document.getElementById("os-info")!.textContent =
-                "Unable to retrieve";
+            console.error(
+                "Tarayıcı bilgileri ayrıştırılırken hata oluştu:",
+                error,
+            );
+
+            // Hata durumunda varsayılan mesajı yazdır
+            const elements = [
+                "device-info",
+                "browser-info",
+                "browser-version-info",
+                "os-info",
+            ];
+            elements.forEach((id) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = "Unable to retrieve";
+            });
         }
     }
 
-    // Load user info when the page loads
-    loadUserInfo();
+    // Normal sayfa yüklemeleri için
+    loadClientInfo();
+
+    // Astro'nun View Transitions özelliği kullanılıyorsa, sayfalar arası geçişlerde
+    // scriptin yeniden tetiklenmesi için event listener ekliyoruz.
+    document.addEventListener("astro:page-load", loadClientInfo);
 </script>

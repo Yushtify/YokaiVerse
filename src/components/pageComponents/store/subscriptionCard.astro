@@ -44,25 +44,25 @@ const ColorValidationSVG = isHighlighted
         <GoogleMaterialSymbol
             symbol={givenGoogleSymbol}
             SVG_Style={ColorValidationSVG}
-            SvgSize="!text-[min(7vw,2rem)]"
+            SvgSize="!text-[min(6vw,2rem)]"
             isFilled={true}
         />
         <p data-i18n={titleData}>{givenTitle}</p>
     </div>
     <div class="flex flex-col items-center justify-center gap-0 w-full h-fit">
         <p
-            class={`text-[min(7vw,2rem)] text-LT_Secondary dark:text-DT_Secondary uppercase text-center line-through ${isDiscounted}`}
+            class={`text-[min(6vw,2rem)] text-LT_Secondary dark:text-DT_Secondary uppercase text-center line-through ${isDiscounted}`}
         >
             ${givenDiscount}
         </p>
         <div
             class="flex flex-row items-center justify-center w-full h-fit text-nowrap gap-2"
         >
-            <p class="text-[min(7vw,4rem)] uppercase text-center">
+            <p class="text-[min(6vw,4rem)] uppercase text-center">
                 ${givenPrice}
             </p>
             <p
-                class="text-[min(7vw,1rem)] uppercase text-center text-LT_Secondary dark:text-DT_Secondary"
+                class="text-[min(6vw,0.9rem)] uppercase text-center text-LT_Secondary dark:text-DT_Secondary"
             >
                 / <span data-i18n={billingCycleData}>{givenBillingCycle}</span>
             </p>

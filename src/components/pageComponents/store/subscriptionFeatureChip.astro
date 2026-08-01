@@ -40,7 +40,7 @@ const isDescActive = givenDesc ? "inline" : "hidden";
         >
             <GoogleMaterialSymbol
                 symbol={givenGoogleSymbol}
-                SvgSize="!text-[min(7vw,1.5rem)]"
+                SvgSize="!text-[min(6vw,1.5rem)]"
                 isFilled={true}
             />
         </div>
@@ -48,12 +48,12 @@ const isDescActive = givenDesc ? "inline" : "hidden";
         <GoogleMaterialSymbol
             symbol={givenStateSymbol}
             SVG_Style={givenStateColor}
-            SvgSize="!text-[min(7vw,1.5rem)]"
+            SvgSize="!text-[min(6vw,1.5rem)]"
             isFilled={true}
         />
 
         <div
-            class={`flex-row items-center justify-center px-2 p-1 rounded-full w-fit h-fit bg-L_Primary dark:bg-D_Primary border border-LB_Primary dark:border-DB_Primary text-nowrap text-[min(7vw,0.8rem)] text-LT_Tertiary dark:text-DT_Tertiary group-hover:text-LT_Secondary dark:group-hover:text-DT_Secondary capitalize ${isInformation}`}
+            class={`flex-row items-center justify-center px-2 p-1 rounded-full w-fit h-fit bg-L_Primary dark:bg-D_Primary border border-LB_Primary dark:border-DB_Primary text-nowrap text-[min(6vw,0.8rem)] text-LT_Tertiary dark:text-DT_Tertiary group-hover:text-LT_Secondary dark:group-hover:text-DT_Secondary capitalize ${isInformation}`}
         >
             <p data-i18n={informationData}>{givenInformation}</p>
         </div>
