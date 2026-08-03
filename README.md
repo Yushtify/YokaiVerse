@@ -22,7 +22,7 @@ Built with a **Privacy First** philosophy, YokaiVerse minimizes data collection 
 
 ## How to Host
 
-### 🇺🇸 English
+### 🇬🇧 English
 
 1. Clone the repository.
 
@@ -84,7 +84,7 @@ Built with a **Privacy First** philosophy, YokaiVerse minimizes data collection 
 
 ## How to Contribute
 
-### 🇺🇸 English
+### 🇬🇧 English
 
 1. Fork this repository.
 2. Create a new branch.
@@ -104,7 +104,7 @@ Built with a **Privacy First** philosophy, YokaiVerse minimizes data collection 
 
 ## ⚖️ License
 
-### 🇺🇸 English
+### 🇬🇧 English
 
 This project is licensed under the **GNU AGPLv3**.
 
