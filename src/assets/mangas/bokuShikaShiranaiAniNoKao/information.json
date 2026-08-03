@@ -1,0 +1,23 @@
+{
+  "title": "Boku shika Shiranai Ani no Kao",
+  "desc": "IDK the lore die.",
+  "author": "Minakami Riku",
+  "ageRestriction": "18+",
+  "adultContent": true,
+  "categories": ["Popular", "Featured", "Adult Content", "Drama", "Shounen"],
+  "series": {
+    "manga": true,
+    "anime": false,
+    "movie": false
+  },
+  "meta": {
+    "views": "10.000",
+    "rating": "4.9",
+    "uploadDate": "29 Sep 2023",
+    "tags": {
+      "tag_1": "High School",
+      "tag_2": "Teen",
+      "tag_3": "Adult Content"
+    }
+  }
+}

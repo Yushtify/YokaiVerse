@@ -1,0 +1,25 @@
+---
+import Body from "../../../layouts/default.astro";
+
+import SideBar from "./sideBar.astro";
+
+import SettingTabs from "./tabs/tabs.astro";
+---
+
+<Body>
+    <div
+        class="relative flex flex-col md:flex-row items-start justify-start md:p-6 pb-0 w-full xl:w-[80%] h-fit gap-12 lg:gap-24"
+    >
+        <SideBar />
+        <div
+            class="flex flex-col items-start justify-start w-full h-fit max-h-screen"
+        >
+            <SettingTabs />
+        </div>
+    </div>
+</Body>
+
+<script>
+    import "./scripts/settingsControls.ts"; // controls every setting in the settings page
+    import "./scripts/settingsNavigator.ts"; // contorls the navigation between settings tabs
+</script>

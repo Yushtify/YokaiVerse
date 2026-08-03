@@ -1,0 +1,35 @@
+---
+import Button from "../custom/buttons/Button.astro";
+// ------ Buttons ---------------------------------------------------------
+import Settings from "./buttons/settings.astro";
+---
+
+<div
+    id="controlBar"
+    class="flex flex-col items-start justify-center w-full h-fit gap-4 z-2"
+>
+    <!--
+    Second Collumn:
+    Will have; Every other control that a video player has.
+    -->
+    <div
+        id="controls"
+        class="flex flex-row items-center justify-end w-full h-fit gap-2 text-LT_Primary dark:text-L_Primary"
+    >
+        <!--
+        First Row:
+        Will have; Tranlations, Settings and Fullscreen.
+        -->
+        <Settings />
+        <Button
+            givenLocationFrom="horizontal"
+            givenLocation="end"
+            givenButtonID="epFullscreenButton"
+            givenButtonAction="epFullscreenToggle()"
+            givenButtonSymbol="expand_content"
+            givenButtonSymbolSize="text-[min(6vw,1.5rem)]!"
+            givenButtonSymbolFill={true}
+            tooltipDescTrans="tooltip.epPlayer.controlBar.fullscreenButton"
+        />
+    </div>
+</div>

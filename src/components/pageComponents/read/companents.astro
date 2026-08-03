@@ -1,0 +1,61 @@
+---
+import Reader from "../../reader/companents.astro"; // v1
+
+// Things Releated to Reader And that's seperated into same root with this file.
+import MangaInfoSlot from "./videoInfoSection.astro";
+import ChapterContainerGlobal from "../../custom/episodeContainerGlobal.astro";
+import ExpandableInfoChip from "../../custom/expandableInfoChip.astro";
+import Button from "../../custom/buttons/Button.astro";
+---
+
+<!-- Manga Reader title and so on -->
+<div
+    class="flex flex-col items-start justify-start pt-4 w-full h-fit lg:max-w-[85%] xl:max-w-[65%] gap-4"
+>
+    <div
+        class="flex flex-col items-start justify-start px-4 gap-4 w-full h-fit text-[min(6vw,0.9rem)] text-left text-LT_Secondary dark:text-DT_Secondary z-0"
+    >
+        <MangaInfoSlot />
+        <div class="flex flex-row items-start justify-end gap-4 w-full h-fit">
+            <div
+                class="flex flex-row items-center justify-center gap-2 w-fit h-fit"
+            >
+                <Button
+                    givenLocationFrom="horizontal"
+                    givenLocation="start"
+                    givenButtonID="previousChButton"
+                    givenButtonAction="PreviousChapter()"
+                    givenTitle="previous chapter"
+                    givenButtonSymbol="chevron_left"
+                    tooltipTitleTrans=""
+                />
+                <Button
+                    givenLocationFrom="horizontal"
+                    givenLocation="end"
+                    givenButtonID="nextChButton"
+                    givenButtonCustomClass="flex-row-reverse"
+                    givenButtonAction="NextChapter()"
+                    givenTitle="next chapter"
+                    givenButtonSymbol="chevron_right"
+                    tooltipTitleTrans=""
+                />
+            </div>
+        </div>
+        <!-- Description -->
+        <ExpandableInfoChip
+            givenID="chapterDescContainer"
+            givenTextID="chapterDesc"
+            givenTitle="description"
+            givenDesc=""
+        />
+    </div>
+    <Reader />
+</div>
+
+<div
+    class="flex flex-col items-start justify-start w-full lg:max-w-[85%] xl:max-w-[65%] gap-4"
+>
+    <ChapterContainerGlobal givenID="manga" givenWidth="w-full" />
+</div>
+
+<script></script>

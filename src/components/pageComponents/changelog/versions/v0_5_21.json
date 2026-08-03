@@ -1,0 +1,28 @@
+{
+  "version": "v0.5.21",
+  "commit": "",
+  "date": {
+    "en_us": "July 31, 2026",
+    "tr": "31 Temmuz 2026"
+  },
+  "description": {
+    "en_us": "Patch update.",
+    "tr": "Yama güncellemesi."
+  },
+  "logs": [
+    {
+      "type": "Fixed",
+      "desc": {
+        "en_us": "A duplicate footer and navigation bar appearing on the \"/store\" page.",
+        "tr": "\"/store\" sayfasında görünen yinelenmiş alt bilgi ve gezinme çubuğu sorunu düzeltildi."
+      }
+    },
+    {
+      "type": "Fixed",
+      "desc": {
+        "en_us": "An issue preventing the \"/404\" page from displaying technical information correctly.",
+        "tr": "\"/404\" sayfasının teknik bilgileri doğru şekilde göstermesini engelleyen bir sorun düzeltildi."
+      }
+    }
+  ]
+}

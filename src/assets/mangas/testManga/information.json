@@ -1,0 +1,23 @@
+{
+  "title": "Test Manga",
+  "desc": "Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet. Lorem Ipsum Sit Amet.",
+  "author": "Yushtify",
+  "ageRestriction": "9+",
+  "adultContent": false,
+  "categories": ["Popular", "Featured", "Drama", "Shounen"],
+  "series": {
+    "manga": true,
+    "anime": false,
+    "movie": false
+  },
+  "meta": {
+    "views": "10.000",
+    "rating": "4.9",
+    "uploadDate": "29 Sep 2023",
+    "tags": {
+      "tag_1": "RandomTag_1",
+      "tag_2": "RandomTag_2",
+      "tag_3": "RandomTag_3"
+    }
+  }
+}

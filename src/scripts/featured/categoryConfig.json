@@ -1,0 +1,68 @@
+{
+  "adventure": {
+    "icon": "explore",
+    "titleData": "featured.content.listers.adventure.title",
+    "desc": "Embark on thrilling journeys into the unknown.",
+    "descData": "featured.content.listers.adventure.desc"
+  },
+  "popular": {
+    "icon": "trending_up",
+    "titleData": "featured.content.listers.popular.title",
+    "desc": "The most watched and highly rated titles right now.",
+    "descData": "featured.content.listers.popular.desc"
+  },
+  "featured": {
+    "icon": "star",
+    "titleData": "featured.content.listers.featured.title",
+    "desc": "Hand-picked titles you shouldn't miss.",
+    "descData": "featured.content.listers.featured.desc"
+  },
+  "fantasy": {
+    "icon": "sword_rose",
+    "titleData": "featured.content.listers.fantasy.title",
+    "desc": "Explore magical worlds filled with wonder and adventure.",
+    "descData": "featured.content.listers.fantasy.desc"
+  },
+  "ova": {
+    "icon": "video_library",
+    "titleData": "featured.content.listers.ova.title",
+    "desc": "Original video animations.",
+    "descData": "featured.content.listers.ova.desc"
+  },
+  "special": {
+    "icon": "stars",
+    "titleData": "featured.content.listers.special.title",
+    "desc": "Special episodes and bonus content.",
+    "descData": "featured.content.listers.special.desc"
+  },
+  "drama": {
+    "icon": "theater_comedy",
+    "titleData": "featured.content.listers.drama.title",
+    "desc": "Emotionally driven dramatic titles.",
+    "descData": "featured.content.listers.drama.desc"
+  },
+  "psychological": {
+    "icon": "psychology",
+    "titleData": "featured.content.listers.psychological.title",
+    "desc": "Mind-bending psychological titles.",
+    "descData": "featured.content.listers.psychological.desc"
+  },
+  "supernatural": {
+    "icon": "auto_awesome",
+    "titleData": "featured.content.listers.supernatural.title",
+    "desc": "Titles with supernatural elements.",
+    "descData": "featured.content.listers.supernatural.desc"
+  },
+  "music": {
+    "icon": "music_note",
+    "titleData": "featured.content.listers.music.title",
+    "desc": "Titles centered around music.",
+    "descData": "featured.content.listers.music.desc"
+  },
+  "adultContent": {
+    "icon": "18_up_rating",
+    "titleData": "featured.content.listers.adultContent.title",
+    "desc": "Adult-oriented titles intended for mature audiences.",
+    "descData": "featured.content.listers.adultContent.desc"
+  }
+}

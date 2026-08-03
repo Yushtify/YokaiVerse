@@ -1,0 +1,95 @@
+---
+import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
+
+// ---- Props ----
+interface Props {
+    givenLocationFrom?: "horizontal" | "vertical";
+    givenLocation?: "start" | "center" | "end";
+
+    givenID?: string;
+    givenRadGroup: string;
+    givenState?: boolean;
+    givenCanDisabled: boolean;
+
+    givenTitle?: string;
+    titleData?: string;
+
+    givenSymbol?: string;
+    givenSymbolStyle?: string;
+}
+
+const {
+    givenLocationFrom,
+    givenLocation,
+    givenID,
+    givenRadGroup,
+    givenCanDisabled,
+    givenState,
+    givenTitle,
+    titleData,
+    givenSymbol,
+    givenSymbolStyle,
+} = Astro.props;
+
+// validate button rounded
+const borderRadiusMap = {
+    horizontal: {
+        start: "rounded-xl rounded-l-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-r-3xl",
+    },
+    vertical: {
+        start: "rounded-xl rounded-t-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-b-3xl",
+    },
+} as const;
+
+const borderRadius =
+    givenLocationFrom && givenLocation
+        ? borderRadiusMap[givenLocationFrom][givenLocation]
+        : "rounded-3xl";
+const validBorderRadius = `${borderRadius} hover:rounded-3xl`;
+
+const validP: string = givenTitle ? "p-2 px-4 pl-2" : "p-2";
+let textSize = "text-[min(6vw,0.9rem)]";
+
+const classMap = {
+    buttonDefClass: givenSymbol
+        ? `group flex flex-row items-center justify-start min-w-fit w-full max-w-full h-fit ${validBorderRadius} gap-2 ${validP}  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${textSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer capitalize`
+        : `group flex flex-row items-center justify-start w-fit max-w-full h-fit ${validBorderRadius} gap-2 p-2 px-4  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${textSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer capitalize`,
+    buttonActiveClass:
+        "rounded-3xl! bg-Accent! hover:bg-Highlight! font-bold! text-LT_Inverted! dark:text-DT_Inverted!",
+    symbolContainerDefClass: givenSymbol
+        ? "flex flex-row items-center justify-center w-fit h-fit rounded-3xl p-2 bg-L_BG dark:bg-D_BG group-hover:bg-LightAccent transition-colors duration-200 ease-in-out"
+        : "hidden",
+    activeSymbolContainerClass: "bg-LightAccent!",
+
+    hasTitle: givenTitle ? "inline text-left" : "hidden",
+};
+---
+
+<button
+    type="button"
+    id={givenID}
+    data-radgroup={givenRadGroup}
+    data-canDisabled={givenCanDisabled}
+    data-radstate={givenState}
+    data-radActive={classMap.buttonActiveClass}
+    class={classMap.buttonDefClass}
+>
+    <div
+        class={classMap.symbolContainerDefClass}
+        data-radActive={classMap.activeSymbolContainerClass}
+    >
+        <GoogleMaterialSymbol
+            symbol={givenSymbol}
+            SymbolSize={`${textSize}!`}
+            SVG_Style={givenSymbolStyle}
+            isFilled={true}
+        />
+    </div>
+    <p data-i18n={titleData} class={classMap.hasTitle}>
+        {givenTitle}
+    </p>
+</button>

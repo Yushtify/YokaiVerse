@@ -1,0 +1,64 @@
+---
+import TabTemplate from "./tabTemplate.astro";
+
+import RadioButton from "../../../custom/buttons/radioButton.astro";
+
+import SettingContainer from "./settingContainer.astro";
+import SettingCompanent from "./settingCompanent.astro";
+---
+
+<TabTemplate
+    givenState={false}
+    givenTabID="appearanceSettings"
+    givenSymbol="palette"
+    givenTitle="appearance"
+    titleData="settings.tabs.appearance.title"
+    givenDesc="Customize themes, accent colors, and the general user interface."
+    descData="settings.tabs.appearance.desc"
+>
+    <!-- Theme switcher -->
+    <SettingContainer
+        givenTitle="Interface"
+        titleData="settings.tabs.appearance.contents.interface.title"
+    >
+        <SettingCompanent
+            givenPadding="pl-10"
+            givenTitle="Themes"
+            titleData="settings.tabs.appearance.contents.interface.theme.title"
+            givenDesc="Change the theme to your liking or apply system selection"
+            descData="settings.tabs.appearance.contents.interface.theme.desc"
+        >
+            <div
+                class="flex flex-row items-start justify-start gap-2 p-2 rounded-3xl bg-L_BG dark:bg-D_BG"
+            >
+                <RadioButton
+                    givenLocationFrom="horizontal"
+                    givenLocation="start"
+                    givenID="themeAuto_radio"
+                    givenRadGroup="webTheme"
+                    givenCanDisabled={true}
+                    givenState={false}
+                    givenSymbol="computer"
+                />
+                <RadioButton
+                    givenLocationFrom="horizontal"
+                    givenLocation="center"
+                    givenID="themeLight_radio"
+                    givenRadGroup="webTheme"
+                    givenCanDisabled={true}
+                    givenState={false}
+                    givenSymbol="light_mode"
+                />
+                <RadioButton
+                    givenLocationFrom="horizontal"
+                    givenLocation="end"
+                    givenID="themeDark_radio"
+                    givenRadGroup="webTheme"
+                    givenCanDisabled={true}
+                    givenState={false}
+                    givenSymbol="dark_mode"
+                />
+            </div>
+        </SettingCompanent>
+    </SettingContainer>
+</TabTemplate>

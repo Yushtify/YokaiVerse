@@ -1,0 +1,280 @@
+{
+  "version": "v0.5.3",
+  "commit": "",
+  "date": {
+    "en_us": "August 3, 2026",
+    "tr": "3 Ağustos 2026"
+  },
+  "description": {
+    "en_us": "A major feature update introducing the first version of the Manga Reader, establishing the foundation for Manga support while delivering UI refinements, architecture improvements, and numerous bug fixes.",
+    "tr": "Manga Reader'ın ilk sürümünü sunan, Manga desteğinin temelini atan; arayüz iyileştirmeleri, mimari geliştirmeler ve çok sayıda hata düzeltmesi içeren büyük bir özellik güncellemesi."
+  },
+  "logs": [
+    {
+      "type": "Experimental",
+      "desc": {
+        "en_us": "\"timelineSlider.astro\" can now separate the video timeline into multiple sections such as Intro, Main Part, and Outro. Since this feature is experimental, you can disable timeline segmentation from the Experimental section in Settings.",
+        "tr": "\"timelineSlider.astro\" adlı yeni zaman çizelgesi bileşeni, videoyu Intro, Ana Bölüm ve Outro gibi birden fazla bölüme ayırabiliyor. Bu özellik deneysel olduğu için ayarlardaki Deneysel bölümünden zaman çizelgesi bölümlerini kapatabilirsiniz."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "The first version of the Manga Reader, providing a dedicated page-based reading experience.",
+        "tr": "Sayfa tabanlı özel bir okuma deneyimi sunan Manga Reader'ın ilk sürümü eklendi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "A dedicated Reader page for Manga content.",
+        "tr": "Manga içerikleri için özel bir Reader sayfası eklendi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "Quick Settings for the Manga Reader, allowing reading preferences to be adjusted without leaving the reader.",
+        "tr": "Reader'dan ayrılmadan okuma tercihlerini değiştirmeye olanak tanıyan Hızlı Ayarlar eklendi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "Manga chapter support, including chapter-based navigation.",
+        "tr": "Bölüm tabanlı gezinme dahil olmak üzere Manga chapter desteği eklendi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "Sub-patch support for ChangelogHandler. Version discovery now supports formats such as \"vX.X.XX\" in addition to \"vX.X.X\".",
+        "tr": "ChangelogHandler'a alt yama (sub-patch) desteği eklendi. Sürüm algılama artık \"vX.X.X\" biçiminin yanı sıra \"vX.X.XX\" biçimini de destekliyor."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "Localization support for content listers on \"/featured\".",
+        "tr": "\"/featured\" sayfasındaki içerik listeleri için yerelleştirme desteği eklendi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "Localization support for \"/changelog\", after changing your language settings you have to reload the page for now.",
+        "tr": "\"/changelog\" sayfasında yerelleştirme desteği eklendi. Dil ayarlarını değiştikten sonra sayfayı yeniden yüklemeniz gerekecek."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "Added the new \"dropdownMenu.astro\" component and \"dropdownHandler.ts\". Replaced the old dropdown menus throughout the project.",
+        "tr": "Yeni \"dropdownMenu.astro\" bileşeni ve \"dropdownHandler.ts\" eklendi. Eski dropdown menüleri proje genelinde yenileriyle değiştirildi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "Added a new toggle to the \"/settings\" General page for enabling or disabling UI animations.",
+        "tr": "\"/settings\" Genel sayfasına arayüz animasyonlarını açıp kapatmak için yeni bir toggle eklendi."
+      }
+    },
+    {
+      "type": "Breaking",
+      "desc": {
+        "en_us": "Information pages are now separated by content type. Anime uses \"/info/anime\", while Manga uses \"/info/manga\".",
+        "tr": "Bilgi sayfaları artık içerik türüne göre ayrılıyor. Anime \"/info/anime\", Manga ise \"/info/manga\" yolunu kullanıyor."
+      }
+    },
+    {
+      "type": "Breaking",
+      "desc": {
+        "en_us": "All video assets now follow the standardized \"/video/<quality>.webm\" structure. YokaiVerse now exclusively serves WebM files, simplifying media management, ensuring consistent encoding, and improving maintainability.",
+        "tr": "Tüm video dosyaları artık standart \"/video/<quality>.webm\" yapısını kullanıyor. YokaiVerse artık yalnızca WebM dosyaları sunarak medya yönetimini basitleştiriyor, tutarlı kodlama sağlıyor ve bakım sürecini kolaylaştırıyor."
+      }
+    },
+    {
+      "type": "Updated",
+      "desc": {
+        "en_us": "The active state of \"radioButton\" no longer applies the \"rounded-3xl\" class.",
+        "tr": "\"radioButton\" bileşeninin aktif durumu artık \"rounded-3xl\" sınıfını uygulamıyor."
+      }
+    },
+    {
+      "type": "Updated",
+      "desc": {
+        "en_us": "The \"/settings\" page with a redesigned layout and improved visual appearance.",
+        "tr": "\"/settings\" sayfası yeniden tasarlanan düzeni ve geliştirilmiş görsel görünümüyle güncellendi."
+      }
+    },
+    {
+      "type": "Updated",
+      "desc": {
+        "en_us": "\"featuredHandler\" to support loading Manga alongside Anime.",
+        "tr": "\"featuredHandler\", Anime ile birlikte Manga içeriklerini de yükleyecek şekilde güncellendi."
+      }
+    },
+    {
+      "type": "Updated",
+      "desc": {
+        "en_us": "The \"/featured\" page to allow switching between Anime and Manga directly from the Hero section.",
+        "tr": "\"/featured\" sayfası, Hero bölümünden doğrudan Anime ve Manga arasında geçiş yapılabilecek şekilde güncellendi."
+      }
+    },
+    {
+      "type": "Updated",
+      "desc": {
+        "en_us": "The \"globalEpisodeContainer\" to support both Anime and Manga content.",
+        "tr": "\"globalEpisodeContainer\", hem Anime hem de Manga içeriklerini destekleyecek şekilde güncellendi."
+      }
+    },
+    {
+      "type": "Updated",
+      "desc": {
+        "en_us": "The content loading pipeline to support both video playback and manga reading through a unified architecture.",
+        "tr": "İçerik yükleme altyapısı, video oynatma ve manga okuma işlemlerini tek bir birleşik mimari üzerinden destekleyecek şekilde güncellendi."
+      }
+    },
+    {
+      "type": "Updated",
+      "desc": {
+        "en_us": "The Info page Play button. It now automatically opens either the Episode Player or the Manga Reader depending on the selected content type.",
+        "tr": "Bilgi sayfasındaki Oynat düğmesi, seçilen içerik türüne göre artık otomatik olarak Episode Player veya Manga Reader'ı açıyor."
+      }
+    },
+    {
+      "type": "Updated",
+      "desc": {
+        "en_us": "The \"/settings\" page with a functional Adult Content toggle that enables or disables adult content across the site (except when explicitly accessed through a direct URL).",
+        "tr": "\"/settings\" sayfası, site genelinde yetişkin içeriklerini açıp kapatabilen işlevsel bir Adult Content anahtarıyla güncellendi (doğrudan URL ile erişilen içerikler hariç)."
+      }
+    },
+    {
+      "type": "Updated",
+      "desc": {
+        "en_us": "The images on \"Anime / Manga\" covers, \"Season / Volume\" covers, and \"Episode / Chapter\" covers now use \"object-cover object-top\" to prevent stretching and distortion.",
+        "tr": "\"Anime / Manga\", \"Season / Volume\" ve \"Episode / Chapter\" kapak görselleri artık esneme ve bozulmayı önlemek için \"object-cover object-top\" kullanıyor."
+      }
+    },
+    {
+      "type": "Updated",
+      "desc": {
+        "en_us": "\"episodeButton_Template.astro\" now looks sleeker in its active state.",
+        "tr": "\"episodeButton_Template.astro\" aktif durumdayken artık daha şık görünüyor."
+      }
+    },
+    {
+      "type": "Updated",
+      "desc": {
+        "en_us": "Refactored multiple dynamic components to improve readability by adopting a mapping-based structure, reducing the use of conditional logic \"if\" and making component behavior more maintainable.",
+        "tr": "Birden fazla dinamik bileşen yeniden düzenlendi. Okunabilirliği artırmak, Mapping yapısını kullanarak bileşen mantığını daha düzenli hâle getirmek ve \"if\" kullanımını azaltmak amacıyla kod yapısı iyileştirildi."
+      }
+    },
+    {
+      "type": "Fixed",
+      "desc": {
+        "en_us": "An issue where manually pressing \"Next Episode\" would not advance while Auto Play was disabled.",
+        "tr": "Otomatik Oynatma kapalıyken \"Sonraki Bölüm\" düğmesine manuel olarak basıldığında sonraki bölüme geçilememesine neden olan sorun düzeltildi."
+      }
+    },
+    {
+      "type": "Fixed",
+      "desc": {
+        "en_us": "Fixed an issue where users could access an anime or manga by entering its specific token directly, even when adult content was disabled in Settings.",
+        "tr": "Yetişkin içerik Ayarlar'da devre dışı olmasına rağmen, anime veya manganın özel token'ı bilindiğinde ilgili sayfaya erişilebilen bir sorun düzeltildi."
+      }
+    },
+    {
+      "type": "Fixed",
+      "desc": {
+        "en_us": "Fixed an issue where the \"GitHub Releases\" link on the \"/changelog\" page incorrectly pointed to the GitHub commits page. It has now been renamed to \"GitHub Commits\".",
+        "tr": "Eskiden \"GitHub Releases\" adlı olan \"/changelog\" sayfasındaki bağlantı GitHub commit sayfasına yönlendiriyordu. Bu nedenle adı \"GitHub Commits\" olarak değiştirildi."
+      }
+    },
+    {
+      "type": "Performance",
+      "desc": {
+        "en_us": "The Cinema Lights have been optimized for better performance. Rendering is now completely disabled when the canvas has \"opacity-0\" or while the video is paused. If the video is seeked using the timeline and the canvas is visible, rendering resumes automatically.",
+        "tr": "Sinema ışıkları daha fazla performans sağlamak için güncellendi, artık \"opacity-0\" veya video durmuş iken kesinlikle çizim gerçekleşmiyor. Eğer zaman çizelgesi kullanılarak video ileri sarılıyor ve \"opacity-0\" yok ise çizim yapılıyor."
+      }
+    },
+    {
+      "type": "Changed",
+      "desc": {
+        "en_us": "The Settings link in the navigation bar now includes a descriptive title attribute.",
+        "tr": "Gezinme çubuğundaki Ayarlar bağlantısına açıklayıcı bir title özelliği eklendi."
+      }
+    },
+    {
+      "type": "Changed",
+      "desc": {
+        "en_us": "Reduced the default responsive text size from a maximum of 16px to 14.4px for improved visual balance.",
+        "tr": "Varsayılan duyarlı metin boyutunun maksimum değeri, daha dengeli bir görünüm için 16 px'den 14.4 px'e düşürüldü."
+      }
+    },
+    {
+      "type": "Changed",
+      "desc": {
+        "en_us": "Reduced the Hero title maximum responsive size from 40px to 32px for improved visual balance.",
+        "tr": "Hero başlığının maksimum duyarlı yazı boyutu, daha dengeli bir görünüm için 40 px'den 32 px'e düşürüldü."
+      }
+    },
+    {
+      "type": "Changed",
+      "desc": {
+        "en_us": "UI animations are now enabled by default.",
+        "tr": "Arayüz animasyonları artık varsayılan olarak etkin."
+      }
+    },
+    {
+      "type": "Changed",
+      "desc": {
+        "en_us": "Renamed \"NSFW\" to \"Adult Content\".",
+        "tr": "\"NSFW\", \"Adult Content\" olarak yeniden adlandırıldı."
+      }
+    },
+    {
+      "type": "Deprecated",
+      "desc": {
+        "en_us": "The \"/discover\" page, as it currently had no functionality. It has been temporarily removed and may later return as a replacement for \"/featured\".",
+        "tr": "\"/discover\" sayfası, şu anda herhangi bir işlevi olmadığı için geçici olarak kullanımdan kaldırıldı. İleride \"/featured\" sayfasının yerine geri dönebilir."
+      }
+    },
+    {
+      "type": "Removed",
+      "desc": {
+        "en_us": "The footer theme switcher.",
+        "tr": "Alt bilgideki tema değiştirici kaldırıldı."
+      }
+    },
+    {
+      "type": "Removed",
+      "desc": {
+        "en_us": "The global search button from the navigation bar.",
+        "tr": "Gezinme çubuğundaki genel arama düğmesi kaldırıldı."
+      }
+    },
+    {
+      "type": "Removed",
+      "desc": {
+        "en_us": "The Adult Content filter from the \"/featured\" Hero section.",
+        "tr": "\"/featured\" sayfasındaki Hero bölümünden Adult Content filtresi kaldırıldı."
+      }
+    },
+    {
+      "type": "Removed",
+      "desc": {
+        "en_us": "\"videoPlayer.ts\", following the Watch page architecture overhaul.",
+        "tr": "Watch sayfasındaki mimari yenilemenin ardından \"videoPlayer.ts\" kaldırıldı."
+      }
+    },
+    {
+      "type": "Removed",
+      "desc": {
+        "en_us": "every language but \"TR\" and \"EN_US\" due to the project is for me to get a JOB",
+        "tr": "Proje, benim İŞ bulabilmem için oluşturulduğu dolayısıyla \"TR\" ve \"EN_US\" dışındaki tüm diller kaldırıldı, zaten sadece eğlence olsun diye eklemiştim."
+      }
+    }
+  ]
+}

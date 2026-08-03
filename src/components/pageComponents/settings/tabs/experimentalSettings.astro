@@ -1,0 +1,36 @@
+---
+import TabTemplate from "./tabTemplate.astro";
+import SettingCompanent from "./settingCompanent.astro";
+import ToggleButton from "../../../custom/buttons/toggleButton.astro";
+import SettingContainer from "./settingContainer.astro";
+---
+
+<TabTemplate
+    givenState={true}
+    givenTabID="experimentalSettings"
+    givenSymbol="science"
+    givenTitle="experimental"
+    titleData="settings.tabs.experimental.title"
+    givenDesc=""
+    descData="settings.tabs.experimental.desc"
+>
+    <SettingContainer
+        givenTitle="Video Player"
+        titleData="settings.tabs.experimental.contents.videoPlayer.title"
+    >
+        <!-- Timeline Segments Toggle -->
+        <SettingCompanent
+            givenTitle="Timeline Segments [NEW]"
+            titleData="settings.tabs.experimental.contents.videoPlayer.timelineSegments.title"
+            givenDesc="Change whatever video player uses Timeline with segments or not. This feature is added newly and may encounter a lot of bugs. (This feature is on by default)"
+            descData="settings.tabs.experimental.contents.videoPlayer.timelineSegments.desc"
+        >
+            <ToggleButton
+                givenAction="toggleTimelineSegments"
+                givenID="timelineSegmentsToggle_Button"
+                givenState={true}
+                givenSymbol="check"
+            />
+        </SettingCompanent>
+    </SettingContainer>
+</TabTemplate>

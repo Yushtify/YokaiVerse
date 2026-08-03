@@ -1,0 +1,36 @@
+---
+import TabTemplate from "./tabTemplate.astro";
+import SettingContainer from "./settingContainer.astro";
+import SettingCompanent from "./settingCompanent.astro";
+import Button from "../../../custom/buttons/Button.astro";
+---
+
+<TabTemplate
+    givenState={false}
+    givenTabID="privacySettings"
+    givenSymbol="shield_lock"
+    givenTitle="privacy"
+    titleData="settings.tabs.privacy.title"
+    givenDesc=""
+    descData="settings.tabs.privacy.desc"
+>
+    <SettingContainer
+        givenTitle="Danger Zone"
+        titleData="settings.tabs.privacy.contents.dangerZone.title"
+    >
+        <!-- Delete Data -->
+        <SettingCompanent
+            givenTitle="Delete Data"
+            titleData="settings.tabs.privacy.contents.dangerZone.deleteData.title"
+            givenDesc="Delete all data stored by the website. This action cannot be undone!"
+            descData="settings.tabs.privacy.contents.dangerZone.deleteData.desc"
+        >
+            <Button
+                givenButtonID="deleteAccData"
+                givenButtonAction="deleteAccData()"
+                givenButtonCustomClass="hover:bg-rose-600! border-2 border-rose-600 text-rose-600 capitalize hover:uppercase"
+                givenTitle="delete"
+            />
+        </SettingCompanent>
+    </SettingContainer>
+</TabTemplate>

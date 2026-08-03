@@ -1,0 +1,264 @@
+---
+export interface Chapter {
+    id: string;
+    title?: string;
+    start: number; // Saniye cinsinden başlangıç
+    end: number; // Saniye cinsinden bitiş
+}
+
+interface Props {
+    givenID: string;
+    duration: number; // Toplam video süresi (saniye)
+    chapters?: Chapter[];
+    initialTime?: number;
+}
+
+const {
+    givenID,
+    duration = 100,
+    chapters = [{ id: "main", start: 0, end: duration }],
+    initialTime = 0,
+} = Astro.props;
+---
+
+<div
+    id={givenID}
+    class="YokaiVerse_TimelineContainer group relative flex w-full items-center gap-1 cursor-pointer select-none"
+    data-duration={duration}
+    data-current-time={initialTime}
+    data-chapters={JSON.stringify(chapters)}
+>
+</div>
+
+<style>
+    /* 1. Varsayılan Durum: 4px */
+    :global(.YokaiVerseSegmentTrack) {
+        height: 4px;
+        transition:
+            height 150ms cubic-bezier(0.4, 0, 0.2, 1),
+            transform 150ms ease;
+    }
+
+    /* 2. Timeline Üzerine Gelindiğinde (Genel Hover): Diğer tüm barlar 6px olur */
+    .YokaiVerse_TimelineContainer:hover :global(.YokaiVerseSegmentTrack) {
+        height: 6px;
+    }
+
+    /* 3. Spesifik Bölüm Hover: Üzerinde olunan bar 8px olur */
+    .YokaiVerse_TimelineContainer :global(.YokaiVerseSegmentTrack:hover) {
+        height: 8px !important;
+    }
+</style>
+
+<script>
+    interface Chapter {
+        id: string;
+        title?: string;
+        start: number;
+        end: number;
+    }
+
+    class YokaiTimeline {
+        private container: HTMLElement;
+        private duration: number;
+        private currentTime: number;
+        private chapters: Chapter[];
+        private tracks: HTMLElement[] = [];
+
+        constructor(container: HTMLElement) {
+            this.container = container;
+            this.duration = Number(container.dataset.duration) || 100;
+            this.currentTime = Number(container.dataset.currentTime) || 0;
+            this.chapters = JSON.parse(container.dataset.chapters || "[]");
+
+            this.init();
+        }
+
+        private getAccentColors() {
+            const rootStyle = getComputedStyle(document.documentElement);
+            const accent =
+                rootStyle.getPropertyValue("--Accent").trim() || "#8478fd";
+            const lightAccent =
+                rootStyle.getPropertyValue("--LightAccent").trim() ||
+                "rgba(132, 120, 253, 0.25)";
+            return { accent, lightAccent };
+        }
+
+        private init() {
+            this.container.textContent = "";
+            this.tracks = [];
+
+            // Her bölüm için DOM elementi oluştur
+            this.chapters.forEach((chapter) => {
+                const chapterDuration = chapter.end - chapter.start;
+                const track = document.createElement("div");
+
+                track.className =
+                    "YokaiVerseSegmentTrack relative w-full rounded-full overflow-hidden bg-L_BG dark:bg-D_BG";
+                track.style.flex = `${chapterDuration}`;
+                track.dataset.start = String(chapter.start);
+                track.dataset.end = String(chapter.end);
+
+                this.container.appendChild(track);
+                this.tracks.push(track);
+            });
+
+            // Sürükleme ve tıklama olaylarını ana container üzerinden kesintisiz yönet
+            this.container.onpointerdown = (e: PointerEvent) => {
+                this.container.setPointerCapture(e.pointerId);
+                this.handlePointerSeek(e, "start");
+            };
+
+            this.container.onpointermove = (e: PointerEvent) => {
+                if (!this.container.hasPointerCapture(e.pointerId)) return;
+                this.handlePointerSeek(e, "move");
+            };
+
+            const endDrag = (e: PointerEvent) => {
+                if (!this.container.hasPointerCapture(e.pointerId)) return;
+                this.container.releasePointerCapture(e.pointerId);
+                this.handlePointerSeek(e, "end");
+            };
+
+            this.container.onpointerup = endDrag;
+            this.container.onpointercancel = endDrag;
+
+            // Wheel ile süreyi ileri/geri sarma
+            this.container.onwheel = (e: WheelEvent) => {
+                this.handleWheel(e);
+            };
+
+            // YouTubeTimeline bileşeninin içindeki ana container'a eklenecek dinleyici:
+            this.container.addEventListener("yokai:timeupdate", ((
+                e: CustomEvent,
+            ) => {
+                // Gelen anlık süre ile mor rengin genişliğini çiz
+                this.setTime(e.detail.time);
+            }) as EventListener);
+
+            this.updateVisuals();
+        }
+
+        private updateVisuals() {
+            const { accent, lightAccent } = this.getAccentColors();
+
+            this.tracks.forEach((track) => {
+                const start = Number(track.dataset.start);
+                const end = Number(track.dataset.end);
+                const duration = end - start;
+
+                let percentage = 0;
+                if (this.currentTime >= end) {
+                    percentage = 100;
+                } else if (this.currentTime > start) {
+                    percentage = ((this.currentTime - start) / duration) * 100;
+                }
+
+                track.style.background = `linear-gradient(to right, ${accent} 0%, ${accent} ${percentage}%, ${lightAccent} ${percentage}%, ${lightAccent} 100%)`;
+            });
+        }
+
+        private handlePointerSeek(
+            e: PointerEvent,
+            phase: "start" | "move" | "end",
+        ) {
+            const rect = this.container.getBoundingClientRect();
+            const clickX = Math.max(
+                0,
+                Math.min(e.clientX - rect.left, rect.width),
+            );
+            const progress = rect.width > 0 ? clickX / rect.width : 0;
+
+            const targetTime = progress * this.duration;
+            this.setTime(targetTime);
+
+            // Dışarıya hem süreyi hem de sürükleme aşamasını fırlatıyoruz
+            this.container.dispatchEvent(
+                new CustomEvent("yokai:seek", {
+                    detail: {
+                        time: targetTime,
+                        percentage: progress * 100,
+                        phase, // 'start' | 'move' | 'end'
+                    },
+                    bubbles: true,
+                }),
+            );
+        }
+
+        private handleWheel(e: WheelEvent) {
+            e.preventDefault();
+            const step = 5; // saniye adım miktarı
+            const delta = e.deltaY > 0 ? -step : step;
+            const nextTime = Math.min(
+                this.duration,
+                Math.max(0, this.currentTime + delta),
+            );
+
+            if (nextTime !== this.currentTime) {
+                this.setTime(nextTime);
+                this.container.dispatchEvent(
+                    new CustomEvent("yokai:seek", {
+                        detail: {
+                            time: nextTime,
+                            percentage: (nextTime / this.duration) * 100,
+                        },
+                        bubbles: true,
+                    }),
+                );
+            }
+        }
+
+        // Script üzerinden modüler kontrol API'si
+        public setTime(seconds: number) {
+            this.currentTime = Math.max(0, Math.min(seconds, this.duration));
+            this.updateVisuals();
+        }
+
+        public setChapters(chapters: Chapter[], duration?: number) {
+            this.chapters = chapters;
+            if (duration) this.duration = duration;
+            this.init();
+        }
+    }
+
+    const initAllTimelines = () => {
+        const containers = document.querySelectorAll<HTMLElement>(
+            ".YokaiVerse_TimelineContainer",
+        );
+
+        containers.forEach((container) => {
+            const instance = new YokaiTimeline(container);
+            // Global erişim veya player entegrasyonu için DOM node üzerine kaydeder
+            (container as any).yokaiTimeline = instance;
+        });
+    };
+
+    initAllTimelines();
+    document.addEventListener("astro:page-load", initAllTimelines);
+
+    // playerControls.ts tarafından çağrılacak global köprü fonksiyonu
+    (window as any).setSliderSections = function (
+        containerId: string,
+        sections: { start: number; end: number; label?: string }[],
+    ) {
+        const container = document.getElementById(
+            containerId,
+        ) as HTMLElement & {
+            yokaiTimeline?: YokaiTimeline;
+        };
+        if (!container || !container.yokaiTimeline) return;
+
+        const chapters = sections.map((sec, idx) => ({
+            id: `chapter-${idx}`,
+            title: sec.label || `${idx + 1}. Bölüm`,
+            start: sec.start,
+            end: sec.end,
+        }));
+
+        const totalDuration =
+            sections[sections.length - 1]?.end ||
+            Number(container.dataset.duration) ||
+            100;
+        container.yokaiTimeline.setChapters(chapters, totalDuration);
+    };
+</script>

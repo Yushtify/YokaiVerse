@@ -1,0 +1,51 @@
+---
+import ToggleButton from "../../custom/buttons/toggleButton.astro";
+import CustomSlider from "../../custom/customSlider.astro";
+---
+
+<div
+    class="flex flex-col items-start justify-center gap-4 p-2 rounded-3xl w-full h-fit"
+>
+    <p
+        data-i18n="watch.epPlayer.settings.behaviour.title"
+        class="font-semibold text-[min(6vw,0.8rem)] text-LT_Secondary dark:text-DT_Secondary capitalize"
+    >
+        Behaviour
+    </p>
+
+    <!-- Gestures -->
+    <div class="flex flex-row items-center justify-between gap-6 w-full h-fit">
+        <p
+            data-i18n="tooltip.epPlayer.controlBar.gesturesButton.title"
+            class="font-semibold text-[min(6vw,0.9rem)] capitalize"
+        >
+            Gestures
+        </p>
+        <ToggleButton
+            givenID="epGesturesToggleButton"
+            givenAction="toggleGesturesEp"
+            givenState={true}
+            givenSymbol="pan_tool_alt"
+            tooltipTitleTrans="tooltip.epPlayer.controlBar.gesturesButton.title"
+            tooltipDescTrans="tooltip.epPlayer.controlBar.gesturesButton.desc"
+        />
+    </div>
+
+    <!-- Keybinds -->
+    <div class="flex flex-row items-center justify-between gap-6 w-full h-fit">
+        <p
+            data-i18n="tooltip.epPlayer.controlBar.keybindsButton.title"
+            class="font-semibold text-[min(6vw,0.9rem)] capitalize"
+        >
+            Keybinds
+        </p>
+        <ToggleButton
+            givenID="epKeybindsToggleButton"
+            givenAction="toggleKeybindsEp"
+            givenState={true}
+            givenSymbol="action_key"
+            tooltipTitleTrans="tooltip.epPlayer.controlBar.keybindsButton.title"
+            tooltipDescTrans="tooltip.epPlayer.controlBar.keybindsButton.desc"
+        />
+    </div>
+</div>

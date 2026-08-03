@@ -20,7 +20,7 @@ Built with a **Privacy First** philosophy, YokaiVerse minimizes data collection 
 
 ---
 
-## How to Host
+## How to Self Host
 
 ### 🇬🇧 English
 

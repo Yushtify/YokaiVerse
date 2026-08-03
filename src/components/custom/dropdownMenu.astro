@@ -1,0 +1,145 @@
+---
+import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
+
+// CONFIG For the properties we'll get from the parent
+interface Props {
+    givenLocationFrom?: "horizontal" | "vertical";
+    givenLocation?: "start" | "center" | "end";
+
+    givenID: string;
+    givenSymbol: string;
+    givenDropdownArrowSymbol?: string;
+
+    givenTitle?: string;
+    givenTitleData?: string;
+
+    textSize?: string;
+    bgColor?: "BG" | "Primary" | "Secondary" | "Tertiary";
+
+    hasDropdownArrow: boolean;
+    hasSymbolContainer: boolean;
+}
+
+const {
+    givenLocationFrom,
+    givenLocation,
+    givenID,
+    givenSymbol,
+    givenDropdownArrowSymbol,
+    givenTitle,
+    givenTitleData,
+    textSize,
+    bgColor,
+    hasDropdownArrow,
+    hasSymbolContainer,
+} = Astro.props;
+
+// validate button rounded
+const borderRadiusMap = {
+    horizontal: {
+        start: "rounded-xl rounded-l-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-r-3xl",
+    },
+    vertical: {
+        start: "rounded-xl rounded-t-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-b-3xl",
+    },
+} as const;
+
+const borderRadius =
+    givenLocationFrom && givenLocation
+        ? borderRadiusMap[givenLocationFrom][givenLocation]
+        : "rounded-3xl";
+const validBorderRadius = `${borderRadius} hover:rounded-3xl`;
+
+// Define button padding based on title and symbol
+const buttonPadding = givenTitle
+    ? givenSymbol
+        ? "p-2 pr-4"
+        : "p-2 px-4"
+    : "p-2";
+
+// Validate the background color
+const validBGColor = bgColor
+    ? `bg-L_${bgColor} dark:bg-D_${bgColor} hover:bg-Accent`
+    : "bg-L_Primary dark:bg-D_Primary hover:bg-Accent";
+
+// Validate the dropdown arrow symbol
+const validDropdownArrowSymbol =
+    givenDropdownArrowSymbol ?? "keyboard_arrow_down";
+
+const validTextSize = textSize
+    ? `text-[min(6vw,${textSize})]`
+    : "text-[min(6vw,0.9rem)]";
+const menuID = `${givenID}_Menu`;
+
+// Define the classes
+const classes = {
+    buttonContainer: `relative flex flex-col items-start justify-start gap-4`,
+    button: `group flex flex-row items-center justify-center gap-2 ${buttonPadding} ${validBorderRadius} min-w-fit w-fit max-w-full h-fit ${validBGColor} ${validTextSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted cursor-pointer transition-all duration-200 ease-in-out z-2`,
+    activeButton: "bg-Accent! shadow-2xl shadow-Accent/48",
+    title: givenTitle ? `w-full text-left ${validTextSize}` : "hidden",
+    activeTitle: "text-LT_Inverted! dark:text-DT_Inverted!",
+
+    symbolContainer: givenSymbol
+        ? hasSymbolContainer
+            ? "flex flex-row items-center justify-center p-2 rounded-3xl bg-L_BG dark:bg-D_BG group-hover:bg-LightAccent transition-colors duration-200 ease-in-out"
+            : "flex flex-row items-center justify-center px-2 py-0 transition-colors duration-200 ease-in-out"
+        : "hidden",
+    activeSymbolContainer: hasSymbolContainer
+        ? "bg-LightAccent! text-LT_Inverted! dark:text-DT_Inverted!"
+        : "text-LT_Inverted! dark:text-DT_Inverted!",
+    dropdownArrowContainer: hasDropdownArrow
+        ? "flex flex-row items-center justify-center"
+        : "hidden",
+    activeDropdownArrowContainer: "text-LT_Inverted! dark:text-DT_Inverted!",
+
+    dropdownMenu:
+        "absolute left-0 flex flex-col items-start justify-start gap-2 p-2 rounded-3xl w-fit h-fit bg-L_Primary dark:bg-D_Primary border border-LB_Primary dark:border-DB_Primary shadow-2xl shadow-LB_Primary dark:shadow-DB_Primary z-1",
+};
+---
+
+<div class={classes.buttonContainer}>
+    <button
+        id={givenID}
+        class={classes.button}
+        data-dropdown={true}
+        data-dropdown-active={classes.activeButton}
+        data-menu-id={menuID}
+    >
+        <div
+            class={classes.symbolContainer}
+            data-dropdown-active={classes.activeSymbolContainer}
+        >
+            <GoogleMaterialSymbol
+                symbol={givenSymbol}
+                SymbolSize={`${validTextSize}!`}
+                isFilled={true}
+            />
+        </div>
+        <p
+            data-i18n={givenTitleData}
+            class={classes.title}
+            data-dropdown-active={classes.activeTitle}
+        >
+            {givenTitle}
+        </p>
+        <div
+            class={classes.dropdownArrowContainer}
+            data-dropdown-active={classes.activeDropdownArrowContainer}
+        >
+            <GoogleMaterialSymbol
+                symbol={validDropdownArrowSymbol}
+                SymbolSize={`${validTextSize}!`}
+                isFilled={true}
+            />
+        </div>
+    </button>
+
+    <!-- The main Dropdown Menu -->
+    <div id={menuID} class={classes.dropdownMenu}>
+        <slot />
+    </div>
+</div>

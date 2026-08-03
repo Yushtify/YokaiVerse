@@ -1,0 +1,108 @@
+---
+import { imageConfig } from "astro:assets";
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
+interface Props {
+    type: "manga" | "anime";
+}
+const { type } = Astro.props;
+
+const durationClassMap = {
+    manga: "hidden",
+    anime: "",
+};
+let durationClassVisibility = durationClassMap[type];
+
+const buttonBaseClass =
+    "group flex flex-col items-start justify-start gap-4 rounded-3xl p-2 w-full min-h-fit h-fit bg-L_Primary dark:bg-D_Primary shadow-2xl shadow-transparent hover:shadow-LB_Primary/48 dark:hover:shadow-DB_Primary/48 hover:-translate-y-4 hover:scale-102 transition-all duration-250 ease-in-out cursor-pointer z-0 hover:z-1";
+const viewMap = {
+    grid: {
+        buttonClass: `${buttonBaseClass} pb-4`,
+        imageClass: "w-full h-fit aspect-video object-cover object-top",
+        descClass:
+            "w-full text-left text-LT_Secondary dark:text-DT_Secondary line-clamp-2",
+    },
+    list: {
+        buttonClass: `${buttonBaseClass}`,
+        imageClass: "w-fit h-full aspect-video object-cover object-top",
+        descClass:
+            "w-full text-left text-LT_Secondary dark:text-DT_Secondary line-clamp-4",
+    },
+};
+
+const classMap = {
+    active: {
+        titleClass: "text-LT_Inverted! dark:text-DT_Inverted!",
+        descClass: "text-LT_Inverted! dark:text-DT_Inverted!",
+        durationClass:
+            "bg-LightAccent! text-LT_Inverted! dark:text-DT_Inverted!",
+        counterClass:
+            "bg-LightAccent! text-LT_Inverted! dark:text-DT_Inverted!",
+    },
+    imageContainer:
+        "relative w-full h-fit aspect-video rounded-3xl rounded-b-xl overflow-hidden",
+    titleDescContainer:
+        "flex flex-col items-center justify-center gap-2 px-2 w-full h-fit text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary",
+    titleContainer: "flex flex-row items-center justify-between w-full h-fit",
+    titleClass:
+        "w-full font-bold text-[min(6vw,1.2rem)] text-left capitalize line-clamp-1",
+    durationClass: `absolute bottom-2 right-2 min-w-fit w-fit rounded-3xl p-2 px-4 bg-L_BG dark:bg-D_BG font-bold text-[min(6vw,0.8rem)] text-left capitalize line-clamp-1 ${durationClassVisibility}`,
+    counterClass:
+        "flex flex-row items-center justify-center gap-1 min-w-fit w-fit rounded-3xl p-2 px-4 bg-L_BG dark:bg-D_BG font-bold text-[min(6vw,0.8rem)] text-left capitalize line-clamp-1",
+};
+---
+
+<template id="episodeCard_Template">
+    <button
+        id="episodeCard"
+        class={viewMap.grid.buttonClass}
+        data-activeClass="bg-Accent! hover:bg-Highlight! shadow-Accent/0! hover:shadow-Accent/36!"
+        data-viewType="Grid"
+        data-listViewCONFIG={viewMap.list.buttonClass}
+        data-GridViewCONFIG={viewMap.grid.buttonClass}
+    >
+        <!-- Cover -->
+        <div class={classMap.imageContainer}>
+            <img
+                alt="EPISODE_COVER"
+                id="episodeCover"
+                data-listViewCONFIG={viewMap.list.imageClass}
+                data-GridViewCONFIG={viewMap.grid.imageClass}
+                class={viewMap.grid.imageClass}
+            />
+            <p
+                id="episodeDuration"
+                data-activeClass={classMap.active.durationClass}
+                class={classMap.durationClass}
+            >
+            </p>
+        </div>
+
+        <!-- Title & Desc -->
+        <div class={classMap.titleDescContainer}>
+            <div class={classMap.titleContainer}>
+                <p
+                    id="episodeTitle"
+                    data-activeClass={classMap.active.titleClass}
+                    class={classMap.titleClass}
+                >
+                </p>
+                <p
+                    data-activeClass={classMap.active.counterClass}
+                    class={classMap.counterClass}
+                >
+                    <span data-i18n="global.variable.episode">Episode</span>
+                    <span id="episodeCount"></span>
+                </p>
+            </div>
+            <p
+                id="episodeDesc"
+                data-activeClass={classMap.active.descClass}
+                data-listViewCONFIG={viewMap.list.descClass}
+                data-GridViewCONFIG={viewMap.grid.descClass}
+                class={viewMap.grid.descClass}
+            >
+            </p>
+        </div>
+    </button>
+</template>

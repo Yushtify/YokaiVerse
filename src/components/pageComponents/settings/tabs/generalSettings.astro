@@ -1,0 +1,58 @@
+---
+import TabTemplate from "./tabTemplate.astro";
+
+// Setting Containers
+import SettingContainer from "./settingContainer.astro";
+import SettingCompanent from "./settingCompanent.astro";
+
+// Buttons
+import ToggleButton from "../../../custom/buttons/toggleButton.astro";
+---
+
+<TabTemplate
+    givenState={false}
+    givenTabID="generalSettings"
+    givenSymbol="tune"
+    givenTitle="general"
+    titleData="settings.tabs.general.title"
+    givenDesc="Manage core site behavior and fundamental site preferences"
+    descData="settings.tabs.general.desc"
+>
+    <SettingContainer
+        givenTitle="Interface"
+        titleData="settings.tabs.general.contents.interface.title"
+    >
+        <SettingCompanent
+            givenTitle="Reduce Motion"
+            titleData="settings.tabs.general.contents.interface.animations.title"
+            givenDesc="Change if the website uses animations or not."
+            descData="settings.tabs.general.contents.interface.animations.desc"
+        >
+            <ToggleButton
+                givenAction="toggleAnimations"
+                givenID="animationsToggle_Button"
+                givenSymbol="close"
+            />
+        </SettingCompanent>
+    </SettingContainer>
+
+    <!-- Content Settings -->
+    <SettingContainer
+        givenTitle="Content"
+        titleData="settings.tabs.general.contents.contentS.title"
+    >
+        <!-- Adult Content Filter Toggle -->
+        <SettingCompanent
+            givenTitle="Adult Content Filtering"
+            titleData="settings.tabs.general.contents.contentS.nsfwFilter.title"
+            givenDesc="Change whatever Adult Content content appears on the site or not"
+            descData="settings.tabs.general.contents.contentS.nsfwFilter.desc"
+        >
+            <ToggleButton
+                givenAction="toggleNSFW"
+                givenID="nsfwToggle_Button"
+                givenSymbol="remove_moderator"
+            />
+        </SettingCompanent>
+    </SettingContainer>
+</TabTemplate>

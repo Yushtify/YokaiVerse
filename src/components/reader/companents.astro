@@ -1,0 +1,36 @@
+---
+import ControlBar from "./controlBar.astro";
+---
+
+<div
+    class="relative flex flex-col items-start justify-start gap-6 w-full h-fit"
+>
+    <ControlBar />
+    <div
+        id="chReaderContainer"
+        class="relative flex flex-col mx-auto w-full gap-4 rounded-3xl grayscale-100 transition-all duration-300 ease-in-out"
+    >
+        <template id="chReaderTemplate">
+            <div
+                id="chReader"
+                class="relative flex flex-col mx-auto w-full select-none"
+            >
+                <img
+                    id="chImage_BG"
+                    class="chImage_BG absolute inset-0 z-0 w-full h-full object-cover blur-[86px] opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none select-none"
+                />
+                <img
+                    id="chImage"
+                    class="block w-full h-auto rounded-xl z-1"
+                    draggable="false"
+                    alt=""
+                />
+            </div>
+        </template>
+    </div>
+</div>
+
+<script>
+    import "./readerPages"; // initialize reader pages.
+    import "./readerControls"; // Controls for the reader.
+</script>

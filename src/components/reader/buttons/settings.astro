@@ -1,0 +1,23 @@
+---
+import Button from "../../custom/buttons/Button.astro";
+import ToggleButton from "../../custom/buttons/toggleButton.astro";
+
+// Settings
+import BehaviourSettings from "./behaviourSettings.astro";
+import AppearanceSettings from "./appearanceSettings.astro";
+import DropdownMenu from "../../custom/dropdownMenu.astro";
+---
+
+<DropdownMenu
+    givenLocationFrom="horizontal"
+    givenLocation="start"
+    givenID="epPlayerSettings"
+    givenSymbol="settings"
+    hasDropdownArrow={false}
+    hasSymbolContainer={false}
+    bgColor="Secondary"
+    textSize="2rem"
+>
+    <BehaviourSettings />
+    <AppearanceSettings />
+</DropdownMenu>

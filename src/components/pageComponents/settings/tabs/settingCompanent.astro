@@ -1,0 +1,66 @@
+---
+// ---- Props ----
+interface Props {
+    givenLocationFrom?: "horizontal" | "vertical";
+    givenLocation?: "start" | "center" | "end";
+
+    givenPadding?: string;
+
+    givenTitle: string;
+    titleData: string;
+    givenDesc: string;
+    descData: string;
+}
+
+const {
+    givenLocationFrom,
+    givenLocation,
+    givenPadding,
+    givenTitle,
+    titleData,
+    givenDesc,
+    descData,
+} = Astro.props;
+
+// validate button rounded
+const borderRadiusMap = {
+    horizontal: {
+        start: "rounded-xl rounded-l-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-r-3xl",
+    },
+    vertical: {
+        start: "rounded-xl rounded-t-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-b-3xl",
+    },
+} as const;
+
+const borderRadius =
+    givenLocationFrom && givenLocation
+        ? borderRadiusMap[givenLocationFrom][givenLocation]
+        : "rounded-3xl";
+const validBorderRadius = `${borderRadius} hover:rounded-3xl`;
+
+const textSize = "text-[min(6vw,0.9rem)]";
+const validPadding = givenPadding ? givenPadding : "px-8";
+const classMap = {
+    companentContainerClass: `flex flex-row items-center justify-between gap-6 ${validPadding} p-6 ${validBorderRadius} w-full max-w-full bg-L_Primary dark:bg-D_Primary ${textSize} transition-all duration-200 ease-in-out`,
+    headerClass: "flex flex-col items-center justify-center gap-2 w-full h-fit",
+    titleClass: "w-full font-semibold capitalize text-left",
+    descClass: "w-full text-LT_Secondary dark:text-DT_Secondary text-left",
+};
+---
+
+<div class={classMap.companentContainerClass}>
+    <!-- Header -->
+    <div class={classMap.headerClass}>
+        <p data-i18n={titleData} class={classMap.titleClass}>
+            {givenTitle}
+        </p>
+        <p data-i18n={descData} class={classMap.descClass}>
+            {givenDesc}
+        </p>
+    </div>
+    <slot />
+</div>
