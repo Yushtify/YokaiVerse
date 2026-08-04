@@ -6,7 +6,6 @@ interface Props {
     givenLocation?: "start" | "center" | "end";
     givenButtonID: string;
     givenButtonCustomClass?: string;
-    givenButtonTransparency?: boolean;
     givenButtonFill?: boolean;
     givenButtonAction: string;
     givenButtonSymbol?: string;
@@ -26,7 +25,6 @@ const {
 
     givenButtonID,
     givenButtonCustomClass,
-    givenButtonTransparency,
     givenButtonFill,
     givenButtonAction,
     givenButtonSymbol,
@@ -42,51 +40,42 @@ const {
     tooltipDescTrans,
 } = Astro.props;
 
-let borderRadius;
-if (givenLocationFrom && givenLocation) {
-    // checks if this companent got any of the attributes
-    if (givenLocationFrom === "horizontal") {
-        // if the buttons aligned left to right so horizontally
-        if (givenLocation === "start") {
-            borderRadius = "rounded-xl rounded-l-3xl";
-        } else if (givenLocation === "end") {
-            borderRadius = "rounded-xl rounded-r-3xl";
-        } else {
-            borderRadius = "rounded-xl";
-        }
-    } else if (givenLocationFrom === "vertical") {
-        // if the buttons aligned top to bottom so vertically
-        if (givenLocation === "start") {
-            borderRadius = "rounded-xl rounded-t-3xl";
-        } else if (givenLocation === "end") {
-            borderRadius = "rounded-xl rounded-b-3xl";
-        } else {
-            borderRadius = "rounded-xl";
-        }
-    }
-} else {
-    borderRadius = "rounded-3xl";
-}
-let validBorder = " " + borderRadius + " hover:rounded-3xl";
+// validate button rounded
+const borderRadiusMap = {
+    horizontal: {
+        start: "rounded-xl rounded-l-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-r-3xl",
+    },
+    vertical: {
+        start: "rounded-xl rounded-t-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-b-3xl",
+    },
+} as const;
+
+const borderRadius =
+    givenLocationFrom && givenLocation
+        ? borderRadiusMap[givenLocationFrom][givenLocation]
+        : "rounded-3xl";
+const validBorderRadius = `${borderRadius} hover:rounded-3xl`;
 
 const isWFill = givenButtonFill ? " w-full min-w-fit " : " min-w-fit w-fit ";
-const transparentBG = `group flex flex-row items-center justify-center px-4 p-2 gap-2 h-fit hover:bg-Accent hover:font-semibold text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer ${isWFill} ${validBorder}`;
-const BG = `group flex flex-row items-center justify-center px-4 p-2 gap-2 h-fit rounded-full bg-L_Secondary dark:bg-D_Secondary hover:bg-Accent hover:font-semibold text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer ${isWFill} ${validBorder}`;
 
-const ButtonClass = givenButtonTransparency
-    ? transparentBG + " " + givenButtonCustomClass
-    : BG + " " + givenButtonCustomClass;
+const classMap = {
+    buttonClass: `group flex flex-row items-center justify-center px-4 p-2 gap-2 h-fit rounded-full bg-L_Secondary dark:bg-D_Secondary hover:bg-Accent hover:font-semibold text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer ${isWFill} ${validBorderRadius} ${givenButtonCustomClass}`,
+};
 
-const ValidSvgSize = givenButtonSymbolSize
+const ValidSymbolSize = givenButtonSymbolSize
     ? givenButtonSymbolSize
-    : "text-[min(7vw,1rem)]!";
+    : "text-[min(6vw,0.9rem)]!";
 
 const isTitleValid = givenTitle ? "flex" : "hidden";
 ---
 
 <button
     id={givenButtonID}
-    class={ButtonClass}
+    class={classMap.buttonClass}
     onclick={givenButtonAction}
     data-tooltip={tooltipDesc}
     data-tooltip-title={tooltipTitle}
@@ -95,8 +84,8 @@ const isTitleValid = givenTitle ? "flex" : "hidden";
 >
     <GoogleMaterialSymbol
         symbol={givenButtonSymbol}
-        SvgSize={ValidSvgSize}
+        SymbolSize={ValidSymbolSize}
         isFilled={givenButtonSymbolFill}
     />
-    <p data-i18n={titleData} class={` ${isTitleValid}`}>{givenTitle}</p>
+    <p data-i18n={titleData} class={`${isTitleValid}`}>{givenTitle}</p>
 </button>

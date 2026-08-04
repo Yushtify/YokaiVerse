@@ -1,24 +1,42 @@
 {
   "version": "v0.5.0",
   "commit": "552b9cc",
-  "date": "Jul 27, 2026",
-  "description": "A feature and maintenance update introducing a quality switcher, metadata enhancements, and code modularization for improved performance.",
+  "date": {
+    "en_us": "July 27, 2026",
+    "tr": "27 Temmuz 2026"
+  },
+  "description": {
+    "en_us": "A feature and maintenance update introducing a quality switcher, metadata enhancements, and code modularization for improved performance.",
+    "tr": "Kalite seçici, metadata geliştirmeleri ve daha iyi performans için kod modülerleştirmesi sunan özellik ve bakım güncellemesi."
+  },
   "logs": [
     {
       "type": "Added",
-      "desc": "Added a quality switcher to the episode player."
+      "desc": {
+        "en_us": "Added a quality switcher to the episode player.",
+        "tr": "Bölüm oynatıcısına kalite seçici eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "\"Content Views\" and \"Content Rating\" to information page."
+      "desc": {
+        "en_us": "\"Content Views\" and \"Content Rating\" to information page.",
+        "tr": "Bilgi sayfasına \"İçerik Görüntülenme Sayısı\" ve \"İçerik Puanı\" alanları eklendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Improved player code quality and maintainability by modularizing scripts, reducing single-file length from ~1k lines to a maximum of 347 lines."
+      "desc": {
+        "en_us": "Improved player code quality and maintainability by modularizing scripts, reducing single-file length from ~1k lines to a maximum of 347 lines.",
+        "tr": "Scriptler modüler hale getirilerek oynatıcı kodunun kalitesi ve sürdürülebilirliği artırıldı; tek dosya uzunluğu yaklaşık 1000 satırdan en fazla 347 satıra düşürüldü."
+      }
     },
     {
       "type": "Changed",
-      "desc": "\"contentRating\" to \"contentAgeRating\" to use \"contentRating\" as the rating of an anime instead of rating of min age of the content."
+      "desc": {
+        "en_us": "\"contentRating\" renamed to \"contentAgeRating\" so \"contentRating\" can represent the anime's rating instead of its minimum age requirement.",
+        "tr": "\"contentRating\", minimum yaş derecelendirmesini ifade etmesi için \"contentAgeRating\" olarak yeniden adlandırıldı. Böylece \"contentRating\" artık animenin puanını temsil ediyor."
+      }
     }
   ]
 }

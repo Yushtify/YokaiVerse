@@ -2,10 +2,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-* {
-    corner-shape: squircle;
-}
-
 @theme {
     --font-Sans: "Poppins", sans-serif;
     --font-Serif: "Lora", serif;
@@ -80,6 +76,14 @@
 }
 
 @layer utilities {
+    .reduce-motion *,
+    .reduce-motion *::before,
+    .reduce-motion *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+
     /* Custom Scrollbar */
     .custom-scrollbar {
         /* For Firefox */

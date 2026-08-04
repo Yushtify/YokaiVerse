@@ -1,184 +1,322 @@
 {
   "version": "v0.3.0",
   "commit": "1809d29",
-  "date": "May 03, 2026",
-  "description": "This update focuses on strengthening the platform's core foundation, improving stability, and refining the overall user experience. It introduces a more reliable video player, official legal documentation, expanded localization support, a range of UI/UX enhancements, and a fully rebuilt Roadmap page designed to make YokaiVerse feel smoother, clearer, and more consistent.",
+  "date": {
+    "en_us": "May 03, 2026",
+    "tr": "3 Mayıs 2026"
+  },
+  "description": {
+    "en_us": "This update focuses on strengthening the platform's core foundation, improving stability, and refining the overall user experience. It introduces a more reliable video player, official legal documentation, expanded localization support, a range of UI/UX enhancements, and a fully rebuilt Roadmap page designed to make YokaiVerse feel smoother, clearer, and more consistent.",
+    "tr": "Bu güncelleme platformun temel yapısını güçlendirmeye, kararlılığı artırmaya ve genel kullanıcı deneyimini iyileştirmeye odaklanıyor. Daha güvenilir bir video oynatıcı, resmi yasal dokümantasyon, genişletilmiş yerelleştirme desteği, çeşitli UI/UX geliştirmeleri ve YokaiVerse'i daha akıcı, daha anlaşılır ve daha tutarlı hale getirmek için tamamen yeniden oluşturulmuş bir Roadmap sayfası sunuyor."
+  },
   "logs": [
     {
       "type": "Performance",
-      "desc": "The video player slider for greater precision and smoother seeking during both click and drag interactions."
+      "desc": {
+        "en_us": "The video player slider for greater precision and smoother seeking during both click and drag interactions.",
+        "tr": "Daha yüksek hassasiyet ve hem tıklama hem de sürükleme sırasında daha akıcı zaman atlama için video oynatıcı kaydırıcısı iyileştirildi."
+      }
     },
     {
       "type": "Added",
-      "desc": "'videoPlayerFeedback.ts', a new core engine module that streamlines interaction handling and feedback loops within the custom video player."
+      "desc": {
+        "en_us": "'videoPlayerFeedback.ts', a new core engine module that streamlines interaction handling and feedback loops within the custom video player.",
+        "tr": "Özel video oynatıcıdaki etkileşim yönetimini ve geri bildirim döngülerini kolaylaştıran yeni çekirdek modül 'videoPlayerFeedback.ts' eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Official documentation pages, including '/doc', '/privacy', and '/terms', to improve transparency and make key project information easier to access."
+      "desc": {
+        "en_us": "Official documentation pages, including '/doc', '/privacy', and '/terms', to improve transparency and make key project information easier to access.",
+        "tr": "Şeffaflığı artırmak ve önemli proje bilgilerine erişimi kolaylaştırmak için '/doc', '/privacy' ve '/terms' resmi dokümantasyon sayfaları eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Expanded Markdown support with custom elements and improved list rendering for a cleaner, more readable documentation experience."
+      "desc": {
+        "en_us": "Expanded Markdown support with custom elements and improved list rendering for a cleaner, more readable documentation experience.",
+        "tr": "Daha temiz ve okunabilir bir dokümantasyon deneyimi için özel bileşenler ve geliştirilmiş liste işleme desteğiyle Markdown desteği genişletildi."
+      }
     },
     {
       "type": "Added",
-      "desc": "A direct download option for the video player, improving accessibility and enabling offline viewing."
+      "desc": {
+        "en_us": "A direct download option for the video player, improving accessibility and enabling offline viewing.",
+        "tr": "Erişilebilirliği artıran ve çevrimdışı izlemeye olanak sağlayan doğrudan video indirme seçeneği eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "'LICENSE.md' under the AGPLv3 license, reinforcing the project's commitment to open-source, community-driven development."
+      "desc": {
+        "en_us": "'LICENSE.md' under the AGPLv3 license, reinforcing the project's commitment to open-source, community-driven development.",
+        "tr": "Projenin açık kaynak ve topluluk odaklı geliştirme anlayışını güçlendirmek amacıyla AGPLv3 lisansı altında 'LICENSE.md' eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Official localization support for Azerbaijani (AZ) and UK English."
+      "desc": {
+        "en_us": "Official localization support for Azerbaijani (AZ) and UK English.",
+        "tr": "Azerice (AZ) ve İngilizce (UK) için resmi yerelleştirme desteği eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Smart language detection so the site can automatically match the user's browser language when no preference has been set."
+      "desc": {
+        "en_us": "Smart language detection so the site can automatically match the user's browser language when no preference has been set.",
+        "tr": "Herhangi bir tercih ayarlanmadığında sitenin kullanıcının tarayıcı dilini otomatik algılamasını sağlayan akıllı dil algılama sistemi eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Interactive tooltips with full localization support."
+      "desc": {
+        "en_us": "Interactive tooltips with full localization support.",
+        "tr": "Tam yerelleştirme desteğine sahip etkileşimli ipuçları eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Translation support for parts of the Info page, including the Overview and Banner chip sections."
+      "desc": {
+        "en_us": "Translation support for parts of the Info page, including the Overview and Banner chip sections.",
+        "tr": "Info sayfasının Overview ve Banner chip bölümleri dahil olmak üzere bazı kısımları için çeviri desteği eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "'progressChip.astro', a reusable color-coded status chip component for roadmap items, supporting In Progress, Planned, Completed, Cancelled, and Considering states."
+      "desc": {
+        "en_us": "'progressChip.astro', a reusable color-coded status chip component for roadmap items, supporting In Progress, Planned, Completed, Cancelled, and Considering states.",
+        "tr": "'progressChip.astro' eklendi. Roadmap öğeleri için In Progress, Planned, Completed, Cancelled ve Considering durumlarını destekleyen yeniden kullanılabilir renk kodlu durum bileşeni."
+      }
     },
     {
       "type": "Added",
-      "desc": "'changelogChip.astro', a reusable type chip component for changelog entries, covering 12 log types including Performance, Breaking, Security, Deprecated, and Reverted."
+      "desc": {
+        "en_us": "'changelogChip.astro', a reusable type chip component for changelog entries, covering 12 log types including Performance, Breaking, Security, Deprecated, and Reverted.",
+        "tr": "'changelogChip.astro' eklendi. Performance, Breaking, Security, Deprecated ve Reverted dahil 12 değişiklik türünü destekleyen yeniden kullanılabilir changelog etiketi bileşeni."
+      }
     },
     {
       "type": "Added",
-      "desc": "A fully configured Roadmap page with manifest-driven milestone loading, per-item status chips, and a dedicated hero section."
+      "desc": {
+        "en_us": "A fully configured Roadmap page with manifest-driven milestone loading, per-item status chips, and a dedicated hero section.",
+        "tr": "Manifest tabanlı kilometre taşı yükleme, öğe bazlı durum etiketleri ve özel Hero bölümüyle tamamen yapılandırılmış Roadmap sayfası eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Roadmap milestone files for v0.4.0, v0.5.0, and v1.0.0, each with an ETA, overall milestone status, and a breakdown of planned items."
+      "desc": {
+        "en_us": "Roadmap milestone files for v0.4.0, v0.5.0, and v1.0.0, each with an ETA, overall milestone status, and a breakdown of planned items.",
+        "tr": "v0.4.0, v0.5.0 ve v1.0.0 için ETA, genel kilometre taşı durumu ve planlanan öğeleri içeren Roadmap dosyaları eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "'manifest.json' for the roadmap versions directory, replacing sequential file crawling with an explicit and maintainable version list."
+      "desc": {
+        "en_us": "'manifest.json' for the roadmap versions directory, replacing sequential file crawling with an explicit and maintainable version list.",
+        "tr": "Sıralı dosya taramasının yerine açık ve sürdürülebilir bir sürüm listesi kullanan Roadmap sürümleri için 'manifest.json' eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "A 'categories' field to all root anime 'information.json' files, allowing each title to appear in one or more category listers on the Featured page."
+      "desc": {
+        "en_us": "A 'categories' field to all root anime 'information.json' files, allowing each title to appear in one or more category listers on the Featured page.",
+        "tr": "Her yapımın Featured sayfasında bir veya birden fazla kategoride listelenebilmesini sağlayan 'categories' alanı tüm ana 'information.json' dosyalarına eklendi."
+      }
     },
     {
       "type": "Breaking",
-      "desc": "The '/whats-new' route has been replaced by '/changelog'. Any existing bookmarks or external links pointing to the old URL will no longer work."
+      "desc": {
+        "en_us": "The '/whats-new' route has been replaced by '/changelog'. Any existing bookmarks or external links pointing to the old URL will no longer work.",
+        "tr": "'/whats-new' adresi '/changelog' ile değiştirildi. Eski bağlantıyı kullanan yer imleri ve harici bağlantılar artık çalışmayacaktır."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Text selection styling to improve contrast against the signature accent color."
+      "desc": {
+        "en_us": "Text selection styling to improve contrast against the signature accent color.",
+        "tr": "İmza vurgu rengiyle daha iyi kontrast sağlayacak şekilde metin seçme stili değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "'README.md' to better communicate the project's mission, setup details, and contributor guidelines."
+      "desc": {
+        "en_us": "'README.md' to better communicate the project's mission, setup details, and contributor guidelines.",
+        "tr": "README.md, projenin amacı, kurulum detayları ve katkı sağlama yönergelerini daha iyi anlatacak şekilde güncellendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The 'Latest Change' section so it dynamically pulls the most recent changelog configuration data."
+      "desc": {
+        "en_us": "The 'Latest Change' section so it dynamically pulls the most recent changelog configuration data.",
+        "tr": "'Latest Change' bölümü en güncel changelog yapılandırmasını dinamik olarak alacak şekilde değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The language switcher with a custom dropdown and integrated radio-button selection for a smoother localization experience."
+      "desc": {
+        "en_us": "The language switcher with a custom dropdown and integrated radio-button selection for a smoother localization experience.",
+        "tr": "Daha akıcı bir yerelleştirme deneyimi için dil değiştirici özel açılır menü ve entegre radyo butonlarıyla yeniden tasarlandı."
+      }
     },
     {
       "type": "Changed",
-      "desc": "'en_us' as the global fallback language to maintain a consistent experience when localization data is missing or unavailable."
+      "desc": {
+        "en_us": "'en_us' as the global fallback language to maintain a consistent experience when localization data is missing or unavailable.",
+        "tr": "Yerelleştirme verileri eksik olduğunda tutarlı bir deneyim sağlamak için küresel varsayılan dil 'en_us' olarak belirlendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Global Search with a full-screen overlay, preparing the foundation for upcoming universal search across Anime, Manga, and Settings."
+      "desc": {
+        "en_us": "Global Search with a full-screen overlay, preparing the foundation for upcoming universal search across Anime, Manga, and Settings.",
+        "tr": "Anime, Manga ve Ayarlar genelinde evrensel arama altyapısını hazırlamak amacıyla tam ekran kaplamalı Global Search yeniden tasarlandı."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The DOM to use a primary <div> wrapper instead of direct <body> manipulation, improving layout control and maintainability."
+      "desc": {
+        "en_us": "The DOM to use a primary <div> wrapper instead of direct <body> manipulation, improving layout control and maintainability.",
+        "tr": "Düzen kontrolünü ve bakımını iyileştirmek için doğrudan <body> yerine ana <div> kapsayıcısı kullanılacak şekilde DOM yapısı değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The 404 error page with a refreshed design and improved layout."
+      "desc": {
+        "en_us": "The 404 error page with a refreshed design and improved layout.",
+        "tr": "404 hata sayfası yeni tasarım ve geliştirilmiş düzen ile güncellendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The loading overlay to provide smoother transitions and a more polished loading experience."
+      "desc": {
+        "en_us": "The loading overlay to provide smoother transitions and a more polished loading experience.",
+        "tr": "Daha akıcı geçişler ve daha kaliteli bir yükleme deneyimi sunacak şekilde yükleme ekranı geliştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Brand assets and the primary accent color from #782DFA to #8478FD across both Light and Dark themes."
+      "desc": {
+        "en_us": "Brand assets and the primary accent color from #782DFA to #8478FD across both Light and Dark themes.",
+        "tr": "Marka varlıkları ve ana vurgu rengi hem Açık hem Koyu temalarda #782DFA'dan #8478FD'ye güncellendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The Settings page with a cleaner interface and improved layout."
+      "desc": {
+        "en_us": "The Settings page with a cleaner interface and improved layout.",
+        "tr": "Ayarlar sayfası daha temiz bir arayüz ve geliştirilmiş düzen ile güncellendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "All changelog version descriptions and log entry text across v0.0.0 through v0.3.0 rewritten for improved clarity, grammar, and consistency."
+      "desc": {
+        "en_us": "All changelog version descriptions and log entry text across v0.0.0 through v0.3.0 rewritten for improved clarity, grammar, and consistency.",
+        "tr": "v0.0.0 ile v0.3.0 arasındaki tüm changelog sürüm açıklamaları ve kayıt metinleri daha iyi açıklık, dil bilgisi ve tutarlılık için yeniden yazıldı."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Roadmap components ('versionTemplate', 'versionDetailTemplate', 'versionLogs', 'hero') overhauled from a changelog copy into a purpose-built roadmap layout with milestone-specific structure and status chip styling."
+      "desc": {
+        "en_us": "Roadmap components ('versionTemplate', 'versionDetailTemplate', 'versionLogs', 'hero') overhauled from a changelog copy into a purpose-built roadmap layout with milestone-specific structure and status chip styling.",
+        "tr": "Roadmap bileşenleri ('versionTemplate', 'versionDetailTemplate', 'versionLogs', 'hero'), changelog kopyası olmaktan çıkarılarak kilometre taşlarına özel yapı ve durum etiketi tasarımına sahip özel bir Roadmap düzenine dönüştürüldü."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Changelog 'versionDetailTemplate.astro' and 'versionLogs.astro' refactored to use 'changelogChip', replacing raw color strings and innerHTML injection with the chip config pattern."
+      "desc": {
+        "en_us": "Changelog 'versionDetailTemplate.astro' and 'versionLogs.astro' refactored to use 'changelogChip', replacing raw color strings and textContent injection with the chip config pattern.",
+        "tr": "Changelog'daki 'versionDetailTemplate.astro' ve 'versionLogs.astro', ham renk dizileri ve textContent kullanımının yerine 'changelogChip' yapılandırmasını kullanacak şekilde yeniden düzenlendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Log type assignments across all changelog versions corrected, with misclassified entries updated to use Performance, Breaking, and Deprecated types where appropriate."
+      "desc": {
+        "en_us": "Log type assignments across all changelog versions corrected, with misclassified entries updated to use Performance, Breaking, and Deprecated types where appropriate.",
+        "tr": "Tüm changelog sürümlerindeki kayıt türleri gözden geçirilerek yanlış sınıflandırılan kayıtlar uygun şekilde Performance, Breaking ve Deprecated türlerine taşındı."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Log entry order across all changelog versions now consistently sorted by priority: Performance, Added, Breaking, Changed, Fixed, Deprecated, Removed, Experimental, Known Bug, Misc."
+      "desc": {
+        "en_us": "Log entry order across all changelog versions now consistently sorted by priority: Performance, Added, Breaking, Changed, Fixed, Deprecated, Removed, Experimental, Known Bug, Misc.",
+        "tr": "Tüm changelog sürümlerindeki kayıt sıralaması artık önceliğe göre tutarlı şekilde düzenleniyor: Performance, Added, Breaking, Changed, Fixed, Deprecated, Removed, Experimental, Known Bug, Misc."
+      }
     },
     {
       "type": "Changed",
-      "desc": "'lister.astro' rewritten with a category-aware script that fetches 'animeIDs.json', groups titles by their categories array, and builds one independently paginated lister per category with working Previous and Next controls."
+      "desc": {
+        "en_us": "'lister.astro' rewritten with a category-aware script that fetches 'animeIDs.json', groups titles by their categories array, and builds one independently paginated lister per category with working Previous and Next controls.",
+        "tr": "'lister.astro', 'animeIDs.json' dosyasını okuyan, yapımları 'categories' alanına göre gruplandıran ve her kategori için çalışan Önceki/Sonraki kontrollerine sahip bağımsız sayfalamalı listeleyiciler oluşturan yeni bir kategori tabanlı sistemle yeniden yazıldı."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The Featured page container in 'companents.astro' updated with consistent gap and padding to match the rest of the page layout."
+      "desc": {
+        "en_us": "The Featured page container in 'companents.astro' updated with consistent gap and padding to match the rest of the page layout.",
+        "tr": "'companents.astro' içindeki Featured sayfası kapsayıcısı, sayfanın geri kalanıyla uyumlu boşluk ve iç kenar boşluklarına sahip olacak şekilde güncellendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Pagination button IDs in 'lister.astro' corrected from the misleading 'nextPage'/'previousPage' to 'listerPrevPage'/'listerNextPage'."
+      "desc": {
+        "en_us": "Pagination button IDs in 'lister.astro' corrected from the misleading 'nextPage'/'previousPage' to 'listerPrevPage'/'listerNextPage'.",
+        "tr": "'lister.astro' içindeki sayfalama butonlarının ID'leri, yanıltıcı 'nextPage'/'previousPage' yerine 'listerPrevPage'/'listerNextPage' olarak düzeltildi."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "An issue where episode lists could occasionally fail to load on the watch page."
+      "desc": {
+        "en_us": "An issue where episode lists could occasionally fail to load on the watch page.",
+        "tr": "Watch sayfasında bölüm listesinin zaman zaman yüklenmemesine neden olan sorun düzeltildi."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "A 'ListAnime.ts' bug that incorrectly displayed some age ratings as 'unknown'."
+      "desc": {
+        "en_us": "A 'ListAnime.ts' bug that incorrectly displayed some age ratings as 'unknown'.",
+        "tr": "'ListAnime.ts' içerisinde bazı yaş derecelendirmelerinin yanlışlıkla 'unknown' olarak gösterilmesine neden olan hata düzeltildi."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "A critical issue where the loading overlay could remain visible after switching episodes, causing a soft lock."
+      "desc": {
+        "en_us": "A critical issue where the loading overlay could remain visible after switching episodes, causing a soft lock.",
+        "tr": "Bölüm değiştirildikten sonra yükleme ekranının kapanmayarak uygulamanın kilitlenmesine neden olan kritik sorun düzeltildi."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "Scrollbar styling to better match the site theme and improve visual consistency."
+      "desc": {
+        "en_us": "Scrollbar styling to better match the site theme and improve visual consistency.",
+        "tr": "Kaydırma çubuğu tasarımı site temasıyla daha uyumlu ve tutarlı olacak şekilde güncellendi."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "The 'ADDED MISC' label in the changelog renderer, now correctly displaying as 'Misc'."
+      "desc": {
+        "en_us": "The 'ADDED MISC' label in the changelog renderer, now correctly displaying as 'Misc'.",
+        "tr": "Changelog oluşturucusundaki 'ADDED MISC' etiketi düzeltilerek doğru şekilde 'Misc' olarak gösterilmeye başlandı."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "Duplicate 'oshiNoKo' keys in 'animeIDs.json' that caused two of the three entries to be silently dropped by JSON parsers."
+      "desc": {
+        "en_us": "Duplicate 'oshiNoKo' keys in 'animeIDs.json' that caused two of the three entries to be silently dropped by JSON parsers.",
+        "tr": "'animeIDs.json' dosyasındaki yinelenen 'oshiNoKo' anahtarları nedeniyle üç kaydın ikisinin JSON ayrıştırıcıları tarafından yok sayılmasına neden olan sorun düzeltildi."
+      }
     },
     {
       "type": "Deprecated",
-      "desc": "The 'Go To' navigation on the Changelog page has been temporarily disabled while the feature is being reworked."
+      "desc": {
+        "en_us": "The 'Go To' navigation on the Changelog page has been temporarily disabled while the feature is being reworked.",
+        "tr": "Changelog sayfasındaki 'Go To' gezinme özelliği yeniden geliştirildiği için geçici olarak devre dışı bırakıldı."
+      }
     },
     {
       "type": "Removed",
-      "desc": "Legacy Konami Code functionality to keep the codebase lean and focused."
+      "desc": {
+        "en_us": "Legacy Konami Code functionality to keep the codebase lean and focused.",
+        "tr": "Kod tabanını daha sade ve odaklı tutmak amacıyla eski Konami Code işlevi kaldırıldı."
+      }
     }
   ]
 }

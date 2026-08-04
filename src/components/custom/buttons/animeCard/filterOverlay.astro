@@ -4,7 +4,7 @@ import GoogleMaterialSymbol from "../../googleMaterial_Symbol.astro";
 
 <div
     id="animeCardNsfwFilter"
-    class="hidden absolute top-0 right-0 flex-col items-start justify-start gap-2 p-4 aspect-2/3 w-full h-full rounded-3xl rounded-b-xl text-[min(6vw,1rem)] bg-L_Primary dark:bg-D_Primary z-10"
+    class="hidden absolute top-0 right-0 flex-col items-start justify-start gap-2 p-4 aspect-2/3 w-full h-full rounded-3xl rounded-b-xl text-[min(6vw,0.9rem)] bg-L_Primary dark:bg-D_Primary z-10"
 >
     <div
         class="flex flex-col items-start justify-start gap-2 p-2 w-full h-fit max-h-full"
@@ -14,13 +14,13 @@ import GoogleMaterialSymbol from "../../googleMaterial_Symbol.astro";
         >
             <GoogleMaterialSymbol
                 symbol="18_up_rating"
-                SvgSize="!text-[min(6vw,2rem)] text-Accent"
+                SymbolSize="!text-[min(6vw,2rem)] text-Accent"
                 isFilled={true}
             />
-            <p class="text-[min(6vw,1.4rem)]">NSFW</p>
+            <p class="text-[min(6vw,1.4rem)]">Adult Content</p>
         </div>
         <p class="text-LT_Secondary dark:text-DT_Secondary text-left">
-            This content is marked as an NSFW content. Here is why;
+            This content is marked as an Adult Content content. Here is why;
         </p>
     </div>
 
@@ -55,7 +55,8 @@ import GoogleMaterialSymbol from "../../googleMaterial_Symbol.astro";
                 3.
             </p>
             <p class="text-LT_Secondary dark:text-DT_Secondary text-left">
-                Your location may have disabled NSFW content permanently.
+                Your location may have disabled Adult Content content
+                permanently.
             </p>
         </div>
         <div class="flex flex-row items-start justify-center gap-1 rounded-3xl">
@@ -65,7 +66,7 @@ import GoogleMaterialSymbol from "../../googleMaterial_Symbol.astro";
                 4.
             </p>
             <p class="text-LT_Secondary dark:text-DT_Secondary text-left">
-                THis might be an wrong marking on NSFW.
+                THis might be an wrong marking on Adult Content.
             </p>
         </div>
     </div>

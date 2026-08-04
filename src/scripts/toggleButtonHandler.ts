@@ -32,7 +32,10 @@ const toggleActionRegistry = new Map<string, ToggleActionHandler>();
 
 // Call this once from any module that wants to own a toggle action,
 // e.g. registerToggleAction("muteToggle", (el, isActive) => { ... }).
-function registerToggleAction(name: string, handler: ToggleActionHandler): void {
+function registerToggleAction(
+  name: string,
+  handler: ToggleActionHandler,
+): void {
   if (toggleActionRegistry.has(name)) {
     console.warn(
       `[toggleButtonCore] Action "${name}" is already registered. Overwriting previous handler.`,
@@ -74,7 +77,10 @@ function isTrue(el: HTMLElement, key: string): boolean {
 function handleToggleClick(event: Event): void {
   const element = event.currentTarget as HTMLElement;
 
-  const currentState = isTrue(element, TOGGLE_BUTTON_CONFIG.dataset.toggleState);
+  const currentState = isTrue(
+    element,
+    TOGGLE_BUTTON_CONFIG.dataset.toggleState,
+  );
   const newState = !currentState;
 
   element.dataset[TOGGLE_BUTTON_CONFIG.dataset.toggleState] = String(newState);
@@ -122,12 +128,17 @@ function initToggleButtons(event: Event): void {
     // Apply visual state on every init (fresh DOM after Astro
     // View Transitions may need re-applied classes even if the
     // dataset value itself survived).
-    const initialState = isTrue(button, TOGGLE_BUTTON_CONFIG.dataset.toggleState);
+    const initialState = isTrue(
+      button,
+      TOGGLE_BUTTON_CONFIG.dataset.toggleState,
+    );
     setActiveState(button, initialState);
 
     // Guard against double-binding on repeated init calls
     // (double DOMContentLoaded under View Transitions).
-    if (button.dataset[TOGGLE_BUTTON_CONFIG.dataset.toggleInitialized] === "true")
+    if (
+      button.dataset[TOGGLE_BUTTON_CONFIG.dataset.toggleInitialized] === "true"
+    )
       return;
     button.dataset[TOGGLE_BUTTON_CONFIG.dataset.toggleInitialized] = "true";
 

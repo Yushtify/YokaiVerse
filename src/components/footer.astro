@@ -1,5 +1,5 @@
 ---
-import GoogleMaterialSymbol from "./custom/googleMaterial_Symbol.astro";
+import DropdownMenu from "./custom/dropdownMenu.astro";
 import LinkButton from "./custom/links/linkButton.astro";
 import LanguageSwitcher from "./custom/public/languageSwitcher.astro";
 ---
@@ -27,13 +27,13 @@ import LanguageSwitcher from "./custom/public/languageSwitcher.astro";
                 class="flex flex-col items-start justify-center gap-2 w-fit h-fit"
             >
                 <p
-                    class="font-bold text-[min(7vw,1.6rem)]"
+                    class="font-bold text-[min(6vw,1.6rem)]"
                     data-i18n="footer.brand"
                 >
                     YokaiVerse
                 </p>
                 <p
-                    class="w-full text-[min(7vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary"
+                    class="w-full text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary"
                     data-i18n="footer.slogan"
                 >
                     Your privacy is our goal to keep it safe and secure.
@@ -47,7 +47,7 @@ import LanguageSwitcher from "./custom/public/languageSwitcher.astro";
                 class="flex flex-col items-start justify-start w-fit h-fit gap-4"
             >
                 <p
-                    class="font-semibold text-[min(7vw,1.2rem)]"
+                    class="font-semibold text-[min(6vw,1.2rem)]"
                     data-i18n="footer.sections.links.title"
                 >
                     Links
@@ -104,7 +104,7 @@ import LanguageSwitcher from "./custom/public/languageSwitcher.astro";
                 class="flex flex-col items-start justify-start w-fit h-fit gap-4"
             >
                 <p
-                    class="font-semibold text-[min(7vw,1.2rem)]"
+                    class="font-semibold text-[min(6vw,1.2rem)]"
                     data-i18n="footer.sections.community.title"
                 >
                     Community
@@ -126,7 +126,7 @@ import LanguageSwitcher from "./custom/public/languageSwitcher.astro";
                 class="flex flex-col items-start justify-start w-fit h-fit gap-4"
             >
                 <p
-                    class="font-semibold text-[min(7vw,1.2rem)]"
+                    class="font-semibold text-[min(6vw,1.2rem)]"
                     data-i18n="footer.sections.company.title"
                 >
                     Company
@@ -175,7 +175,7 @@ import LanguageSwitcher from "./custom/public/languageSwitcher.astro";
     </div>
 
     <div
-        class="flex flex-row items-center justify-start pb-4 w-full h-fit gap-4"
+        class="flex flex-col md:flex-row items-start md:items-end justify-start pb-4 w-full h-fit gap-4"
     >
         <LanguageSwitcher />
     </div>

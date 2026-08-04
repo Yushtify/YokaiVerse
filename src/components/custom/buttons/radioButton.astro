@@ -3,8 +3,8 @@ import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
 
 // ---- Props ----
 interface Props {
-    givenPositionTo?: "horizontal" | "vertical";
-    givenPosition?: "start" | "center" | "end";
+    givenLocationFrom?: "horizontal" | "vertical";
+    givenLocation?: "start" | "center" | "end";
 
     givenID?: string;
     givenRadGroup: string;
@@ -19,8 +19,8 @@ interface Props {
 }
 
 const {
-    givenPositionTo,
-    givenPosition,
+    givenLocationFrom,
+    givenLocation,
     givenID,
     givenRadGroup,
     givenCanDisabled,
@@ -31,42 +31,43 @@ const {
     givenSymbolStyle,
 } = Astro.props;
 
-let validatedClass: string;
-let validSvgSize: string;
-let validTextSize: string;
-let validRounded: string = "rounded-3xl";
-let validP: string = "p-2 px-4";
-if (givenPosition && givenPositionTo) {
-    if (givenPositionTo === "horizontal") {
-        if (givenPosition === "start")
-            validRounded = "rounded-l-3xl rounded-r-xl";
-        else if (givenPosition === "end")
-            validRounded = "rounded-l-xl rounded-r-3xl";
-        else if (givenPosition === "center") validRounded = "rounded-xl";
-    } else if (givenPositionTo === "vertical") {
-        if (givenPosition === "start")
-            validRounded = "rounded-t-3xl rounded-b-xl";
-        else if (givenPosition === "end")
-            validRounded = "rounded-t-xl rounded-b-3xl";
-        else if (givenPosition === "center") validRounded = "rounded-xl";
-    }
-}
-validTextSize = " text-[min(6vw,1rem)] ";
-validSvgSize = "text-[min(6vw,1.5rem)]";
-validRounded += " hover:rounded-3xl";
-validP = givenTitle ? "p-2 px-4 pl-2" : "p-2";
-validatedClass = givenSymbol
-    ? `group flex flex-row items-center justify-center w-fit max-w-full h-fit ${validRounded} gap-2 ${validP}  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${validTextSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer`
-    : `group flex flex-row items-center justify-center w-fit max-w-full h-fit ${validRounded} gap-2 p-2 px-4  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${validTextSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer`;
-const validatedSvgContainer_Class = givenSymbol
-    ? "flex flex-row items-center justify-center w-fit h-fit rounded-3xl p-2 bg-L_BG dark:bg-D_BG group-hover:bg-LightAccent transition-colors duration-200 ease-in-out"
-    : "hidden";
-const activeSvgContainer_Class = "bg-LightAccent! !";
+let validP: string = givenTitle ? "p-2 px-4 pl-2" : "p-2";
 
-const activeClass =
-    "bg-Accent! hover:bg-Highlight! text-LT_Inverted! dark:text-DT_Inverted!";
+// validate button rounded
+const borderRadiusMap = {
+    horizontal: {
+        start: "rounded-xl rounded-l-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-r-3xl",
+    },
+    vertical: {
+        start: "rounded-xl rounded-t-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-b-3xl",
+    },
+} as const;
 
-const titleActive = givenTitle ? "inline" : "hidden";
+const borderRadius =
+    givenLocationFrom && givenLocation
+        ? borderRadiusMap[givenLocationFrom][givenLocation]
+        : "rounded-3xl";
+const validBorderRadius = `${borderRadius} hover:rounded-3xl`;
+const textSize = " text-[min(6vw,0.9rem)] ";
+
+const classMap = {
+    active: {
+        buttonClass:
+            "bg-Accent! hover:bg-Highlight! text-LT_Inverted! dark:text-DT_Inverted!",
+        symbolContainerClass: "bg-LightAccent!",
+    },
+    buttonDefClass: givenSymbol
+        ? `group flex flex-row items-center justify-center w-fit max-w-full h-fit ${validBorderRadius} gap-2 ${validP}  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${textSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer`
+        : `group flex flex-row items-center justify-center w-fit max-w-full h-fit ${validBorderRadius} gap-2 p-2 px-4  bg-L_Primary dark:bg-D_Primary hover:bg-Highlight ${textSize} text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted hover:dark:text-DT_Inverted transition-all duration-200 ease-in-out cursor-pointer`,
+    symbolContainerClass: givenSymbol
+        ? "flex flex-row items-center justify-center w-fit h-fit rounded-3xl p-2 bg-L_BG dark:bg-D_BG group-hover:bg-LightAccent transition-colors duration-200 ease-in-out"
+        : "hidden",
+    hasTitle: givenTitle ? "inline text-left" : "hidden",
+};
 ---
 
 <button
@@ -75,21 +76,21 @@ const titleActive = givenTitle ? "inline" : "hidden";
     data-radgroup={givenRadGroup}
     data-canDisabled={givenCanDisabled}
     data-radstate={givenState}
-    data-radActive={activeClass}
-    class={validatedClass}
+    data-radActive={classMap.active.buttonClass}
+    class={classMap.buttonDefClass}
 >
     <div
-        class={validatedSvgContainer_Class}
-        data-radActive={activeSvgContainer_Class}
+        class={classMap.symbolContainerClass}
+        data-radActive={classMap.active.symbolContainerClass}
     >
         <GoogleMaterialSymbol
             symbol={givenSymbol}
-            SvgSize={validSvgSize}
+            SymbolSize={`${textSize}!`}
             SVG_Style={givenSymbolStyle}
             isFilled={true}
         />
     </div>
-    <p data-i18n={titleData} class={`${titleActive} text-left`}>
+    <p data-i18n={titleData} class={classMap.hasTitle}>
         {givenTitle}
     </p>
 </button>

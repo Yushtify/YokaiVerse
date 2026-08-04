@@ -49,7 +49,7 @@ registerToggleAction("cinemaLightEp", (el, isActive) => {
 
   // Sync the SVG inner HTML icon based on the active state
   if (svgEl) {
-    svgEl.innerHTML = newState
+    svgEl.textContent = newState
       ? config.buttons.cinemaLightsButton.symbols.active
       : config.buttons.cinemaLightsButton.symbols.deactive;
   }

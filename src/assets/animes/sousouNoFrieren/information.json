@@ -3,14 +3,22 @@
   "desc": "After the party of heroes defeats the Demon King and saves the world, Frieren, an elven mage with a lifespan far longer than humans, sets out on a journey to understand the flow of time, the value of life, and human relationships.",
   "author": "Madhouse",
   "ageRestriction": "13+",
-  "nsfw": false,
-  "categories": ["Popular", "Tam yalının babanesini pompalık animeler", "Featured", "Fantasy", "Adventure", "Drama", "Shounen"],
-  "type": {
+  "adultContent": false,
+  "categories": [
+    "Popular",
+    "Featured",
+    "Fantasy",
+    "Adventure",
+    "Drama",
+    "Shounen"
+  ],
+  "series": {
     "movie": false,
+    "manga": false,
     "anime": true
   },
   "meta": {
-    "views":"10.000",
+    "views": "10.000",
     "rating": "4.9",
     "uploadDate": "29 Sep 2023",
     "tags": {

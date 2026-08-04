@@ -1,0 +1,15 @@
+{
+  "milestone": "v0.6.0",
+  "eta": "Q4 2026",
+  "status": "In_Progress",
+  "description": "no desc",
+  "items": [
+    { "status": "Planned", "desc": "Integrated subtitles to episode player." },
+    { "status": "Planned", "desc": "More customization on episode player." },
+    { "status": "Planned", "desc": "Filtering system in Featured." },
+    {
+      "status": "Planned",
+      "desc": "Revamping \"/store\", \"/roadmap\", \"/doc\" and all files in \"/doc\" page"
+    }
+  ]
+}

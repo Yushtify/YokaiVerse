@@ -1,21 +1,68 @@
 ---
-import Body from "../../../layouts/default.astro";
+import Body from "../../../layouts/sidebar.astro";
 
-import SideBar from "./sideBar.astro";
+import SideBar from "../../sideBar.astro";
+import SettingsNavigator from "../../custom/buttons/navigatorRadio.astro";
 
 import SettingTabs from "./tabs/tabs.astro";
 ---
 
 <Body>
-    <div
-        class="relative flex flex-col md:flex-row items-start justify-start md:p-6 pb-0 w-full xl:w-[80%] h-fit gap-12 lg:gap-24"
+    <SideBar
+        givenSymbol="settings"
+        givenTitle="settings"
+        givenTitleData="settings.hero.title"
     >
-        <SideBar />
-        <div
-            class="flex flex-col items-start justify-start w-full h-fit max-h-screen"
-        >
-            <SettingTabs />
-        </div>
+        <SettingsNavigator
+            givenID="generalSettings_radio"
+            givenRadGroup="settingsNavigator"
+            givenCanDisabled={false}
+            givenState={true}
+            givenSymbol="tune"
+            givenTitle="General"
+            titleData="settings.hero.quickLinks.general"
+        />
+        <SettingsNavigator
+            givenID="accountSettings_radio"
+            givenRadGroup="settingsNavigator"
+            givenCanDisabled={false}
+            givenState={false}
+            givenSymbol="person"
+            givenTitle="Account"
+            titleData="settings.hero.quickLinks.account"
+        />
+        <SettingsNavigator
+            givenID="privacySettings_radio"
+            givenRadGroup="settingsNavigator"
+            givenCanDisabled={false}
+            givenState={false}
+            givenSymbol="shield_lock"
+            givenTitle="Privacy"
+            titleData="settings.hero.quickLinks.privacy"
+        />
+        <SettingsNavigator
+            givenID="appearanceSettings_radio"
+            givenRadGroup="settingsNavigator"
+            givenCanDisabled={false}
+            givenState={false}
+            givenSymbol="palette"
+            givenTitle="Appearance"
+            titleData="settings.hero.quickLinks.appearance"
+        />
+        <SettingsNavigator
+            givenID="experimentalSettings_radio"
+            givenRadGroup="settingsNavigator"
+            givenCanDisabled={false}
+            givenState={false}
+            givenSymbol="science"
+            givenTitle="experimental"
+            titleData="settings.hero.quickLinks.experimental"
+        />
+    </SideBar>
+    <div
+        class="flex flex-col items-start justify-start w-full h-fit max-h-screen"
+    >
+        <SettingTabs />
     </div>
 </Body>
 

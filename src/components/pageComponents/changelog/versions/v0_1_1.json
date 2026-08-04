@@ -1,12 +1,21 @@
 {
   "version": "v0.1.1",
   "commit": "34805e",
-  "date": "Mar 02, 2026",
-  "description": "A quick follow-up release for v0.1.0, focused on resolving a missing branding issue in the navigation bar.",
+  "date": {
+    "en_us": "March 02, 2026",
+    "tr": "2 Mart 2026"
+  },
+  "description": {
+    "en_us": "A quick follow-up release for v0.1.0, focused on resolving a missing branding issue in the navigation bar.",
+    "tr": "v0.1.0 sürümü için hızlı bir takip güncellemesi. Navigasyon çubuğundaki eksik marka öğesi sorununu çözmeye odaklanır."
+  },
   "logs": [
     {
       "type": "Fixed",
-      "desc": "An issue where the navigation bar was missing the brand element."
+      "desc": {
+        "en_us": "An issue where the navigation bar was missing the brand element.",
+        "tr": "Navigasyon çubuğunda marka öğesinin eksik olması sorunu düzeltildi."
+      }
     }
   ]
 }

@@ -6,9 +6,17 @@
       "episodes": "bölümler",
       "season": "sezon",
       "seasons": "sezonlar",
-      "allEpisodes": "tüm bölümler"
+      "allEpisodes": "tüm bölümler",
+      "prevPage": "Önceki Sayfa",
+      "nextPage": "Sonraki Sayfa",
+      "prevEpisode": "Önceki Bölüm",
+      "nextEpisode": "Sonraki Bölüm",
+      "desc": "Açıklama",
+      "by": "yapımcı:",
+      "uploader": "yükleyici:"
     }
   },
+
   "tooltip": {
     "footer": {
       "languageSwitcher": "Web sitesinin dilini Türkçeden tercih ettiğiniz dile değiştirin."
@@ -90,6 +98,10 @@
         "title": "Bölümler",
         "description": ""
       },
+      "contentChapters": {
+        "title": "Bölümler",
+        "description": ""
+      },
       "contentAgeRating": {
         "title": "İçerik Yaş Sınıflandırması",
         "description": ""
@@ -106,7 +118,8 @@
     "home": "ana sayfa",
     "featured": "öne çıkanlar",
     "discover": "keşfet",
-    "search_placeholder": "Bir şeyler arayın..."
+    "search_placeholder": "Bir şeyler arayın...",
+    "settings": "Ayarlar"
   },
   "footer": {
     "brand": "YokaiVerse",
@@ -167,7 +180,7 @@
   },
   "settings": {
     "hero": {
-      "header": "ayarlar",
+      "title": "ayarlar",
       "desc": "Deneyiminizi dilediğiniz gibi özelleştirin.",
       "quickLinks": {
         "general": "genel",
@@ -181,7 +194,22 @@
       "general": {
         "title": "Genel",
         "desc": "Temel site davranışını ve temel site tercihlerini yönetin",
-        "contents": {}
+        "contents": {
+          "interface": {
+            "title": "Arayüz",
+            "animations": {
+              "title": "Animasyonlar",
+              "desc": "Sitedeki animasyonları açın ya da kapatın"
+            }
+          },
+          "contentS": {
+            "title": "İçerik",
+            "nsfwFilter": {
+              "title": "Yetişkin içerik",
+              "desc": "Yetişkin içeriğin site üzerinde görünürlüğünü kontrol edin"
+            }
+          }
+        }
       },
       "account": {
         "title": "Hesap",
@@ -191,22 +219,41 @@
       "privacy": {
         "title": "Gizlilik",
         "desc": "Veri görünürlüğünüzü ve anonimlik protokollerinizi kontrol edin",
-        "contents": {}
+        "contents": {
+          "dangerZone": {
+            "title": "Tehlikeli Bölge",
+            "deleteData": {
+              "title": "Bilgileri Sil",
+              "desc": "Websitede kayıtlı tüm bilgileri silin. Bu işlemin asla geri dönüşü yoktur!"
+            }
+          }
+        }
       },
       "appearance": {
         "title": "Görünüm",
         "desc": "Temaları, vurgu renklerini ve genel kullanıcı arayüzünü özelleştirin",
         "contents": {
-          "theme": {
-            "title": "Temalar",
-            "desc": "Temayı istediğinizle değiştirin yada sistemin seçimini uygulayın"
+          "interface": {
+            "title": "Arayüz",
+            "theme": {
+              "title": "Temalar",
+              "desc": "Temayı istediğinizle değiştirin ya da sistemin seçimini uygulayın"
+            }
           }
         }
       },
       "experimental": {
         "title": "Deneysel",
         "desc": "Deneysel özellikleri ve yaklaşan site geliştirmelerini test edin",
-        "contents": {}
+        "contents": {
+          "videoPlayer": {
+            "title": "video oynatıcı",
+            "timelineSegments": {
+              "title": "Zaman Çizelgesi Bölümleri [YENİ]",
+              "desc": "Video oynatıcının bölümlere ayrılmış zaman çizelgesini kullanıp kullanmayacağını değiştirin. Bu özellik yeni eklendiği için çeşitli hatalarla karşılaşabilirsiniz. (Bu özellik varsayılan olarak açıktır)"
+            }
+          }
+        }
       }
     }
   },
@@ -220,7 +267,59 @@
         "manga": "Mangalar",
         "webtoon": "Webtoonlar",
         "sfw": "SFW (Güvenli)",
-        "nsfw": "NSFW (+18)"
+        "adultContent": "Adult Content (+18)"
+      }
+    },
+    "content": {
+      "listers": {
+        "untitled": {
+          "title": "Başlıksız",
+          "desc": "Açıklamasız"
+        },
+        "adventure": {
+          "title": "Macera",
+          "desc": "Bilinmeyene uzanan heyecan dolu yolculuklara çık."
+        },
+        "popular": {
+          "title": "Popüler",
+          "desc": "En çok izlenen ve en yüksek puanlanan başlıklar."
+        },
+        "featured": {
+          "title": "Öne Çıkanlar",
+          "desc": "Kaçırmaman gereken özenle seçilmiş başlıklar."
+        },
+        "fantasy": {
+          "title": "Fantastik",
+          "desc": "Büyü ve macera dolu fantastik dünyaları keşfet."
+        },
+        "ova": {
+          "title": "OVA",
+          "desc": "Orijinal video animasyonları."
+        },
+        "special": {
+          "title": "Özel",
+          "desc": "Özel bölümler ve bonus içerikler."
+        },
+        "drama": {
+          "title": "Dram",
+          "desc": "Duygusal hikâyeleriyle öne çıkan yapımlar."
+        },
+        "psychological": {
+          "title": "Psikolojik",
+          "desc": "Zihni zorlayan psikolojik hikâyeler."
+        },
+        "supernatural": {
+          "title": "Doğaüstü",
+          "desc": "Doğaüstü güçler ve gizemli olaylar içeren yapımlar."
+        },
+        "music": {
+          "title": "Müzik",
+          "desc": "Müziği merkezine alan anime başlıkları."
+        },
+        "adultContent": {
+          "title": "Adult Content",
+          "desc": "Yalnızca yetişkinlere yönelik içerikler."
+        }
       }
     }
   },
@@ -307,6 +406,19 @@
     }
   },
   "changelog": {
+    "variables": {
+      "added": "Eklendi",
+      "performance": "Performans",
+      "rewritten": "Yeniden Yazıldı",
+      "breaking": "Kırılım",
+      "updated": "Güncellendi",
+      "fixed": "Düzeltildi",
+      "changed": "Değiştirildi",
+      "deprecated": "Kullanımdan Çıkarıldı",
+      "removed": "Kaldırıldı",
+      "knownBug": "Bilinen Hata",
+      "experimental": "Deneysel"
+    },
     "hero": {
       "header": "Değişiklik Günlükleri",
       "desc": "YokaiVerse şu anda geliştirilme aşamasındadır. Son güncellemeler ürün kararlılığını veya kullanıcı deneyimini etkileyebilir. Bu platformu sizin için daha iyi ve güvenli hale getirmek için çalışırken gösterdiğiniz sabır için teşekkür ederiz."
@@ -481,6 +593,71 @@
         "desc": "İşlevsel çerezleri kullanımımıza ilişkin detaylar."
       },
       "paragraph": "Yapım Aşamasında!"
+    },
+    "license": {
+      "hero": {
+        "title": "Lisans",
+        "desc": "Bu Türkçe çeviri yalnızca bilgilendirme amaçlıdır. Hukuki bağlayıcılığı olan metin İngilizce AGPLv3 lisansıdır."
+      },
+      "preamble": {
+        "paragraph": "GNU Affero Genel Kamu Lisansı, özellikle ağ sunucusu yazılımları durumunda toplulukla iş birliğini sağlamak üzere tasarlanmış, yazılımlar ve diğer eser türleri için ücretsiz, telif hakkı devredilemez (copyleft) bir lisanstır. Genel Kamu Lisanslarımız, bir programın tüm sürümlerini paylaşma ve değiştirme özgürlüğünüzü garanti altına almayı, yani programın tüm kullanıcıları için özgür yazılım olarak kalmasını sağlamayı amaçlar."
+      },
+      "definitions": {
+        "header": "Tanımlar",
+        "paragraph_1": "\"Bu Lisans\", GNU Affero Genel Kamu Lisansı'nın 3. sürümünü ifade eder. \"Telif Hakkı\", yarı iletken maskeler gibi diğer eser türleri için geçerli olan telif hakkı benzeri yasaları da kapsar. \"Program\", bu Lisans kapsamında lisanslanan telif hakkına tabi her türlü eseri ifade eder. Lisans sahibi olan herkes \"siz\" olarak hitap edilir. Bir eseri \"değiştirmek\", birebir kopyasını oluşturmak dışında, eserin tamamını veya bir kısmını telif hakkı izni gerektirecek şekilde kopyalamak veya uyarlamak anlamına gelir. \"Kapsamdaki eser\", ya değiştirilmemiş Program'ı ya da Program'a dayalı bir eseri ifade eder. Bir eseri \"yaymak\", geçerli telif hakkı yasası uyarınca izin almadan yapıldığında sizi doğrudan veya ikincil olarak ihlalden sorumlu kılacak her türlü işlemi yapmak anlamına gelir. Bir eseri \"aktarmak\", diğer tarafların kopya yapmasını veya almasını sağlayan her türlü yayma biçimini ifade eder."
+      },
+      "sourceCode": {
+        "header": "Kaynak Kodu",
+        "paragraph_1": "Bir eserin \"kaynak kodu\", eser üzerinde değişiklik yapmak için tercih edilen biçimini ifade eder. \"Nesne kodu\", bir eserin kaynak kodu olmayan herhangi bir biçimini ifade eder. \"Standart Arayüz\", tanınmış bir standartlar kuruluşu tarafından tanımlanmış resmi bir standart olan veya bir programlama dilinde standart kabul edilen bir arayüz anlamına gelir. Nesne kodu biçimindeki bir eserin \"Karşılık Gelen Kaynak Kodu\", nesne kodunu oluşturmak, kurmak, çalıştırmak ve eseri değiştirmek için gereken tüm kaynak kodları (bu faaliyetleri kontrol eden betikler dahil) ifade eder."
+      },
+      "basicPermissions": {
+        "header": "Temel İzinler",
+        "paragraph_1": "Bu Lisans kapsamında verilen tüm haklar, Program üzerindeki telif hakkı süresi boyunca verilir ve belirtilen koşullar yerine getirildiği sürece geri alınamaz. Bu Lisans, değiştirilmemiş Program'ı çalıştırma konusundaki sınırsız izninizi açıkça doğrular. Kapsamdaki bir eserin çalıştırılmasından elde edilen çıktı, yalnızca içeriği itibarıyla kapsamdaki bir eser oluşturuyorsa bu Lisans kapsamına girer. Aktarmadığınız kapsamdaki eserleri, lisansınız yürürlükte kaldığı sürece hiçbir koşula bağlı kalmaksızın yapabilir, çalıştırabilir ve yayabilirsiniz."
+      },
+      "antiCircumvention": {
+        "header": "Kullanıcıların Yasal Haklarının Korunması",
+        "paragraph_1": "Kapsamdaki hiçbir eser, 20 Aralık 1996'da kabul edilen WIPO telif hakkı anlaşmasının 11. maddesi kapsamındaki yükümlülükleri yerine getiren hiçbir geçerli yasa uyarınca etkili bir teknolojik önlemin parçası olarak kabul edilemez. Kapsamdaki bir eseri aktardığınızda, teknolojik önlemlerin etrafından dolanmayı yasaklama yönündeki tüm yasal yetkilerinizden feragat etmiş olursunuz."
+      },
+      "verbatimCopies": {
+        "header": "Birebir Kopyaların Aktarılması",
+        "paragraph_1": "Program'ın kaynak kodunun birebir kopyalarını aldığınız gibi, herhangi bir ortamda aktarabilirsiniz; şu şartla ki, her bir kopya üzerinde uygun bir telif hakkı bildirimini belirgin ve uygun bir şekilde yayınlamalı; bu Lisans'ın ve bölüm 7 uyarınca eklenen izin vermeyen şartların koda uygulandığını belirten tüm bildirimleri korumalı; herhangi bir garantinin bulunmadığına dair tüm bildirimleri saklamalı ve tüm alıcılara Program ile birlikte bu Lisans'ın bir kopyasını vermelisiniz."
+      },
+      "modifiedSource": {
+        "header": "Değiştirilmiş Kaynak Sürümlerinin Aktarılması",
+        "paragraph_1": "Program'a dayalı bir eseri veya onu Program'dan üretmek için yapılan değişiklikleri, bölüm 4 şartları uyarınca kaynak kodu biçiminde aktarabilirsiniz; şu şartla ki, belirgin değişiklik bildirimleri eklemeli, tüm eseri bu Lisans kapsamında lisanslamalı ve etkileşimli arayüzlerde Uygun Yasal Bildirimleri görüntülemelisiniz."
+      },
+      "nonSourceForms": {
+        "header": "Kaynak Kodu Olmayan Biçimlerin Aktarılması",
+        "paragraph_1": "Kapsamdaki bir eseri nesne kodu biçiminde bölüm 4 ve 5 şartlarına göre aktarabilirsiniz; ancak bununla birlikte makine tarafından okunabilir Karşılık Gelen Kaynak Kodu'nu da bu Lisans şartları uyarınca sunmanız gerekir (fiziksel ürün, yazılı teklif, belirlenmiş sunucu erişimi veya eşten eşe iletim yoluyla)."
+      },
+      "additionalTerms": {
+        "header": "Ek Şartlar",
+        "paragraph_1": "\"Ek izinler\", bu Lisans'ın koşullarından bir veya daha fazlasına istisnalar getirerek Lisans şartlarını tamamlayan hükümlerdir. Garanti reddi, atıf gereksinimi, menşe hususunda yanıltma yasağı veya eklediğiniz materyaller üzerinde ticari marka haklarının reddi gibi şartlar ekleyebilirsiniz."
+      },
+      "termination": {
+        "header": "Fesih",
+        "paragraph_1": "Bu Lisans kapsamında açıkça belirtilen durumlar dışında kapsamdaki bir eseri yayamaz veya değiştiremezsiniz. Aksi takdirde yayma veya değiştirme girişiminiz geçersizdir ve bu Lisans altındaki haklarınızı otomatik olarak sonlandırır. Ancak, bu Lisans ihlalinin tamamına son verirseniz, lisansınız koşullara bağlı olarak geçici veya kalıcı olarak yeniden yürürlüğe girer."
+      },
+      "acceptance": {
+        "header": "Kopyalara Sahip Olmak İçin Kabul Gerekmez",
+        "paragraph_1": "Program'ın bir kopyasını almak veya çalıştırmak için bu Lisansı kabul etmeniz gerekmez. Ancak, bu Lisans dışında hiçbir şey size kapsamdaki herhangi bir eseri yayma veya değiştirme izni vermez. Bu Lisansı kabul etmediğiniz takdirde bu eylemler telif hakkını ihlal eder."
+      },
+      "downstreamLicensing": {
+        "header": "Alt Alıcıların Otomatik Lisanslanması",
+        "paragraph_1": "Kapsamdaki bir eseri her aktardığınızda, alıcı bu eseri çalıştırmak, değiştirmek ve yaymak üzere orijinal lisans verenlerden otomatik olarak bir lisans alır. Bu Lisans kapsamında verilen veya doğrulanan hakların kullanımına ek bir kısıtlama getiremezsiniz."
+      },
+      "patents": {
+        "header": "Patentler ve Lisanslama Gereksinimleri",
+        "paragraph_1": "Her katkıda bulunan, katkıda bulunan sürümünün içeriğini yapmak, kullanmak, satmak, satışa sunmak, ithal etmek ve başka şekillerde çalıştırmak, değiştirmek ve yaymak için kendi temel patent hakları kapsamında size münhasır olmayan, dünya çapında, telifsiz bir patent lisansı verir."
+      },
+      "networkInteraction": {
+        "header": "Uzak Ağ Etkileşimi ve GNU GPL ile Kullanım",
+        "paragraph_1": "Bu Lisans'ın diğer hükümlerine bakılmaksızın, Program'ı değiştirirseniz, değiştirilmiş sürümünüz bir bilgisayar ağı üzerinden uzaktan etkileşime giren tüm kullanıcılara, bir ağ sunucusundan ücretsiz erişim sağlayarak sürümünüzün Karşılık Gelen Kaynak Kodu'nu alma fırsatını belirgin şekilde sunmalıdır."
+      },
+      "disclaimerWarranty": {
+        "header": "Garanti Reddi ve Sorumluluğun Sınırlandırılması",
+        "paragraph_1": "GEÇERLİ YASALARIN İZİN VERDİĞİ ÖLÇÜDE PROGRAM İÇİN HERHANGİ BİR GARANTİ VERİLMEMEKTEDİR. YAZILI OLARAK AKSİ BELİRTİLMEDİĞİ SÜRECE TELİF HAKKI SAHİPLERİ PROGRAMI \"OLDUĞU GİBİ\" HERHANGİ BİR GARANTİ VERMEKSİZİN SUNAR. TELİF HAKKI SAHİPLERİ HİÇBİR DURUMDA OLUŞABİLECEK ZARAR VEYA KAYIPLARDAN SORUMLU TUTULAMAZ."
+      }
     }
   }
 }

@@ -1,12 +1,21 @@
 {
   "version": "v0.3.1",
   "commit": "7f4652c",
-  "date": "May 04, 2026",
-  "description": "Minor fixes.",
+  "date": {
+    "en_us": "May 04, 2026",
+    "tr": "4 Mayıs 2026"
+  },
+  "description": {
+    "en_us": "Minor fixes.",
+    "tr": "Küçük düzeltmeler."
+  },
   "logs": [
     {
       "type": "Changed",
-      "desc": "the NPM packages to newer versions so Depandabot stops death threatening my Mail."
+      "desc": {
+        "en_us": "The NPM packages to newer versions so Dependabot stops death threatening my mail.",
+        "tr": "Dependabot'un e-postama ölüm tehditleri göndermeyi bırakması için NPM paketleri daha yeni sürümlere güncellendi."
+      }
     }
   ]
 }

@@ -28,6 +28,9 @@ export interface PlayerConfig {
     gesturesButton: ButtonConfig;
     keybindsButton: ButtonConfig;
   };
+  currentTimeID: string;
+  durationTimeID: string;
+  timelineSliderID: string;
   volumeSliderID: string;
   subtitleBarID: string;
   cinemaLightsID: string;
@@ -101,6 +104,9 @@ export const config: PlayerConfig = {
       symbols: { active: "keyboard", deactive: "keyboard_off" },
     },
   },
+  currentTimeID: "current_TimeStamp",
+  durationTimeID: "duration_TimeStamp",
+  timelineSliderID: "timelineSlider",
   volumeSliderID: "volumeSlider",
   subtitleBarID: "subtitleBar",
   cinemaLightsID: "epCinemaLights",

@@ -17,16 +17,15 @@ import CustomSlider from "../../custom/customSlider.astro";
     <div class="flex flex-row items-center justify-between gap-6 w-full h-fit">
         <p
             data-i18n="watch.epPlayer.settings.behaviour.loop.title"
-            class="font-semibold text-[min(6vw,1rem)] capitalize"
+            class="font-semibold text-[min(6vw,0.9rem)] capitalize"
         >
             Loop
         </p>
         <ToggleButton
-            givenButtonID="epLoopToggleButton"
-            givenButtonAction="loopEp"
+            givenID="epLoopToggleButton"
+            givenAction="loopEp"
             givenState={false}
-            givenTitle="Auto Play"
-            givenButtonSymbol="repeat"
+            givenSymbol="repeat"
             tooltipDescTrans="tooltip.epPlayer.controlBar.loopButton"
         />
     </div>
@@ -35,16 +34,15 @@ import CustomSlider from "../../custom/customSlider.astro";
     <div class="flex flex-row items-center justify-between gap-6 w-full h-fit">
         <p
             data-i18n="watch.epPlayer.settings.behaviour.autoPlay.title"
-            class="font-semibold text-[min(6vw,1rem)] capitalize"
+            class="font-semibold text-[min(6vw,0.9rem)] capitalize"
         >
             Auto Play
         </p>
         <ToggleButton
-            givenButtonID="epAutoPlayToggleButton"
-            givenButtonAction="autoPlayEp"
+            givenID="epAutoPlayToggleButton"
+            givenAction="autoPlayEp"
             givenState={true}
-            givenTitle="Auto Play"
-            givenButtonSymbol="autopause"
+            givenSymbol="autopause"
             tooltipTitleTrans="tooltip.epPlayer.controlBar.autoPlayButton.title"
             tooltipDescTrans="tooltip.epPlayer.controlBar.autoPlayButton.desc"
         />
@@ -54,16 +52,15 @@ import CustomSlider from "../../custom/customSlider.astro";
     <div class="flex flex-row items-center justify-between gap-6 w-full h-fit">
         <p
             data-i18n="tooltip.epPlayer.controlBar.gesturesButton.title"
-            class="font-semibold text-[min(6vw,1rem)] capitalize"
+            class="font-semibold text-[min(6vw,0.9rem)] capitalize"
         >
             Gestures
         </p>
         <ToggleButton
-            givenButtonID="epGesturesToggleButton"
-            givenButtonAction="toggleGesturesEp"
+            givenID="epGesturesToggleButton"
+            givenAction="toggleGesturesEp"
             givenState={true}
-            givenTitle="Gestures"
-            givenButtonSymbol="pan_tool_alt"
+            givenSymbol="pan_tool_alt"
             tooltipTitleTrans="tooltip.epPlayer.controlBar.gesturesButton.title"
             tooltipDescTrans="tooltip.epPlayer.controlBar.gesturesButton.desc"
         />
@@ -73,16 +70,15 @@ import CustomSlider from "../../custom/customSlider.astro";
     <div class="flex flex-row items-center justify-between gap-6 w-full h-fit">
         <p
             data-i18n="tooltip.epPlayer.controlBar.keybindsButton.title"
-            class="font-semibold text-[min(6vw,1rem)] capitalize"
+            class="font-semibold text-[min(6vw,0.9rem)] capitalize"
         >
             Keybinds
         </p>
         <ToggleButton
-            givenButtonID="epKeybindsToggleButton"
-            givenButtonAction="toggleKeybindsEp"
+            givenID="epKeybindsToggleButton"
+            givenAction="toggleKeybindsEp"
             givenState={true}
-            givenTitle="Keybinds"
-            givenButtonSymbol="action_key"
+            givenSymbol="action_key"
             tooltipTitleTrans="tooltip.epPlayer.controlBar.keybindsButton.title"
             tooltipDescTrans="tooltip.epPlayer.controlBar.keybindsButton.desc"
         />

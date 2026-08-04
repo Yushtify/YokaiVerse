@@ -1,68 +1,119 @@
 {
   "version": "v0.2.0",
   "commit": "6abc145",
-  "date": "March 21, 2026",
-  "description": "A full architectural overhaul introducing a faster, more modular TypeScript-driven system. This release improves metadata loading, strengthens multi-season navigation, and makes the platform more scalable as content libraries grow.",
+  "date": {
+    "en_us": "March 21, 2026",
+    "tr": "21 Mart 2026"
+  },
+  "description": {
+    "en_us": "A full architectural overhaul introducing a faster, more modular TypeScript-driven system. This release improves metadata loading, strengthens multi-season navigation, and makes the platform more scalable as content libraries grow.",
+    "tr": "Daha hızlı ve modüler TypeScript tabanlı bir sistem sunan kapsamlı mimari yenileme. Bu sürüm meta veri yüklemelerini iyileştirir, çoklu sezon gezinmesini güçlendirir ve içerik kütüphaneleri büyüdükçe platformu daha ölçeklenebilir hale getirir."
+  },
   "logs": [
     {
       "type": "Performance",
-      "desc": "'infoHandler.ts' and 'playlistHandler.ts' migrated to the new modular architecture for significantly faster execution."
+      "desc": {
+        "en_us": "'infoHandler.ts' and 'playlistHandler.ts' migrated to the new modular architecture for significantly faster execution.",
+        "tr": "'infoHandler.ts' ve 'playlistHandler.ts', daha hızlı çalışma için yeni modüler mimariye taşındı."
+      }
     },
     {
       "type": "Added",
-      "desc": "A high-performance season switcher for both Info and Watch pages, supporting complex multi-season content structures."
+      "desc": {
+        "en_us": "A high-performance season switcher for both Info and Watch pages, supporting complex multi-season content structures.",
+        "tr": "Karmaşık çoklu sezon içerik yapılarını destekleyen, Info ve Watch sayfaları için yüksek performanslı sezon değiştirici eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "The new 'listAnime.ts' core engine for anime listings, season redirects, and dynamic video button generation with TypeScript-driven efficiency."
+      "desc": {
+        "en_us": "The new 'listAnime.ts' core engine for anime listings, season redirects, and dynamic video button generation with TypeScript-driven efficiency.",
+        "tr": "Anime listeleri, sezon yönlendirmeleri ve dinamik video butonu oluşturma işlemleri için TypeScript verimliliğiyle çalışan yeni 'listAnime.ts' çekirdek motoru eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Fail-safe metadata fallbacks, such as 'Unknown Uploader' and 'Unknown Studio', to prevent UI breakage when metadata is missing."
+      "desc": {
+        "en_us": "Fail-safe metadata fallbacks, such as 'Unknown Uploader' and 'Unknown Studio', to prevent UI breakage when metadata is missing.",
+        "tr": "Meta veriler eksik olduğunda arayüz bozulmalarını önlemek için 'Unknown Uploader' ve 'Unknown Studio' gibi güvenli varsayılan değerler eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Previous and Next navigation buttons for content listers, making browsing more streamlined."
+      "desc": {
+        "en_us": "Previous and Next navigation buttons for content listers, making browsing more streamlined.",
+        "tr": "Daha akıcı gezinme için içerik listeleyicilerine Önceki ve Sonraki gezinme butonları eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Turkish localization support for the footer component."
+      "desc": {
+        "en_us": "Turkish localization support for the footer component.",
+        "tr": "Footer bileşeni için Türkçe yerelleştirme desteği eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "[BETA] tags on the Discover and Featured pages to indicate ongoing performance optimization work."
+      "desc": {
+        "en_us": "[BETA] tags on the Discover and Featured pages to indicate ongoing performance optimization work.",
+        "tr": "Devam eden performans optimizasyon çalışmalarını belirtmek için Discover ve Featured sayfalarına [BETA] etiketleri eklendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Timestamp precision on information pages to include hours and seconds for more accurate duration display."
+      "desc": {
+        "en_us": "Timestamp precision on information pages to include hours and seconds for more accurate duration display.",
+        "tr": "Daha doğru süre gösterimi için bilgi sayfalarındaki zaman damgası hassasiyeti saat ve saniye gösterecek şekilde değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "'gridVideoButton' so episode numbers remain visible, durations are hidden on smaller screens, and descriptions appear on hover for a cleaner UI."
+      "desc": {
+        "en_us": "'gridVideoButton' so episode numbers remain visible, durations are hidden on smaller screens, and descriptions appear on hover for a cleaner UI.",
+        "tr": "'gridVideoButton'; bölüm numaralarının görünür kalması, küçük ekranlarda sürelerin gizlenmesi ve açıklamaların üzerine gelindiğinde gösterilmesi için değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Video player control buttons and the Anime Card architecture for a more polished, modern look."
+      "desc": {
+        "en_us": "Video player control buttons and the Anime Card architecture for a more polished, modern look.",
+        "tr": "Daha modern ve geliştirilmiş bir görünüm için video oynatıcı kontrol butonları ve Anime Card mimarisi değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The footer layout to be fully responsive across all device sizes."
+      "desc": {
+        "en_us": "The footer layout to be fully responsive across all device sizes.",
+        "tr": "Footer düzeni tüm cihaz boyutlarında tamamen duyarlı olacak şekilde değiştirildi."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "Incorrect routing in the footer's company links."
+      "desc": {
+        "en_us": "Incorrect routing in the footer's company links.",
+        "tr": "Footer içerisindeki şirket bağlantılarında bulunan hatalı yönlendirmeler düzeltildi."
+      }
     },
     {
       "type": "Removed",
-      "desc": "Automatic collapsing on the Update Log page to improve readability and scannability."
+      "desc": {
+        "en_us": "Automatic collapsing on the Update Log page to improve readability and scannability.",
+        "tr": "Okunabilirliği ve hızlı taramayı iyileştirmek için Update Log sayfasındaki otomatik daraltma kaldırıldı."
+      }
     },
     {
       "type": "Removed",
-      "desc": "Redundant text from the navbar settings link for a cleaner, more minimal appearance."
+      "desc": {
+        "en_us": "Redundant text from the navbar settings link for a cleaner, more minimal appearance.",
+        "tr": "Daha temiz ve minimal bir görünüm için navbar ayarlar bağlantısındaki gereksiz metin kaldırıldı."
+      }
     },
     {
       "type": "Known_Bug",
-      "desc": "The 'Go To' navigation feature on the What's New page is currently unresponsive."
+      "desc": {
+        "en_us": "The 'Go To' navigation feature on the What's New page is currently unresponsive.",
+        "tr": "What's New sayfasındaki 'Go To' gezinme özelliği şu anda çalışmıyor."
+      }
     }
   ]
 }

@@ -4,7 +4,7 @@ import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
 
 <div
     id="LoadingDIV"
-    class="fixed top-0 left-0 hidden flex-col items-center justify-center gap-4 p-4 w-screen h-screen bg-L_Primary/65 dark:bg-D_Primary/65 backdrop-blur-3xl text-[min(7vw,1rem)] text-LT_Primary dark:text-DT_Primary opacity-100 select-none z-9999"
+    class="fixed top-0 left-0 hidden flex-col items-center justify-center gap-4 p-4 w-screen h-screen bg-L_Primary/65 dark:bg-D_Primary/65 backdrop-blur-3xl text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary opacity-100 select-none z-9999"
 >
     <div
         class="flex flex-col sm:flex-row items-start justify-start gap-4 w-full sm:w-fit max-w-none md:max-w-[85%] xl:max-w-[65%] h-fit"
@@ -16,7 +16,7 @@ import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
                 symbol="progress_activity"
                 SVG_ID="SpinningCircle"
                 SVG_Style="!font-bold text-LT_Inverted dark:text-DT_Inverted"
-                SvgSize="!text-[min(6vw,4rem)]"
+                SymbolSize="!text-[min(6vw,4rem)]"
                 isFilled={true}
             />
         </div>
@@ -25,12 +25,12 @@ import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
             <div class="flex flex-col items-start justify-center gap-1">
                 <p
                     id="AnimatingText"
-                    class="font-bold text-[min(7vw,2.5rem)] text-Accent capitalize"
+                    class="font-bold text-[min(6vw,2.5rem)] text-Accent capitalize"
                 >
                     Loading...
                 </p>
 
-                <p id="DescText" class="text-[min(7vw,1rem)] opacity-80">
+                <p id="DescText" class="text-[min(6vw,0.9rem)] opacity-80">
                     Content is now loading, this can take up to 1 minute
                     depending to your device capabilities.
                 </p>
@@ -43,7 +43,7 @@ import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
                 <p class="font-bold text-[min(6vw,0.8rem)]">error:</p>
                 <p
                     id="errorLine_Text"
-                    class="text-red-500 text-[min(7vw,0.9rem)]"
+                    class="text-red-500 text-[min(6vw,0.9rem)]"
                 >
                     no errors for now.
                 </p>
@@ -151,7 +151,7 @@ import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
                     spin.style.animation = "none";
                 }
 
-                if (text) text.innerHTML = "Error Occurred";
+                if (text) text.textContent = "Error Occurred";
             },
 
             hide(): void {

@@ -4,11 +4,29 @@
   "status": "Completed",
   "description": "Focused on stabilizing experimental features, clearing BETA tags, and polishing the overall experience before expanding the feature set further.",
   "items": [
-    { "status": "Cancelled", "desc": "Stabilizing the context-aware sidebar and promoting it out of the experimental state." },
-    { "status": "Cancelled", "desc": "Removing BETA labels from the Discover and Featured pages following performance validation." },
-    { "status": "Cancelled", "desc": "Re-enabling and completing the 'Go To' navigation on the Changelog page." },
-    { "status": "Completed", "desc": "Expanding localization coverage with additional language packs." },
-    { "status": "Cancelled", "desc": "Replacing the hard-coded NSFW filter with user-configurable content settings." },
-    { "status": "Cancelled", "desc": "Quick-access theme toggle available directly from the navigation bar." }
+    {
+      "status": "Cancelled",
+      "desc": "Stabilizing the context-aware sidebar and promoting it out of the experimental state."
+    },
+    {
+      "status": "Cancelled",
+      "desc": "Removing BETA labels from the Discover and Featured pages following performance validation."
+    },
+    {
+      "status": "Cancelled",
+      "desc": "Re-enabling and completing the 'Go To' navigation on the Changelog page."
+    },
+    {
+      "status": "Completed",
+      "desc": "Expanding localization coverage with additional language packs."
+    },
+    {
+      "status": "Cancelled",
+      "desc": "Replacing the hard-coded Adult Content filter with user-configurable content settings."
+    },
+    {
+      "status": "Cancelled",
+      "desc": "Quick-access theme toggle available directly from the navigation bar."
+    }
   ]
 }

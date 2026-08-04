@@ -1,25 +1,30 @@
 <p
-  id="pageVideoTitle"
-  class="font-semibold text-[min(6vw,1.6rem)] text-LT_Primary dark:text-DT_Primary capitalize"
+    id="pageEpTitle"
+    class="font-semibold text-[min(6vw,1.6rem)] text-LT_Primary dark:text-DT_Primary capitalize"
 >
-  Video Title
+    Video Title
 </p>
 <div class="flex flex-row items-center justify-start gap-4">
-  <img
-    id="pageVideoUploaderIMG"
-    src=""
-    alt="UPLOADER IMAGE"
-    class="w-full max-w-12 h-auto aspect-square rounded-full"
-  />
-  <div
-    class="flex flex-col items-start justify-center w-full h-fit gap-1 text-[min(7vw,1rem)]"
-  >
-    <p
-      class="text-LT_Primary dark:text-DT_Primary uppercase"
-      id="pageVideoStudio"
+    <img
+        id="episodeUploaderIMG"
+        src=""
+        alt="UPLOADER IMAGE"
+        class="w-full max-w-12 h-auto aspect-square rounded-full"
+    />
+    <div
+        class="flex flex-col items-start justify-center w-full h-fit gap-1 text-[min(6vw,0.9rem)]"
     >
-      Studio Name
-    </p>
-    <p class="text-[min(7vw,0.8rem)]" id="pageVideoUploader">Uploader Name</p>
-  </div>
+        <div
+            class="flex flex-row items-start justify-start gap-1 text-LT_Primary dark:text-DT_Primary uppercase"
+        >
+            <p data-i18n="global.variable.by">By</p>
+            <p id="animeAuthor"></p>
+        </div>
+        <div
+            class="flex flex-row items-start justify-start gap-1 text-[min(6vw,0.8rem)] text-LT_Primary dark:text-DT_Primary capitalize"
+        >
+            <p data-i18n="global.variable.uploader">Uploader</p>
+            <p id="episodeUploader">@</p>
+        </div>
+    </div>
 </div>

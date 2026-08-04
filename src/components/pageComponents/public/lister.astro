@@ -1,20 +1,30 @@
 ---
+interface Props {
+    givenID: string;
+}
+
+const { givenID } = Astro.props;
+
 import AnimeCard from "../../custom/buttons/animeCard/companents.astro";
 import Button from "../../custom/buttons/Button.astro";
+import RadioButton from "../../custom/buttons/radioButton.astro";
 import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
+
+const ListerID = givenID + "Lister";
+const cardListerID = givenID + "CardLister";
 ---
 
-<template id="animeLister">
+<template id={ListerID}>
     <div
         id="Lister"
-        class="flex flex-col items-start justify-center gap-8 w-full h-fit text-[min(5vw,1rem)] text-LT_Primary dark:text-DT_Primary"
+        class="flex flex-col items-start justify-center gap-8 w-full h-fit text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary"
     >
         <!-- Lister Header -->
         <div
             class="flex flex-col items-start justify-start md:flex-row md:items-end md:justify-between w-full h-fit gap-4"
         >
             <div
-                class="flex flex-col w-fit max-w-full h-fit items-start justify-center"
+                class="flex flex-col w-fit max-w-full h-fit items-start justify-center gap-2"
             >
                 <div
                     class="flex flex-row items-center justify-start gap-4 w-fit max-w-full h-fit"
@@ -23,11 +33,11 @@ import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
                         SVG_ID="listerSVG"
                         symbol="star"
                         isFilled={true}
-                        SvgSize="!text-[min(6vw,2rem)]"
+                        SymbolSize="!text-[min(6vw,2rem)]"
                     />
                     <p
                         id="listerTitle"
-                        class="font-bold text-[min(6vw,2rem)] capitalize"
+                        class="font-bold text-[min(6vw,1.6rem)] capitalize"
                     >
                         Title
                     </p>
@@ -50,9 +60,9 @@ import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
                     givenButtonID="listerPrevPage"
                     givenButtonAction=""
                     givenTitle="Previous Page"
-                    titleData="global.lister.prevPage"
+                    titleData="global.variable.prevPage"
                     givenButtonSymbol="chevron_backward"
-                    givenButtonSymbolSize="text-[min(7vw,1rem)]"
+                    givenButtonSymbolSize="!text-[min(6vw,1.2rem)]"
                 />
                 <Button
                     givenLocationFrom="horizontal"
@@ -61,17 +71,17 @@ import GoogleMaterialSymbol from "../../custom/googleMaterial_Symbol.astro";
                     givenButtonAction=""
                     givenButtonCustomClass="flex-row-reverse"
                     givenTitle="Next Page"
-                    titleData="global.lister.nextPage"
+                    titleData="global.variable.nextPage"
                     givenButtonSymbol="chevron_forward"
-                    givenButtonSymbolSize="text-[min(7vw,1rem)]"
+                    givenButtonSymbolSize="!text-[min(6vw,1.2rem)]"
                 />
             </div>
         </div>
 
         <!-- Card Grid -->
         <div
-            id="animeCardLister"
-            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 items-start justify-start gap-4 w-full h-fit"
+            id={cardListerID}
+            class="grid grid-cols-[repeat(auto-fill,minmax(219px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 w-full h-fit"
         >
             <AnimeCard />
         </div>

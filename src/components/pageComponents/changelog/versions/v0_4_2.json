@@ -1,12 +1,21 @@
 {
   "version": "v0.4.2",
   "commit": "6c210a6",
-  "date": "Jul 23, 2026",
-  "description": "v.0.4.0 log fix.",
+  "date": {
+    "en_us": "July 23, 2026",
+    "tr": "23 Temmuz 2026"
+  },
+  "description": {
+    "en_us": "v0.4.0 changelog fix.",
+    "tr": "v0.4.0 değişiklik günlüğü düzeltmesi."
+  },
   "logs": [
     {
       "type": "Fixed",
-      "desc": "\"v0.4.0\" changelog, due to my PC getting hard resetted I had lost progress and I had to use some broken backups and I have forgot to update the changelog after a while or check on it, due to this issue I have submitted wrong changelog. I apologize."
+      "desc": {
+        "en_us": "\"v0.4.0\" changelog. Due to my PC being hard-reset, I lost some progress and had to recover using incomplete backups. As a result, I forgot to update and verify the changelog for a while, which caused an incorrect changelog to be published. I apologize.",
+        "tr": "Bilgisayarımın zorla sıfırlanması nedeniyle bazı ilerlemelerimi kaybettim ve eksik yedeklerden geri yükleme yapmak zorunda kaldım. Bu süreçte \"v0.4.0\" değişiklik günlüğünü güncellemeyi ve kontrol etmeyi unuttum, bu yüzden hatalı bir değişiklik günlüğü yayımlandı. Bunun için özür dilerim."
+      }
     }
   ]
 }

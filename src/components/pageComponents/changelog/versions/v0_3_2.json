@@ -1,24 +1,42 @@
 {
   "version": "v0.3.2",
   "commit": "dcf6393",
-  "date": "May 04, 2026",
-  "description": "Minor fixes.",
+  "date": {
+    "en_us": "May 04, 2026",
+    "tr": "4 Mayıs 2026"
+  },
+  "description": {
+    "en_us": "Minor fixes.",
+    "tr": "Küçük düzeltmeler."
+  },
   "logs": [
     {
       "type": "Fixed",
-      "desc": "Vite version conflict with Astro."
+      "desc": {
+        "en_us": "Vite version conflict with Astro.",
+        "tr": "Astro ile Vite arasındaki sürüm uyumsuzluğu düzeltildi."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "Unnecesarry duplicates from tr.json."
+      "desc": {
+        "en_us": "Unnecessary duplicates from tr.json.",
+        "tr": "tr.json dosyasındaki gereksiz yinelenen kayıtlar kaldırıldı."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "Version naming on v0.3.1 and desc."
+      "desc": {
+        "en_us": "Version naming on v0.3.1 and its description.",
+        "tr": "v0.3.1 sürüm numaralandırması ve açıklaması düzeltildi."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "26 Depandabot warnings now all is OK 👍."
+      "desc": {
+        "en_us": "Resolved all 26 Dependabot warnings. Everything is OK 👍.",
+        "tr": "26 Dependabot uyarısının tamamı çözüldü. Artık her şey yolunda 👍."
+      }
     }
   ]
 }

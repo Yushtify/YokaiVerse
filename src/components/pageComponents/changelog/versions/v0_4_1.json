@@ -1,24 +1,42 @@
 {
   "version": "v0.4.1",
   "commit": "7e5ff3f",
-  "date": "Jul 22, 2026",
-  "description": "Quick Patch.",
+  "date": {
+    "en_us": "July 22, 2026",
+    "tr": "22 Temmuz 2026"
+  },
+  "description": {
+    "en_us": "Quick Patch.",
+    "tr": "Hızlı yama."
+  },
   "logs": [
     {
       "type": "Added",
-      "desc": "Home page."
+      "desc": {
+        "en_us": "Home page.",
+        "tr": "Ana sayfa eklendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Layout of the folders."
+      "desc": {
+        "en_us": "Layout of the folders.",
+        "tr": "Klasör düzeni yeniden organize edildi."
+      }
     },
     {
       "type": "Removed",
-      "desc": "Landing page for more clear layout."
+      "desc": {
+        "en_us": "Landing page for a cleaner layout.",
+        "tr": "Daha sade bir düzen sağlamak için açılış sayfası kaldırıldı."
+      }
     },
     {
       "type": "Removed",
-      "desc": "\"backend\" folder. This was due to make the cloudflare pages work with the Astro instead of building a server \"This is due to my bad coding on the backend sorry ;(\"."
+      "desc": {
+        "en_us": "\"backend\" folder. This was removed to make Cloudflare Pages work with Astro instead of requiring a server. (This was due to my bad backend code, sorry ;().",
+        "tr": "Cloudflare Pages'in Astro ile sunucu gerektirmeden çalışabilmesi için \"backend\" klasörü kaldırıldı. (Bu tamamen backend tarafındaki kötü kodlamamdan kaynaklanıyordu, kusura bakmayın ;()."
+      }
     }
   ]
 }

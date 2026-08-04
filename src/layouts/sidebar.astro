@@ -1,0 +1,16 @@
+---
+import Body from "./body.astro";
+---
+
+<Body>
+    <!-- Main Contents -->
+    <main
+        class="relative flex flex-col items-center jusitfy-start gap-8 w-full min-h-screen h-fit px-4 mb-24 overflow-hidden overflow-y-scroll"
+    >
+        <div
+            class="relative flex flex-col md:flex-row items-start justify-start md:p-6 pb-0 w-full xl:w-[80%] h-fit gap-12 lg:gap-24"
+        >
+            <slot />
+        </div>
+    </main>
+</Body>

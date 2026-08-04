@@ -6,7 +6,14 @@
       "episodes": "episodes",
       "season": "season",
       "seasons": "seasons",
-      "allEpisodes": "all episodes"
+      "allEpisodes": "all episodes",
+      "prevPage": "previous page",
+      "nextPage": "next page",
+      "prevEpisode": "previous episode",
+      "nextEpisode": "next episode",
+      "desc": "description",
+      "by": "by",
+      "uploader": "uploader"
     }
   },
   "tooltip": {
@@ -167,21 +174,36 @@
   },
   "settings": {
     "hero": {
-      "header": "settings",
+      "title": "Settings",
       "desc": "Customize your experience however you like.",
       "quickLinks": {
-        "general": "general",
-        "appearance": "appearance",
-        "experimental": "experimental",
-        "privacy": "privacy",
-        "account": "account"
+        "general": "General",
+        "appearance": "Appearance",
+        "experimental": "Experimental",
+        "privacy": "Privacy",
+        "account": "Account"
       }
     },
     "tabs": {
       "general": {
         "title": "General",
-        "desc": "Manage core site behavior and fundamental site preferences",
-        "contents": {}
+        "desc": "Manage basic site behavior and preferences",
+        "contents": {
+          "interface": {
+            "title": "Interface",
+            "animations": {
+              "title": "Animations",
+              "desc": "Enable or disable UI animations throughout the website"
+            }
+          },
+          "contentS": {
+            "title": "Content",
+            "nsfwFilter": {
+              "title": "Adult Content",
+              "desc": "Control the visibility of adult content across the website"
+            }
+          }
+        }
       },
       "account": {
         "title": "Account",
@@ -190,23 +212,42 @@
       },
       "privacy": {
         "title": "Privacy",
-        "desc": "Control your data visibility and anonymity protocols",
-        "contents": {}
+        "desc": "Control your data visibility and privacy settings",
+        "contents": {
+          "dangerZone": {
+            "title": "Danger Zone",
+            "deleteData": {
+              "title": "Delete Data",
+              "desc": "Delete all data stored by the website. This action cannot be undone!"
+            }
+          }
+        }
       },
       "appearance": {
         "title": "Appearance",
         "desc": "Customize themes, accent colors, and the overall user interface",
         "contents": {
-          "theme": {
-            "title": "Themes",
-            "desc": "Change the theme to your liking or apply system selection"
+          "interface": {
+            "title": "Interface",
+            "theme": {
+              "title": "Themes",
+              "desc": "Choose your preferred theme or follow the system setting"
+            }
           }
         }
       },
       "experimental": {
         "title": "Experimental",
-        "desc": "Test experimental features and upcoming site enhancements",
-        "contents": {}
+        "desc": "Test experimental features and upcoming website improvements",
+        "contents": {
+          "videoPlayer": {
+            "title": "Video Player",
+            "timelineSegments": {
+              "title": "Timeline Segments [NEW]",
+              "desc": "Enable or disable the segmented timeline in the video player. Since this feature was recently introduced, you may encounter bugs. (Enabled by default)"
+            }
+          }
+        }
       }
     }
   },
@@ -220,7 +261,59 @@
         "manga": "Manga",
         "webtoon": "Webtoons",
         "sfw": "SFW (Safe)",
-        "nsfw": "NSFW (+18)"
+        "adultContent": "Adult Content (+18)"
+      }
+    },
+    "content": {
+      "listers": {
+        "untitled": {
+          "title": "Untitled",
+          "desc": "No description"
+        },
+        "adventure": {
+          "title": "Adventure",
+          "desc": "Embark on thrilling journeys into the unknown."
+        },
+        "popular": {
+          "title": "Popular",
+          "desc": "The most watched and highly rated titles right now."
+        },
+        "featured": {
+          "title": "Featured",
+          "desc": "Hand-picked titles you shouldn't miss."
+        },
+        "fantasy": {
+          "title": "Fantasy",
+          "desc": "Explore magical worlds filled with wonder and adventure."
+        },
+        "ova": {
+          "title": "OVA",
+          "desc": "Original video animations."
+        },
+        "special": {
+          "title": "Special",
+          "desc": "Special episodes and bonus content."
+        },
+        "drama": {
+          "title": "Drama",
+          "desc": "Emotionally driven dramatic titles."
+        },
+        "psychological": {
+          "title": "Psychological",
+          "desc": "Mind-bending psychological titles."
+        },
+        "supernatural": {
+          "title": "Supernatural",
+          "desc": "Titles with supernatural elements."
+        },
+        "music": {
+          "title": "Music",
+          "desc": "Titles centered around music."
+        },
+        "adultContent": {
+          "title": "Adult Content",
+          "desc": "Adult-oriented titles intended for mature audiences."
+        }
       }
     }
   },
@@ -481,6 +574,71 @@
         "desc": "Details regarding our use of functional cookies."
       },
       "paragraph": "Under Construction!"
+    },
+    "license": {
+      "hero": {
+        "title": "License",
+        "desc": "GNU AFFERO GENERAL PUBLIC LICENSE"
+      },
+      "preamble": {
+        "paragraph": "The GNU Affero General Public License is a free, copyleft license for software and other kinds of works, specifically designed to ensure cooperation with the community in the case of network server software. Our General Public Licenses are intended to guarantee your freedom to share and change all versions of a program—to make sure it remains free software for all its users."
+      },
+      "definitions": {
+        "header": "Definitions",
+        "paragraph_1": "\"This License\" refers to version 3 of the GNU Affero General Public License. \"Copyright\" also means copyright-like laws that apply to other kinds of works, such as semiconductor masks. \"The Program\" refers to any copyrightable work licensed under this License. Each licensee is addressed as \"you\". To \"modify\" a work means to copy from or adapt all or part of the work in a fashion requiring copyright permission, other than the making of an exact copy. A \"covered work\" means either the unmodified Program or a work based on the Program. To \"propagate\" a work means to do anything with it that, without permission, would make you directly or secondarily liable for infringement under applicable copyright law. To \"convey\" a work means any kind of propagation that enables other parties to make or receive copies."
+      },
+      "sourceCode": {
+        "header": "Source Code",
+        "paragraph_1": "The \"source code\" for a work means the preferred form of the work for making modifications to it. \"Object code\" means any non-source form of a work. A \"Standard Interface\" means an interface that either is an official standard defined by a recognized standards body, or standard across a programming language. The \"Corresponding Source\" for a work in object code form means all the source code needed to generate, install, and run the object code and to modify the work, including scripts to control those activities."
+      },
+      "basicPermissions": {
+        "header": "Basic Permissions",
+        "paragraph_1": "All rights granted under this License are granted for the term of copyright on the Program, and are irrevocable provided the stated conditions are met. This License explicitly affirms your unlimited permission to run the unmodified Program. The output from running a covered work is covered by this License only if the output, given its content, constitutes a covered work. You may make, run and propagate covered works that you do not convey, without conditions so long as your license otherwise remains in force."
+      },
+      "antiCircumvention": {
+        "header": "Protecting Users' Legal Rights From Anti-Circumvention Law",
+        "paragraph_1": "No covered work shall be deemed part of an effective technological measure under any applicable law fulfilling obligations under article 11 of the WIPO copyright treaty adopted on 20 December 1996. When you convey a covered work, you waive any legal power to forbid circumvention of technological measures to the extent such circumvention is effected by exercising rights under this License with respect to the covered work."
+      },
+      "verbatimCopies": {
+        "header": "Conveying Verbatim Copies",
+        "paragraph_1": "You may convey verbatim copies of the Program's source code as you receive it, in any medium, provided that you conspicuously and appropriately publish on each copy an appropriate copyright notice; keep intact all notices stating that this License and any non-permissive terms added in accord with section 7 apply to the code; keep intact all notices of the absence of any warranty; and give all recipients a copy of this License along with the Program."
+      },
+      "modifiedSource": {
+        "header": "Conveying Modified Source Versions",
+        "paragraph_1": "You may convey a work based on the Program, or the modifications to produce it from the Program, in the form of source code under the terms of section 4, provided that you also meet prominent notices of modification, licensing of the entire work under this License, and displaying Appropriate Legal Notices on interactive interfaces."
+      },
+      "nonSourceForms": {
+        "header": "Conveying Non-Source Forms",
+        "paragraph_1": "You may convey a covered work in object code form under the terms of sections 4 and 5, provided that you also convey the machine-readable Corresponding Source under the terms of this License (via physical product, written offer, designated server access, or peer-to-peer transmission)."
+      },
+      "additionalTerms": {
+        "header": "Additional Terms",
+        "paragraph_1": "\"Additional permissions\" are terms that supplement the terms of this License by making exceptions from one or more of its conditions. You may supplement terms disclaiming warranty, requiring attributions, prohibiting misrepresentation of origin, or declining trademark rights on material you add."
+      },
+      "termination": {
+        "header": "Termination",
+        "paragraph_1": "You may not propagate or modify a covered work except as expressly provided under this License. Any attempt otherwise to propagate or modify it is void, and will automatically terminate your rights under this License. However, if you cease all violation of this License, your license is reinstated provisionally or permanently based on conditions."
+      },
+      "acceptance": {
+        "header": "Acceptance Not Required for Having Copies",
+        "paragraph_1": "You are not required to accept this License in order to receive or run a copy of the Program. However, nothing other than this License grants you permission to propagate or modify any covered work. These actions infringe copyright if you do not accept this License."
+      },
+      "downstreamLicensing": {
+        "header": "Automatic Licensing of Downstream Recipients",
+        "paragraph_1": "Each time you convey a covered work, the recipient automatically receives a license from the original licensors, to run, modify and propagate that work, subject to this License. You may not impose any further restrictions on the exercise of the rights granted or affirmed under this License."
+      },
+      "patents": {
+        "header": "Patents & Licensing Requirements",
+        "paragraph_1": "Each contributor grants you a non-exclusive, worldwide, royalty-free patent license under the contributor's essential patent claims, to make, use, sell, offer for sale, import and otherwise run, modify and propagate the contents of its contributor version."
+      },
+      "networkInteraction": {
+        "header": "Remote Network Interaction & Use with GNU GPL",
+        "paragraph_1": "Notwithstanding any other provision of this License, if you modify the Program, your modified version must prominently offer all users interacting with it remotely through a computer network an opportunity to receive the Corresponding Source of your version by providing access from a network server at no charge."
+      },
+      "disclaimerWarranty": {
+        "header": "Disclaimer of Warranty & Limitation of Liability",
+        "paragraph_1": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS PROVIDE THE PROGRAM \"AS IS\" WITHOUT WARRANTY OF ANY KIND. IN NO EVENT WILL ANY COPYRIGHT HOLDER BE LIABLE TO YOU FOR DAMAGES OR LOSSES SUSTAINED."
+      }
     }
   }
 }

@@ -1,35 +1,77 @@
 {
   "version": "v0.0.3",
   "commit": "",
-  "date": "Nov 22, 2025",
-  "description": "Introduced major custom video player improvements, expanded the video collection, and refined several UI details.",
+  "date": {
+    "en_us": "December 22, 2025",
+    "tr": "22 Aralık 2025"
+  },
+  "description": {
+    "en_us": "Introduced major custom video player improvements, expanded the video collection, and refined several UI details.",
+    "tr": "Özel video oynatıcıda büyük iyileştirmeler yapıldı, video koleksiyonu genişletildi ve çeşitli arayüz detayları geliştirildi."
+  },
   "logs": [
-    { "type": "Added", "desc": "Three new videos to the collection." },
     {
       "type": "Added",
-      "desc": "A close option for the custom video player."
+      "desc": {
+        "en_us": "Three new videos to the collection.",
+        "tr": "Koleksiyona üç yeni video eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Video seeking controls for the custom player, including 15-second forward and 5-second backward actions."
+      "desc": {
+        "en_us": "A close option for the custom video player.",
+        "tr": "Özel video oynatıcı için kapatma seçeneği eklendi."
+      }
     },
-    { "type": "Added", "desc": "Debug mode for the custom video player." },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "Video seeking controls for the custom player, including 15-second forward and 5-second backward actions.",
+        "tr": "Özel oynatıcı için 15 saniye ileri ve 5 saniye geri sarma seçenekleri dahil video arama kontrolleri eklendi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "Debug mode for the custom video player.",
+        "tr": "Özel video oynatıcı için hata ayıklama modu eklendi."
+      }
+    },
     {
       "type": "Changed",
-      "desc": "The video player controls with refined buttons, a skip-video action, and a secondary pause button beside the timestamp."
+      "desc": {
+        "en_us": "The video player controls with refined buttons, a skip-video action, and a secondary pause button beside the timestamp.",
+        "tr": "Video oynatıcı kontrolleri; iyileştirilmiş butonlar, video atlama özelliği ve zaman göstergesinin yanında bulunan ikincil duraklatma butonu ile değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The version number size on the What's New release log page."
-    },
-    { "type": "Changed", "desc": "The white theme color palette." },
-    {
-      "type": "Removed",
-      "desc": "The middle control buttons from the custom video player."
+      "desc": {
+        "en_us": "The version number size on the What's New release log page.",
+        "tr": "What's New güncelleme kayıtları sayfasındaki sürüm numarası boyutu değiştirildi."
+      }
     },
     {
+      "type": "Changed",
+      "desc": {
+        "en_us": "The white theme color palette.",
+        "tr": "Beyaz tema renk paleti değiştirildi."
+      }
+    },
+    {
       "type": "Removed",
-      "desc": "The skip-video option from the timestamp bar in the custom video player."
+      "desc": {
+        "en_us": "The middle control buttons from the custom video player.",
+        "tr": "Özel video oynatıcıdaki orta kontrol butonları kaldırıldı."
+      }
+    },
+    {
+      "type": "Removed",
+      "desc": {
+        "en_us": "The skip-video option from the timestamp bar in the custom video player.",
+        "tr": "Özel video oynatıcıdaki zaman çubuğundan video atlama seçeneği kaldırıldı."
+      }
     }
   ]
 }

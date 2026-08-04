@@ -4,14 +4,14 @@ interface Props {
     symbol?: string;
     SVG_Style?: string;
     isFilled?: boolean;
-    SvgSize?: string;
+    SymbolSize?: string;
 }
-const { SVG_ID, symbol, SVG_Style, isFilled, SvgSize } = Astro.props;
+const { SVG_ID, symbol, SVG_Style, isFilled, SymbolSize } = Astro.props;
 
 const isActive = symbol ? "inline" : "!hidden";
 const ValidSVG_Style = SVG_Style ? SVG_Style : "";
 const ValidIsFilled = isFilled ? "icon-fill" : "";
-const ValidSize = SvgSize ? SvgSize : "!text-[min(7vw,1rem)]";
+const ValidSize = SymbolSize ? SymbolSize : "!text-[min(6vw,0.9rem)]";
 const ValidID = SVG_ID ? SVG_ID : "googleSymbol";
 ---
 

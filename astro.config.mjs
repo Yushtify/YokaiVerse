@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: "server",
   // Astro'nun kendi server ayarları (Dış erişim için)
   server: {
     host: true,

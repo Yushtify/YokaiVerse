@@ -1,4 +1,6 @@
 ---
+import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+
 const currentPath = Astro.url.pathname;
 
 const isActive = (path: string) => currentPath === path;
@@ -22,47 +24,37 @@ const {
 
 const isTitle = givenTitle ? "" : "hidden";
 
-let borderRadius;
-if (givenLocationFrom && givenLocation) {
-    // checks if this companent got any of the attributes
-    if (givenLocationFrom === "horizontal") {
-        // if the buttons aligned left to right so horizontally
-        if (givenLocation === "start") {
-            borderRadius = "rounded-xl rounded-l-3xl";
-        } else if (givenLocation === "end") {
-            borderRadius = "rounded-xl rounded-r-3xl";
-        } else {
-            borderRadius = "rounded-xl";
-        }
-    } else if (givenLocationFrom === "vertical") {
-        // if the buttons aligned top to bottom so vertically
-        if (givenLocation === "start") {
-            borderRadius = "rounded-xl rounded-t-3xl";
-        } else if (givenLocation === "end") {
-            borderRadius = "rounded-xl rounded-b-3xl";
-        } else {
-            borderRadius = "rounded-xl";
-        }
-    }
-} else {
-    borderRadius = "rounded-3xl";
-}
-let validBorder = " " + borderRadius + " hover:rounded-3xl";
+// validate button rounded
+const borderRadiusMap = {
+    horizontal: {
+        start: "rounded-xl rounded-l-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-r-3xl",
+    },
+    vertical: {
+        start: "rounded-xl rounded-t-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-b-3xl",
+    },
+} as const;
 
-const InactiveTab = `flex flex-row items-center justify-center w-fit h-fit ${validBorder} gap-2 p-4 md:px-6 bg-L_Primary dark:bg-D_Primary hover:bg-L_Primary_Hover dark:hover:bg-D_Primary_Hover text-LT_Primary dark:text-DT_Primary transition-all duration-200 ease-in-out`;
-const ActiveTab = `flex flex-row items-center justify-center w-fit h-fit ${validBorder} gap-2 p-4 md:px-6 bg-Accent hover:bg-Highlight font-bold text-LT_Inverted dark:text-DT_Inverted transition-all duration-200 ease-in-out`;
+const borderRadius =
+    givenLocationFrom && givenLocation
+        ? borderRadiusMap[givenLocationFrom][givenLocation]
+        : "rounded-3xl";
+const validBorderRadius = `${borderRadius} hover:rounded-3xl`;
 
-const InactiveSVG = "material-symbols-rounded";
-const ActiveSVG = "material-symbols-rounded icon-fill";
+const InactiveTab = `relative flex flex-row items-center justify-center w-fit h-fit ${validBorderRadius} gap-2 p-4 md:px-6 bg-L_Primary dark:bg-D_Primary hover:bg-L_Primary_Hover dark:hover:bg-D_Primary_Hover text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary transition-all duration-200 ease-in-out`;
+const ActiveTab = `relative flex flex-row items-center justify-center w-fit h-fit ${validBorderRadius} gap-2 p-4 md:px-6 bg-Accent hover:bg-Highlight font-bold text-[min(6vw,0.9rem)] text-LT_Inverted dark:text-DT_Inverted transition-all duration-200 ease-in-out`;
 ---
 
 <a href={givenHref} class={isActive(givenHref) ? ActiveTab : InactiveTab}>
-    <span translate="no" class={isActive(givenHref) ? ActiveSVG : InactiveSVG}
-        >{givenSymbol}</span
-    >
-
-    {/* data-i18n dışarıdan gelen givenData'yı kullanıyor */}
-    <p class={`max-xl:hidden capitalize ${isTitle}`} data-i18n={givenData}>
+    <GoogleMaterialSymbol
+        symbol={givenSymbol}
+        SymbolSize="!text-[min(6vw,1.2rem)]"
+        isFilled={isActive(givenHref)}
+    />
+    <p class={`hidden xl:inline capitalize ${isTitle}`} data-i18n={givenData}>
         {givenTitle}
     </p>
 </a>

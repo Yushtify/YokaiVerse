@@ -22,13 +22,13 @@ import CustomSlider from "../../custom/customSlider.astro";
         >
             <p
                 data-i18n="watch.epPlayer.settings.playback.quality.title"
-                class="font-semibold text-[min(6vw,1rem)] capitalize"
+                class="font-semibold text-[min(6vw,0.9rem)] capitalize"
             >
                 Quality
             </p>
             <p
                 id="epCurrentQuality"
-                class="font-semibold text-[min(6vw,1rem)] capitalize"
+                class="font-semibold text-[min(6vw,0.9rem)] capitalize"
             >
                 1080p
             </p>
@@ -37,35 +37,8 @@ import CustomSlider from "../../custom/customSlider.astro";
             class="flex flex-row items-center justify-center p-2 rounded-3xl gap-2 w-fit h-fit bg-L_Secondary dark:bg-D_Secondary"
         >
             <RadioButton
-                givenPositionTo="horizontal"
-                givenPosition="start"
-                givenID="quality144p"
-                givenRadGroup="quality"
-                givenCanDisabled={true}
-                givenTitle="144p"
-                titleData=""
-            />
-            <RadioButton
-                givenPositionTo="horizontal"
-                givenPosition="center"
-                givenID="quality240p"
-                givenRadGroup="quality"
-                givenCanDisabled={true}
-                givenTitle="240p"
-                titleData=""
-            />
-            <RadioButton
-                givenPositionTo="horizontal"
-                givenPosition="center"
-                givenID="quality360p"
-                givenRadGroup="quality"
-                givenCanDisabled={true}
-                givenTitle="360p"
-                titleData=""
-            />
-            <RadioButton
-                givenPositionTo="horizontal"
-                givenPosition="center"
+                givenLocationFrom="horizontal"
+                givenLocation="start"
                 givenID="quality480p"
                 givenRadGroup="quality"
                 givenCanDisabled={true}
@@ -73,8 +46,8 @@ import CustomSlider from "../../custom/customSlider.astro";
                 titleData=""
             />
             <RadioButton
-                givenPositionTo="horizontal"
-                givenPosition="center"
+                givenLocationFrom="horizontal"
+                givenLocation="center"
                 givenID="quality720p"
                 givenRadGroup="quality"
                 givenCanDisabled={true}
@@ -82,8 +55,8 @@ import CustomSlider from "../../custom/customSlider.astro";
                 titleData=""
             />
             <RadioButton
-                givenPositionTo="horizontal"
-                givenPosition="end"
+                givenLocationFrom="horizontal"
+                givenLocation="end"
                 givenID="quality1080p"
                 givenRadGroup="quality"
                 givenCanDisabled={true}
@@ -102,13 +75,13 @@ import CustomSlider from "../../custom/customSlider.astro";
         >
             <p
                 data-i18n="watch.epPlayer.settings.playback.playbackSpeed.title"
-                class="font-semibold text-[min(6vw,1rem)] capitalize"
+                class="font-semibold text-[min(6vw,0.9rem)] capitalize"
             >
                 Playback Speed
             </p>
             <p
                 id="epCurrentPlaybackSpeed"
-                class="font-semibold text-[min(6vw,1rem)] capitalize"
+                class="font-semibold text-[min(6vw,0.9rem)] capitalize"
             >
                 1x
             </p>

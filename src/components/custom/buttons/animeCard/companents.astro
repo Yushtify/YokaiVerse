@@ -18,7 +18,7 @@ import NSFWFilter from "./filterOverlay.astro";
             <img
                 id="animeCover"
                 alt="COVER"
-                class="aspect-9/16 w-full h-full"
+                class="aspect-9/16 w-full h-full object-cover object-top"
             />
             <p
                 id="animeUploadedBy"
@@ -44,7 +44,7 @@ import NSFWFilter from "./filterOverlay.astro";
                 >
                     <GoogleMaterialSymbol
                         symbol="star"
-                        SvgSize="!text-[min(6vw,1rem)]"
+                        SymbolSize="!text-[min(6vw,0.9rem)]"
                         isFilled={true}
                     />
                     <span id="animeRating">Not Rated</span>
@@ -52,7 +52,7 @@ import NSFWFilter from "./filterOverlay.astro";
             </div>
             <p
                 id="animeDesc"
-                class="w-full h-fit text-left text-[min(6vw,1rem)] text-LT_Secondary dark:text-DT_Secondary line-clamp-2"
+                class="w-full h-fit text-left text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary line-clamp-2"
             >
                 No description available
             </p>

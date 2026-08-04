@@ -3,7 +3,7 @@
   "desc": "A idol group in turkey that makes music blah blah",
   "author": "Manifest",
   "ageRestriction": "12+",
-  "nsfw": false,
+  "adultContent": false,
   "categories": ["Featured", "Music"],
   "type": {
     "movie": false,

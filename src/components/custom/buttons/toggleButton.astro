@@ -1,24 +1,20 @@
 ---
 import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
 interface Props {
-    givenButtonID: string;
-    givenButtonAction: string;
-    givenButtonSymbol?: string;
+    givenID: string;
+    givenAction: string;
+    givenSymbol?: string;
     givenState?: boolean;
-    givenTitle?: string;
-    titleData?: string;
     tooltipTitle?: string;
     tooltipDesc?: string;
     tooltipTitleTrans?: string;
     tooltipDescTrans?: string;
 }
 const {
-    givenButtonID,
-    givenButtonAction,
-    givenButtonSymbol,
+    givenID,
+    givenAction,
+    givenSymbol,
     givenState,
-    givenTitle,
-    titleData,
     tooltipTitle,
     tooltipTitleTrans,
     tooltipDesc,
@@ -27,21 +23,23 @@ const {
 ---
 
 <button
-    id={givenButtonID}
+    id={givenID}
     class="flex flex-row items-end justify-center rounded-full gap-2 p-1 pr-6 bg-L_Secondary dark:bg-D_Secondary hover:bg-L_Secondary_Hover dark:hover:bg-D_Secondary_Hover border border-L_Secondary dark:border-D_Secondary text-LT_Primary dark:text-DT_Primary cursor-pointer transition-all duration-200 ease-in-out"
     data-togglestate={givenState ?? false}
-    data-toggleaction={givenButtonAction}
+    data-toggleaction={givenAction}
     data-toggleactive="pr-1! pl-6! bg-Accent! hover:bg-Highlight! border-transparent!"
-    data-tooltip-desc-trans={tooltipDescTrans}
+    data-tooltip-title={tooltipTitle}
     data-tooltip-title-trans={tooltipTitleTrans}
+    data-tooltip-desc={tooltipDesc}
+    data-tooltip-desc-trans={tooltipDescTrans}
 >
     <div
         class="flex flex-row items-center justify-end gap-2 p-1 rounded-3xl bg-L_Primary dark:bg-D_Primary"
         data-toggleactive="bg-LightAccent! text-LT_Inverted! dark:text-DT_Inverted!"
     >
         <GoogleMaterialSymbol
-            symbol={givenButtonSymbol}
-            SvgSize="text-[min(6vw,1rem)]!"
+            symbol={givenSymbol}
+            SymbolSize="text-[min(6vw,0.9rem)]!"
             isFilled={true}
         />
     </div>

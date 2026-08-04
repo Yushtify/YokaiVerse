@@ -1,145 +1,252 @@
 {
   "version": "v0.4.0",
   "commit": "374c420",
-  "date": "Jul 20, 2026",
-  "description": "Introduces localization improvements, Material 3 Expressive design enhancements, and various bug fixes.",
+  "date": {
+    "en_us": "July 20, 2026",
+    "tr": "20 Temmuz 2026"
+  },
+  "description": {
+    "en_us": "Introduces localization improvements, Material 3 Expressive design enhancements, and various bug fixes.",
+    "tr": "Yerelleştirme iyileştirmeleri, Material 3 Expressive tasarım geliştirmeleri ve çeşitli hata düzeltmeleri sunuyor."
+  },
   "logs": [
     {
       "type": "Added",
-      "desc": "Gestures support allowing the user to use physical or mouse gestures to interact with video player actions."
+      "desc": {
+        "en_us": "Gestures support allowing the user to use physical or mouse gestures to interact with video player actions.",
+        "tr": "Kullanıcıların fiziksel veya fare hareketleriyle video oynatıcı eylemlerini kontrol edebilmesini sağlayan hareket desteği eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "A dedicated keybind toggle master switch (\"toggleKeybindsEp\") allowing users to enable/disable keyboard shortcuts dynamically, persisting state via PlayerStorage."
+      "desc": {
+        "en_us": "A dedicated keybind toggle master switch (\"toggleKeybindsEp\") allowing users to enable/disable keyboard shortcuts dynamically, persisting state via PlayerStorage.",
+        "tr": "Klavye kısayollarını dinamik olarak açıp kapatmayı sağlayan ve durumunu PlayerStorage üzerinden saklayan ana anahtar (\"toggleKeybindsEp\") eklendi."
+      }
     },
     {
       "type": "Performance",
-      "desc": "Optimized the video player even further for low-end devices."
+      "desc": {
+        "en_us": "Optimized the video player even further for low-end devices.",
+        "tr": "Video oynatıcı, düşük donanımlı cihazlar için daha da optimize edildi."
+      }
     },
     {
       "type": "Rewritten",
-      "desc": "Rebuilt the \"Video Player\" from scratch."
+      "desc": {
+        "en_us": "Rebuilt the \"Video Player\" from scratch.",
+        "tr": "\"Video Player\" tamamen sıfırdan yeniden geliştirildi."
+      }
     },
     {
       "type": "Rewritten",
-      "desc": "the overall website layout for improved responsiveness and usability."
+      "desc": {
+        "en_us": "The overall website layout for improved responsiveness and usability.",
+        "tr": "Web sitesinin genel düzeni daha iyi uyumluluk ve kullanılabilirlik için baştan yazıldı."
+      }
     },
     {
       "type": "Added",
-      "desc": "Keyboard shortcuts (keybinds) for video player controls: Play/Pause (Space/K), Mute (M), Fullscreen (F), Loop (L), Autoplay (A), Cinema Mode (C), Subtitles (S), Volume Up/Down (ArrowUp/ArrowDown), Seek Forward/Backward (ArrowRight/ArrowLeft), and Playback Speed Up/Down (] or . / [ or ,)."
+      "desc": {
+        "en_us": "Keyboard shortcuts (keybinds) for video player controls: Play/Pause (Space/K), Mute (M), Fullscreen (F), Loop (L), Autoplay (A), Cinema Mode (C), Subtitles (S), Volume Up/Down (ArrowUp/ArrowDown), Seek Forward/Backward (ArrowRight/ArrowLeft), and Playback Speed Up/Down (] or . / [ or ,).",
+        "tr": "Video oynatıcı için klavye kısayolları eklendi: Oynat/Duraklat (Space/K), Sessiz (M), Tam Ekran (F), Döngü (L), Otomatik Oynatma (A), Sinema Modu (C), Altyazılar (S), Ses Aç/Kıs (ArrowUp/ArrowDown), İleri/Geri Sar (ArrowRight/ArrowLeft) ve Oynatma Hızını Artır/Azalt (] veya . / [ veya ,)."
+      }
     },
     {
       "type": "Added",
-      "desc": "Japanese, German, Spanish, Russian, French, En-UK localization support."
+      "desc": {
+        "en_us": "Japanese, German, Spanish, Russian, French, En-UK localization support.",
+        "tr": "Japonca, Almanca, İspanyolca, Rusça, Fransızca ve İngilizce (UK) dil desteği eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Material 3 Expressive placeholders on the Settings page."
+      "desc": {
+        "en_us": "Material 3 Expressive placeholders on the Settings page.",
+        "tr": "Ayarlar sayfasına Material 3 Expressive yer tutucuları eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Added an SVG button to the hero template featuring a new back navigation icon."
+      "desc": {
+        "en_us": "Added an SVG button to the hero template featuring a new back navigation icon.",
+        "tr": "Hero şablonuna yeni geri gezinme simgesini içeren bir SVG düğmesi eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Caching support to \"LanguageHandler\"."
+      "desc": {
+        "en_us": "Caching support to \"LanguageHandler\".",
+        "tr": "\"LanguageHandler\" için önbellekleme desteği eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Additional descriptive tooltips across the interface."
+      "desc": {
+        "en_us": "Additional descriptive tooltips across the interface.",
+        "tr": "Arayüz genelinde ek açıklayıcı ipuçları (tooltips) eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "\"Previous episode\", \"Next episode\" buttons above the watch page description."
+      "desc": {
+        "en_us": "\"Previous episode\", \"Next episode\" buttons above the watch page description.",
+        "tr": "İzleme sayfası açıklamasının üzerine \"Önceki Bölüm\" ve \"Sonraki Bölüm\" düğmeleri eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "\"radioButton.astro\" and \"radioButtonHandler.ts\" to unify and modularize radio button logic."
+      "desc": {
+        "en_us": "\"radioButton.astro\" and \"radioButtonHandler.ts\" to unify and modularize radio button logic.",
+        "tr": "Radyo düğmesi mantığını birleştirmek ve modüler hale getirmek için \"radioButton.astro\" ve \"radioButtonHandler.ts\" eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "\"Auto Play\", \"Settings\", and \"Playback Speed\" controls to the \"Video Player\"."
+      "desc": {
+        "en_us": "\"Auto Play\", \"Settings\", and \"Playback Speed\" controls to the \"Video Player\".",
+        "tr": "\"Video Player\" içerisine \"Otomatik Oynatma\", \"Ayarlar\" ve \"Oynatma Hızı\" kontrolleri eklendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Updated Button and NavBar components to follow the Material 3 Expressive design language."
+      "desc": {
+        "en_us": "Updated Button and NavBar components to follow the Material 3 Expressive design language.",
+        "tr": "Button ve NavBar bileşenleri Material 3 Expressive tasarım diline uygun olacak şekilde güncellendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Adjusted the episode list layout: smaller screens now display a single-column view, while larger screens use three columns instead of four."
+      "desc": {
+        "en_us": "Adjusted the episode list layout: smaller screens now display a single-column view, while larger screens use three columns instead of four.",
+        "tr": "Bölüm listesi düzeni güncellendi: küçük ekranlarda tek sütun, büyük ekranlarda ise dört yerine üç sütun kullanılıyor."
+      }
     },
     {
       "type": "Changed",
-      "desc": "LanguageHandler now ignores elements and their descendants when `data-translate=\"false\"` is present."
+      "desc": {
+        "en_us": "LanguageHandler now ignores elements and their descendants when `data-translate=\"false\"` is present.",
+        "tr": "LanguageHandler artık `data-translate=\"false\"` bulunan öğeleri ve alt öğelerini çeviri sırasında yok sayıyor."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Sliders now modify values on hover when the scroll wheel is moved up or down."
+      "desc": {
+        "en_us": "Sliders now modify values on hover when the scroll wheel is moved up or down.",
+        "tr": "Kaydırıcılar artık üzerine gelindiğinde fare tekerleği ile değer değiştirebiliyor."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Season switcher buttons now display season cover art and the season name, defaulting to the anime name if unavailable."
+      "desc": {
+        "en_us": "Season switcher buttons now display season cover art and the season name, defaulting to the anime name if unavailable.",
+        "tr": "Sezon değiştirici düğmeleri artık sezon kapağını ve sezon adını gösteriyor; sezon adı yoksa anime adı kullanılıyor."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Applied Material 3 Expressive themes to input fields and custom toggle buttons."
+      "desc": {
+        "en_us": "Applied Material 3 Expressive themes to input fields and custom toggle buttons.",
+        "tr": "Giriş alanlarına ve özel anahtar düğmelerine Material 3 Expressive temaları uygulandı."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Set the global theme to monochrome and introduced accessibility-focused 'LightAccent' and 'Highlight' variants."
+      "desc": {
+        "en_us": "Set the global theme to monochrome and introduced accessibility-focused 'LightAccent' and 'Highlight' variants.",
+        "tr": "Genel tema monokrom olarak ayarlandı ve erişilebilirlik odaklı 'LightAccent' ile 'Highlight' varyantları eklendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Redesigned the loading screen to be more visually consistent with the website."
+      "desc": {
+        "en_us": "Redesigned the loading screen to be more visually consistent with the website.",
+        "tr": "Yükleme ekranı, web sitesiyle daha uyumlu bir görünüme sahip olacak şekilde yeniden tasarlandı."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Removed translucent backgrounds from changelog type pills (e.g., Added, Changed, Fixed)."
+      "desc": {
+        "en_us": "Removed translucent backgrounds from changelog type pills (e.g., Added, Changed, Fixed).",
+        "tr": "Changelog tür etiketlerindeki (Added, Changed, Fixed vb.) yarı saydam arka planlar kaldırıldı."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Enhanced \"animeCard\", \"gridEpisodeButton\", \"seasonSwitcher\", and \"info\" layouts with modern Material 3 Expressive styling."
+      "desc": {
+        "en_us": "Enhanced \"animeCard\", \"gridEpisodeButton\", \"seasonSwitcher\", and \"info\" layouts with modern Material 3 Expressive styling.",
+        "tr": "\"animeCard\", \"gridEpisodeButton\", \"seasonSwitcher\" ve \"info\" düzenleri modern Material 3 Expressive tasarım anlayışıyla yenilendi."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "Resolved layout clipping issues in the video player and episode list. The looping and cinema-light toggle buttons are now properly hidden."
+      "desc": {
+        "en_us": "Resolved layout clipping issues in the video player and episode list. The looping and cinema-light toggle buttons are now properly hidden.",
+        "tr": "Video oynatıcı ve bölüm listesinde yaşanan yerleşim kırpılma sorunları giderildi. Döngü ve sinema ışıkları düğmeleri artık gerektiğinde doğru şekilde gizleniyor."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "LanguageHandler now correctly translates dynamically appended elements after the initial page load."
-    },
-
-    {
-      "type": "Deprecated",
-      "desc": "the \"Fansub\" section on the watch page."
+      "desc": {
+        "en_us": "LanguageHandler now correctly translates dynamically appended elements after the initial page load.",
+        "tr": "LanguageHandler artık sayfa yüklendikten sonra dinamik olarak eklenen öğeleri de doğru şekilde çeviriyor."
+      }
     },
     {
       "type": "Deprecated",
-      "desc": "Downloading on episode player temporarily."
+      "desc": {
+        "en_us": "The \"Fansub\" section on the watch page.",
+        "tr": "İzleme sayfasındaki \"Fansub\" bölümü kullanımdan kaldırıldı."
+      }
+    },
+    {
+      "type": "Deprecated",
+      "desc": {
+        "en_us": "Episode player downloading temporarily.",
+        "tr": "Bölüm oynatıcısındaki indirme özelliği geçici olarak devre dışı bırakıldı."
+      }
     },
     {
       "type": "Removed",
-      "desc": "landing page."
+      "desc": {
+        "en_us": "Landing page.",
+        "tr": "Açılış sayfası kaldırıldı."
+      }
     },
     {
       "type": "Removed",
-      "desc": "Transparency and blur effects from the video player elements."
+      "desc": {
+        "en_us": "Transparency and blur effects from the video player elements.",
+        "tr": "Video oynatıcı öğelerindeki saydamlık ve bulanıklık efektleri kaldırıldı."
+      }
     },
     {
       "type": "Removed",
-      "desc": "\"Previous episode\" and \"Next episode\" buttons from the video player controller."
+      "desc": {
+        "en_us": "\"Previous episode\" and \"Next episode\" buttons from the video player controller.",
+        "tr": "Video oynatıcı denetleyicisindeki \"Önceki Bölüm\" ve \"Sonraki Bölüm\" düğmeleri kaldırıldı."
+      }
     },
     {
       "type": "Removed",
-      "desc": "Accent-colored hover backgrounds from \"Title\" and \"Time Stamp\" elements, replacing them with a bold font transition."
+      "desc": {
+        "en_us": "Accent-colored hover backgrounds from \"Title\" and \"Time Stamp\" elements, replacing them with a bold font transition.",
+        "tr": "\"Title\" ve \"Time Stamp\" öğelerindeki vurgu renkli üzerine gelme arka planları kaldırıldı; yerine kalın yazı tipi geçişi kullanıldı."
+      }
     },
     {
       "type": "Removed",
-      "desc": "Legacy \"customRadioButton.astro\" component."
+      "desc": {
+        "en_us": "Legacy \"customRadioButton.astro\" component.",
+        "tr": "Eski \"customRadioButton.astro\" bileşeni kaldırıldı."
+      }
     },
     {
       "type": "Removed",
-      "desc": "Banner information details from the anime info page."
+      "desc": {
+        "en_us": "Banner information details from the anime info page.",
+        "tr": "Anime bilgi sayfasındaki banner bilgi ayrıntıları kaldırıldı."
+      }
     }
   ]
 }

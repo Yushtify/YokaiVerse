@@ -1,9 +1,11 @@
 ---
+import { hashTransform } from "astro/assets";
 import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
+import Button from "./Button.astro";
 
 interface Props {
-    givenPositionTo?: "horizontal" | "vertical";
-    givenPosition?: "start" | "center" | "end";
+    givenLocationFrom?: "horizontal" | "vertical";
+    givenLocation?: "start" | "center" | "end";
 
     givenTitle: string;
     givenState: boolean;
@@ -19,8 +21,8 @@ interface Props {
 }
 
 const {
-    givenPositionTo,
-    givenPosition,
+    givenLocationFrom,
+    givenLocation,
     givenTitle,
     givenState,
     givenID,
@@ -33,54 +35,56 @@ const {
     givenSymbolFill,
 } = Astro.props;
 
-let validRounded = "rounded-3xl";
-if (givenPosition && givenPositionTo) {
-    if (givenPositionTo === "horizontal") {
-        if (givenPosition === "start")
-            validRounded = "rounded-l-3xl rounded-r-xl";
-        else if (givenPosition === "end")
-            validRounded = "rounded-l-xl rounded-r-3xl";
-        else if (givenPosition === "center") validRounded = "rounded-xl";
-    } else if (givenPositionTo === "vertical") {
-        if (givenPosition === "start")
-            validRounded = "rounded-t-3xl rounded-b-xl";
-        else if (givenPosition === "end")
-            validRounded = "rounded-t-xl rounded-b-3xl";
-        else if (givenPosition === "center") validRounded = "rounded-xl";
-    }
-}
+// validate button rounded
+const borderRadiusMap = {
+    horizontal: {
+        start: "rounded-xl rounded-l-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-r-3xl",
+    },
+    vertical: {
+        start: "rounded-xl rounded-t-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-b-3xl",
+    },
+} as const;
 
-validRounded +=
-    " hover:rounded-3xl transition-[color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, border, border-radius] duration-200 ease-in-out";
+const borderRadius =
+    givenLocationFrom && givenLocation
+        ? borderRadiusMap[givenLocationFrom][givenLocation]
+        : "rounded-3xl";
+const validBorderRadius = `${borderRadius} hover:rounded-3xl`;
 
-const activeClass =
-    validRounded +
-    " relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 p-4 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Inverted dark:text-DT_Inverted bg-Accent hover:bg-Highlight overflow-hidden cursor-pointer uppercase";
-const deActiveClass =
-    validRounded +
-    " relative flex flex-row items-center justify-start min-w-fit w-fit h-fit gap-2 p-4 bg-L_Primary dark:bg-D_Primary hover:bg-L_Primary_Hover hover:dark:bg-D_Primary_Hover text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary ease-in-out overflow-hidden cursor-pointer capitalize";
+const classMap = {
+    buttonDefClass: `relative flex flex-row items-center justify-start ${validBorderRadius} min-w-fit w-fit h-fit gap-2 p-4 bg-L_Primary dark:bg-D_Primary hover:bg-L_Primary_Hover hover:dark:bg-D_Primary_Hover text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary ease-in-out overflow-hidden cursor-pointer capitalize`,
+    buttonActiveClass: `relative flex flex-row items-center justify-start ${validBorderRadius} min-w-fit w-fit h-fit gap-2 p-4 text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Inverted dark:text-DT_Inverted bg-Accent hover:bg-Highlight overflow-hidden cursor-pointer uppercase`,
+    hasSymbol: givenSymbol ? "inline" : "hidden",
+    symbolFilled: givenSymbolFill ? "icon-fill" : "",
+};
 
-const initialClass = givenState ? activeClass : deActiveClass;
+const initialClass = givenState
+    ? classMap.buttonActiveClass
+    : classMap.buttonDefClass;
 
-const isSVG = givenSymbol ? "inline" : "hidden";
-const SVGSize = givenSymbolSize ? givenSymbolSize : "text-[min(7vw,1rem)]!";
+const SymbolSize = givenSymbolSize
+    ? givenSymbolSize
+    : "text-[min(6vw,0.9rem)]!";
 
-const isFilled = givenSymbolFill ? "icon-fill" : "";
-const validStyle = isFilled + " " + isSVG + " " + givenSymbolStyle;
+const validStyle = `${classMap.symbolFilled} ${classMap.hasSymbol} ${givenSymbolStyle}`;
 ---
 
 <button
     id={givenID}
     class={`filter-btn ${initialClass}`}
     data-group={groupName}
-    data-active-class={activeClass}
-    data-deactive-class={deActiveClass}
+    data-active-class={classMap.buttonActiveClass}
+    data-deactive-class={classMap.buttonDefClass}
     data-allow-deselect={allowDeselect ? "true" : "false"}
     data-is-active={givenState ? "true" : "false"}
 >
     <GoogleMaterialSymbol
         symbol={givenSymbol}
-        SvgSize={SVGSize}
+        SymbolSize={SymbolSize}
         SVG_Style={validStyle}
     />
     <p id="title" data-i18n={titleData}>

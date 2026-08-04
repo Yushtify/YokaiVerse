@@ -34,7 +34,7 @@ const displayClass = givenSymbol ? "inline-block" : "!hidden";
         <GoogleMaterialSymbol
             symbol={givenSymbol}
             SVG_Style={displayClass}
-            SvgSize="!text-[min(7vw,2rem)]"
+            SymbolSize="!text-[min(6vw,2rem)]"
             isFilled={true}
         />
     </div>
@@ -43,14 +43,14 @@ const displayClass = givenSymbol ? "inline-block" : "!hidden";
     >
         <p
             data-i18n={titleData}
-            class="uppercase text-[min(7vw,0.6rem)] text-LT_Secondary dark:text-DT_Secondary group-hover:text-LT_Inverted dark:group-hover:text-DT_Inverted leading-none transition-colors duration-200 ease-in-out"
+            class="uppercase text-[min(6vw,0.6rem)] text-LT_Secondary dark:text-DT_Secondary group-hover:text-LT_Inverted dark:group-hover:text-DT_Inverted leading-none transition-colors duration-200 ease-in-out"
         >
             {givenTitle}
         </p>
         <p
             data-i18n={informationData}
             id={givenTextID}
-            class="text-[min(7vw,0.8rem)] leading-none"
+            class="text-[min(6vw,0.8rem)] leading-none"
         >
             {givenInformation}
         </p>

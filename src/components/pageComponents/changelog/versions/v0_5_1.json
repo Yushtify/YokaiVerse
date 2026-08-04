@@ -1,20 +1,35 @@
 {
   "version": "v0.5.1",
   "commit": "5044d71",
-  "date": "Jul 28, 2026",
-  "description": "A quality-of-life update featuring a new theme switcher in settings, roadmap navigation in the footer, and settings cleanup.",
+  "date": {
+    "en_us": "July 28, 2026",
+    "tr": "28 Temmuz 2026"
+  },
+  "description": {
+    "en_us": "A quality-of-life update featuring a new theme switcher in settings, roadmap navigation in the footer, and settings cleanup.",
+    "tr": "Ayarlara yeni bir tema değiştirici, alt bilgiye yol haritası bağlantısı ve ayar düzenlemeleri ekleyen yaşam kalitesi güncellemesi."
+  },
   "logs": [
     {
       "type": "Added",
-      "desc": "Theme switcher to \"/settings\" this includes; \"System (auto)\", \"Light\", \"Dark\" Theme."
+      "desc": {
+        "en_us": "Theme switcher to \"/settings\" this includes; \"System (auto)\", \"Light\", \"Dark\" Theme.",
+        "tr": "\"/settings\" sayfasına; \"Sistem (otomatik)\", \"Açık\" ve \"Koyu\" temalarını içeren tema değiştirici eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "\"/roadmap\" navigation to footer under \"Links\" collumn"
+      "desc": {
+        "en_us": "\"/roadmap\" navigation to footer under \"Links\" collumn",
+        "tr": "Alt bilgideki \"Bağlantılar\" sütununa \"/roadmap\" bağlantısı eklendi."
+      }
     },
     {
       "type": "Removed",
-      "desc": "\"video player\" settings from \"/settings\"."
+      "desc": {
+        "en_us": "\"video player\" settings from \"/settings\".",
+        "tr": "\"/settings\" sayfasındaki \"Video Oynatıcı\" ayarları kaldırıldı."
+      }
     }
   ]
 }

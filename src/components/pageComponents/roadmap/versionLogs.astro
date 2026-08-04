@@ -171,7 +171,7 @@ import RoadmapCardTemplate from "./versionTemplate.astro";
         const itemList = cardClone.querySelector("#roadmapItemList")!;
 
         if (itemTemplate && itemList) {
-            itemList.innerHTML = "";
+            itemList.textContent = "";
 
             data.items.forEach((item: any) => {
                 const itemClone = itemTemplate.content.cloneNode(

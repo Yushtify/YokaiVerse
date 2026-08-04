@@ -16,7 +16,7 @@ const givenContentID: string = givenID + "_Content";
     <!-- Header -->
     <div
         id={givenID}
-        class="flex flex-row items-center justify-start gap-4 w-full h-fit font-semibold text-[min(6vw,1rem)] text-LT_Secondary dark:text-DT_Secondary uppercase"
+        class="flex flex-row items-center justify-start gap-4 w-full h-fit font-semibold text-[min(6vw,0.9rem)] text-LT_Secondary dark:text-DT_Secondary uppercase"
     >
         <button
             onclick={`expandNumericListContent('${givenID}', this)`}
@@ -29,7 +29,7 @@ const givenContentID: string = givenID + "_Content";
                 <GoogleMaterialSymbol
                     symbol="unfold_less"
                     SVG_Style=" group-hover:text-LT_Inverted group-hover:dark:text-DT_Inverted"
-                    SvgSize="text-[min(6vw,1rem)]!"
+                    SymbolSize="text-[min(6vw,0.9rem)]!"
                 />
             </div>
         </button>
@@ -59,11 +59,11 @@ const givenContentID: string = givenID + "_Content";
             // The div is currently visible turn it off by replacing flex to hidden.
             contentDIV.classList.replace("flex", "hidden");
             e.classList.replace("cursor-n-resize", "cursor-s-resize");
-            googleFont.innerHTML = "unfold_more";
+            googleFont.textContent = "unfold_more";
         } else {
             contentDIV.classList.replace("hidden", "flex");
             e.classList.replace("cursor-s-resize", "cursor-n-resize");
-            googleFont.innerHTML = "unfold_less";
+            googleFont.textContent = "unfold_less";
         }
     }
     (window as any).expandNumericListContent = expandNumericListContent;

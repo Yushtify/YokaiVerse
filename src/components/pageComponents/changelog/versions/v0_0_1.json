@@ -1,16 +1,49 @@
 {
   "version": "v0.0.1",
   "commit": "",
-  "date": "December 1th 2025",
-  "description": "First public release of YokaiVerse, introducing the earliest core pages and a small set of foundational features.",
+  "date": {
+    "en_us": "December 1st 2025",
+    "tr": "1 Aralık 2025"
+  },
+  "description": {
+    "en_us": "First public release of YokaiVerse, introducing the earliest core pages and a small set of foundational features.",
+    "tr": "YokaiVerse'in ilk herkese açık sürümü. Temel sayfaları ve projenin başlangıç özelliklerini kullanıma sunar."
+  },
   "logs": [
-    { "type": "Added", "desc": "The 404 error page." },
-    { "type": "Added", "desc": "The landing page." },
-    { "type": "Added", "desc": "The home page." },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "The 404 error page.",
+        "tr": "404 hata sayfası eklendi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "The landing page.",
+        "tr": "Açılış sayfası eklendi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "The home page.",
+        "tr": "Ana sayfa eklendi."
+      }
+    },
     {
       "type": "Misc",
-      "desc": "Landing page slogan easter eggs. For more details, see the commit history and update log on GitHub."
+      "desc": {
+        "en_us": "Landing page slogan easter eggs. For more details, see the commit history and update log on GitHub.",
+        "tr": "Açılış sayfası sloganlarında gizli easter egg'ler eklendi. Daha fazla detay için GitHub commit geçmişine ve güncelleme kayıtlarına bakabilirsiniz."
+      }
     },
-    { "type": "Misc", "desc": "A hidden Konami Code secret." }
+    {
+      "type": "Misc",
+      "desc": {
+        "en_us": "A hidden Konami Code secret.",
+        "tr": "Gizli bir Konami Code sırrı eklendi."
+      }
+    }
   ]
 }

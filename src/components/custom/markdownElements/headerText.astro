@@ -1,57 +1,57 @@
 ---
 interface Props {
-  givenID: string;
-  givenHeaderNum: number;
-  givenHeader: string;
-  isPrimaryColor?: boolean;
-  isUppercase?: boolean;
-  isBold?: boolean;
-  data: string;
+    givenID: string;
+    givenHeaderNum: number;
+    givenHeader: string;
+    isPrimaryColor?: boolean;
+    isUppercase?: boolean;
+    isBold?: boolean;
+    data: string;
 }
 
 const {
-  givenID,
-  givenHeaderNum,
-  givenHeader,
-  isPrimaryColor,
-  isUppercase,
-  isBold,
-  data,
+    givenID,
+    givenHeaderNum,
+    givenHeader,
+    isPrimaryColor,
+    isUppercase,
+    isBold,
+    data,
 } = Astro.props;
 const ValidTextColor = isPrimaryColor
-  ? "text-LT_Primary dark:text-DT_Primary"
-  : "text-LT_Secondary dark:text-DT_Secondary";
+    ? "text-LT_Primary dark:text-DT_Primary"
+    : "text-LT_Secondary dark:text-DT_Secondary";
 const ValidUppercase = isUppercase ? "uppercase" : "";
 const ValidBold = isBold ? "font-bold" : "font-normal";
 
 const textSizes: Record<number, string> = {
-  1: "text-[min(6vw,2rem)]",
-  2: "text-[min(6vw,1.8rem)]",
-  3: "text-[min(6vw,1.6rem)]",
-  4: "text-[min(6vw,1.4rem)]",
-  5: "text-[min(6vw,1.2rem)]",
-  6: "text-[min(6vw,1rem)]",
-  7: "text-[min(6vw,0.8rem)]",
+    1: "text-[min(6vw,2rem)]",
+    2: "text-[min(6vw,1.8rem)]",
+    3: "text-[min(6vw,1.6rem)]",
+    4: "text-[min(6vw,1.4rem)]",
+    5: "text-[min(6vw,1.2rem)]",
+    6: "text-[min(6vw,0.9rem)]",
+    7: "text-[min(6vw,0.8rem)]",
 };
 const ValidSize = textSizes[givenHeaderNum] || "text-base";
 ---
 
 <div
-  id={givenID}
-  class="flex flex-col items-start justify-start w-full h-fit py-4 px-2"
+    id={givenID}
+    class="flex flex-col items-start justify-start w-full h-fit py-4 px-2"
 >
-  <!-- Header -->
-  <p
-    class={`${ValidTextColor} ${ValidUppercase} ${ValidSize} ${ValidBold}`}
-    data-i18n={data}
-  >
-    {givenHeader}
-  </p>
+    <!-- Header -->
+    <p
+        class={`${ValidTextColor} ${ValidUppercase} ${ValidSize} ${ValidBold}`}
+        data-i18n={data}
+    >
+        {givenHeader}
+    </p>
 
-  <!-- Other -->
-  <div
-    class="flex flex-col items-start jusitfy-start w-full h-fit pt-2 pl-4 md:pl-8 text-[min(6vw,1.2rem)] text-LT_Primary dark:text-DT_Primary"
-  >
-    <slot />
-  </div>
+    <!-- Other -->
+    <div
+        class="flex flex-col items-start jusitfy-start w-full h-fit pt-2 pl-4 md:pl-8 text-[min(6vw,1.2rem)] text-LT_Primary dark:text-DT_Primary"
+    >
+        <slot />
+    </div>
 </div>

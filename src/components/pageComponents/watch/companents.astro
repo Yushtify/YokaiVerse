@@ -2,7 +2,6 @@
 import CustomVideoPlayer from "../../videoPlayer/companents.astro"; // v2
 
 // Things Releated to Video And that's seperated into same root with this file.
-import DescriptionSlot from "./descriptionSection.astro";
 import VideoInfoSlot from "./videoInfoSection.astro";
 import EpisodeContainerGlobal from "../../custom/episodeContainerGlobal.astro";
 import ExpandableInfoChip from "../../custom/expandableInfoChip.astro";
@@ -11,7 +10,7 @@ import Button from "../../custom/buttons/Button.astro";
 
 <!-- Video Player title and so on -->
 <div
-    class="flex flex-col items-start justify-start pt-4 w-full h-fit lg:max-w-[90%] xl:max-w-[75%] gap-4"
+    class="flex flex-col items-start justify-start pt-4 w-full h-fit lg:max-w-[85%] xl:max-w-[65%] gap-4"
 >
     <CustomVideoPlayer />
     <div
@@ -28,6 +27,7 @@ import Button from "../../custom/buttons/Button.astro";
                     givenButtonID="previousEpButton"
                     givenButtonAction="PreviousEpisode()"
                     givenTitle="previous episode"
+                    titleData="global.variable.prevEpisode"
                     givenButtonSymbol="chevron_left"
                     tooltipTitleTrans=""
                 />
@@ -36,8 +36,9 @@ import Button from "../../custom/buttons/Button.astro";
                     givenLocation="end"
                     givenButtonID="nextEpButton"
                     givenButtonCustomClass="flex-row-reverse"
-                    givenButtonAction="NextEpisode()"
+                    givenButtonAction={`NextEpisode(true)`}
                     givenTitle="next episode"
+                    titleData="global.variable.nextEpisode"
                     givenButtonSymbol="chevron_right"
                     tooltipTitleTrans=""
                 />
@@ -45,9 +46,10 @@ import Button from "../../custom/buttons/Button.astro";
         </div>
         <!-- Description -->
         <ExpandableInfoChip
-            givenID="pageVideoDesc_Continer"
-            givenTextID="pageVideoDesc"
+            givenID="pageEpDesc_Continer"
+            givenTextID="pageEpDesc"
             givenTitle="description"
+            titleData="global.variable.desc"
             givenDesc=""
         />
     </div>
@@ -56,12 +58,7 @@ import Button from "../../custom/buttons/Button.astro";
 <!-- The rec videos / next ep -->
 
 <div
-    class="flex flex-col items-start justify-start w-full lg:max-w-[90%] xl:max-w-[75%] gap-4"
+    class="flex flex-col items-start justify-start w-full lg:max-w-[85%] xl:max-w-[65%] gap-4"
 >
-    <EpisodeContainerGlobal
-        givenSymbol="video_template"
-        givenTitle="All Episodes"
-        titleData="info.allEpisodes"
-        givenWidth="w-full"
-    />
+    <EpisodeContainerGlobal givenID="anime" givenWidth="w-full" />
 </div>

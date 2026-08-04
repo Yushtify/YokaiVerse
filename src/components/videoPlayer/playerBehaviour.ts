@@ -44,7 +44,7 @@ registerToggleAction("loopEp", (el, isActive) => {
 
   // Sync the SVG inner HTML icon based on the active state
   if (svgEl) {
-    svgEl.innerHTML = newState
+    svgEl.textContent = newState
       ? config.buttons.loop.symbols.active
       : config.buttons.loop.symbols.deactive;
   }
@@ -91,7 +91,7 @@ registerToggleAction("autoPlayEp", (el, isActive) => {
 
   // Sync the SVG inner HTML icon based on the active state
   if (svgEl) {
-    svgEl.innerHTML = newState
+    svgEl.textContent = newState
       ? config.buttons.autoPlay.symbols.active
       : config.buttons.autoPlay.symbols.deactive;
   }
@@ -114,7 +114,9 @@ registerToggleAction("toggleGesturesEp", (el, isActive) => {
 
 // Bind to the window scope for standard button onClick access
 // and introduce a forceState parameter to handle specific states.
-(window as any).toggleGesturesEp = function toggleGesturesEp(forceState?: boolean) {
+(window as any).toggleGesturesEp = function toggleGesturesEp(
+  forceState?: boolean,
+) {
   const buttonEl = document.getElementById(
     config.buttons.gesturesButton.id, // Targets "epGesturesToggleButton"
   ) as HTMLButtonElement;
@@ -122,7 +124,8 @@ registerToggleAction("toggleGesturesEp", (el, isActive) => {
     config.GoogleMaterialSymbol,
   ) as HTMLSpanElement;
 
-  if (!buttonEl || !svgEl) return debugHandler("E", "Gestures", "playerBehaviour.ts");
+  if (!buttonEl || !svgEl)
+    return debugHandler("E", "Gestures", "playerBehaviour.ts");
 
   // CRITICAL FIX: If called without a specific state (e.g., clicked from the standard button),
   // simply trigger a programmatic click on the ToggleButton component.
@@ -136,7 +139,9 @@ registerToggleAction("toggleGesturesEp", (el, isActive) => {
   const newState = forceState;
 
   // DEBUG: Log the incoming state transition for gestures
-  console.log(`[DEBUG: playerBehaviour.ts] toggleGesturesEp -> forceState received: ${newState}`);
+  console.log(
+    `[DEBUG: playerBehaviour.ts] toggleGesturesEp -> forceState received: ${newState}`,
+  );
 
   // Sync the global flag that playerGesturesAndMouse.ts reads on every gesture/mouse event.
   // Cast window to 'any' here since 'enablePlayerGestures' is declared on the extended
@@ -145,7 +150,7 @@ registerToggleAction("toggleGesturesEp", (el, isActive) => {
 
   // Sync the SVG inner HTML icon based on the active state
   if (svgEl) {
-    svgEl.innerHTML = newState
+    svgEl.textContent = newState
       ? config.buttons.gesturesButton.symbols.active
       : config.buttons.gesturesButton.symbols.deactive;
   }
@@ -159,7 +164,9 @@ registerToggleAction("toggleGesturesEp", (el, isActive) => {
   });
 
   // DEBUG: Confirm the final synced state after save
-  console.log(`[DEBUG: playerBehaviour.ts] toggleGesturesEp -> window.enablePlayerGestures is now: ${(window as any).enablePlayerGestures}`);
+  console.log(
+    `[DEBUG: playerBehaviour.ts] toggleGesturesEp -> window.enablePlayerGestures is now: ${(window as any).enablePlayerGestures}`,
+  );
 };
 
 // ─── Keybinds (Enable/Disable Player Keybinds) ──────────────────────────────
@@ -171,7 +178,9 @@ registerToggleAction("toggleKeybindsEp", (el, isActive) => {
 
 // Bind to the window scope for standard button onClick access
 // and introduce a forceState parameter to handle specific states.
-(window as any).toggleKeybindsEp = function toggleKeybindsEp(forceState?: boolean) {
+(window as any).toggleKeybindsEp = function toggleKeybindsEp(
+  forceState?: boolean,
+) {
   const buttonEl = document.getElementById(
     config.buttons.keybindsButton.id, // Targets "epKeybindsToggleButton"
   ) as HTMLButtonElement;
@@ -179,7 +188,8 @@ registerToggleAction("toggleKeybindsEp", (el, isActive) => {
     config.GoogleMaterialSymbol,
   ) as HTMLSpanElement;
 
-  if (!buttonEl || !svgEl) return debugHandler("E", "Keybinds", "playerBehaviour.ts");
+  if (!buttonEl || !svgEl)
+    return debugHandler("E", "Keybinds", "playerBehaviour.ts");
 
   // CRITICAL FIX: If called without a specific state (e.g., clicked from the standard button),
   // simply trigger a programmatic click on the ToggleButton component.
@@ -196,7 +206,7 @@ registerToggleAction("toggleKeybindsEp", (el, isActive) => {
 
   // Sync the SVG inner HTML icon based on the active state
   if (svgEl) {
-    svgEl.innerHTML = newState
+    svgEl.textContent = newState
       ? config.buttons.keybindsButton.symbols.active
       : config.buttons.keybindsButton.symbols.deactive;
   }

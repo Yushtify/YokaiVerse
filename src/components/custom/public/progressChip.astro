@@ -1,57 +1,60 @@
 ---
 interface Props {
-  givenID?: string;
-  givenStatus?: "In_Progress" | "Planned" | "Completed" | "Cancelled" | "Considering";
-  givenData?: string;
+    givenID?: string;
+    givenStatus?:
+        "In_Progress" | "Planned" | "Completed" | "Cancelled" | "Considering";
+    givenData?: string;
 }
 
 const { givenID = "", givenStatus, givenData = "" } = Astro.props;
 
 const statusConfig: Record<
-  string,
-  { bg: string; text: string; border: string; label: string }
+    string,
+    { bg: string; text: string; border: string; label: string }
 > = {
-  In_Progress: {
-    bg: "bg-amber-500/20",
-    text: "text-amber-400",
-    border: "border-amber-500/30",
-    label: "In Progress",
-  },
-  Planned: {
-    bg: "bg-blue-500/20",
-    text: "text-blue-400",
-    border: "border-blue-500/30",
-    label: "Planned",
-  },
-  Completed: {
-    bg: "bg-green-500/20",
-    text: "text-green-400",
-    border: "border-green-500/30",
-    label: "Completed",
-  },
-  Cancelled: {
-    bg: "bg-red-500/20",
-    text: "text-red-400",
-    border: "border-red-500/30",
-    label: "Cancelled",
-  },
-  Considering: {
-    bg: "bg-purple-500/20",
-    text: "text-purple-400",
-    border: "border-purple-500/30",
-    label: "Considering",
-  },
+    In_Progress: {
+        bg: "bg-amber-500/20",
+        text: "text-amber-400",
+        border: "border-amber-500/30",
+        label: "In Progress",
+    },
+    Planned: {
+        bg: "bg-blue-500/20",
+        text: "text-blue-400",
+        border: "border-blue-500/30",
+        label: "Planned",
+    },
+    Completed: {
+        bg: "bg-green-500/20",
+        text: "text-green-400",
+        border: "border-green-500/30",
+        label: "Completed",
+    },
+    Cancelled: {
+        bg: "bg-red-500/20",
+        text: "text-red-400",
+        border: "border-red-500/30",
+        label: "Cancelled",
+    },
+    Considering: {
+        bg: "bg-purple-500/20",
+        text: "text-purple-400",
+        border: "border-purple-500/30",
+        label: "Considering",
+    },
 };
 
 const config = givenStatus ? statusConfig[givenStatus] : null;
-const colorClasses = config ? `${config.bg} ${config.text} ${config.border}` : "";
+const colorClasses = config
+    ? `${config.bg} ${config.text} ${config.border}`
+    : "";
 const label = config ? config.label : "";
 ---
 
 <div
-  id={givenID}
-  data-i18n={givenData}
-  class={`flex items-center justify-center px-2 py-0.5 rounded-full border text-[min(7vw,0.65rem)] font-semibold uppercase tracking-wide shrink-0 whitespace-nowrap ${colorClasses}`}
+    id={givenID}
+    data-i18n={givenData}
+    class={`flex items-center justify-center px-2 py-0.5 rounded-full border text-[min(6vw,0.65rem)] font-semibold uppercase tracking-wide shrink-0 whitespace-nowrap ${colorClasses}`}
 >
-  {label}
+    {label}
 </div>

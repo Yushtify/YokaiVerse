@@ -25,75 +25,46 @@ import SearchBar from "../../custom/searchBar.astro";
             <div
                 class="flex flex-row flex-wrap w-full h-fit items-center justify-start gap-4"
             >
+                <!-- Filter options -->
                 <div
-                    class="flex flex-col w-fit h-fit items-start justify-start rounded-3xl p-4 gap-2 border-2 border-LB_Primary dark:border-DB_Primary font-semibold text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary uppercase"
+                    class="flex flex-row flex-wrap items-start justify-start gap-4 w-fit h-fit"
                 >
-                    <p>filter by</p>
-                    <!-- Filter options -->
                     <div
-                        class="flex flex-row flex-wrap items-start justify-start gap-4 w-fit h-fit"
+                        class="relative flex flex-row items-center justify-start gap-2 w-fit h-fit"
                     >
-                        <div
-                            class="relative flex flex-row items-center justify-start gap-2 w-fit h-fit"
-                        >
-                            <RadioButton
-                                givenPositionTo="horizontal"
-                                givenPosition="start"
-                                givenRadGroup="mediaTypeFilter"
-                                givenState={true}
-                                givenID="animeFilter"
-                                givenTitle="Top Anime"
-                                titleData="featured.hero.filters.anime"
-                                givenSymbol="comic_bubble"
-                            />
-                            <RadioButton
-                                givenPositionTo="horizontal"
-                                givenPosition="center"
-                                givenRadGroup="mediaTypeFilter"
-                                givenState={false}
-                                givenID="mangaFilter"
-                                givenTitle="Top Manga"
-                                titleData="featured.hero.filters.manga"
-                                givenSymbol="manga"
-                            />
-                            <RadioButton
-                                givenPositionTo="horizontal"
-                                givenPosition="end"
-                                givenRadGroup="mediaTypeFilter"
-                                givenState={false}
-                                givenID="webtoonFilter"
-                                givenTitle="Top Webtoon"
-                                titleData="featured.hero.filters.webtoon"
-                                givenSymbol="web"
-                            />
-                        </div>
-
-                        <div
-                            class="relative flex flex-row items-center justify-start gap-2 w-fit h-fit"
-                        >
-                            <RadioButton
-                                givenPositionTo="horizontal"
-                                givenPosition="start"
-                                givenRadGroup="nsfwToggle"
-                                givenCanDisabled={false}
-                                givenState={false}
-                                givenID="sfwFilter"
-                                givenTitle="SFW"
-                                titleData="featured.hero.filters.sfw"
-                                givenSymbol="shield"
-                            />
-                            <RadioButton
-                                givenPositionTo="horizontal"
-                                givenPosition="end"
-                                givenRadGroup="nsfwToggle"
-                                givenCanDisabled={false}
-                                givenState={false}
-                                givenID="nsfwFilter"
-                                givenTitle="NSFW"
-                                titleData="featured.hero.filters.nsfw"
-                                givenSymbol="18_up_rating"
-                            />
-                        </div>
+                        <RadioButton
+                            givenLocationFrom="horizontal"
+                            givenLocation="start"
+                            givenRadGroup="mediaTypeFilter"
+                            givenCanDisabled={false}
+                            givenState={true}
+                            givenID="animeListerContainer_radio"
+                            givenTitle="Top Anime"
+                            titleData="featured.hero.filters.anime"
+                            givenSymbol="movie"
+                        />
+                        <RadioButton
+                            givenLocationFrom="horizontal"
+                            givenLocation="center"
+                            givenRadGroup="mediaTypeFilter"
+                            givenCanDisabled={false}
+                            givenState={false}
+                            givenID="mangaListerContainer_radio"
+                            givenTitle="Top Manga"
+                            titleData="featured.hero.filters.manga"
+                            givenSymbol="manga"
+                        />
+                        <RadioButton
+                            givenLocationFrom="horizontal"
+                            givenLocation="end"
+                            givenRadGroup="mediaTypeFilter"
+                            givenCanDisabled={false}
+                            givenState={false}
+                            givenID="webtoonListerContainer_radio"
+                            givenTitle="Top Webtoon"
+                            titleData="featured.hero.filters.webtoon"
+                            givenSymbol="manga"
+                        />
                     </div>
                 </div>
 

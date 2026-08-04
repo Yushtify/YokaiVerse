@@ -29,7 +29,7 @@ const isDescValid = givenDesc ? "flex" : "hidden";
                     SVG_ID="listerSVG"
                     symbol={givenSymbol}
                     isFilled={true}
-                    SvgSize="!text-[min(6vw,2rem)]"
+                    SymbolSize="!text-[min(6vw,2rem)]"
                 />
                 <p
                     id="listerTitle"
@@ -60,7 +60,7 @@ const isDescValid = givenDesc ? "flex" : "hidden";
                 givenTitle="Previous Page"
                 titleData="global.lister.prevPage"
                 givenButtonSymbol="chevron_backward"
-                givenButtonSymbolSize="text-[min(7vw,1rem)]"
+                givenButtonSymbolSize="text-[min(6vw,0.9rem)]"
             />
             <Button
                 givenLocationFrom="horizontal"
@@ -71,7 +71,7 @@ const isDescValid = givenDesc ? "flex" : "hidden";
                 givenTitle="Next Page"
                 titleData="global.lister.nextPage"
                 givenButtonSymbol="chevron_forward"
-                givenButtonSymbolSize="text-[min(7vw,1rem)]"
+                givenButtonSymbolSize="text-[min(6vw,0.9rem)]"
             />
         </div>
     </div>
@@ -79,7 +79,7 @@ const isDescValid = givenDesc ? "flex" : "hidden";
     <!-- Card Grid -->
     <div
         id="animeCardLister"
-        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 items-start justify-start gap-4 w-full h-fit"
+        class="grid grid-cols-[repeat(auto-fill,minmax(285px,1fr))] gap-4 w-full h-fit"
     >
         <AnimeCard />
         <slot />

@@ -1,24 +1,42 @@
 {
   "version": "v0.5.2",
   "commit": "ffff1aa",
-  "date": "Jul 28, 2026",
-  "description": "A patch update.",
+  "date": {
+    "en_us": "July 28, 2026",
+    "tr": "28 Temmuz 2026"
+  },
+  "description": {
+    "en_us": "A patch update.",
+    "tr": "Küçük bir yama güncellemesi."
+  },
   "logs": [
     {
       "type": "Added",
-      "desc": "new tag to \"/changelog\" named; \"Updated\"."
+      "desc": {
+        "en_us": "new tag to \"/changelog\" named; \"Updated\".",
+        "tr": "\"/changelog\" sayfasına \"Updated\" adlı yeni bir etiket eklendi."
+      }
     },
     {
       "type": "Updated",
-      "desc": "\"/chnagelog\" page's changelog chips to be more colorful"
-    },
-    {
-      "type": "Removed",
-      "desc": "Remaining text's such as localization texts of \"landing\""
+      "desc": {
+        "en_us": "\"/chnagelog\" page's changelog chips to be more colorful",
+        "tr": "\"/changelog\" sayfasındaki değişiklik günlüğü etiketleri daha renkli olacak şekilde güncellendi."
+      }
     },
     {
       "type": "Deprecated",
-      "desc": "\"cloudflare pages\" due to it took 4 hours for me to setup and then find out i broke thr project (I had a backup), so i reverted back. plus in the meantime i noticed Astro and Vite has compability issues."
+      "desc": {
+        "en_us": "\"cloudflare pages\" due to it took 4 hours for me to setup and then find out i broke thr project (I had a backup), so i reverted back. plus in the meantime i noticed Astro and Vite has compability issues.",
+        "tr": "\"Cloudflare Pages\" desteği kullanımdan kaldırıldı. Kurulumu yaklaşık 4 saat sürdü ancak sonunda projeyi bozduğunu fark ettim (yedeklerim vardı), bu yüzden geri aldım. Bu süreçte ayrıca Astro ile Vite arasında uyumluluk sorunları olduğunu da fark ettim."
+      }
+    },
+    {
+      "type": "Removed",
+      "desc": {
+        "en_us": "Remaining text's such as localization texts of \"landing\"",
+        "tr": "\"Landing\" sayfasına ait kalan metinler ve yerelleştirme çevirileri kaldırıldı."
+      }
     }
   ]
 }

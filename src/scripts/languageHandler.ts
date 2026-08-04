@@ -4,19 +4,12 @@
 const DEFAULT_LANG = "en_us" as const;
 
 // All supported language codes. Add new entries here to extend support.
-const SUPPORTED_LANGS = ["az", "de", "en_us", "en_uk", "es", "fr", "ru", "tr", "jp"] as const;
+const SUPPORTED_LANGS = ["en_us", "tr"] as const;
 
 // Human-readable display names used in the "Automatic - {Name}" button label.
 const LANG_NAMES: Record<Language, string> = {
-  az: "Azərbaycan",
-  de: "Deutsch",
   en_us: "English (US)",
-  en_uk: "English (UK)",
-  es: "Español",
-  fr: "Français",
-  ru: "Русский",
   tr: "Türkçe",
-  jp: "日本語",
 };
 
 // localStorage keys used to persist language preferences across sessions.

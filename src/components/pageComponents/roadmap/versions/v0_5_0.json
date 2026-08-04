@@ -8,10 +8,11 @@
     { "status": "Completed", "desc": "Quality switcher for episode player." },
     { "status": "Completed", "desc": "Working Theme switcher page." },
     { "status": "Completed", "desc": "Revamping settings page." },
-    { "status": "Planned", "desc": "Integrated subtitles to episode player." },
-    { "status": "Planned", "desc": "More customization on episode player." },
-    { "status": "Planned", "desc": "Filtering system in Featured." },
-    { "status": "In_Progress", "desc": "Reader page." },
-    { "status": "In_Progress", "desc": "Localization support for changelog." }
+    { "status": "Completed", "desc": "Localization support for changelog." },
+    {
+      "status": "Completed",
+      "desc": "Replacing the hard-coded Adult Content filter with user-configurable content settings."
+    },
+    { "status": "Completed", "desc": "Reader page, main logic." }
   ]
 }

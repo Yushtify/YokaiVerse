@@ -1,19 +1,20 @@
 {
-  "title": "NSFW Filter Test",
+  "title": "Adult Content Filter Test",
   "desc": "Lorem ipsum sit amet.",
   "author": "Yushtify",
   "ageRestriction": "18+",
-  "nsfw": true,
-  "categories": ["NSFW", "Featured"],
+  "adultContent": true,
+  "categories": ["Adult Content", "Featured"],
   "type": {
-    "movie": false,
-    "anime": true
+    "movie": true,
+    "manga": false,
+    "anime": false
   },
   "meta": {
     "rating": "5",
     "uploadDate": "18 Feb 2026",
     "tags": {
-      "tag_1": "NSFW",
+      "tag_1": "Adult Content",
       "tag_2": "Reincarnation",
       "tag_3": "Supernatural"
     }

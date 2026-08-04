@@ -1,7 +1,5 @@
 {
   "sousouNoFrieren": "/src/assets/animes/sousouNoFrieren",
   "nsfwFilterTest": "/src/assets/animes/nsfwFilterTest",
-  "manifest": "/src/assets/animes/manifest",
-  "murderDrones": "/src/assets/animes/murderDrones",
-  "helluvaBoss": "/src/assets/animes/helluvaBoss"
+  "manifest": "/src/assets/animes/manifest"
 }

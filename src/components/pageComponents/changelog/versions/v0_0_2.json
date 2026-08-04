@@ -1,24 +1,63 @@
 {
   "version": "v0.0.2",
   "commit": "",
-  "date": "Nov 11, 2025",
-  "description": "Expanded the core page structure and introduced layout improvements to support a more complete browsing experience.",
+  "date": {
+    "en_us": "December 11, 2025",
+    "tr": "11 Aralık 2025"
+  },
+  "description": {
+    "en_us": "Expanded the core page structure and introduced layout improvements to support a more complete browsing experience.",
+    "tr": "Daha kapsamlı bir gezinme deneyimi sağlamak için temel sayfa yapısı genişletildi ve düzen iyileştirmeleri yapıldı."
+  },
   "logs": [
-    { "type": "Added", "desc": "The watch page." },
-    { "type": "Added", "desc": "The marketplace page." },
-    { "type": "Added", "desc": "The update log page." },
     {
       "type": "Added",
-      "desc": "Automatic collapsing for update entries, excluding the latest release."
+      "desc": {
+        "en_us": "The watch page.",
+        "tr": "İzleme sayfası eklendi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "The marketplace page.",
+        "tr": "Market sayfası eklendi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "The update log page.",
+        "tr": "Güncelleme kayıtları sayfası eklendi."
+      }
+    },
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "Automatic collapsing for update entries, excluding the latest release.",
+        "tr": "En son sürüm hariç güncelleme kayıtlarının otomatik olarak daraltılması eklendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The home page layout and content structure."
+      "desc": {
+        "en_us": "The home page layout and content structure.",
+        "tr": "Ana sayfa düzeni ve içerik yapısı değiştirildi."
+      }
     },
-    { "type": "Changed", "desc": "The folder layout for '/video'." },
     {
       "type": "Changed",
-      "desc": "Several layouts to better support server-side rendering through Astro."
+      "desc": {
+        "en_us": "The folder layout for '/video'.",
+        "tr": "'/video' klasör yapısı değiştirildi."
+      }
+    },
+    {
+      "type": "Changed",
+      "desc": {
+        "en_us": "Several layouts to better support server-side rendering through Astro.",
+        "tr": "Astro üzerinden sunucu taraflı oluşturmayı daha iyi desteklemek için çeşitli düzenler değiştirildi."
+      }
     }
   ]
 }

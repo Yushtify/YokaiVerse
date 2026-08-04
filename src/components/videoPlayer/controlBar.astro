@@ -3,6 +3,7 @@ import SubtitleBar from "./subtitleBar.astro";
 
 import Button from "../custom/buttons/Button.astro";
 import CustomSlider from "../custom/customSlider.astro";
+import TimelineSlider from "../custom/timelineSlider.astro";
 
 // ------ Buttons ---------------------------------------------------------
 import Settings from "./buttons/settings.astro";
@@ -18,17 +19,21 @@ import Settings from "./buttons/settings.astro";
     -->
     <div class="flex flex-row w-full h-fit gap-4">
         <div
-            class="flex flex-row items-center justify-between min-w-fit w-fit h-fit gap-4 p-2 px-4 rounded-full bg-L_Primary dark:bg-D_Primary text-[min(6vw,1rem)] text-LT_Primary dark:text-L_Primary text-nowrap overflow-hidden"
+            class="flex flex-row items-center justify-between min-w-fit w-fit h-fit gap-4 p-2 px-4 rounded-full bg-L_Primary dark:bg-D_Primary text-[min(6vw,0.9rem)] text-LT_Primary dark:text-L_Primary text-nowrap overflow-hidden"
         >
-            <p id="timeStamp">
+            <div
+                id="timeStamp"
+                class="flex flex-row items-center justify-center gap-2 w-fit h-fit"
+            >
                 <span id="current_TimeStamp">00:00</span>
+                <span>/</span>
                 <span
                     id="duration_TimeStamp"
                     class="text-[min(5vw,0.8rem)] text-LT_Primary dark:text-DT_Primary"
                 >
-                    / 00:00</span
+                    00:00</span
                 >
-            </p>
+            </div>
         </div>
         <SubtitleBar />
     </div>
@@ -37,15 +42,7 @@ import Settings from "./buttons/settings.astro";
     Second Collumn:
     Will have; TimeStamp slider.
     -->
-    <CustomSlider
-        givenID="timelineSlider"
-        givenOnInput="updateCurrentTime(value)"
-        givenWidth="w-full"
-        givenMin="0"
-        givenMax="1"
-        givenValue="0"
-        givenStep="0.05"
-    />
+    <TimelineSlider givenID="timelineSlider" duration={90} />
 
     <!--
     Second Collumn:
@@ -60,7 +57,7 @@ import Settings from "./buttons/settings.astro";
         Will have; Pause, Mute, Slider for Volume.
         -->
         <div
-            class="group flex flex-row items-center justify-center gap-2 min-w-fit w-fit h-fit p-2 pr-0 hover:pr-4 rounded-3xl bg-L_Primary dark:bg-D_Primary text-[min(6vw,1rem)] text-nowrap overflow-hidden transition-normal duration-200 ease-in-out"
+            class="group flex flex-row items-center justify-center gap-2 min-w-fit w-fit h-fit p-2 pr-0 hover:pr-4 rounded-3xl bg-L_Primary dark:bg-D_Primary text-[min(6vw,0.9rem)] text-nowrap overflow-hidden transition-normal duration-200 ease-in-out"
         >
             <Button
                 givenLocationFrom="horizontal"
@@ -96,7 +93,7 @@ import Settings from "./buttons/settings.astro";
         Will have; Tranlations, Settings and Fullscreen.
         -->
         <div
-            class="flex flex-row items-center justify-center gap-2 min-w-fit w-fit h-fit p-2 rounded-3xl bg-L_Primary dark:bg-D_Primary text-[min(6vw,1rem)] text-nowrap"
+            class="flex flex-row items-center justify-center gap-2 min-w-fit w-fit h-fit p-2 rounded-3xl bg-L_Primary dark:bg-D_Primary text-[min(6vw,0.9rem)] text-nowrap"
         >
             <Button
                 givenLocationFrom="horizontal"

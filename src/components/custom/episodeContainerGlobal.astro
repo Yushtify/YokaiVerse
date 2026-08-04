@@ -1,16 +1,35 @@
 ---
 import SeasonSwithcer from "./public/seasonSwithcer.astro";
-import VideoButtonTemplate from "./buttons/gridEpisodeButton_Template.astro";
-import GoogleMaterialSymbol from "./googleMaterial_Symbol.astro";
+import EpisodeButton from "./buttons/episodeButton_Template.astro";
 
 interface Props {
+    givenID: "anime" | "manga";
     givenWidth?: string;
 }
-const { givenWidth } = Astro.props;
+const { givenID, givenWidth } = Astro.props;
+
+let switcherID = "";
+let radioID = "";
+let radioTemplateID = "";
+let containerID = "";
+const mainWrapperID = `${givenID}Wrapper`;
+if (givenID === "manga") {
+    switcherID = `mangaVolumeSwitcher`;
+    radioID = `mangaVolumeRadio`;
+    radioTemplateID = `${radioID}_Template`;
+    containerID = `mangaVolumeWrapper_Template`;
+} else if (givenID === "anime") {
+    switcherID = `animeSeasonSwitcher`;
+    radioID = `animeSeasonRadio`;
+    radioTemplateID = `${radioID}_Template`;
+    containerID = `animeSeasonWrapper_Template`;
+} else {
+    console.log(givenID);
+}
 ---
 
 <div
-    id="season_main_wrapper"
+    id={mainWrapperID}
     class={`flex flex-col items-start justify-center gap-4 w-full max-w-screen h-fit ${givenWidth}`}
 >
     <p
@@ -20,25 +39,28 @@ const { givenWidth } = Astro.props;
         All Episodes
     </p>
     <div
-        id="seasonSwitch"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start justify-center gap-4 w-full h-fit"
+        id={switcherID}
+        class="grid grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-4 w-full h-fit"
     >
     </div>
-    <template id="SeasonRadioTemplate">
+    <template id={radioTemplateID}>
         <SeasonSwithcer
-            givenID="seasonSwitcher"
-            givenRadGroup="seasonSwitch"
-            givenCanDisabled={false}
+            givenID={radioID}
+            groupName="seasonSwitch"
             givenState={false}
         />
     </template>
 </div>
 
-<template id="Season_Container_Template">
+<template id={containerID}>
     <div
         id="Season1_Container"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start justify-start w-full h-fit gap-4"
+        class="grid grid-cols-[repeat(auto-fill,minmax(325px,1fr))] gap-4 w-full h-fit"
     >
     </div>
 </template>
-<VideoButtonTemplate />
+<EpisodeButton type={givenID} />
+
+<script>
+    import "../pageComponents/settings/scripts/settingsControls.ts";
+</script>

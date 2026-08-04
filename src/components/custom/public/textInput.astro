@@ -4,8 +4,8 @@ import Button from "../buttons/Button.astro";
 import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
 
 interface Props {
-    givenPositionTo?: "horizontal" | "vertical";
-    givenPosition?: "start" | "center" | "end";
+    givenLocationFrom?: "horizontal" | "vertical";
+    givenLocation?: "start" | "center" | "end";
     givenID: string;
 
     givenTitle: string;
@@ -15,8 +15,8 @@ interface Props {
 }
 
 const {
-    givenPositionTo,
-    givenPosition,
+    givenLocationFrom,
+    givenLocation,
     givenID,
     givenTitle,
     titleData,
@@ -27,7 +27,7 @@ const {
 
 <div
     id={givenID}
-    class="group:flex flex-col items-start justify-center p-4 gap-4 rounded-3xl min-w-fit w-full lg:w-fit h-fit bg-L_Primary dark:bg-D_Primary hover:bg-Highlight text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:bg-DT_Inverted transition-colors duration-200 ease-in-out"
+    class="group:flex flex-col items-start justify-center p-4 gap-4 rounded-3xl min-w-fit w-full lg:w-fit h-fit bg-L_Primary dark:bg-D_Primary hover:bg-Highlight text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:bg-DT_Inverted transition-colors duration-200 ease-in-out"
 >
     <p
         data-i18n={titleData}

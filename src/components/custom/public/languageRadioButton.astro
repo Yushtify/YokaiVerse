@@ -1,11 +1,9 @@
 ---
-import { transitionEnabledOnThisPage } from "astro:transitions/client";
 import GoogleMaterialSymbol from "../googleMaterial_Symbol.astro";
-import { treeifyError } from "astro:schema";
 
 interface Props {
-    givenPositionTo?: "horizontal" | "vertical";
-    givenPosition?: "start" | "center" | "end";
+    givenLocationFrom?: "horizontal" | "vertical";
+    givenLocation?: "start" | "center" | "end";
     givenTitle: string;
     givenState: boolean;
     givenID: string;
@@ -16,8 +14,8 @@ interface Props {
 }
 
 const {
-    givenPositionTo,
-    givenPosition,
+    givenLocationFrom,
+    givenLocation,
     givenTitle,
     givenState,
     givenID,
@@ -27,46 +25,44 @@ const {
     givenSymbol,
 } = Astro.props;
 
-let validRounded = "rounded-3xl";
-if (givenPosition && givenPositionTo) {
-    if (givenPositionTo === "horizontal") {
-        if (givenPosition === "start") {
-            validRounded = "rounded-l-3xl rounded-r-xl";
-        } else if (givenPosition === "end") {
-            validRounded = "rounded-l-xl rounded-r-3xl";
-        } else if (givenPosition === "center") {
-            validRounded = "rounded-xl";
-        }
-    } else if (givenPositionTo === "vertical") {
-        if (givenPosition === "start") {
-            validRounded = "rounded-t-3xl rounded-b-xl";
-        } else if (givenPosition === "end") {
-            validRounded = "rounded-t-xl rounded-b-3xl";
-        } else if (givenPosition === "center") {
-            validRounded = "rounded-xl";
-        }
-    }
-}
-validRounded += " hover:rounded-3xl transition-all duration-200 ease-in-out";
+// validate button rounded
+const borderRadiusMap = {
+    horizontal: {
+        start: "rounded-xl rounded-l-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-r-3xl",
+    },
+    vertical: {
+        start: "rounded-xl rounded-t-3xl",
+        center: "rounded-xl",
+        end: "rounded-xl rounded-b-3xl",
+    },
+} as const;
 
-// Base look = deactive state. This is always applied on the element.
-const baseClass = `${validRounded} filter-btn group relative flex flex-row items-center justify-start min-w-fit w-full h-fit gap-4 p-4 pr-6 bg-L_Secondary dark:bg-D_Secondary hover:bg-Highlight text-nowrap font-semibold text-left text-[min(6vw,1rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted overflow-hidden cursor-pointer capitalize`;
+const borderRadius =
+    givenLocationFrom && givenLocation
+        ? borderRadiusMap[givenLocationFrom][givenLocation]
+        : "rounded-3xl";
+const validBorderRadius = `${borderRadius} hover:rounded-3xl`;
 
-// Active-state overrides only (uses `!` so they win over baseClass
-// regardless of stylesheet order — same pattern as the icon-radio button).
-const activeOverrideClass =
-    "bg-Accent! hover:bg-Highlight! text-LT_Inverted! dark:text-DT_Inverted! uppercase! capitalize-none!";
-
-const isSVG = givenSymbol ? "inline" : "hidden";
+const classMap = {
+    // Base look = deactive state. This is always applied on the element.
+    buttonDefClass: `${validBorderRadius} filter-btn group relative flex flex-row items-center justify-start min-w-fit w-full h-fit gap-4 p-4 pr-6 bg-L_Secondary dark:bg-D_Secondary hover:bg-Highlight text-nowrap font-semibold text-left text-[min(6vw,0.9rem)] text-LT_Primary dark:text-DT_Primary hover:text-LT_Inverted dark:hover:text-DT_Inverted overflow-hidden cursor-pointer capitalize transition-all duration-200 ease-in-out`,
+    // Active-state overrides only (uses `!` so they win over baseClass
+    // regardless of stylesheet order — same pattern as the icon-radio button).
+    buttonActiveClass:
+        "bg-Accent! hover:bg-Highlight! text-LT_Inverted! dark:text-DT_Inverted! uppercase! capitalize-none!",
+    hasSymbol: givenSymbol ? "inline" : "hidden",
+};
 ---
 
 <button
     type="button"
     id={givenID}
-    class={baseClass}
+    class={classMap.buttonDefClass}
     data-radgroup={groupName}
     data-radstate={givenState ? "true" : "false"}
-    data-radActive={activeOverrideClass}
+    data-radActive={classMap.buttonActiveClass}
     data-candisabled={canDisabled ? "true" : "false"}
     data-lang={dataLang}
 >
@@ -76,7 +72,8 @@ const isSVG = givenSymbol ? "inline" : "hidden";
     >
         <GoogleMaterialSymbol
             symbol={givenSymbol}
-            SvgSize="text-[min(6vw,1.5rem)]"
+            SVG_Style={classMap.hasSymbol}
+            SymbolSize="text-[min(6vw,1.5rem)]"
             isFilled={true}
         />
     </div>

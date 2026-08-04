@@ -1,7 +1,21 @@
 {
   "version": "v0.0.0",
   "commit": "",
-  "date": "December 1th 2025",
-  "description": "Initial demo release of YokaiVerse, establishing the foundation for the project and its future development.",
-  "logs": [{ "type": "Added", "desc": "The initial project foundation." }]
+  "date": {
+    "en_us": "December 1st 2025",
+    "tr": "1 Aralık 2025"
+  },
+  "description": {
+    "en_us": "Initial demo release of YokaiVerse, establishing the foundation for the project and its future development.",
+    "tr": "YokaiVerse'in ilk demo sürümü. Projenin temelini ve gelecekteki gelişimini oluşturur."
+  },
+  "logs": [
+    {
+      "type": "Added",
+      "desc": {
+        "en_us": "The initial project foundation.",
+        "tr": "Projenin temeli oluşturuldu"
+      }
+    }
+  ]
 }

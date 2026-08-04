@@ -29,12 +29,12 @@ export function toggleSubtitles(forceState?: boolean) {
   if (showSubtitles) {
     subtitleBar.classList.remove("opacity-0");
     subtitleBar.classList.add("opacity-100");
-    svgEl.innerHTML = config.buttons.subtitles.symbols.active;
+    svgEl.textContent = config.buttons.subtitles.symbols.active;
     console.log("[DEBUG: playerSubtitles.ts] subs on");
   } else {
     subtitleBar.classList.remove("opacity-100");
     subtitleBar.classList.add("opacity-0");
-    svgEl.innerHTML = config.buttons.subtitles.symbols.deactive;
+    svgEl.textContent = config.buttons.subtitles.symbols.deactive;
     console.log("[DEBUG: playerSubtitles.ts] subs off");
   }
 

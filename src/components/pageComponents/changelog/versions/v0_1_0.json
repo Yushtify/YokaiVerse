@@ -1,124 +1,217 @@
 {
   "version": "v0.1.0",
   "commit": "b98afe4",
-  "date": "Mar 02, 2026",
-  "description": "A major update introducing playlist support, NSFW filtering, dedicated information pages, and broad UI/UX improvements across the platform.",
+  "date": {
+    "en_us": "March 02, 2026",
+    "tr": "2 Mart 2026"
+  },
+  "description": {
+    "en_us": "A major update introducing playlist support, Adult Content filtering, dedicated information pages, and broad UI/UX improvements across the platform.",
+    "tr": "Oynatma listesi desteği, Adult Content filtreleme, özel bilgi sayfaları ve platform genelinde kapsamlı UI/UX iyileştirmeleri sunan büyük bir güncelleme."
+  },
   "logs": [
     {
       "type": "Added",
-      "desc": "Playlist functionality for the video player, allowing users to move between episodes using previous and next arrows in the top-left corner."
+      "desc": {
+        "en_us": "Playlist functionality for the video player, allowing users to move between episodes using previous and next arrows in the top-left corner.",
+        "tr": "Video oynatıcı için oynatma listesi özelliği eklendi. Kullanıcılar sol üst köşedeki önceki ve sonraki okları kullanarak bölümler arasında geçiş yapabilir."
+      }
     },
     {
       "type": "Added",
-      "desc": "An NSFW filtering system for Anime, Movie, Webtoon, and Manga albums."
+      "desc": {
+        "en_us": "An Adult Content filtering system for Anime, Movie, Webtoon, and Manga albums.",
+        "tr": "Anime, Film, Webtoon ve Manga albümleri için Adult Content filtreleme sistemi eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Total duration display for albums, showing the combined length of all episodes. Initial calculation may take a few seconds."
+      "desc": {
+        "en_us": "Total duration display for albums, showing the combined length of all episodes. Initial calculation may take a few seconds.",
+        "tr": "Albümlerin toplam süresini gösteren özellik eklendi. İlk hesaplama birkaç saniye sürebilir."
+      }
     },
     {
       "type": "Added",
-      "desc": "Dedicated information pages. Clicking cover art now opens a detailed info view instead of starting playback immediately, with playback available through the Episode 1 Play button."
+      "desc": {
+        "en_us": "Dedicated information pages. Clicking cover art now opens a detailed info view instead of starting playback immediately, with playback available through the Episode 1 Play button.",
+        "tr": "Özel bilgi sayfaları eklendi. Kapak görseline tıklamak artık oynatmayı hemen başlatmak yerine detaylı bilgi görünümünü açıyor. Oynatma, Bölüm 1 Oynat butonu üzerinden başlatılabilir."
+      }
     },
     {
       "type": "Added",
-      "desc": "A TypeScript-based language handler with Turkish support, laying the groundwork for additional languages in future updates."
+      "desc": {
+        "en_us": "A TypeScript-based language handler with Turkish support, laying the groundwork for additional languages in future updates.",
+        "tr": "Türkçe desteğine sahip TypeScript tabanlı dil yöneticisi eklendi. Gelecekteki güncellemelerde yeni diller için temel oluşturuldu."
+      }
     },
     {
       "type": "Added",
-      "desc": "A forum link in the navigation bar."
+      "desc": {
+        "en_us": "A forum link in the navigation bar.",
+        "tr": "Navigasyon çubuğuna forum bağlantısı eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Dynamic content loading for the Featured page, with NSFW content automatically filtered based on 18+ age restrictions or explicit tags."
+      "desc": {
+        "en_us": "Dynamic content loading for the Featured page, with Adult Content content automatically filtered based on 18+ age restrictions or explicit tags.",
+        "tr": "Featured sayfası için dinamik içerik yükleme eklendi. Adult Content içerikler 18+ yaş kısıtlamalarına veya açık etiketlere göre otomatik olarak filtreleniyor."
+      }
     },
     {
       "type": "Added",
-      "desc": "New TypeScript core modules: playerControls, videoPlayer, svgScripts, languageHandler, animeListerScript, sloganHandler, infoHandler, and playListHandler."
+      "desc": {
+        "en_us": "New TypeScript core modules: playerControls, videoPlayer, svgScripts, languageHandler, animeListerScript, sloganHandler, infoHandler, and playListHandler.",
+        "tr": "Yeni TypeScript çekirdek modülleri eklendi: playerControls, videoPlayer, svgScripts, languageHandler, animeListerScript, sloganHandler, infoHandler ve playListHandler."
+      }
     },
     {
       "type": "Added",
-      "desc": "'animeIDs.json' in the '/public' directory for centralized anime ID management."
+      "desc": {
+        "en_us": "'animeIDs.json' in the '/public' directory for centralized anime ID management.",
+        "tr": "Anime ID yönetimini merkezileştirmek için '/public' dizinine 'animeIDs.json' eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "A standardized structure and design for version history and changelog entries."
+      "desc": {
+        "en_us": "A standardized structure and design for version history and changelog entries.",
+        "tr": "Sürüm geçmişi ve değişiklik kayıtları için standartlaştırılmış yapı ve tasarım eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Dynamic fetching for version logs to keep changelog content easier to update."
+      "desc": {
+        "en_us": "Dynamic fetching for version logs to keep changelog content easier to update.",
+        "tr": "Değişiklik kayıtlarını daha kolay güncellemek için dinamik sürüm kayıtları alma sistemi eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "Store, What's New, and Forums links in the footer."
+      "desc": {
+        "en_us": "Store, What's New, and Forums links in the footer.",
+        "tr": "Footer kısmına Store, What's New ve Forums bağlantıları eklendi."
+      }
     },
     {
       "type": "Added",
-      "desc": "A global search bar in the primary navigation bar."
+      "desc": {
+        "en_us": "A global search bar in the primary navigation bar.",
+        "tr": "Ana navigasyon çubuğuna global arama çubuğu eklendi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The video player sliders for a sleeker look and smoother feel."
+      "desc": {
+        "en_us": "The video player sliders for a sleeker look and smoother feel.",
+        "tr": "Daha şık bir görünüm ve daha akıcı kullanım için video oynatıcı kaydırıcıları değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The Hero sections for the Featured, Settings, and Landing pages."
+      "desc": {
+        "en_us": "The Hero sections for the Featured, Settings, and Landing pages.",
+        "tr": "Featured, Settings ve Landing sayfalarının Hero bölümleri değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The Store page UI/UX for a cleaner and more polished experience."
+      "desc": {
+        "en_us": "The Store page UI/UX for a cleaner and more polished experience.",
+        "tr": "Daha temiz ve gelişmiş bir deneyim için Store sayfasının UI/UX yapısı değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Navbar behavior so it transitions to a bottom-docked layout on smaller screens for improved mobile accessibility."
+      "desc": {
+        "en_us": "Navbar behavior so it transitions to a bottom-docked layout on smaller screens for improved mobile accessibility.",
+        "tr": "Daha iyi mobil erişilebilirlik için küçük ekranlarda navbar davranışı alt sabitlenen düzene geçecek şekilde değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The language switcher location from the navigation bar to the footer."
+      "desc": {
+        "en_us": "The language switcher location from the navigation bar to the footer.",
+        "tr": "Dil değiştiricinin konumu navigasyon çubuğundan footer bölümüne taşındı."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The side navbar default state so it starts collapsed, maximizing the available content area."
+      "desc": {
+        "en_us": "The side navbar default state so it starts collapsed, maximizing the available content area.",
+        "tr": "Yan navbarın varsayılan durumu daraltılmış olarak başlayacak şekilde değiştirildi ve içerik alanı genişletildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The dark mode background color to true black (#000000)."
+      "desc": {
+        "en_us": "The dark mode background color to true black (#000000).",
+        "tr": "Karanlık mod arka plan rengi gerçek siyah (#000000) olacak şekilde değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The '/src/assets/animes/' directory for better asset organization."
+      "desc": {
+        "en_us": "The '/src/assets/animes/' directory for better asset organization.",
+        "tr": "Daha iyi varlık organizasyonu için '/src/assets/animes/' dizini değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "Additional UI elements into reusable Astro components."
+      "desc": {
+        "en_us": "Additional UI elements into reusable Astro components.",
+        "tr": "Ek arayüz elementleri yeniden kullanılabilir Astro bileşenlerine dönüştürüldü."
+      }
     },
     {
       "type": "Changed",
-      "desc": "The footer with a more complete UI/UX update."
+      "desc": {
+        "en_us": "The footer with a more complete UI/UX update.",
+        "tr": "Footer daha kapsamlı bir UI/UX güncellemesi ile değiştirildi."
+      }
     },
     {
       "type": "Changed",
-      "desc": "'Discover' to 'Featured' for algorithmically curated content. The new Discover page now serves as a high-performance filtering engine for advanced content search."
+      "desc": {
+        "en_us": "'Discover' to 'Featured' for algorithmically curated content. The new Discover page now serves as a high-performance filtering engine for advanced content search.",
+        "tr": "'Discover', algoritmik olarak seçilen içerikler için 'Featured' olarak değiştirildi. Yeni Discover sayfası artık gelişmiş içerik araması için yüksek performanslı bir filtreleme motoru olarak çalışıyor."
+      }
     },
     {
       "type": "Fixed",
-      "desc": "Animation stuttering on the loading screen."
+      "desc": {
+        "en_us": "Animation stuttering on the loading screen.",
+        "tr": "Yükleme ekranındaki animasyon takılmaları düzeltildi."
+      }
     },
     {
       "type": "Removed",
-      "desc": "Deprecated content wrappers to streamline the DOM structure."
+      "desc": {
+        "en_us": "Deprecated content wrappers to streamline the DOM structure.",
+        "tr": "DOM yapısını sadeleştirmek için artık kullanılmayan içerik kapsayıcıları kaldırıldı."
+      }
     },
     {
       "type": "Removed",
-      "desc": "Store, What's New, and Forums links from the main navigation bar."
+      "desc": {
+        "en_us": "Store, What's New, and Forums links from the main navigation bar.",
+        "tr": "Ana navigasyon çubuğundan Store, What's New ve Forums bağlantıları kaldırıldı."
+      }
     },
     {
       "type": "Removed",
-      "desc": "'videoIds.json' from the '/public' directory."
+      "desc": {
+        "en_us": "'videoIds.json' from the '/public' directory.",
+        "tr": "'/public' dizinindeki 'videoIds.json' kaldırıldı."
+      }
     },
     {
       "type": "Experimental",
-      "desc": "A context-aware sidebar that changes based on the active page. This feature is currently in a demo and unstable state."
+      "desc": {
+        "en_us": "A context-aware sidebar that changes based on the active page. This feature is currently in a demo and unstable state.",
+        "tr": "Aktif sayfaya göre değişen bağlama duyarlı bir yan menü. Bu özellik şu anda demo ve kararsız durumdadır."
+      }
     }
   ]
 }
