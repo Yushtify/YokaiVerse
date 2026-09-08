@@ -4,8 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
-  // Astro'nun kendi server ayarları (Dış erişim için)
   server: {
     host: true,
     port: 4321, // Astro varsayılan portu, ngrok hangi portu dinliyorsa o olmalı
